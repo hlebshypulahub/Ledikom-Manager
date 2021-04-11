@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="940.0" prefWidth="1168.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.facility.FacilityAllVController">
+   <children>
+      <TableView fx:id="table" layoutX="14.0" layoutY="14.0" onMouseClicked="#showFullInfo" prefHeight="496.0" prefWidth="1140.0">
+         <columns>
+            <TableColumn fx:id="cityCol" prefWidth="182.0" text="Город" />
+            <TableColumn fx:id="nameCol" minWidth="0.0" prefWidth="197.0" text="Наименование" />
+            <TableColumn fx:id="addressCol" prefWidth="304.0" text="Адрес" />
+            <TableColumn fx:id="scheduleCol" minWidth="7.0" prefWidth="456.0" text="Режим работы" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

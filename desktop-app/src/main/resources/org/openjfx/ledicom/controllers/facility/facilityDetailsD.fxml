@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="940.0" prefWidth="748.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.facility.FacilityDetailsDController">
+   <children>
+      <VBox layoutX="12.0" layoutY="14.0" prefHeight="821.0" prefWidth="726.0">
+         <children>
+            <HBox>
+               <children>
+                  <Button minHeight="35.0" mnemonicParsing="false" onAction="#facilityEdit" prefHeight="35.0" prefWidth="200.0" stylesheets="@../../css/style.css" text="Управление объектом">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="button-default" />
+                        <String fx:value="green" />
+                        <String fx:value="font-big" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </HBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Информация:" wrappingWidth="176.0">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Text>
+            <HBox prefHeight="13.0" prefWidth="571.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Наименование:" wrappingWidth="130.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="nameText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="444.1846923828125">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Статус:" wrappingWidth="130.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="statusText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="444.1846923828125">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox prefHeight="19.0" prefWidth="390.0">
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Категория:" wrappingWidth="130.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="categoryText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="444.1846923828125">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox prefHeight="19.0" prefWidth="390.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Код:" wrappingWidth="130.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="codeText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="444.1846923828125">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Телефон:" wrappingWidth="130.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="phoneText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="444.1846923828125">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="И-мейл:" wrappingWidth="130.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="emailText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="444.1846923828125">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Адрес:" wrappingWidth="130.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="addressText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="444.1846923828125">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Режим работы:" wrappingWidth="130.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="scheduleText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="444.1846923828125">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+            </HBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Сотрудники:" wrappingWidth="176.0">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Text>
+            <TableView fx:id="employeeTable" prefHeight="181.0" prefWidth="571.0">
+               <columns>
+                  <TableColumn fx:id="lastNameCol" prefWidth="173.67273712158203" text="Фамилия" />
+                  <TableColumn fx:id="firstNameCol" prefWidth="146.6181640625" text="Имя" />
+                  <TableColumn fx:id="patronymicCol" prefWidth="171.0546875" text="Отчество" />
+                  <TableColumn fx:id="positionCol" prefWidth="224.290771484375" text="Должность" />
+               </columns>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

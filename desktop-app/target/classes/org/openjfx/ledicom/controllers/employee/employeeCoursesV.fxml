@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="968.0" prefWidth="1115.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.employee.EmployeeCoursesVController">
+   <children>
+      <TableView fx:id="table" layoutX="14.0" layoutY="14.0" onMouseClicked="#showFullInfo" prefHeight="519.0" prefWidth="1088.0">
+        <columns>
+          <TableColumn fx:id="employeeNameCol" prefWidth="135.0" text="Сотрудник" />
+          <TableColumn fx:id="positionCol" prefWidth="79.0" text="Должность" />
+            <TableColumn fx:id="eduCol" prefWidth="136.0" text="Образование" />
+            <TableColumn fx:id="categoryCol" prefWidth="173.0" text="Категория" />
+            <TableColumn fx:id="courseNameCol" prefWidth="204.0" text="Курс" />
+            <TableColumn fx:id="courseDataCol" prefWidth="169.0" text="Даты (часы)" />
+            <TableColumn fx:id="nextCourseCol" prefWidth="176.0" text="След. курс" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,93 @@
+.button-default {
+    -fx-background-radius: 7,6,5;
+    -fx-background-insets: 1,2,3;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.7) , 5, 0.1 , 0 , 1 );
+}
+
+.button-default:pressed {
+    -fx-background-radius: 6,5,4;
+    -fx-background-insets: 2,3,4;
+}
+
+.font-small {
+    -fx-font: 13 arial;
+}
+
+.font-big {
+    -fx-font: 15 arial;
+}
+
+.blue {
+    -fx-background-color:
+        linear-gradient(#f2f2f2, #070090),
+        linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #070090 100%),
+        linear-gradient(#dddddd 0%, #f6f6f6 50%);
+}
+
+.blue:hover {
+    -fx-background-color:
+        linear-gradient(#070090, #070090),
+        linear-gradient(#070090 0%, #070090 20%, #070090 100%),
+        linear-gradient(#f6f6f6 25%, #dddddd 75%);
+}
+
+.green {
+    -fx-background-color:
+        linear-gradient(#f2f2f2, #0a9a00),
+        linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #0a9a00 100%),
+        linear-gradient(#dddddd 0%, #f6f6f6 50%);
+}
+
+.green:hover {
+    -fx-background-color:
+        linear-gradient(#0a9a00, #0a9a00),
+        linear-gradient(#0a9a00 0%, #0a9a00 20%, #0a9a00 100%),
+        linear-gradient(#f6f6f6 25%, #dddddd 75%);
+}
+
+.red {
+    -fx-background-color:
+        linear-gradient(#f2f2f2, #ff3333),
+        linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #ff3333 100%),
+        linear-gradient(#dddddd 0%, #f6f6f6 50%);
+}
+
+.red:hover {
+    -fx-background-color:
+        linear-gradient(#ff3333, #ff3333),
+        linear-gradient(#ff3333 0%, #ff3333 20%, #ff3333 100%),
+        linear-gradient(#f6f6f6 25%, #dddddd 75%);
+}
+
+.menu-bar {
+    -fx-font: 16 times;
+}
+
+.menu-bar .menu-button:hover, .menu-bar .menu-button:focused, .menu-bar .menu-button:showing {
+    -fx-background-color: #070090;
+    -fx-font: 16 times;
+}
+
+.menu-item .label {
+    -fx-text-fill: black;
+    -fx-font: 16 times;
+}
+
+.menu-item:focused {
+     -fx-background-color: #070090;
+}
+
+.menu-item:focused .label {
+    -fx-text-fill: white;
+}
+
+.context-menu {
+    -fx-border-width: 1 1 1 1;
+    -fx-border-color:  #808080;
+    -fx-background-color: #dcdcdc;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 0 6 6 6, 0 5 5 5, 0 4 4 4;
+    -fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em;
+}
+
