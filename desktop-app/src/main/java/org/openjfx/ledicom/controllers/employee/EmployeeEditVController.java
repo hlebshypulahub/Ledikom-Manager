@@ -67,7 +67,7 @@ public class EmployeeEditVController extends EmployeeDataForm {
         maternityEndDate.setValue(StringToLocalDateConverter.convert(Global.getEmployee().getMaternityEndDate()));
         fiveYearStartDate.setValue(StringToLocalDateConverter.convert(Global.getEmployee().getFiveYearStart()));
         fiveYearEndDate.setValue(StringToLocalDateConverter.convert(Global.getEmployee().getFiveYearEnd()));
-        childrenNumberTF.setText(Global.getEmployee().getChildrenNumber().toString());
+        childrenNumberTF.setText(String.valueOf(Global.getEmployee().getChildrenNumber()));
         noteTF.setText(Global.getEmployee().getNote());
 
         Edu edu = DatabaseEmployeeController.getEmployeeEdu();

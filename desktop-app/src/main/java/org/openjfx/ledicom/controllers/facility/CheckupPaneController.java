@@ -3,6 +3,7 @@ package org.openjfx.ledicom.controllers.facility;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -32,10 +33,32 @@ public class CheckupPaneController implements Initializable {
     private DatePicker correctionDate;
     @FXML
     private TextField violationNote;
+    @FXML
+    private Button violationButton;
+
+    @FXML
+    public void addViolation(ActionEvent event) {
+        violationVBox.setVisible(true);
+        violationButton.setDisable(true);
+    }
+
+    @FXML
+    public void cancelViolation(ActionEvent event) {
+        violationVBox.setVisible(false);
+        violationButton.setDisable(false);
+    }
 
     @FXML
     public void checkAnswer(ActionEvent event) {
         violationVBox.setVisible(checkupAnswer.getValue().equals("Нет"));
+    }
+
+    public Button getViolationButton() {
+        return violationButton;
+    }
+
+    public void setViolationButton(Button violationButton) {
+        this.violationButton = violationButton;
     }
 
     public ComboBox<String> getCheckupAnswer() {

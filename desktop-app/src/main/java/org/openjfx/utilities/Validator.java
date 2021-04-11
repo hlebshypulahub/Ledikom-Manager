@@ -1,10 +1,14 @@
 package org.openjfx.utilities;
 
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import org.openjfx.utilities.exceptions.DayOfYearException;
 import org.openjfx.utilities.exceptions.TextException;
+import org.openjfx.utilities.formatters.DateTimeFormatter;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.function.UnaryOperator;
 
 public class Validator {
@@ -21,6 +25,18 @@ public class Validator {
                 : name.substring(0, 1).toUpperCase();
 
         return name;
+    }
+
+    public static String validateDate(DatePicker datePicker) {
+        try {
+            LocalDate ld = LocalDate.parse(datePicker.getEditor().getText(), DateTimeFormatter.getDateTimeFormatter());
+            return datePicker.getEditor().getText();
+        } catch (DateTimeParseException exception) {
+            exception.printStackTrace();
+            MyAlert.showAndWait("ERROR", "Ошибка", "Неверный формат даты.", "");
+            datePicker.requestFocus();
+            throw exception;
+        }
     }
 
     public static Integer validateDayOfYear(String number) {

@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 public class InspectionDoc {
     public static void createDocument(Inspection inspection) throws IOException {
         String title = "Самоинспекция " + Global.getFacility().getName() + " " + inspection.getDate();
+        String titleViolation = "Самоинспекция " + Global.getFacility().getName() + " " + inspection.getDate() + " Нарушения";
 
         String body = "";
 
@@ -79,8 +80,6 @@ public class InspectionDoc {
                             "</td>\n";
                 }
 
-//                checkupTempList.get(j).setNote(checkupTempList.get(j).getNote().replaceAll("(/[^\\u0020]*)/", "$1<br>"));
-
                 body += "<td style=\"width: 16.0065%; height: 10px;\">\n" +
                         checkupTempList.get(j).getNote() +
                         "</td>\n" +
@@ -94,7 +93,7 @@ public class InspectionDoc {
         body += "<p>Члены комиссии:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ___________________________________</p>\n" +
                 "<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;___________________________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>\n" +
                 "<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;___________________________________&nbsp;&nbsp;</p>\n" +
-                "<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;____________________________________</p>\n" +
+                "<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;___________________________________</p>\n" +
                 "<p>&nbsp;</p>\n" +
                 "<p>&nbsp;</p>\n" +
                 "<p>С результатами самоинспекции ознакомлен</p>\n" +
@@ -103,12 +102,63 @@ public class InspectionDoc {
 
 
         String htmlString = htmlTemplate.htmlTop + body + htmlTemplate.htmlBottom;
-
         htmlString = htmlString.replace("$title", title);
-
         File htmlFile = new File(System.getProperty("user.home") + "/Desktop/LedicomDocs/" + title + ".html");
         FileUtils.writeStringToFile(htmlFile, htmlString, StandardCharsets.UTF_8.name());
+
+        /////////////////////// Violations
+        body = "<p style=\"text-align: center;\">План поэтапного устранения выявленных несоответствий по результатам самоинспекции \""
+                + Global.getFacility().getName() + "\" , расположенной по адресу: " + Global.getFacility().getFullAddress()
+                + ",<br>от " + inspection.getDate() + " г.</p>";
+
+        body += "<table style=\"border-collapse: collapse; width: 100%;\" border=\"1\">\n" +
+                "<tbody>";
+
+        body += "<tr>\n" +
+                "<td style=\"width: 16.6667%; text-align: center;\">№<br />п/п</td>\n" +
+                "<td style=\"width: 16.6667%; text-align: center;\">Выявленные<br />нарушения</td>\n" +
+                "<td style=\"width: 16.6667%; text-align: center;\">План действий</td>\n" +
+                "<td style=\"width: 16.6667%; text-align: center;\">Ответственные<br />лица</td>\n" +
+                "<td style=\"width: 16.6667%; text-align: center;\">Срок<br />исполнения</td>\n" +
+                "<td style=\"width: 16.6667%; text-align: center;\">Отметки о<br />выполнении</td>\n" +
+                "</tr>";
+
+//        ObservableList<Checkup> checkupTempList = inspection.getCheckupList().stream().filter(checkup -> checkup.getQuestion().getCheckupType().getId() == checkupTypeList.get(finalI).getId())
+//                                                            .collect(Collectors.toCollection(FXCollections::observableArrayList));
+
+        ObservableList<Checkup> violationList = inspection.getCheckupList().stream().filter(checkup -> checkup.getViolation() != null).collect(Collectors.toCollection(FXCollections::observableArrayList));
+
 
         FileOpener.openFile(htmlFile);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

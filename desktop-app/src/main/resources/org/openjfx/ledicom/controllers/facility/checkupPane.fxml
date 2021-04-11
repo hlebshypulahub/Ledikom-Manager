@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -11,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane fx:id="pane" prefHeight="197.0" prefWidth="1120.0" style="-fx-border-width: 2 0 0 0; -fx-border-color: gray;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.facility.CheckupPaneController">
+<Pane fx:id="pane" prefHeight="235.0" prefWidth="1120.0" style="-fx-border-width: 2 0 0 0; -fx-border-color: gray;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.facility.CheckupPaneController">
    <children>
       <Text fx:id="questionText" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="500.0">
          <font>
@@ -19,16 +22,8 @@
          </font>
       </Text>
       <ComboBox fx:id="checkupAnswer" layoutX="516.0" layoutY="6.0" onAction="#checkAnswer" prefHeight="30.0" prefWidth="87.0" promptText="Ответ" />
-      <VBox fx:id="violationVBox" layoutX="516.0" layoutY="44.0" prefHeight="145.0" prefWidth="604.0" visible="false">
+      <VBox fx:id="violationVBox" layoutX="516.0" layoutY="79.0" prefHeight="156.0" prefWidth="604.0" visible="false">
          <children>
-            <Label text="Нарушение:">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </Label>
             <HBox>
                <children>
                   <Label prefHeight="25.0" prefWidth="250.0" text="Ответственный сотрудник:">
@@ -89,8 +84,37 @@
                   <Insets top="3.0" />
                </VBox.margin>
             </HBox>
+            <Button fx:id="violationButton1" defaultButton="true" maxHeight="35.0" maxWidth="100.0" minHeight="35.0" minWidth="134.0" mnemonicParsing="false" onAction="#cancelViolation" prefHeight="35.0" prefWidth="134.0" stylesheets="@../../css/style.css" text="Отменить">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="button-default" />
+                  <String fx:value="green" />
+                  <String fx:value="font-big" />
+               </styleClass>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Button>
          </children>
       </VBox>
       <TextField fx:id="checkupNote" layoutX="617.0" layoutY="9.0" prefHeight="25.0" prefWidth="500.0" promptText="Примечание" />
+      <Button fx:id="violationButton" defaultButton="true" layoutX="517.0" layoutY="44.0" maxHeight="35.0" maxWidth="200.0" minHeight="35.0" minWidth="200.0" mnemonicParsing="false" onAction="#addViolation" prefHeight="35.0" prefWidth="200.0" stylesheets="@../../css/style.css" text="Добавить нарушение">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <styleClass>
+            <String fx:value="button-default" />
+            <String fx:value="red" />
+            <String fx:value="font-big" />
+         </styleClass>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </Pane>

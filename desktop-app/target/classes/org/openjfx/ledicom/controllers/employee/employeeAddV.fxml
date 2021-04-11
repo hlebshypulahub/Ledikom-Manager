@@ -81,7 +81,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="dobDate" editable="false" prefHeight="25.0" prefWidth="300.0" promptText="Дата рождения">
+                  <DatePicker fx:id="dobDate" prefHeight="25.0" prefWidth="300.0" promptText="Дата рождения">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets></DatePicker>

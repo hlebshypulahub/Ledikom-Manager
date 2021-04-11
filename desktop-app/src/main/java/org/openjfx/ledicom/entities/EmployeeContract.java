@@ -15,6 +15,15 @@ public class EmployeeContract {
         this.endDate = DateFormatter.format(endDate);
     }
 
+    @Override
+    public String toString() {
+        return type + " (" + startDate + " - " + endDate + ")";
+    }
+
+    public EmployeeContract() {
+
+    }
+
     public String getType() {
         return type;
     }

@@ -13,6 +13,7 @@ module org.openjfx {
     requires java.xml.bind;
     requires docx4j.export.fo;
     requires org.controlsfx.controls;
+    requires org.postgresql.jdbc;
     requires org.apache.commons.io;
 
     opens org.openjfx.ledicom.controllers.employee to javafx.fxml;

@@ -158,7 +158,7 @@ public class DatabaseEmployeeController extends DatabaseController {
 
     public static ObservableList<Employee> dobNotificationsEmployeeList() {
         String sql = "select * from employee_data_view " +
-                "where date_part('doy', dob) - date_part('doy', current_date) between 0 and dob_notifications_period();";
+                "where abs(date_part('doy', dob) - date_part('doy', current_date)) between 0 and dob_notifications_period();";
         return employeeList(sql);
     }
 
@@ -325,5 +325,30 @@ public class DatabaseEmployeeController extends DatabaseController {
 
         conn.close();
         return true;
+    }
+
+    public static ObservableList<String> employeeContractList() {
+        String sql = "select type, start_date, expiration_date, f.name from contract " +
+                "join facility f on contract.id_facility = f.id_facility where id_employee = " + Global.getEmployee().getId();
+
+        ObservableList<String> contractList = FXCollections.observableArrayList();
+
+        try (Connection conn = connect();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                EmployeeContract employeeContract = new EmployeeContract();
+                employeeContract.setType(rs.getString("type"));
+                employeeContract.setStartDate(SqlDateStringConverter.sqlDateToString(rs.getDate("start_date")));
+                employeeContract.setEndDate(SqlDateStringConverter.sqlDateToString(rs.getDate("expiration_date")));
+                String facilityName = rs.getString("name");
+                contractList.add(facilityName + " - " + employeeContract);
+            }
+            return contractList;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            showMessageDialog(null, e.getMessage());
+            return null;
+        }
     }
 }

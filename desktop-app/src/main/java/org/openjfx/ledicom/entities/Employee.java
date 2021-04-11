@@ -29,7 +29,7 @@ public class Employee {
     private String maternityStartDate;
     private String maternityEndDate;
     private int dobAge;
-    private Integer childrenNumber;
+    private int childrenNumber;
     private String note;
 
     public Employee() {
@@ -64,7 +64,7 @@ public class Employee {
         setDobAge();
     }
 
-    public Employee(String lastName, String firstName, String patronymic, LocalDate DOB,
+    public Employee(String lastName, String firstName, String patronymic, String DOB,
                     String phone, String address, int salary,
                     LocalDate PPE, LocalDate hiringDate,
                     String position, String category, String categoryNum, LocalDate categoryAssignmentDate,
@@ -73,7 +73,7 @@ public class Employee {
         this.firstName = firstName;
         this.patronymic = patronymic;
         this.lastName = lastName;
-        this.DOB = DateFormatter.format(DOB);
+        this.DOB = DOB;
         this.phone = phone;
         this.address = address;
         this.salary = salary;
@@ -97,7 +97,7 @@ public class Employee {
         return getFullName();
     }
 
-    public Integer getChildrenNumber() {
+    public int getChildrenNumber() {
         return childrenNumber;
     }
 
@@ -123,7 +123,7 @@ public class Employee {
 
     public void setDobAge() {
         dobAge = getDOB().equals("") ? 0
-                : LocalDate.parse(getDOB(), DateTimeFormatter.getDateTimeFormatter()).getDayOfMonth() == LocalDate.now().getDayOfMonth()
+                : LocalDate.parse(getDOB(), DateTimeFormatter.getDateTimeFormatter()).getDayOfYear() == LocalDate.now().getDayOfYear()
                 ? (int) YEARS.between(LocalDate.parse(getDOB(), DateTimeFormatter.getDateTimeFormatter()), LocalDate.now())
                 : (int) YEARS.between(LocalDate.parse(getDOB(), DateTimeFormatter.getDateTimeFormatter()), LocalDate.now()) + 1;
     }

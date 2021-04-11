@@ -131,13 +131,19 @@ public class InspectionAddVController implements Initializable {
 
         Optional<Employee> employee = employeeList.stream().filter(e
                 -> e.getFullName().equals(inspectionEmployee.getText())).findFirst();
-        if(employee.isPresent()) {
+        if (employee.isPresent()) {
             inspection.setIdEmployee(employee.get().getId());
         } else {
             MyAlert.showAndWait("ERROR", "", "Необходимо указать, кто заполнил форму!", "");
+            inspectionEmployee.requestFocus();
             return;
         }
 
+        if (inspectionDate.getValue() == null) {
+            MyAlert.showAndWait("ERROR", "", "Необходимо указать дату проведения самоинспекции!", "");
+            inspectionDate.requestFocus();
+            return;
+        }
 
         inspection.setNote(inspectionNote.getText());
         inspection.setIdFacility(Global.getFacility().getId());
@@ -149,12 +155,19 @@ public class InspectionAddVController implements Initializable {
 
             inspection.getCheckupList().get(i).setAnswer(checkupPaneControllerList.get(i).getCheckupAnswer().getValue());
             inspection.getCheckupList().get(i).setNote(checkupPaneControllerList.get(i).getCheckupNote().getText());
-            if (checkupPaneControllerList.get(i).getCheckupAnswer().getValue().equals("Нет")) {
+            if (checkupPaneControllerList.get(i).getViolationButton().isDisable()) {
                 int finalI = i;
-                inspection.getCheckupList().get(i).setViolation(new Violation(employeeList.stream().filter(e
-                        -> e.getFullName().equals(checkupPaneControllerList.get(finalI).getViolationEmployee().getText())).findFirst().get().getId(),
-                        checkupPaneControllerList.get(i).getViolationNote().getText(), checkupPaneControllerList.get(i).getCorrectionTerm().getValue(),
-                        checkupPaneControllerList.get(i).getCorrectionDate().getValue()));
+                Optional<Employee> violationEmployee = employeeList.stream().filter(e
+                        -> e.getFullName().equals(checkupPaneControllerList.get(finalI).getViolationEmployee().getText())).findFirst();
+                if(violationEmployee.isPresent()) {
+                    inspection.getCheckupList().get(i).setViolation(new Violation(violationEmployee.get().getId(),
+                            checkupPaneControllerList.get(i).getViolationNote().getText(), checkupPaneControllerList.get(i).getCorrectionTerm().getValue(),
+                            checkupPaneControllerList.get(i).getCorrectionDate().getValue()));
+                } else {
+                    MyAlert.showAndWait("ERROR", "", "Необходимо указать ответственного при каждом нарушении!", "");
+                    checkupPaneControllerList.get(i).getViolationEmployee().requestFocus();
+                    return;
+                }
             }
         }
 

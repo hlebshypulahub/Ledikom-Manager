@@ -3,10 +3,7 @@ package org.openjfx.ledicom.controllers.employee;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import org.openjfx.ledicom.entities.Course;
@@ -15,8 +12,8 @@ import org.openjfx.utilities.Global;
 import org.openjfx.utilities.converters.StringToLocalDateConverter;
 import org.openjfx.utilities.database.DatabaseCourseController;
 import org.openjfx.utilities.database.DatabaseEmployeeController;
-import org.openjfx.utilities.panels.EmployeePanel;
 import org.openjfx.utilities.docs.EmployeeInfoDoc;
+import org.openjfx.utilities.panels.EmployeePanel;
 
 import java.io.IOException;
 import java.net.URL;
@@ -64,6 +61,8 @@ public class EmployeeDetailsDController implements Initializable {
     private Text childrenNumberText;
     @FXML
     private Text noteText;
+    @FXML
+    private ListView<String> contractList;
 
     @FXML
     private TableView<Course> courseTable;
@@ -132,7 +131,7 @@ public class EmployeeDetailsDController implements Initializable {
         maternityText.setText(Global.getEmployee().getMaternityStartDate().equals("")
                 && Global.getEmployee().getMaternityEndDate().equals("") ? ""
                 : Global.getEmployee().getMaternityStartDate() + " - " + Global.getEmployee().getMaternityEndDate());
-        childrenNumberText.setText(Global.getEmployee().getChildrenNumber().toString());
+        childrenNumberText.setText(String.valueOf(Global.getEmployee().getChildrenNumber()));
         noteText.setText(Global.getEmployee().getNote());
 
         Edu edu = DatabaseEmployeeController.getEmployeeEdu();
@@ -152,5 +151,7 @@ public class EmployeeDetailsDController implements Initializable {
 
         courseTable.setPlaceholder(new Label("Сотрудник не имеет пройденных курсов"));
         setCourseTableCss();
+
+        contractList.setItems(DatabaseEmployeeController.employeeContractList());
     }
 }

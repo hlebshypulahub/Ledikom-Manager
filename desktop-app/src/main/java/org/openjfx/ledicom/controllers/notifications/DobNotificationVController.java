@@ -1,5 +1,6 @@
 package org.openjfx.ledicom.controllers.notifications;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -37,7 +38,7 @@ public class DobNotificationVController implements Initializable, EmployeeContro
     @FXML
     private TableColumn<Employee, String> dobCol;
     @FXML
-    private TableColumn<String, Integer> ageCol;
+    private TableColumn<Employee, Integer> ageCol;
     @FXML
     private Pane dobNotificationsEditPane;
     @FXML
@@ -74,6 +75,7 @@ public class DobNotificationVController implements Initializable, EmployeeContro
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ObservableList<Employee> list = DatabaseEmployeeController.dobNotificationsEmployeeList();
         Global.setEmployeeList(DatabaseEmployeeController.dobNotificationsEmployeeList());
         Global.getEmployeeList().sort(Comparator.comparing(e -> LocalDate.parse(e.getDOB(), DateTimeFormatter.ofPattern("dd.MM.yyyy")).getDayOfYear()));
         dobNotificationsPeriodText.setText(String.valueOf(DatabaseNotificationController.getDobNotificationsPeriod()));
