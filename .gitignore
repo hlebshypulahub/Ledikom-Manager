@@ -25,10 +25,9 @@ hs_err_pid*
 *.exe
 
 
-
-/exe
-/desktop-app/.idea/
-/desktop-app/out
-/desktop-app/target
-/desktop-app/*.iml
-/desktop-app/dependency-reduces-pom.xml
+exe
+desktop-app/.idea/
+desktop-app/out
+desktop-app/target
+desktop-app/*.iml
+desktop-app/dependency-reduces-pom.xml
