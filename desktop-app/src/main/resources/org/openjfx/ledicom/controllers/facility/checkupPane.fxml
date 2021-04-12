@@ -14,15 +14,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane fx:id="pane" prefHeight="235.0" prefWidth="1120.0" style="-fx-border-width: 2 0 0 0; -fx-border-color: gray;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.facility.CheckupPaneController">
+<Pane fx:id="pane" prefHeight="265.0" prefWidth="1120.0" style="-fx-border-width: 2 0 0 0; -fx-border-color: gray;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.facility.CheckupPaneController">
    <children>
       <Text fx:id="questionText" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="500.0">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <ComboBox fx:id="checkupAnswer" layoutX="516.0" layoutY="6.0" onAction="#checkAnswer" prefHeight="30.0" prefWidth="87.0" promptText="Ответ" />
-      <VBox fx:id="violationVBox" layoutX="516.0" layoutY="79.0" prefHeight="156.0" prefWidth="604.0" visible="false">
+      <ComboBox fx:id="checkupAnswer" layoutX="516.0" layoutY="6.0" prefHeight="30.0" prefWidth="87.0" promptText="Ответ" />
+      <VBox fx:id="violationVBox" layoutX="516.0" layoutY="79.0" prefHeight="185.0" prefWidth="604.0" visible="false">
          <children>
             <HBox>
                <children>
@@ -56,6 +56,32 @@
             </HBox>
             <HBox>
                <children>
+                  <Label prefHeight="25.0" prefWidth="250.0" text="Выявленное нарушение:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="violationDescription" prefHeight="25.0" prefWidth="300.0" promptText="Выявленное нарушение" />
+               </children>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label prefHeight="25.0" prefWidth="250.0" text="План действий:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="violationActionPlan" prefHeight="25.0" prefWidth="300.0" promptText="План действий" />
+               </children>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox>
+               <children>
                   <Label prefHeight="25.0" prefWidth="250.0" text="Дата исполнения:">
                      <font>
                         <Font size="14.0" />
@@ -66,19 +92,6 @@
                         <Insets />
                      </opaqueInsets>
                   </DatePicker>
-               </children>
-               <VBox.margin>
-                  <Insets top="3.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox>
-               <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Примечание:">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="violationNote" prefHeight="25.0" prefWidth="300.0" promptText="Примечание" />
                </children>
                <VBox.margin>
                   <Insets top="3.0" />

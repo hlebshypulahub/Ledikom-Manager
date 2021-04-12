@@ -19,7 +19,7 @@ public class DatabaseEmployeeController extends DatabaseController {
     public static boolean addEmployee(Employee employee) throws SQLException {
         String sql = "SELECT EXISTS(SELECT last_name, first_name, patronymic FROM employee WHERE last_name = ? AND first_name = ? AND patronymic = ?);";
 
-        Connection conn = connect();
+//        Connection conn = connect();
 
         try (PreparedStatement ps1 = conn.prepareStatement(sql)) {
             ps1.setString(1, employee.getLastName());
@@ -35,7 +35,7 @@ public class DatabaseEmployeeController extends DatabaseController {
             rs.close();
         } catch (SQLException exception) {
             System.out.println(exception.getMessage());
-            conn.close();
+//            conn.close();
             return false;
         }
 
@@ -81,16 +81,16 @@ public class DatabaseEmployeeController extends DatabaseController {
         } catch (SQLException e) {
             showMessageDialog(null, e.getMessage());
             System.out.println(e.getMessage());
-            conn.close();
+//            conn.close();
             return false;
         }
 
-        conn.close();
+//        conn.close();
         return true;
     }
 
     public static boolean updateEmployee() throws SQLException {
-        Connection conn = connect();
+//        Connection conn = connect();
 
         String sql = "update employee set first_name = '" + Global.getEmployee().getFirstName() + "',"
                 + "last_name = '" + Global.getEmployee().getLastName() + "', "
@@ -143,11 +143,11 @@ public class DatabaseEmployeeController extends DatabaseController {
         } catch (SQLException e) {
             showMessageDialog(null, e.getMessage());
             System.out.println(e.getMessage());
-            conn.close();
+//            conn.close();
             return false;
         }
 
-        conn.close();
+//        conn.close();
         return true;
     }
 
@@ -165,7 +165,8 @@ public class DatabaseEmployeeController extends DatabaseController {
     public static ObservableList<Employee> employeeList(String sql) {
         ObservableList<Employee> employeeList = FXCollections.observableArrayList();
 
-        try (Connection conn = connect();
+        try (
+//                Connection conn = connect();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -186,7 +187,8 @@ public class DatabaseEmployeeController extends DatabaseController {
 
         Employee employee = new Employee();
 
-        try (Connection conn = connect();
+        try (
+//                Connection conn = connect();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -240,7 +242,7 @@ public class DatabaseEmployeeController extends DatabaseController {
         Edu edu = new Edu();
 
         try (
-                Connection conn = connect();
+//                Connection conn = connect();
                 PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -278,7 +280,7 @@ public class DatabaseEmployeeController extends DatabaseController {
     }
 
     public static boolean addEmployeeToFacility(EmployeeContract contract) throws SQLException {
-        Connection conn = connect();
+//        Connection conn = connect();
 
         String sql = "SELECT EXISTS(SELECT id_employee, id_facility FROM employee_facility WHERE id_employee = ? AND id_facility = ?);";
 
@@ -295,7 +297,7 @@ public class DatabaseEmployeeController extends DatabaseController {
             rs.close();
         } catch (SQLException exception) {
             System.out.println(exception.getMessage());
-            conn.close();
+//            conn.close();
             return false;
         }
 
@@ -319,11 +321,11 @@ public class DatabaseEmployeeController extends DatabaseController {
         } catch (SQLException e) {
             showMessageDialog(null, e.getMessage());
             System.out.println(e.getMessage());
-            conn.close();
+//            conn.close();
             return false;
         }
 
-        conn.close();
+//        conn.close();
         return true;
     }
 
@@ -333,7 +335,8 @@ public class DatabaseEmployeeController extends DatabaseController {
 
         ObservableList<String> contractList = FXCollections.observableArrayList();
 
-        try (Connection conn = connect();
+        try (
+//                Connection conn = connect();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {

@@ -7,21 +7,27 @@ import java.time.LocalDate;
 public class Violation {
     private int id;
     private int idEmployee;
-    private String note;
+    private String description;
+    private String actionPlan;
+    private String employeeName;
     private String correctionTerm;
     private String correctionDate;
 
-    public Violation(int id, int idEmployee, String note, String correctionTerm, String correctionDate) {
+    public Violation(int id, int idEmployee, String employeeName, String description, String actionPlan, String correctionTerm, String correctionDate) {
         this.id = id;
+        this.employeeName = employeeName;
         this.idEmployee = idEmployee;
-        this.note = note;
+        this.description = description;
+        this.actionPlan = actionPlan;
         this.correctionTerm = correctionTerm;
         this.correctionDate = correctionDate;
     }
 
-    public Violation(int idEmployee, String note, LocalDate correctionTerm, LocalDate correctionDate) {
+    public Violation(int idEmployee, String employeeName, String description, String actionPlan, LocalDate correctionTerm, LocalDate correctionDate) {
         this.idEmployee = idEmployee;
-        this.note = note;
+        this.employeeName = employeeName;
+        this.description = description;
+        this.actionPlan = actionPlan;
         this.correctionTerm = DateFormatter.format(correctionTerm);
         this.correctionDate = DateFormatter.format(correctionDate);
     }
@@ -34,6 +40,22 @@ public class Violation {
         this.id = id;
     }
 
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
+    }
+
+    public String getActionPlan() {
+        return actionPlan;
+    }
+
+    public void setActionPlan(String actionPlan) {
+        this.actionPlan = actionPlan;
+    }
+
     public int getIdEmployee() {
         return idEmployee;
     }
@@ -42,12 +64,12 @@ public class Violation {
         this.idEmployee = idEmployee;
     }
 
-    public String getNote() {
-        return note;
+    public String getDescription() {
+        return description;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getCorrectionTerm() {

@@ -32,9 +32,11 @@ public class CheckupPaneController implements Initializable {
     @FXML
     private DatePicker correctionDate;
     @FXML
-    private TextField violationNote;
+    private TextField violationDescription;
     @FXML
     private Button violationButton;
+    @FXML
+    private TextField violationActionPlan;
 
     @FXML
     public void addViolation(ActionEvent event) {
@@ -48,9 +50,12 @@ public class CheckupPaneController implements Initializable {
         violationButton.setDisable(false);
     }
 
-    @FXML
-    public void checkAnswer(ActionEvent event) {
-        violationVBox.setVisible(checkupAnswer.getValue().equals("Нет"));
+    public TextField getViolationActionPlan() {
+        return violationActionPlan;
+    }
+
+    public void setViolationActionPlan(TextField violationActionPlan) {
+        this.violationActionPlan = violationActionPlan;
     }
 
     public Button getViolationButton() {
@@ -109,12 +114,12 @@ public class CheckupPaneController implements Initializable {
         this.correctionDate = correctionDate;
     }
 
-    public TextField getViolationNote() {
-        return violationNote;
+    public TextField getViolationDescription() {
+        return violationDescription;
     }
 
-    public void setViolationNote(TextField violationNote) {
-        this.violationNote = violationNote;
+    public void setViolationDescription(TextField violationDescription) {
+        this.violationDescription = violationDescription;
     }
 
     public Pane getPane() {

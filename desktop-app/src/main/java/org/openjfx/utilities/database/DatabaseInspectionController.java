@@ -7,7 +7,6 @@ import org.openjfx.ledicom.entities.inspection.Inspection;
 import org.openjfx.ledicom.entities.inspection.Question;
 import org.openjfx.utilities.converters.SqlDateStringConverter;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,34 +14,35 @@ import java.sql.SQLException;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class DatabaseInspectionController extends DatabaseController {
-    public static ObservableList<CheckupType> CheckupTypes(Connection conn) {
-        String sql = "select * from checkup_type;";
-
-        ObservableList<CheckupType> observableList = FXCollections.observableArrayList();
-
-        try (PreparedStatement ps = conn.prepareStatement(sql)) {
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                CheckupType checkupType = new CheckupType();
-                checkupType.setId(rs.getInt("id_checkup_type"));
-                checkupType.setTypeName(rs.getString("type_name"));
-                observableList.add(checkupType);
-            }
-            rs.close();
-            return observableList;
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            showMessageDialog(null, e.getMessage());
-            return null;
-        }
-    }
+//    public static ObservableList<CheckupType> CheckupTypes(Connection conn) {
+//        String sql = "select * from checkup_type;";
+//
+//        ObservableList<CheckupType> observableList = FXCollections.observableArrayList();
+//
+//        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+//            ResultSet rs = ps.executeQuery();
+//            while (rs.next()) {
+//                CheckupType checkupType = new CheckupType();
+//                checkupType.setId(rs.getInt("id_checkup_type"));
+//                checkupType.setTypeName(rs.getString("type_name"));
+//                observableList.add(checkupType);
+//            }
+//            rs.close();
+//            return observableList;
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//            showMessageDialog(null, e.getMessage());
+//            return null;
+//        }
+//    }
 
     public static ObservableList<CheckupType> CheckupTypes() {
         String sql = "select * from checkup_type;";
 
         ObservableList<CheckupType> observableList = FXCollections.observableArrayList();
 
-        try (Connection conn = connect();
+        try (
+//                Connection conn = connect();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -60,8 +60,7 @@ public class DatabaseInspectionController extends DatabaseController {
         }
     }
 
-    public static ObservableList<Question> CheckupQuestions(Connection conn) {
-//        String sql = "select * from checkup_question;";
+    public static ObservableList<Question> CheckupQuestions() {
         String sql = "select cq.*, type_name from checkup_question cq join checkup_type on cq.id_checkup_type = checkup_type.id_checkup_type;";
 
         ObservableList<Question> observableList = FXCollections.observableArrayList();
@@ -71,7 +70,6 @@ public class DatabaseInspectionController extends DatabaseController {
             while (rs.next()) {
                 Question question = new Question();
                 question.setId(rs.getInt("id_checkup_question"));
-//                question.setIdType(rs.getInt("id_checkup_type"));
                 question.setQuestion(rs.getString("question"));
                 question.setCheckupType(new CheckupType(rs.getInt("id_checkup_type"), rs.getString("type_name")));
                 observableList.add(question);
@@ -85,9 +83,9 @@ public class DatabaseInspectionController extends DatabaseController {
         }
     }
 
-    public static ObservableList<String> getCheckupAnswers(Connection conn) {
+    public static ObservableList<String> getCheckupAnswers() {
         String sql = "select t.typname, e.enumlabel from pg_type t, pg_enum e where t.oid = e.enumtypid and typname = 'checkup_answer';";
-        return DatabaseEnumsController.getEnums(conn, sql);
+        return DatabaseEnumsController.getEnums(sql);
     }
 
     public static boolean addInspection(Inspection inspection) {
@@ -98,7 +96,7 @@ public class DatabaseInspectionController extends DatabaseController {
         int inspectionId = 0;
         int checkupId = 0;
 
-        Connection conn = connect();
+//        Connection conn = connect();
 
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setDate(1, SqlDateStringConverter.stringToSqlDate(inspection.getDate()));
@@ -119,9 +117,10 @@ public class DatabaseInspectionController extends DatabaseController {
                     }
 
                     if (inspection.getCheckupList().get(i).getViolation() != null) {
-                        sql = "insert into violation (id_employee, id_checkup, note, correction_term, correction_date) " +
+                        sql = "insert into violation (id_employee, id_checkup, description, action_plan, correction_term, correction_date) " +
                                 "values (" + inspection.getCheckupList().get(i).getViolation().getIdEmployee() + ", "
-                                + checkupId + ", '" + inspection.getCheckupList().get(i).getViolation().getNote() + "', ?, ?);";
+                                + checkupId + ", '" + inspection.getCheckupList().get(i).getViolation().getDescription() + "', '"
+                                + inspection.getCheckupList().get(i).getViolation().getActionPlan() + "', ?, ?);";
 
                         try (PreparedStatement ps3 = conn.prepareStatement(sql)) {
                             ps3.setDate(1, SqlDateStringConverter.stringToSqlDate(inspection.getCheckupList().get(i).getViolation().getCorrectionTerm()));
@@ -139,7 +138,6 @@ public class DatabaseInspectionController extends DatabaseController {
                     return false;
                 }
             }
-
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());

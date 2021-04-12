@@ -8,7 +8,6 @@ import org.openjfx.utilities.Global;
 import org.openjfx.utilities.comparators.CourseComparator;
 import org.openjfx.utilities.converters.SqlDateStringConverter;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,26 +19,10 @@ public class DatabaseCourseController extends DatabaseController {
     public static int getRequiredCourseHours(String position) {
         String sql = "select * from employee_course_hours('" + position + "') as hours;";
 
-//        if (position != null) {
-//            switch (position) {
-//                case "Директор":
-//                case "Провизор":
-//                    sql = "select * from provizor_course_hours() as hours;";
-//                    break;
-//                case "Фармацевт":
-//                    sql = "select * from farmacevt_course_hours() as hours;";
-//                    break;
-//                default:
-//                    sql = "select 0 as hours;";
-//            }
-//        } else {
-//            return 0;
-//        }
-
         int hours = 0;
 
         try (
-                Connection conn = connect();
+//                Connection conn = connect();
                 PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -68,7 +51,8 @@ public class DatabaseCourseController extends DatabaseController {
 
         ObservableList<Course> courseList = FXCollections.observableArrayList();
 
-        try (Connection conn = connect();
+        try (
+//                Connection conn = connect();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -94,7 +78,8 @@ public class DatabaseCourseController extends DatabaseController {
 
         ObservableList<EmployeeCourseData> list = FXCollections.observableArrayList();
 
-        try (Connection conn = connect();
+        try (
+//                Connection conn = connect();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {

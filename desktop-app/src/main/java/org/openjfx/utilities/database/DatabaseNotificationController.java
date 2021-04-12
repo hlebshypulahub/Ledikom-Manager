@@ -1,6 +1,5 @@
 package org.openjfx.utilities.database;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,7 +18,8 @@ public class DatabaseNotificationController extends DatabaseController {
                 "$$\n" +
                 "    language 'plpgsql';";
 
-        try (Connection conn = connect();
+        try (
+//                Connection conn = connect();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.execute();
         } catch (SQLException e) {
@@ -31,7 +31,8 @@ public class DatabaseNotificationController extends DatabaseController {
     public static int getNotificationsPeriod(String sql) {
         int value = 30;
 
-        try (Connection conn = connect();
+        try (
+//                Connection conn = connect();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {

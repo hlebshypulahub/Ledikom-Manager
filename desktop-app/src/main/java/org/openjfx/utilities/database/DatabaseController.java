@@ -11,6 +11,7 @@ public class DatabaseController {
     private static final String dbURL = "jdbc:postgresql://localhost:5432/postgres";
     private static final String dbUser = "postgres";
     private static final String dbPassword = "postgres";
+    protected static Connection conn = connect();
 
     public static Connection connect() {
         long startTime = System.nanoTime();
@@ -30,12 +31,25 @@ public class DatabaseController {
     }
 
     public static void psExecute(String sql) throws SQLException {
-        try (Connection conn = connect();
+        try (
+//                Connection conn = connect();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.execute();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             throw e;
         }
+    }
+
+    public static void close() throws SQLException {
+        conn.close();
+    }
+
+    public static Connection getConn() {
+        return conn;
+    }
+
+    public static void setConn(Connection conn) {
+        DatabaseController.conn = conn;
     }
 }

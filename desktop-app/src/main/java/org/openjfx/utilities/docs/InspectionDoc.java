@@ -18,7 +18,6 @@ import java.util.stream.Collectors;
 public class InspectionDoc {
     public static void createDocument(Inspection inspection) throws IOException {
         String title = "Самоинспекция " + Global.getFacility().getName() + " " + inspection.getDate();
-        String titleViolation = "Самоинспекция " + Global.getFacility().getName() + " " + inspection.getDate() + " Нарушения";
 
         String body = "";
 
@@ -105,8 +104,11 @@ public class InspectionDoc {
         htmlString = htmlString.replace("$title", title);
         File htmlFile = new File(System.getProperty("user.home") + "/Desktop/LedicomDocs/" + title + ".html");
         FileUtils.writeStringToFile(htmlFile, htmlString, StandardCharsets.UTF_8.name());
+        FileOpener.openFile(htmlFile);
 
         /////////////////////// Violations
+        title = "Самоинспекция " + Global.getFacility().getName() + " " + inspection.getDate() + " Нарушения";
+
         body = "<p style=\"text-align: center;\">План поэтапного устранения выявленных несоответствий по результатам самоинспекции \""
                 + Global.getFacility().getName() + "\" , расположенной по адресу: " + Global.getFacility().getFullAddress()
                 + ",<br>от " + inspection.getDate() + " г.</p>";
@@ -123,12 +125,28 @@ public class InspectionDoc {
                 "<td style=\"width: 16.6667%; text-align: center;\">Отметки о<br />выполнении</td>\n" +
                 "</tr>";
 
-//        ObservableList<Checkup> checkupTempList = inspection.getCheckupList().stream().filter(checkup -> checkup.getQuestion().getCheckupType().getId() == checkupTypeList.get(finalI).getId())
-//                                                            .collect(Collectors.toCollection(FXCollections::observableArrayList));
+        ObservableList<Checkup> violationList = inspection.getCheckupList().stream().filter(checkup ->
+                checkup.getViolation() != null).collect(Collectors.toCollection(FXCollections::observableArrayList));
 
-        ObservableList<Checkup> violationList = inspection.getCheckupList().stream().filter(checkup -> checkup.getViolation() != null).collect(Collectors.toCollection(FXCollections::observableArrayList));
+        for (int i = 0; i < violationList.size(); i++) {
+            body += "<tr>\n" +
+                    "<td style=\"width: 16.6667%; text-align: center;\">" + (i + 1) + "." + "</td>\n" +
+                    "<td style=\"width: 16.6667%; text-align: center;\">" + violationList.get(i).getViolation().getDescription() + "</td>\n" +
+                    "<td style=\"width: 16.6667%; text-align: center;\">" + violationList.get(i).getViolation().getActionPlan() + "</td>\n" +
+                    "<td style=\"width: 16.6667%; text-align: center;\">" + violationList.get(i).getViolation().getEmployeeName() + "</td>\n" +
+                    "<td style=\"width: 16.6667%; text-align: center;\">" + violationList.get(i).getViolation().getCorrectionTerm() + "</td>\n" +
+                    "<td style=\"width: 16.6667%; text-align: center;\"></td>\n" +
+                    "</tr>";
+        }
+
+        body += "</tbody>\n" +
+                "</table>";
 
 
+        htmlString = htmlTemplate.htmlTop + body + htmlTemplate.htmlBottom;
+        htmlString = htmlString.replace("$title", title);
+        htmlFile = new File(System.getProperty("user.home") + "/Desktop/LedicomDocs/" + title + ".html");
+        FileUtils.writeStringToFile(htmlFile, htmlString, StandardCharsets.UTF_8.name());
         FileOpener.openFile(htmlFile);
     }
 }

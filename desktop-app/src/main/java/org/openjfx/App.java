@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.openjfx.utilities.database.DatabaseController;
 import org.openjfx.utilities.database.DatabaseEmployeeController;
 
 import java.io.IOException;
@@ -21,6 +22,13 @@ public class App extends Application {
         stage.setTitle("Ledicom");
         stage.show();
         stage.setMaximized(true);
+        stage.setOnCloseRequest(event -> {
+            try {
+                DatabaseController.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
 
         DatabaseEmployeeController.updateEmployeeDatesOnAppStart();
     }

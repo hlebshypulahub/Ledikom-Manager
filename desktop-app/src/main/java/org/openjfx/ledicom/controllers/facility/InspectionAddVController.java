@@ -16,14 +16,12 @@ import org.openjfx.ledicom.entities.Employee;
 import org.openjfx.ledicom.entities.inspection.*;
 import org.openjfx.utilities.Global;
 import org.openjfx.utilities.MyAlert;
-import org.openjfx.utilities.database.DatabaseController;
 import org.openjfx.utilities.database.DatabaseEmployeeController;
 import org.openjfx.utilities.database.DatabaseInspectionController;
 import org.openjfx.utilities.docs.InspectionDoc;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -110,11 +108,9 @@ public class InspectionAddVController implements Initializable {
     }
 
     public void getDataFromDB() throws SQLException {
-        Connection conn = DatabaseController.connect();
-        checkupAnswers = DatabaseInspectionController.getCheckupAnswers(conn);
-        checkupTypeList = DatabaseInspectionController.CheckupTypes(conn);
-        checkupQuestionList = DatabaseInspectionController.CheckupQuestions(conn);
-        conn.close();
+        checkupAnswers = DatabaseInspectionController.getCheckupAnswers();
+        checkupTypeList = DatabaseInspectionController.CheckupTypes();
+        checkupQuestionList = DatabaseInspectionController.CheckupQuestions();
     }
 
     public void prepareCheckupList() {
@@ -159,15 +155,17 @@ public class InspectionAddVController implements Initializable {
                 int finalI = i;
                 Optional<Employee> violationEmployee = employeeList.stream().filter(e
                         -> e.getFullName().equals(checkupPaneControllerList.get(finalI).getViolationEmployee().getText())).findFirst();
-                if(violationEmployee.isPresent()) {
-                    inspection.getCheckupList().get(i).setViolation(new Violation(violationEmployee.get().getId(),
-                            checkupPaneControllerList.get(i).getViolationNote().getText(), checkupPaneControllerList.get(i).getCorrectionTerm().getValue(),
-                            checkupPaneControllerList.get(i).getCorrectionDate().getValue()));
+                if (violationEmployee.isPresent()) {
+                    inspection.getCheckupList().get(i).setViolation(new Violation(violationEmployee.get().getId(), violationEmployee.get().getFullName(),
+                            checkupPaneControllerList.get(i).getViolationDescription().getText(), checkupPaneControllerList.get(i).getViolationActionPlan().getText(),
+                            checkupPaneControllerList.get(i).getCorrectionTerm().getValue(), checkupPaneControllerList.get(i).getCorrectionDate().getValue()));
                 } else {
                     MyAlert.showAndWait("ERROR", "", "Необходимо указать ответственного при каждом нарушении!", "");
                     checkupPaneControllerList.get(i).getViolationEmployee().requestFocus();
                     return;
                 }
+            } else {
+                inspection.getCheckupList().get(i).setViolation(null);
             }
         }
 
