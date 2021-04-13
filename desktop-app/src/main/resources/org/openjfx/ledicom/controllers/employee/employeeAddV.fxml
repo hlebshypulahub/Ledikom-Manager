@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <AnchorPane id="Content" fx:id="viewPane" minHeight="-1.0" minWidth="-1.0" prefHeight="689.0" prefWidth="564.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.employee.EmployeeAddVController">
    <children>
@@ -152,7 +151,11 @@
                      <children>
                         <Button fx:id="newPositionAddButton" mnemonicParsing="false" onAction="#showNewPositionAdd" prefHeight="25.0" prefWidth="147.0" text="Добавить новую" />
                         <TextField fx:id="newPositionAddTF" accessibleRoleDescription="x" layoutX="-1.0" prefHeight="25.0" prefWidth="116.0" visible="false" />
-                        <FontIcon fx:id="newPositionAddFI" fill="#00ab06" iconLiteral="remixal-checkbox-fill" iconSize="25" layoutX="120.0" layoutY="25.0" onMouseClicked="#addNewPosition" visible="false" />
+                        <Button fx:id="addNewPositionButton" layoutX="124.0" mnemonicParsing="false" onAction="#addNewPosition" prefHeight="25.0" prefWidth="25.0" text="+" visible="false">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
                      </children>
                   </Pane>
                </children>
@@ -172,12 +175,12 @@
             </HBox>
             <HBox prefHeight="19.0" prefWidth="553.0">
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Дата принятия на работу:">
+                  <Label prefHeight="25.0" prefWidth="250.0" text="Дата приёма на работу:">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="hiringDate" editable="false" prefWidth="300.0" promptText="Дата принятия на работу" />
+                  <DatePicker fx:id="hiringDate" prefWidth="300.0" promptText="Дата приёма на работу" />
                </children>
                <VBox.margin>
                   <Insets top="3.0" />
@@ -208,7 +211,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="categoryAssignmentDate" editable="false" prefWidth="300.0" promptText="Дата получения категории" />
+                  <DatePicker fx:id="categoryAssignmentDate" prefWidth="300.0" promptText="Дата получения категории" />
                </children>
                <VBox.margin>
                   <Insets top="3.0" />
@@ -229,7 +232,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="ppeDate" editable="false" prefWidth="300.0" promptText="Дата выдачи СИЗ" />
+                  <DatePicker fx:id="ppeDate" prefWidth="300.0" promptText="Дата выдачи СИЗ" />
                </children>
             </HBox>
             <HBox>
@@ -239,8 +242,8 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="maternityStartDate" editable="false" prefHeight="25.0" prefWidth="147.0" promptText="Дата начала" />
-                  <DatePicker fx:id="maternityEndDate" editable="false" prefHeight="25.0" prefWidth="147.0" promptText="Дата конца">
+                  <DatePicker fx:id="maternityStartDate" prefHeight="25.0" prefWidth="147.0" promptText="Дата начала" />
+                  <DatePicker fx:id="maternityEndDate" prefHeight="25.0" prefWidth="147.0" promptText="Дата конца">
                      <HBox.margin>
                         <Insets left="6.0" />
                      </HBox.margin>
@@ -278,8 +281,8 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="fiveYearStartDate" editable="false" prefHeight="25.0" prefWidth="147.0" promptText="Дата начала" />
-                  <DatePicker fx:id="fiveYearEndDate" editable="false" prefHeight="25.0" prefWidth="147.0" promptText="Дата конца">
+                  <DatePicker fx:id="fiveYearStartDate" prefHeight="25.0" prefWidth="147.0" promptText="Дата начала" />
+                  <DatePicker fx:id="fiveYearEndDate" prefHeight="25.0" prefWidth="147.0" promptText="Дата конца">
                      <HBox.margin>
                         <Insets left="6.0" />
                      </HBox.margin>

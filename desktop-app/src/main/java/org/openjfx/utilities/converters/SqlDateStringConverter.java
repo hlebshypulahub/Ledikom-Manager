@@ -5,7 +5,7 @@ import java.sql.Date;
 public class SqlDateStringConverter {
     public static String sqlDateToString(Date date) {
         if(date == null) {
-            return "";
+            return null;
         } else {
             String[] parts = date.toString().split("-");
             return parts[2] + "." + parts[1] + "." + parts[0];
@@ -13,7 +13,7 @@ public class SqlDateStringConverter {
     }
 
     public static Date stringToSqlDate(String date) {
-        if(!date.equals("")) {
+        if(date != null) {
             String[] parts = date.split("\\.");
             return Date.valueOf(parts[2] + "-" + parts[1] + "-" + parts[0]);
         } else {

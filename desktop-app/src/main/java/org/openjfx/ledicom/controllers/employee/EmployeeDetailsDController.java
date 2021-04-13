@@ -12,7 +12,6 @@ import org.openjfx.utilities.Global;
 import org.openjfx.utilities.converters.StringToLocalDateConverter;
 import org.openjfx.utilities.database.DatabaseCourseController;
 import org.openjfx.utilities.database.DatabaseEmployeeController;
-import org.openjfx.utilities.docs.EmployeeInfoDoc;
 import org.openjfx.utilities.panels.EmployeePanel;
 
 import java.io.IOException;
@@ -82,11 +81,6 @@ public class EmployeeDetailsDController implements Initializable {
         EmployeePanel.showEmployeeEdit();
     }
 
-    @FXML
-    public void makeWordDocument(ActionEvent event) throws Exception {
-        EmployeeInfoDoc.createDocument();
-    }
-
     public void setCourseTableCss() {
         courseTable.setRowFactory(tv -> new TableRow<>() {
             @Override
@@ -128,8 +122,8 @@ public class EmployeeDetailsDController implements Initializable {
         courseHoursSumText.setText(String.valueOf(DatabaseCourseController.getRequiredCourseHours(Global.getEmployee().getPosition())
                 - Global.getEmployee().getCourseHoursSum()));
         hiringDateText.setText(Global.getEmployee().getHiringDate());
-        maternityText.setText(Global.getEmployee().getMaternityStartDate().equals("")
-                && Global.getEmployee().getMaternityEndDate().equals("") ? ""
+        maternityText.setText(Global.getEmployee().getMaternityStartDate() == null
+                || Global.getEmployee().getMaternityEndDate() == null ? ""
                 : Global.getEmployee().getMaternityStartDate() + " - " + Global.getEmployee().getMaternityEndDate());
         childrenNumberText.setText(String.valueOf(Global.getEmployee().getChildrenNumber()));
         noteText.setText(Global.getEmployee().getNote());

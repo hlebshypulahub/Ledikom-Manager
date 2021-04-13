@@ -34,7 +34,7 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <DatePicker fx:id="inspectionDate" editable="false" prefHeight="25.0" prefWidth="300.0" promptText="Дата проведения">
+                        <DatePicker fx:id="inspectionDate" prefHeight="25.0" prefWidth="300.0" promptText="Дата проведения">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>

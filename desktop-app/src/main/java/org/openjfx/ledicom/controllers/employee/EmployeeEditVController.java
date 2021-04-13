@@ -29,10 +29,10 @@ public class EmployeeEditVController extends EmployeeDataForm {
         }
 
         Global.setEmployee(new Employee(Global.getEmployee().getId(), Validator.validateName(lastNameTF.getText(), lastNameTF), Validator.validateName(firstNameTF.getText(), firstNameTF),
-                Validator.validateName(patronymicTF.getText(), patronymicTF), dobDate.getValue(), phoneTF.getText(), addressTF.getText(),
-                StringToIntegerConverter.convert(salaryTF.getText()), ppeDate.getValue(), hiringDate.getValue(), positionCB.getValue(),
-                categoryCB.getValue(), categoryNumTF.getText(), categoryAssignmentDate.getValue(), maternityStartDate.getValue(), maternityEndDate.getValue(),
-                fiveYearStartDate.getValue(), fiveYearEndDate.getValue(), StringToIntegerConverter.convert(childrenNumberTF.getText()), noteTF.getText()));
+                Validator.validateName(patronymicTF.getText(), patronymicTF), Validator.validateDate(dobDate), phoneTF.getText(), addressTF.getText(),
+                StringToIntegerConverter.convert(salaryTF.getText()), Validator.validateDate(ppeDate), Validator.validateDate(hiringDate), positionCB.getValue(),
+                categoryCB.getValue(), categoryNumTF.getText(), Validator.validateDate(categoryAssignmentDate), Validator.validateDate(maternityStartDate), Validator.validateDate(maternityEndDate),
+                Validator.validateDate(fiveYearStartDate), Validator.validateDate(fiveYearEndDate), StringToIntegerConverter.convert(childrenNumberTF.getText()), noteTF.getText()));
         if(DatabaseEmployeeController.updateEmployee()) {
             MyAlert.showAndWait("INFORMATION", "", "Сотрудник отредактирован.", "");
 

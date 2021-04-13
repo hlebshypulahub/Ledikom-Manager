@@ -1,9 +1,5 @@
 package org.openjfx.ledicom.entities;
 
-import org.openjfx.utilities.formatters.DateFormatter;
-
-import java.time.LocalDate;
-
 public class Course {
     String name;
     String description;
@@ -11,12 +7,12 @@ public class Course {
     String startDate;
     String endDate;
 
-    public Course(String name, String description, int hours, LocalDate startDate, LocalDate endDate) {
+    public Course(String name, String description, int hours, String startDate, String endDate) {
         this.name = name;
         this.description = description;
         this.hours = hours;
-        this.startDate = DateFormatter.format(startDate);
-        this.endDate = DateFormatter.format(endDate);
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     public Course() {

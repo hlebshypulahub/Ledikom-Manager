@@ -55,7 +55,7 @@ public class DobNotificationVController implements Initializable, EmployeeContro
     }
 
     @FXML
-    public void dobNotificationsEdit(MouseEvent event) {
+    public void dobNotificationsEdit(ActionEvent event) {
         try {
             DatabaseNotificationController.dobNotificationsPeriodEdit(Validator.validateDayOfYear(dobNotificationsEditTF.getText()));
             dobNotificationsEditPane.setVisible(false);

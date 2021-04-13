@@ -27,22 +27,30 @@ public class Validator {
         return name;
     }
 
+    public static String validateString(String str) {
+        return str == null ? "" : str;
+    }
+
     public static String validateDate(DatePicker datePicker) {
-        try {
-            LocalDate ld = LocalDate.parse(datePicker.getEditor().getText(), DateTimeFormatter.getDateTimeFormatter());
-            return datePicker.getEditor().getText();
-        } catch (DateTimeParseException exception) {
-            exception.printStackTrace();
-            MyAlert.showAndWait("ERROR", "Ошибка", "Неверный формат даты.", "");
-            datePicker.requestFocus();
-            throw exception;
+        if (datePicker.getEditor().getText().isEmpty()) {
+            return null;
+        } else {
+            try {
+                LocalDate ld = LocalDate.parse(datePicker.getEditor().getText(), DateTimeFormatter.getDateTimeFormatter());
+                return datePicker.getEditor().getText();
+            } catch (DateTimeParseException exception) {
+                exception.printStackTrace();
+                MyAlert.showAndWait("ERROR", "Ошибка", "Неверный формат даты.", "");
+                datePicker.requestFocus();
+                throw exception;
+            }
         }
     }
 
     public static Integer validateDayOfYear(String number) {
         if (number.equals("")) {
             return 7;
-        } else if(!(Integer.parseInt(number) >= 0 && Integer.parseInt(number) <= 365)) {
+        } else if (!(Integer.parseInt(number) >= 0 && Integer.parseInt(number) <= 365)) {
             MyAlert.showAndWait("ERROR", "Ошибка", "Введите число от 0 до 365!", "");
             throw new DayOfYearException("Integer is out of bounds");
         }

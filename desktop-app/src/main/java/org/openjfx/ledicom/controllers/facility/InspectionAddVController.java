@@ -16,6 +16,7 @@ import org.openjfx.ledicom.entities.Employee;
 import org.openjfx.ledicom.entities.inspection.*;
 import org.openjfx.utilities.Global;
 import org.openjfx.utilities.MyAlert;
+import org.openjfx.utilities.Validator;
 import org.openjfx.utilities.database.DatabaseEmployeeController;
 import org.openjfx.utilities.database.DatabaseInspectionController;
 import org.openjfx.utilities.docs.InspectionDoc;
@@ -123,7 +124,7 @@ public class InspectionAddVController implements Initializable {
     }
 
     public void addInspection() throws IOException {
-        inspection.setDate(inspectionDate.getValue());
+        inspection.setDate(Validator.validateDate(inspectionDate));
 
         Optional<Employee> employee = employeeList.stream().filter(e
                 -> e.getFullName().equals(inspectionEmployee.getText())).findFirst();
@@ -158,7 +159,7 @@ public class InspectionAddVController implements Initializable {
                 if (violationEmployee.isPresent()) {
                     inspection.getCheckupList().get(i).setViolation(new Violation(violationEmployee.get().getId(), violationEmployee.get().getFullName(),
                             checkupPaneControllerList.get(i).getViolationDescription().getText(), checkupPaneControllerList.get(i).getViolationActionPlan().getText(),
-                            checkupPaneControllerList.get(i).getCorrectionTerm().getValue(), checkupPaneControllerList.get(i).getCorrectionDate().getValue()));
+                            Validator.validateDate(checkupPaneControllerList.get(i).getCorrectionTerm()), Validator.validateDate(checkupPaneControllerList.get(i).getCorrectionDate())));
                 } else {
                     MyAlert.showAndWait("ERROR", "", "Необходимо указать ответственного при каждом нарушении!", "");
                     checkupPaneControllerList.get(i).getViolationEmployee().requestFocus();

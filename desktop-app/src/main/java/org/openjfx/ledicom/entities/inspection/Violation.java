@@ -1,9 +1,5 @@
 package org.openjfx.ledicom.entities.inspection;
 
-import org.openjfx.utilities.formatters.DateFormatter;
-
-import java.time.LocalDate;
-
 public class Violation {
     private int id;
     private int idEmployee;
@@ -23,13 +19,13 @@ public class Violation {
         this.correctionDate = correctionDate;
     }
 
-    public Violation(int idEmployee, String employeeName, String description, String actionPlan, LocalDate correctionTerm, LocalDate correctionDate) {
+    public Violation(int idEmployee, String employeeName, String description, String actionPlan, String  correctionTerm, String correctionDate) {
         this.idEmployee = idEmployee;
         this.employeeName = employeeName;
         this.description = description;
         this.actionPlan = actionPlan;
-        this.correctionTerm = DateFormatter.format(correctionTerm);
-        this.correctionDate = DateFormatter.format(correctionDate);
+        this.correctionTerm = correctionTerm;
+        this.correctionDate = correctionDate;
     }
 
     public int getId() {

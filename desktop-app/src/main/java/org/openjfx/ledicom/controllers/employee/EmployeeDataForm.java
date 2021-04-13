@@ -4,16 +4,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-import org.kordamp.ikonli.javafx.FontIcon;
 import org.openjfx.ledicom.entities.Course;
 import org.openjfx.ledicom.entities.Edu;
-import org.openjfx.utilities.*;
+import org.openjfx.utilities.CheckPharmPosition;
+import org.openjfx.utilities.Global;
+import org.openjfx.utilities.MyAlert;
+import org.openjfx.utilities.Validator;
 import org.openjfx.utilities.database.DatabaseCourseController;
 import org.openjfx.utilities.database.DatabaseEmployeeController;
 import org.openjfx.utilities.database.DatabaseEnumsController;
 import org.openjfx.utilities.panels.EmployeePanel;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -59,7 +61,7 @@ public class EmployeeDataForm implements Initializable {
     @FXML
     protected TextField newPositionAddTF;
     @FXML
-    protected FontIcon newPositionAddFI;
+    protected Button addNewPositionButton;
     @FXML
     protected VBox courseVBox;
     @FXML
@@ -88,14 +90,14 @@ public class EmployeeDataForm implements Initializable {
     @FXML
     public void showNewPositionAdd(ActionEvent event) {
         newPositionAddButton.setVisible(false);
-        newPositionAddFI.setVisible(true);
+        addNewPositionButton.setVisible(true);
         newPositionAddTF.setVisible(true);
     }
 
     @FXML
-    public void addNewPosition(MouseEvent event) {
+    public void addNewPosition(ActionEvent event) {
         newPositionAddButton.setVisible(true);
-        newPositionAddFI.setVisible(false);
+        addNewPositionButton.setVisible(false);
         newPositionAddTF.setVisible(false);
         positionCB.getItems().clear();
         positionCB.getItems().addAll(Objects.requireNonNull(DatabaseEnumsController.addNewEmployeePosition(newPositionAddTF.getText())));
@@ -109,7 +111,7 @@ public class EmployeeDataForm implements Initializable {
         } else {
             try {
                 DatabaseCourseController.addCourse(new Course(courseNameTF.getText(), courseDescriptionTF.getText(), Integer.parseInt(courseHoursTF.getText()),
-                        courseStartDate.getValue(), courseEndDate.getValue()));
+                        Validator.validateDate(courseStartDate), Validator.validateDate(courseEndDate)));
                 MyAlert.showAndWait("INFORMATION", "", "Курс добавлен.", "Сроки прохождения курсов и часы обновлены соответственно.");
                 courseNameTF.clear();
                 courseDescriptionTF.clear();
@@ -130,7 +132,7 @@ public class EmployeeDataForm implements Initializable {
         if (eduGraduationDate.getValue() == null) {
             MyAlert.showAndWait("ERROR", "Ошибка", "Впишите дату окончания учреждения", "");
         } else {
-            DatabaseEmployeeController.addEdu(new Edu(eduNameTF.getText(), eduGraduationDate.getValue()));
+            DatabaseEmployeeController.addEdu(new Edu(eduNameTF.getText(), Validator.validateDate(eduGraduationDate)));
             if (CheckPharmPosition.isPharm()) {
                 MyAlert.showAndWait("INFORMATION", "", "Образование добавлено.", "Сроки прохождения курсов обновлены соответственно.");
             } else {

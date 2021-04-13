@@ -38,6 +38,7 @@ public class EmployeeAllVController implements Initializable, EmployeeController
     @FXML
     public void showFullInfo(MouseEvent event) throws IOException {
         showEmployeeDetails(table);
+        showEmployeeManagement(table);
     }
 
     @Override

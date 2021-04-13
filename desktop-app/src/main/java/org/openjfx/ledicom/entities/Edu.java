@@ -1,16 +1,12 @@
 package org.openjfx.ledicom.entities;
 
-import org.openjfx.utilities.formatters.DateFormatter;
-
-import java.time.LocalDate;
-
 public class Edu {
     private String name;
     private String graduationDate;
 
-    public Edu(String name, LocalDate graduationDate) {
+    public Edu(String name, String graduationDate) {
         this.name = name;
-        this.graduationDate = DateFormatter.format(graduationDate);
+        this.graduationDate = graduationDate;
     }
 
     public Edu() {

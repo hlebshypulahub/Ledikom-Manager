@@ -1,6 +1,5 @@
 package org.openjfx.ledicom.entities;
 
-import org.openjfx.utilities.formatters.DateFormatter;
 import org.openjfx.utilities.formatters.DateTimeFormatter;
 
 import java.time.LocalDate;
@@ -35,30 +34,30 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(int id, String lastName, String firstName, String patronymic, LocalDate DOB,
+    public Employee(int id, String lastName, String firstName, String patronymic, String DOB,
                     String phone, String address, int salary,
-                    LocalDate PPE, LocalDate hiringDate,
-                    String position, String category, String categoryNum, LocalDate categoryAssignmentDate,
-                    LocalDate maternityStartDate, LocalDate maternityEndDate, LocalDate fiveYearStart, LocalDate fiveYearEnd,
+                    String PPE, String hiringDate,
+                    String position, String category, String categoryNum, String categoryAssignmentDate,
+                    String maternityStartDate, String maternityEndDate, String fiveYearStart, String fiveYearEnd,
                     Integer childrenNumber, String note) {
         this.id = id;
         this.firstName = firstName;
         this.patronymic = patronymic;
         this.lastName = lastName;
-        this.DOB = DateFormatter.format(DOB);
+        this.DOB = DOB;
         this.phone = phone;
         this.address = address;
         this.salary = salary;
-        this.PPE = DateFormatter.format(PPE);
-        this.hiringDate = DateFormatter.format(hiringDate);
+        this.PPE = PPE;
+        this.hiringDate = hiringDate;
         this.position = position;
         this.category = category;
         this.categoryNum = categoryNum;
-        this.categoryAssignmentDate = DateFormatter.format(categoryAssignmentDate);
-        this.maternityStartDate = DateFormatter.format(maternityStartDate);
-        this.maternityEndDate = DateFormatter.format(maternityEndDate);
-        this.fiveYearStart = DateFormatter.format(fiveYearStart);
-        this.fiveYearEnd = DateFormatter.format(fiveYearEnd);
+        this.categoryAssignmentDate = categoryAssignmentDate;
+        this.maternityStartDate = maternityStartDate;
+        this.maternityEndDate = maternityEndDate;
+        this.fiveYearStart = fiveYearStart;
+        this.fiveYearEnd = fiveYearEnd;
         this.childrenNumber = childrenNumber;
         this.note = note;
         setDobAge();
@@ -66,9 +65,9 @@ public class Employee {
 
     public Employee(String lastName, String firstName, String patronymic, String DOB,
                     String phone, String address, int salary,
-                    LocalDate PPE, LocalDate hiringDate,
-                    String position, String category, String categoryNum, LocalDate categoryAssignmentDate,
-                    LocalDate maternityStartDate, LocalDate maternityEndDate, LocalDate fiveYearStart, LocalDate fiveYearEnd,
+                    String PPE, String hiringDate,
+                    String position, String category, String categoryNum, String categoryAssignmentDate,
+                    String maternityStartDate, String maternityEndDate, String fiveYearStart, String fiveYearEnd,
                     Integer childrenNumber, String note) {
         this.firstName = firstName;
         this.patronymic = patronymic;
@@ -77,16 +76,16 @@ public class Employee {
         this.phone = phone;
         this.address = address;
         this.salary = salary;
-        this.PPE = DateFormatter.format(PPE);
-        this.hiringDate = DateFormatter.format(hiringDate);
+        this.PPE = PPE;
+        this.hiringDate = hiringDate;
         this.position = position;
         this.category = category;
         this.categoryNum = categoryNum;
-        this.categoryAssignmentDate = DateFormatter.format(categoryAssignmentDate);
-        this.maternityStartDate = DateFormatter.format(maternityStartDate);
-        this.maternityEndDate = DateFormatter.format(maternityEndDate);
-        this.fiveYearStart = DateFormatter.format(fiveYearStart);
-        this.fiveYearEnd = DateFormatter.format(fiveYearEnd);
+        this.categoryAssignmentDate = categoryAssignmentDate;
+        this.maternityStartDate = maternityStartDate;
+        this.maternityEndDate = maternityEndDate;
+        this.fiveYearStart = fiveYearStart;
+        this.fiveYearEnd = fiveYearEnd;
         this.childrenNumber = childrenNumber;
         this.note = note;
         setDobAge();
@@ -118,11 +117,11 @@ public class Employee {
     }
 
     public String getShortName() {
-        return lastName + " " + firstName.charAt(0) + " " + patronymic.charAt(0);
+        return lastName + " " + firstName.charAt(0) + ". " + patronymic.charAt(0) + ".";
     }
 
     public void setDobAge() {
-        dobAge = getDOB().equals("") ? 0
+        dobAge = getDOB() == null ? 0
                 : LocalDate.parse(getDOB(), DateTimeFormatter.getDateTimeFormatter()).getDayOfYear() == LocalDate.now().getDayOfYear()
                 ? (int) YEARS.between(LocalDate.parse(getDOB(), DateTimeFormatter.getDateTimeFormatter()), LocalDate.now())
                 : (int) YEARS.between(LocalDate.parse(getDOB(), DateTimeFormatter.getDateTimeFormatter()), LocalDate.now()) + 1;

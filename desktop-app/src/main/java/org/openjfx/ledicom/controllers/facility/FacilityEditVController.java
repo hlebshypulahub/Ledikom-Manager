@@ -13,6 +13,7 @@ import org.openjfx.ledicom.entities.EmployeeContract;
 import org.openjfx.ledicom.entities.Facility;
 import org.openjfx.utilities.Global;
 import org.openjfx.utilities.MyAlert;
+import org.openjfx.utilities.Validator;
 import org.openjfx.utilities.database.DatabaseEmployeeController;
 import org.openjfx.utilities.database.DatabaseEnumsController;
 import org.openjfx.utilities.database.DatabaseFacilityController;
@@ -72,10 +73,11 @@ public class FacilityEditVController extends FacilityDataForm {
     @FXML
     public void addEmployeeToFacility(ActionEvent event) throws SQLException, IOException {
         Global.setEmployee(employeeTable.getSelectionModel().getSelectedItem());
-        if (DatabaseEmployeeController.addEmployeeToFacility(new EmployeeContract(contractTypeCB.getValue(), contractStartDate.getValue(), contractEndDate.getValue()))) {
+        if (DatabaseEmployeeController.addEmployeeToFacility(new EmployeeContract(contractTypeCB.getValue(), Validator.validateDate(contractStartDate), Validator.validateDate(contractEndDate)))) {
             MyAlert.showAndWait("INFORMATION", "", "Сотрудник " + Global.getEmployee().getShortName()
                     + " добавлен на объект " + Global.getFacility().getName(), "");
             FacilityPanel.showFacilityEdit();
+            FacilityPanel.showFacilityDetails();
         }
     }
 

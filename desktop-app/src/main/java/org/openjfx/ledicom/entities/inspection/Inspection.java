@@ -1,9 +1,6 @@
 package org.openjfx.ledicom.entities.inspection;
 
 import javafx.collections.ObservableList;
-import org.openjfx.utilities.formatters.DateFormatter;
-
-import java.time.LocalDate;
 
 public class Inspection {
     private int id;
@@ -58,8 +55,8 @@ public class Inspection {
         return date;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = DateFormatter.format(date);
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getNote() {

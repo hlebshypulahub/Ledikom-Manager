@@ -193,12 +193,12 @@
                   </Label>
                   <HBox>
                      <children>
-                        <Label prefHeight="25.0" prefWidth="250.0" text="Тип:">
+                        <Label prefHeight="25.0" prefWidth="201.0" text="Тип:">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="contractTypeCB" prefHeight="27.0" prefWidth="350.0" promptText="Тип" />
+                        <ComboBox fx:id="contractTypeCB" prefHeight="27.0" prefWidth="303.0" promptText="Тип" />
                      </children>
                      <VBox.margin>
                         <Insets />
@@ -211,7 +211,7 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <DatePicker fx:id="contractStartDate" editable="false" prefHeight="27.0" prefWidth="302.0" promptText="Дата заключения">
+                        <DatePicker fx:id="contractStartDate" prefHeight="27.0" prefWidth="303.0" promptText="Дата заключения">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -228,7 +228,7 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <DatePicker fx:id="contractEndDate" editable="false" prefHeight="27.0" prefWidth="302.0" promptText="Дата истечения">
+                        <DatePicker fx:id="contractEndDate" prefHeight="27.0" prefWidth="303.0" promptText="Дата истечения">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>

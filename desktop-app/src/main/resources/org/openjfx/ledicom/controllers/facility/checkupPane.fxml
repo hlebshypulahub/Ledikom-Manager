@@ -44,7 +44,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="correctionTerm" editable="false" prefHeight="25.0" prefWidth="300.0" promptText="Срок исполнения">
+                  <DatePicker fx:id="correctionTerm" prefHeight="25.0" prefWidth="300.0" promptText="Срок исполнения">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -87,7 +87,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="correctionDate" editable="false" prefHeight="25.0" prefWidth="300.0" promptText="Дата исполнения">
+                  <DatePicker fx:id="correctionDate" prefHeight="25.0" prefWidth="300.0" promptText="Дата исполнения">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>

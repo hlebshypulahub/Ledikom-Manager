@@ -1,18 +1,14 @@
 package org.openjfx.ledicom.entities;
 
-import org.openjfx.utilities.formatters.DateFormatter;
-
-import java.time.LocalDate;
-
 public class EmployeeContract {
     private String type;
     private String startDate;
     private String endDate;
 
-    public EmployeeContract(String type, LocalDate startDate, LocalDate endDate) {
+    public EmployeeContract(String type, String startDate, String endDate) {
         this.type = type;
-        this.startDate = DateFormatter.format(startDate);
-        this.endDate = DateFormatter.format(endDate);
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     @Override

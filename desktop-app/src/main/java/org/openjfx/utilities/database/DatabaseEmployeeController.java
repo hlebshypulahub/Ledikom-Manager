@@ -135,9 +135,10 @@ public class DatabaseEmployeeController extends DatabaseController {
                 ps2.setDate(12, SqlDateStringConverter.stringToSqlDate(Global.getEmployee().getMaternityEndDate()));
                 ps2.setDate(13, SqlDateStringConverter.stringToSqlDate(Global.getEmployee().getFiveYearStart()));
                 ps2.setDate(14, SqlDateStringConverter.stringToSqlDate(Global.getEmployee().getFiveYearEnd()));
-                ps2.setInt(15, Global.getEmployee().getId());
-                ps2.setInt(16, Global.getEmployee().getChildrenNumber());
-                ps2.setString(17, Global.getEmployee().getNote());
+                ps2.setInt(15, Global.getEmployee().getChildrenNumber());
+                ps2.setString(16, Global.getEmployee().getNote());
+                ps2.setInt(17, Global.getEmployee().getId());
+
                 ps2.execute();
             }
         } catch (SQLException e) {
@@ -264,10 +265,11 @@ public class DatabaseEmployeeController extends DatabaseController {
     }
 
     public static ObservableList<Employee> employeeForNotFacility() {
-        String sql = "select * " +
-                "from employee_data_view edv " +
-                "         left join employee_facility ef on ef.id_employee = edv.id_employee " +
-                "where id_facility is not null and id_facility != " + Global.getFacility().getId() + " or id_facility is null;";
+        String sql = "select *\n" +
+                "from employee_data_view edv\n" +
+                "         left join employee_facility ef on ef.id_employee = edv.id_employee\n" +
+                "where (id_facility is not null and id_facility != " + Global.getFacility().getId() + "\n" +
+                "   or id_facility is null) and edv.id_employee not in (select id_employee from employee_facility where id_facility = " + Global.getFacility().getId() + ");";
         return employeeList(sql);
     }
 
