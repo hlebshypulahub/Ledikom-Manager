@@ -76,9 +76,36 @@ public class FacilityEditVController extends FacilityDataForm {
         if (DatabaseEmployeeController.addEmployeeToFacility(new EmployeeContract(contractTypeCB.getValue(), Validator.validateDate(contractStartDate), Validator.validateDate(contractEndDate)))) {
             MyAlert.showAndWait("INFORMATION", "", "Сотрудник " + Global.getEmployee().getShortName()
                     + " добавлен на объект " + Global.getFacility().getName(), "");
-            FacilityPanel.showFacilityEdit();
             FacilityPanel.showFacilityDetails();
+            setEmployeeTable();
+            searchEmployeeTF.requestFocus();
+            contractVBox.setVisible(false);
+            contractTypeCB.setValue(null);
+            contractEndDate.setValue(null);
+            contractStartDate.setValue(null);
         }
+    }
+
+    public void setEmployeeTable() {
+        FilteredList<Employee> filteredData = new FilteredList<>(DatabaseEmployeeController.employeeForNotFacility(), p -> true);
+
+        searchEmployeeTF.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(employee -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                return ((employee.getFirstName().toLowerCase().contains(lowerCaseFilter))
+                        || (employee.getLastName().toLowerCase().contains(lowerCaseFilter)))
+                        || (employee.getPatronymic().toLowerCase().contains(lowerCaseFilter));
+            });
+        });
+
+        SortedList<Employee> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(employeeTable.comparatorProperty());
+        employeeTable.setItems(sortedData);
     }
 
     @Override
@@ -100,25 +127,6 @@ public class FacilityEditVController extends FacilityDataForm {
 
         contractTypeCB.setItems(DatabaseEnumsController.getContractTypes());
 
-        /// Sorting
-        FilteredList<Employee> filteredData = new FilteredList<>(DatabaseEmployeeController.employeeForNotFacility(), p -> true);
-
-        searchEmployeeTF.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(employee -> {
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-
-                String lowerCaseFilter = newValue.toLowerCase();
-
-                return ((employee.getFirstName().toLowerCase().contains(lowerCaseFilter))
-                        || (employee.getLastName().toLowerCase().contains(lowerCaseFilter)))
-                        || (employee.getPatronymic().toLowerCase().contains(lowerCaseFilter));
-            });
-        });
-
-        SortedList<Employee> sortedData = new SortedList<>(filteredData);
-        sortedData.comparatorProperty().bind(employeeTable.comparatorProperty());
-        employeeTable.setItems(sortedData);
+        setEmployeeTable();
     }
 }

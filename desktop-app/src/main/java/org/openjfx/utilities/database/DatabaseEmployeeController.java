@@ -19,8 +19,6 @@ public class DatabaseEmployeeController extends DatabaseController {
     public static boolean addEmployee(Employee employee) throws SQLException {
         String sql = "SELECT EXISTS(SELECT last_name, first_name, patronymic FROM employee WHERE last_name = ? AND first_name = ? AND patronymic = ?);";
 
-//        Connection conn = connect();
-
         try (PreparedStatement ps1 = conn.prepareStatement(sql)) {
             ps1.setString(1, employee.getLastName());
             ps1.setString(2, employee.getFirstName());
@@ -35,7 +33,6 @@ public class DatabaseEmployeeController extends DatabaseController {
             rs.close();
         } catch (SQLException exception) {
             System.out.println(exception.getMessage());
-//            conn.close();
             return false;
         }
 
@@ -81,16 +78,13 @@ public class DatabaseEmployeeController extends DatabaseController {
         } catch (SQLException e) {
             showMessageDialog(null, e.getMessage());
             System.out.println(e.getMessage());
-//            conn.close();
             return false;
         }
 
-//        conn.close();
         return true;
     }
 
     public static boolean updateEmployee() throws SQLException {
-//        Connection conn = connect();
 
         String sql = "update employee set first_name = '" + Global.getEmployee().getFirstName() + "',"
                 + "last_name = '" + Global.getEmployee().getLastName() + "', "
@@ -144,22 +138,20 @@ public class DatabaseEmployeeController extends DatabaseController {
         } catch (SQLException e) {
             showMessageDialog(null, e.getMessage());
             System.out.println(e.getMessage());
-//            conn.close();
             return false;
         }
 
-//        conn.close();
         return true;
     }
 
     public static ObservableList<Employee> allEmployeeList() {
-        String sql = "SELECT * FROM employee_data_view order by id_employee desc;";
+        String sql = "SELECT * FROM employee_data_view where is_active is not false order by id_employee desc;";
         return employeeList(sql);
     }
 
     public static ObservableList<Employee> dobNotificationsEmployeeList() {
         String sql = "select * from employee_data_view " +
-                "where abs(date_part('doy', dob) - date_part('doy', current_date)) between 0 and dob_notifications_period();";
+                "where abs(date_part('doy', dob) - date_part('doy', current_date)) between 0 and dob_notifications_period() and is_active is not false;";
         return employeeList(sql);
     }
 
@@ -167,7 +159,6 @@ public class DatabaseEmployeeController extends DatabaseController {
         ObservableList<Employee> employeeList = FXCollections.observableArrayList();
 
         try (
-//                Connection conn = connect();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -189,7 +180,6 @@ public class DatabaseEmployeeController extends DatabaseController {
         Employee employee = new Employee();
 
         try (
-//                Connection conn = connect();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -243,7 +233,6 @@ public class DatabaseEmployeeController extends DatabaseController {
         Edu edu = new Edu();
 
         try (
-//                Connection conn = connect();
                 PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -265,24 +254,32 @@ public class DatabaseEmployeeController extends DatabaseController {
     }
 
     public static ObservableList<Employee> employeeForNotFacility() {
-        String sql = "select *\n" +
+        String sql = "select distinct edv.*\n" +
                 "from employee_data_view edv\n" +
                 "         left join employee_facility ef on ef.id_employee = edv.id_employee\n" +
-                "where (id_facility is not null and id_facility != " + Global.getFacility().getId() + "\n" +
-                "   or id_facility is null) and edv.id_employee not in (select id_employee from employee_facility where id_facility = " + Global.getFacility().getId() + ");";
+                "where ((id_facility is not null and id_facility != " + Global.getFacility().getId() + "\n" +
+                "   or id_facility is null) and edv.id_employee not in (select id_employee from employee_facility where id_facility = " + Global.getFacility().getId() + "))" +
+                "and is_active is not false;";
         return employeeList(sql);
     }
 
-    public static ObservableList<Employee> employeeForFacility() {
+    public static ObservableList<Employee> getEmployeesForFacility() {
         String sql = "select * " +
                 "from employee_data_view edv " +
                 "         join employee_facility ef on ef.id_employee = edv.id_employee " +
-                "where id_facility = " + Global.getFacility().getId() + ";";
+                "where id_facility = " + Global.getFacility().getId() + " and is_active is not false;";
+        return employeeList(sql);
+    }
+
+    public static ObservableList<Employee> getEmployeesForFacility(int facilityId) {
+        String sql = "select * " +
+                "from employee_data_view edv " +
+                "         join employee_facility ef on ef.id_employee = edv.id_employee " +
+                "where id_facility = " + facilityId + " and is_active is not false;";
         return employeeList(sql);
     }
 
     public static boolean addEmployeeToFacility(EmployeeContract contract) throws SQLException {
-//        Connection conn = connect();
 
         String sql = "SELECT EXISTS(SELECT id_employee, id_facility FROM employee_facility WHERE id_employee = ? AND id_facility = ?);";
 
@@ -299,7 +296,6 @@ public class DatabaseEmployeeController extends DatabaseController {
             rs.close();
         } catch (SQLException exception) {
             System.out.println(exception.getMessage());
-//            conn.close();
             return false;
         }
 
@@ -323,11 +319,9 @@ public class DatabaseEmployeeController extends DatabaseController {
         } catch (SQLException e) {
             showMessageDialog(null, e.getMessage());
             System.out.println(e.getMessage());
-//            conn.close();
             return false;
         }
 
-//        conn.close();
         return true;
     }
 
@@ -338,7 +332,6 @@ public class DatabaseEmployeeController extends DatabaseController {
         ObservableList<String> contractList = FXCollections.observableArrayList();
 
         try (
-//                Connection conn = connect();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -355,5 +348,29 @@ public class DatabaseEmployeeController extends DatabaseController {
             showMessageDialog(null, e.getMessage());
             return null;
         }
+    }
+
+    public static boolean deleteEmployee() {
+        String sql = "update employee set is_active = false where id_employee = " + Global.getEmployee().getId() + ";";
+
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.execute();
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean deleteEmployeeFromFacility() {
+        String sql = "delete from employee_facility where id_employee = " + Global.getEmployee().getId() + " and id_facility = " + Global.getFacility().getId() + ";";
+
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.execute();
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+            return false;
+        }
+        return true;
     }
 }

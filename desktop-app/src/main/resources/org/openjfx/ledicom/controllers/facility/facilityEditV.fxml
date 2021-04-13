@@ -150,7 +150,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox layoutX="647.0" layoutY="13.0" prefHeight="435.0" prefWidth="504.0">
+      <VBox layoutX="647.0" layoutY="13.0" prefHeight="413.0" prefWidth="504.0">
          <children>
             <Label alignment="CENTER" prefHeight="22.0" prefWidth="501.0" text="Добавить сотрудника:">
                <font>

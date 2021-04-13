@@ -192,6 +192,19 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </TableView>
+            <Button fx:id="employeeDeleteButton" disable="true" minHeight="35.0" mnemonicParsing="false" onAction="#deleteEmployeeFromFacility" prefHeight="35.0" prefWidth="200.0" stylesheets="@../../css/style.css" text="Удалить с объекта">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="button-default" />
+                  <String fx:value="red" />
+                  <String fx:value="font-big" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Button>
          </children>
       </VBox>
    </children>

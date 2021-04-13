@@ -19,7 +19,6 @@ public class DatabaseNotificationController extends DatabaseController {
                 "    language 'plpgsql';";
 
         try (
-//                Connection conn = connect();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.execute();
         } catch (SQLException e) {
@@ -32,7 +31,6 @@ public class DatabaseNotificationController extends DatabaseController {
         int value = 30;
 
         try (
-//                Connection conn = connect();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {

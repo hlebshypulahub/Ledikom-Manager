@@ -22,7 +22,6 @@ public class DatabaseCourseController extends DatabaseController {
         int hours = 0;
 
         try (
-//                Connection conn = connect();
                 PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -52,7 +51,6 @@ public class DatabaseCourseController extends DatabaseController {
         ObservableList<Course> courseList = FXCollections.observableArrayList();
 
         try (
-//                Connection conn = connect();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -79,7 +77,6 @@ public class DatabaseCourseController extends DatabaseController {
         ObservableList<EmployeeCourseData> list = FXCollections.observableArrayList();
 
         try (
-//                Connection conn = connect();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {

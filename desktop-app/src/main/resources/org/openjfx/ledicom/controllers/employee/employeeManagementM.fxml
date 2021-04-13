@@ -11,5 +11,10 @@
             <MenuItem fx:id="managementMenuFacility11" mnemonicParsing="false" onAction="#createPersonalCard" text="Личная карточка" />
          </items>
       </Menu>
+      <Menu fx:id="managementMenu211" mnemonicParsing="false" text="Управление">
+         <items>
+            <MenuItem fx:id="managementMenuFacility111" mnemonicParsing="false" onAction="#deleteEmployee" text="Удалить сотрудника" />
+         </items>
+      </Menu>
    </menus>
 </MenuBar>

@@ -16,8 +16,6 @@ public class DatabaseFacilityController extends DatabaseController {
     public static boolean addFacility(Facility facility) throws SQLException {
         String sql = "SELECT EXISTS(SELECT name FROM facility WHERE name = ?);";
 
-//        Connection conn = connect();
-
         try (PreparedStatement ps1 = conn.prepareStatement(sql)) {
             ps1.setString(1, facility.getName());
             ResultSet rs = ps1.executeQuery();
@@ -30,7 +28,6 @@ public class DatabaseFacilityController extends DatabaseController {
             rs.close();
         } catch (SQLException exception) {
             System.out.println(exception.getMessage());
-//            conn.close();
             return false;
         }
 
@@ -64,16 +61,13 @@ public class DatabaseFacilityController extends DatabaseController {
         } catch (SQLException e) {
             showMessageDialog(null, e.getMessage());
             System.out.println(e.getMessage());
-//            conn.close();
             return false;
         }
 
-//        conn.close();
         return true;
     }
 
     public static boolean updateFacility() throws SQLException {
-//        Connection conn = connect();
 
         String sql = "update facility " +
                 "set name = '" + Global.getFacility().getName() + "'" +
@@ -106,11 +100,9 @@ public class DatabaseFacilityController extends DatabaseController {
         } catch (SQLException e) {
             showMessageDialog(null, e.getMessage());
             System.out.println(e.getMessage());
-//            conn.close();
             return false;
         }
 
-//        conn.close();
         return true;
     }
 
@@ -123,7 +115,6 @@ public class DatabaseFacilityController extends DatabaseController {
         ObservableList<Facility> facilityList = FXCollections.observableArrayList();
 
         try (
-//                Connection conn = connect();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -145,7 +136,6 @@ public class DatabaseFacilityController extends DatabaseController {
         Facility facility = new Facility();
 
         try (
-//                Connection conn = connect();
         PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {

@@ -68,6 +68,11 @@ public class Facility {
         this.fullAddress = city + ", " + address;
     }
 
+    @Override
+    public String toString() {
+        return getName();
+    }
+
     public String getFullAddress() {
         return fullAddress;
     }

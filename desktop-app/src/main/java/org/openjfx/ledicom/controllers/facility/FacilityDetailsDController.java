@@ -3,12 +3,14 @@ package org.openjfx.ledicom.controllers.facility;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import org.openjfx.ledicom.entities.Employee;
 import org.openjfx.utilities.Global;
+import org.openjfx.utilities.MyAlert;
 import org.openjfx.utilities.database.DatabaseEmployeeController;
 import org.openjfx.utilities.panels.FacilityPanel;
 
@@ -34,6 +36,8 @@ public class FacilityDetailsDController implements Initializable {
     private Text scheduleText;
     @FXML
     private Text codeText;
+    @FXML
+    private Button employeeDeleteButton;
 
     @FXML
     private TableView<Employee> employeeTable;
@@ -51,6 +55,17 @@ public class FacilityDetailsDController implements Initializable {
         FacilityPanel.showFacilityEdit();
     }
 
+    @FXML
+    public void deleteEmployeeFromFacility(ActionEvent event) throws Exception {
+        if (MyAlert.showAndWaitWarning("", "Вы уыерены, что хотите удалить сотрудника " + Global.getEmployee().getShortName() + " с объекта?", "")) {
+            if (DatabaseEmployeeController.deleteEmployeeFromFacility()) {
+                MyAlert.showAndWait("INFORMATION", "", "Сотрудник " + Global.getEmployee().getShortName() + "  с объекта!", "");
+            }
+            Global.setEmployee(null);
+            FacilityPanel.showFacilityDetails();
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         nameText.setText(Global.getFacility().getName());
@@ -66,6 +81,15 @@ public class FacilityDetailsDController implements Initializable {
         firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         patronymicCol.setCellValueFactory(new PropertyValueFactory<>("patronymic"));
         positionCol.setCellValueFactory(new PropertyValueFactory<>("position"));
-        employeeTable.setItems(DatabaseEmployeeController.employeeForFacility());
+        employeeTable.setItems(DatabaseEmployeeController.getEmployeesForFacility());
+
+        employeeTable.setOnMouseClicked(event -> {
+            if (employeeTable.getSelectionModel().getSelectedIndex() >= 0) {
+                Global.setEmployee(employeeTable.getSelectionModel().getSelectedItem());
+                employeeDeleteButton.setDisable(false);
+            } else {
+                employeeDeleteButton.setDisable(true);
+            }
+        });
     }
 }

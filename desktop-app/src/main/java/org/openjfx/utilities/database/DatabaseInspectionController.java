@@ -14,35 +14,12 @@ import java.sql.SQLException;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class DatabaseInspectionController extends DatabaseController {
-//    public static ObservableList<CheckupType> CheckupTypes(Connection conn) {
-//        String sql = "select * from checkup_type;";
-//
-//        ObservableList<CheckupType> observableList = FXCollections.observableArrayList();
-//
-//        try (PreparedStatement ps = conn.prepareStatement(sql)) {
-//            ResultSet rs = ps.executeQuery();
-//            while (rs.next()) {
-//                CheckupType checkupType = new CheckupType();
-//                checkupType.setId(rs.getInt("id_checkup_type"));
-//                checkupType.setTypeName(rs.getString("type_name"));
-//                observableList.add(checkupType);
-//            }
-//            rs.close();
-//            return observableList;
-//        } catch (SQLException e) {
-//            System.out.println(e.getMessage());
-//            showMessageDialog(null, e.getMessage());
-//            return null;
-//        }
-//    }
-
     public static ObservableList<CheckupType> CheckupTypes() {
         String sql = "select * from checkup_type;";
 
         ObservableList<CheckupType> observableList = FXCollections.observableArrayList();
 
         try (
-//                Connection conn = connect();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -95,8 +72,6 @@ public class DatabaseInspectionController extends DatabaseController {
 
         int inspectionId = 0;
         int checkupId = 0;
-
-//        Connection conn = connect();
 
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setDate(1, SqlDateStringConverter.stringToSqlDate(inspection.getDate()));
