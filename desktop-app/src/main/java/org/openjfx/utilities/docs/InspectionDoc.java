@@ -9,6 +9,7 @@ import org.openjfx.ledicom.entities.inspection.Inspection;
 import org.openjfx.utilities.Global;
 import org.openjfx.utilities.database.DatabaseInspectionController;
 
+import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -146,7 +147,7 @@ public class InspectionDoc {
 
         htmlString = htmlTemplate.htmlTop + body + htmlTemplate.htmlBottom;
         htmlString = htmlString.replace("$title", title);
-        htmlFile = new File(System.getProperty("user.home") + "/Desktop/LedicomDocs/" + title + ".html");
+        htmlFile = new File(FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "/Документы программа Ледиком/" + title + ".html");
         FileUtils.writeStringToFile(htmlFile, htmlString, StandardCharsets.UTF_8.name());
         FileOpener.openFile(htmlFile);
     }

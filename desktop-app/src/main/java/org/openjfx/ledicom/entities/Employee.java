@@ -1,5 +1,6 @@
 package org.openjfx.ledicom.entities;
 
+import org.openjfx.utilities.EmployeeValue;
 import org.openjfx.utilities.formatters.DateTimeFormatter;
 
 import java.time.LocalDate;
@@ -89,6 +90,27 @@ public class Employee {
         this.childrenNumber = childrenNumber;
         this.note = note;
         setDobAge();
+    }
+
+    public String get(EmployeeValue employeeValue) {
+        switch (employeeValue) {
+            case HIRING_DATE:
+                return getHiringDate();
+            case PPE:
+                return getPPE();
+            case DOB:
+                return getDOB();
+            case SALARY:
+                return String.valueOf(getSalary());
+            case CHILDREN_NUMBER:
+                return String.valueOf(getChildrenNumber());
+            case NOTE:
+                return getNote();
+            case PHONE:
+                return getPhone();
+            default:
+                return "";
+        }
     }
 
     @Override

@@ -19,6 +19,7 @@ import org.openjfx.utilities.comparators.DateComparator;
 import org.openjfx.utilities.comparators.IntComparator;
 import org.openjfx.utilities.database.DatabaseEmployeeController;
 import org.openjfx.utilities.database.DatabaseFacilityController;
+import org.openjfx.utilities.docs.EmployeeTableDoc;
 import org.openjfx.utilities.panels.EmployeePanel;
 
 import java.io.IOException;
@@ -72,6 +73,8 @@ public class EmployeeAllVController implements Initializable, EmployeeController
 
     @FXML
     private TextField findTF;
+    @FXML
+    private Button printButton;
 
 
     ObservableList<Employee> employeeList;
@@ -98,6 +101,8 @@ public class EmployeeAllVController implements Initializable, EmployeeController
         table.setItems(employeeList);
 
         if (valueCB.getValue() != null) {
+            table.setVisible(false);
+            printButton.setDisable(false);
             switch (valueCB.getValue()) {
                 case CHILDREN_NUMBER:
                 case SALARY:
@@ -111,6 +116,7 @@ public class EmployeeAllVController implements Initializable, EmployeeController
 
                     valueColFInt.setComparator(new IntComparator());
 
+                    findTF.setText("");
                     setEmployeeTable(filteredTableInt);
                     break;
                 case DOB:
@@ -126,6 +132,7 @@ public class EmployeeAllVController implements Initializable, EmployeeController
 
                     valueColF.setComparator(new DateComparator());
 
+                    findTF.setText("");
                     setEmployeeTable(filteredTable);
                     break;
                 default:
@@ -139,6 +146,7 @@ public class EmployeeAllVController implements Initializable, EmployeeController
 
                     valueColF.setComparator(null);
 
+                    findTF.setText("");
                     setEmployeeTable(filteredTable);
             }
         }
@@ -173,8 +181,12 @@ public class EmployeeAllVController implements Initializable, EmployeeController
     }
 
     @FXML
-    public void printTable(ActionEvent event) {
-
+    public void printTable(ActionEvent event) throws IOException {
+        if (filteredTable.isVisible()) {
+            EmployeeTableDoc.createTable(filteredTable.getItems(), valueCB.getValue(), facilityCB.getValue());
+        } else if (filteredTableInt.isVisible()) {
+            EmployeeTableDoc.createTable(filteredTableInt.getItems(), valueCB.getValue(), facilityCB.getValue());
+        }
     }
 
     @Override

@@ -8,7 +8,6 @@ import org.openjfx.utilities.Validator;
 import org.openjfx.utilities.database.DatabaseEmployeeController;
 import org.openjfx.utilities.formatters.DateFormatter;
 
-import javax.print.PrintException;
 import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 import java.io.IOException;
@@ -16,7 +15,7 @@ import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 
 public class EmployeeInfoDoc {
-    public static void createPersonalCard() throws IOException, PrintException {
+    public static void createPersonalCard() throws IOException {
 
         String title = "Личная карточка " + Global.getEmployee().getShortName();
 
