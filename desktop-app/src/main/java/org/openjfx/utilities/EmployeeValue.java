@@ -17,20 +17,6 @@ public enum EmployeeValue {
         this.name = name;
     }
 
-//    public static Comparator<String> setComparator(ObservableList<Employee> employeeList, EmployeeValue employeeValue) {
-//        switch (employeeValue) {
-//            case SALARY:
-//            case CHILDREN_NUMBER:
-//                return new IntComparator();
-//            case PPE:
-//            case DOB:
-//            case HIRING_DATE:
-//                return new DateComparator();
-//            default:
-//                return null;
-//        }
-//    }
-
     public String getValue() {
         return value;
     }

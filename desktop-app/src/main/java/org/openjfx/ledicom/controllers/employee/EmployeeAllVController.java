@@ -2,6 +2,8 @@ package org.openjfx.ledicom.controllers.employee;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -68,6 +70,10 @@ public class EmployeeAllVController implements Initializable, EmployeeController
     @FXML
     private TableColumn<Employee, Integer> valueColFInt;
 
+    @FXML
+    private TextField findTF;
+
+
     ObservableList<Employee> employeeList;
 
     @FXML
@@ -104,6 +110,8 @@ public class EmployeeAllVController implements Initializable, EmployeeController
                     filteredTable.setVisible(false);
 
                     valueColFInt.setComparator(new IntComparator());
+
+                    setEmployeeTable(filteredTableInt);
                     break;
                 case DOB:
                 case PPE:
@@ -117,6 +125,8 @@ public class EmployeeAllVController implements Initializable, EmployeeController
                     filteredTableInt.setVisible(false);
 
                     valueColF.setComparator(new DateComparator());
+
+                    setEmployeeTable(filteredTable);
                     break;
                 default:
                     valueColF.setCellValueFactory(new PropertyValueFactory<>(valueCB.getValue().getValue()));
@@ -128,14 +138,43 @@ public class EmployeeAllVController implements Initializable, EmployeeController
                     filteredTableInt.setVisible(false);
 
                     valueColF.setComparator(null);
+
+                    setEmployeeTable(filteredTable);
             }
         }
+    }
+
+    public void setEmployeeTable(TableView<Employee> table) {
+        FilteredList<Employee> filteredData = new FilteredList<>(employeeList, p -> true);
+
+        findTF.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(employee -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                return ((employee.getFirstName().toLowerCase().contains(lowerCaseFilter))
+                        || (employee.getLastName().toLowerCase().contains(lowerCaseFilter)))
+                        || (employee.getPatronymic().toLowerCase().contains(lowerCaseFilter));
+            });
+        });
+
+        SortedList<Employee> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(table.comparatorProperty());
+        table.setItems(sortedData);
     }
 
     @FXML
     public void reset(ActionEvent event) throws IOException {
         EmployeePanel.showAllEmployee();
         Global.getDetailsPane().getChildren().clear();
+    }
+
+    @FXML
+    public void printTable(ActionEvent event) {
+
     }
 
     @Override
@@ -178,5 +217,9 @@ public class EmployeeAllVController implements Initializable, EmployeeController
             });
             return row;
         });
+
+        setEmployeeTable(table);
+        setEmployeeTable(filteredTable);
+        setEmployeeTable(filteredTableInt);
     }
 }
