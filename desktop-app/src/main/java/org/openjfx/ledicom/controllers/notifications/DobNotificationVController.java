@@ -20,6 +20,7 @@ import org.openjfx.utilities.database.DatabaseNotificationController;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
@@ -47,6 +48,10 @@ public class DobNotificationVController implements Initializable, EmployeeContro
     private TextField dobNotificationsEditTF;
     @FXML
     private Text dobNotificationsPeriodText;
+    @FXML
+    private Button showOnAppStartButton;
+    @FXML
+    private Button dontShowOnAppStartButton;
 
     @FXML
     public void showDobNotificationsEditPane(ActionEvent event) {
@@ -63,7 +68,7 @@ public class DobNotificationVController implements Initializable, EmployeeContro
             dobNotificationsPeriodText.setText(String.valueOf(Validator.validateDayOfYear(dobNotificationsEditTF.getText())));
             Global.setEmployeeList(DatabaseEmployeeController.dobNotificationsEmployeeList());
             table.setItems(DatabaseEmployeeController.dobNotificationsEmployeeList());
-        } catch (DayOfYearException exception) {
+        } catch (DayOfYearException | SQLException exception) {
             System.out.println(exception.getMessage());
         }
     }
@@ -71,6 +76,16 @@ public class DobNotificationVController implements Initializable, EmployeeContro
     @FXML
     public void showFullInfo(MouseEvent event) throws IOException {
         showEmployeeDetails(table);
+    }
+
+    public void setButtons() {
+        if (DatabaseNotificationController.getOnAppStart()) {
+            showOnAppStartButton.setVisible(false);
+            dontShowOnAppStartButton.setVisible(true);
+        } else {
+            showOnAppStartButton.setVisible(true);
+            dontShowOnAppStartButton.setVisible(false);
+        }
     }
 
     @Override
@@ -88,7 +103,28 @@ public class DobNotificationVController implements Initializable, EmployeeContro
         dobCol.setComparator(new DodNotificationsComparator());
 
         table.setItems(Global.getEmployeeList());
+        table.setPlaceholder(new Label("Данные не найдены"));
 
         dobNotificationsEditTF.setTextFormatter(new TextFormatter<>(Validator.intValidationFormatter));
+
+        setButtons();
+
+        showOnAppStartButton.setOnAction(event -> {
+            try {
+                DatabaseNotificationController.setOnApStart(true);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            setButtons();
+        });
+
+        dontShowOnAppStartButton.setOnAction(event -> {
+            try {
+                DatabaseNotificationController.setOnApStart(false);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            setButtons();
+        });
     }
 }

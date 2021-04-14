@@ -4,11 +4,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static javax.swing.JOptionPane.showMessageDialog;
-
 public class DatabaseNotificationController extends DatabaseController {
 
-    public static void dobNotificationsPeriodEdit(int value) {
+    public static void dobNotificationsPeriodEdit(int value) throws SQLException {
         String sql = "create or replace function dob_notifications_period()\n" +
                 "    returns integer as\n" +
                 "$$\n" +
@@ -18,13 +16,7 @@ public class DatabaseNotificationController extends DatabaseController {
                 "$$\n" +
                 "    language 'plpgsql';";
 
-        try (
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.execute();
-        } catch (SQLException e) {
-            showMessageDialog(null, e.getMessage());
-            System.out.println(e.getMessage());
-        }
+        psExecute(sql);
     }
 
     public static int getNotificationsPeriod(String sql) {
@@ -49,4 +41,35 @@ public class DatabaseNotificationController extends DatabaseController {
         return getNotificationsPeriod(sql);
     }
 
+    public static void setOnApStart(Boolean value) throws SQLException {
+        String sql = "create or replace function dob_notifications_on_app_start() returns bool\n" +
+                "    language plpgsql\n" +
+                "as\n" +
+                "$$\n" +
+                "BEGIN\n" +
+                "    RETURN " + value.toString() + ";\n" +
+                "END;\n" +
+                "$$;";
+
+        psExecute(sql);
+    }
+
+    public static boolean getOnAppStart() {
+        String sql = "select dob_notifications_on_app_start() as value;";
+
+        boolean value = true;
+
+        try (
+                PreparedStatement ps = conn.prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                value = rs.getBoolean("value");
+            }
+            rs.close();
+        } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
+        }
+
+        return value;
+    }
 }

@@ -150,8 +150,11 @@ public class DatabaseEmployeeController extends DatabaseController {
     }
 
     public static ObservableList<Employee> dobNotificationsEmployeeList() {
-        String sql = "select * from employee_data_view " +
-                "where abs(date_part('doy', dob) - date_part('doy', current_date)) between 0 and dob_notifications_period() and is_active is not false;";
+        String sql = "select *\n" +
+                "from employee_data_view\n" +
+                "where (date_part('doy', dob) - date_part('doy', current_date) between 0 and dob_notifications_period()) or\n" +
+                "      (365 + date_part('doy', dob) - date_part('doy', current_date) between 0 and dob_notifications_period())\n" +
+                "  and is_active is not false;";
         return employeeList(sql);
     }
 

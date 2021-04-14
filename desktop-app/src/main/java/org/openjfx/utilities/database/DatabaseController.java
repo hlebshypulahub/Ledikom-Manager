@@ -32,7 +32,6 @@ public class DatabaseController {
 
     public static void psExecute(String sql) throws SQLException {
         try (
-//                Connection conn = connect();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.execute();
         } catch (SQLException e) {
