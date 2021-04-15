@@ -21,6 +21,11 @@ public class EmployeeAddVController extends EmployeeDataForm {
 
     @FXML
     public void addEmployee(ActionEvent event) {
+        if(!(categoryCB.getSelectionModel().getSelectedItem() == null || categoryCB.getValue().equals("")) && categoryAssignmentDate.getValue() == null) {
+            MyAlert.showAndWait("ERROR", "Ошибка", "Введите дату получения категории.", "");
+            return;
+        }
+
         try {
             Global.setEmployee(new Employee(Validator.validateName(lastNameTF.getText(), lastNameTF), Validator.validateName(firstNameTF.getText(), firstNameTF),
                     Validator.validateName(patronymicTF.getText(), patronymicTF), Validator.validateDate(dobDate), phoneTF.getText(), addressTF.getText(),

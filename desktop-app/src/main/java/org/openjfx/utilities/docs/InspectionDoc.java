@@ -24,7 +24,7 @@ public class InspectionDoc {
 
         body += "<p style=\"text-align: center;\">ОТЧЕТ О САМОИНСПЕКЦИИ</p>\n" +
                 "<p>&nbsp;</p>\n" +
-                "<p>Результаты самоинспекции " + Global.getFacility().getName() + " </p>\n" +
+                "<p>Результаты самоинспекции «" + Global.getFacility().getName() + "» </p>\n" +
                 "<p>по адресу: " + Global.getFacility().getFullAddress() + " </p>\n" +
                 "<p>Дата проведения: " + inspection.getDate() + " </p>\n";
 
@@ -90,7 +90,7 @@ public class InspectionDoc {
         body += "</tbody>\n" +
                 "</table>";
 
-        body += "<p>Члены комиссии:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ___________________________________</p>\n" +
+        body += "<p>Члены комиссии:&nbsp;&nbsp;&nbsp;&nbsp; ___________________________________</p>\n" +
                 "<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;___________________________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>\n" +
                 "<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;___________________________________&nbsp;&nbsp;</p>\n" +
                 "<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;___________________________________</p>\n" +
@@ -108,48 +108,51 @@ public class InspectionDoc {
         FileOpener.openFile(htmlFile);
 
         /////////////////////// Violations
-        title = "Самоинспекция " + Global.getFacility().getName() + " " + inspection.getDate() + " Нарушения";
-
-        body = "<p style=\"text-align: center;\">План поэтапного устранения выявленных несоответствий по результатам самоинспекции \""
-                + Global.getFacility().getName() + "\" , расположенной по адресу: " + Global.getFacility().getFullAddress()
-                + ",<br>от " + inspection.getDate() + " г.</p>";
-
-        body += "<table style=\"border-collapse: collapse; width: 100%;\" border=\"1\">\n" +
-                "<tbody>";
-
-        body += "<tr>\n" +
-                "<td style=\"width: 16.6667%; text-align: center;\">№<br />п/п</td>\n" +
-                "<td style=\"width: 16.6667%; text-align: center;\">Выявленные<br />нарушения</td>\n" +
-                "<td style=\"width: 16.6667%; text-align: center;\">План действий</td>\n" +
-                "<td style=\"width: 16.6667%; text-align: center;\">Ответственные<br />лица</td>\n" +
-                "<td style=\"width: 16.6667%; text-align: center;\">Срок<br />исполнения</td>\n" +
-                "<td style=\"width: 16.6667%; text-align: center;\">Отметки о<br />выполнении</td>\n" +
-                "</tr>";
-
         ObservableList<Checkup> violationList = inspection.getCheckupList().stream().filter(checkup ->
                 checkup.getViolation() != null).collect(Collectors.toCollection(FXCollections::observableArrayList));
 
-        for (int i = 0; i < violationList.size(); i++) {
+        if (!violationList.isEmpty()) {
+
+            title = "Самоинспекция " + Global.getFacility().getName() + " " + inspection.getDate() + " Нарушения";
+
+            body = "<p style=\"text-align: center;\">План поэтапного устранения выявленных несоответствий по результатам самоинспекции \""
+                    + Global.getFacility().getName() + "\" , расположенной по адресу: " + Global.getFacility().getFullAddress()
+                    + ",<br>от " + inspection.getDate() + " г.</p>";
+
+            body += "<table style=\"border-collapse: collapse; width: 100%;\" border=\"1\">\n" +
+                    "<tbody>";
+
             body += "<tr>\n" +
-                    "<td style=\"width: 16.6667%; text-align: center;\">" + (i + 1) + "." + "</td>\n" +
-                    "<td style=\"width: 16.6667%; text-align: center;\">" + violationList.get(i).getViolation().getDescription() + "</td>\n" +
-                    "<td style=\"width: 16.6667%; text-align: center;\">" + violationList.get(i).getViolation().getActionPlan() + "</td>\n" +
-                    "<td style=\"width: 16.6667%; text-align: center;\">" + violationList.get(i).getViolation().getEmployeeName() + "</td>\n" +
-                    "<td style=\"width: 16.6667%; text-align: center;\">" + (violationList.get(i).getViolation().getCorrectionTerm() == null ?
-                    "" : violationList.get(i).getViolation().getCorrectionTerm()) + "</td>\n" +
-                    "<td style=\"width: 16.6667%; text-align: center;\"></td>\n" +
+                    "<td style=\"width: 16.6667%; text-align: center;\">№<br />п/п</td>\n" +
+                    "<td style=\"width: 16.6667%; text-align: center;\">Выявленные<br />нарушения</td>\n" +
+                    "<td style=\"width: 16.6667%; text-align: center;\">План действий</td>\n" +
+                    "<td style=\"width: 16.6667%; text-align: center;\">Ответственные<br />лица</td>\n" +
+                    "<td style=\"width: 16.6667%; text-align: center;\">Срок<br />исполнения</td>\n" +
+                    "<td style=\"width: 16.6667%; text-align: center;\">Отметки о<br />выполнении</td>\n" +
                     "</tr>";
+
+            for (int i = 0; i < violationList.size(); i++) {
+                body += "<tr>\n" +
+                        "<td style=\"width: 16.6667%; text-align: center;\">" + (i + 1) + "." + "</td>\n" +
+                        "<td style=\"width: 16.6667%; text-align: center;\">" + violationList.get(i).getViolation().getDescription() + "</td>\n" +
+                        "<td style=\"width: 16.6667%; text-align: center;\">" + violationList.get(i).getViolation().getActionPlan() + "</td>\n" +
+                        "<td style=\"width: 16.6667%; text-align: center;\">" + violationList.get(i).getViolation().getEmployeeName() + "</td>\n" +
+                        "<td style=\"width: 16.6667%; text-align: center;\">" + (violationList.get(i).getViolation().getCorrectionTerm() == null ?
+                        "" : violationList.get(i).getViolation().getCorrectionTerm()) + "</td>\n" +
+                        "<td style=\"width: 16.6667%; text-align: center;\"></td>\n" +
+                        "</tr>";
+            }
+
+            body += "</tbody>\n" +
+                    "</table>";
+
+
+            htmlString = htmlTemplate.htmlTop + body + htmlTemplate.htmlBottom;
+            htmlString = htmlString.replace("$title", title);
+            htmlFile = new File(FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "/Документы программа Ледиком/" + title + ".html");
+            FileUtils.writeStringToFile(htmlFile, htmlString, StandardCharsets.UTF_8.name());
+            FileOpener.openFile(htmlFile);
         }
-
-        body += "</tbody>\n" +
-                "</table>";
-
-
-        htmlString = htmlTemplate.htmlTop + body + htmlTemplate.htmlBottom;
-        htmlString = htmlString.replace("$title", title);
-        htmlFile = new File(FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "/Документы программа Ледиком/" + title + ".html");
-        FileUtils.writeStringToFile(htmlFile, htmlString, StandardCharsets.UTF_8.name());
-        FileOpener.openFile(htmlFile);
     }
 }
 

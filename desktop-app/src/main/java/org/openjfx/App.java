@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.openjfx.utilities.MyAlert;
 import org.openjfx.utilities.database.DatabaseController;
@@ -23,9 +24,10 @@ public class App extends Application {
     public void start(Stage stage) throws IOException, SQLException {
         scene = new Scene(loadFXML("/org/openjfx/ledicom/controllers/dashboard"));
         stage.setScene(scene);
-        stage.setTitle("Ледиком Фарм");
+        stage.setTitle("Ледиком Менеджер");
         stage.show();
         stage.setMaximized(true);
+        stage.getIcons().add(new Image(App.class.getResourceAsStream("/org/openjfx/ledicom/icon.png")));
         stage.setOnCloseRequest(event -> {
             try {
                 DatabaseController.close();

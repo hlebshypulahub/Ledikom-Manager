@@ -8,9 +8,9 @@ import java.sql.SQLException;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class DatabaseController {
-    private static final String dbURL = "jdbc:postgresql://localhost:5432/postgres";
-    private static final String dbUser = "postgres";
-    private static final String dbPassword = "postgres";
+    private static final String dbURL = "jdbc:postgresql://localhost:5432/ledikom";
+    private static final String dbUser = "ledikom";
+    private static final String dbPassword = "ledikom";
     protected static Connection conn = connect();
 
     public static Connection connect() {
