@@ -31,8 +31,10 @@ sql/
 *.txt
 *.rdp
 *.png
+*.ico
 desktop-app/.idea/
 desktop-app/out/
 desktop-app/target/
 desktop-app/*.iml
 desktop-app/dependency-reduced-pom.xml
+jre/
