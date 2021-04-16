@@ -8,14 +8,21 @@ import java.sql.SQLException;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class DatabaseController {
-    private static final String dbURL = "jdbc:postgresql://localhost:5432/ledikom";
-    private static final String dbUser = "ledikom";
-    private static final String dbPassword = "ledikom";
+    //---------- external
+//    private static final String dbURL = "jdbc:postgresql://82.209.251.148:60555/inventory";
+//    private static final String dbUser = "inventory_user";
+//    private static final String dbPassword = "o5EOEPnCEvqN";
+    //---------- internal
+//    private static final String dbURL = "jdbc:postgresql://localhost:60555/inventory";
+//    private static final String dbUser = "inventory_user";
+//    private static final String dbPassword = "o5EOEPnCEvqN";
+    //---------- my
+    private static final String dbURL = "jdbc:postgresql://localhost:5432/postgres";
+    private static final String dbUser = "postgres";
+    private static final String dbPassword = "postgres";
     protected static Connection conn = connect();
 
     public static Connection connect() {
-        long startTime = System.nanoTime();
-
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(dbURL, dbUser, dbPassword);
@@ -24,8 +31,6 @@ public class DatabaseController {
             showMessageDialog(null, e.getMessage());
             System.out.println(e.getMessage());
         }
-        long elapsedTime = System.nanoTime() - startTime;
-        System.out.println(" | " + (double) elapsedTime / 1000000 + " ms");
 
         return conn;
     }

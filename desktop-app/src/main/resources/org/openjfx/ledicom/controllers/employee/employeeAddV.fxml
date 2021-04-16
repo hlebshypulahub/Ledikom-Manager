@@ -149,7 +149,7 @@
                         <Insets left="6.0" />
                      </HBox.margin>
                      <children>
-                        <Button fx:id="newPositionAddButton" mnemonicParsing="false" onAction="#showNewPositionAdd" prefHeight="25.0" prefWidth="147.0" text="Добавить новую" />
+                        <Button fx:id="newPositionAddButton" layoutX="2.0" mnemonicParsing="false" onAction="#showNewPositionAdd" prefHeight="25.0" prefWidth="147.0" text="Добавить новую" />
                         <TextField fx:id="newPositionAddTF" accessibleRoleDescription="x" layoutX="-1.0" prefHeight="25.0" prefWidth="116.0" visible="false" />
                         <Button fx:id="addNewPositionButton" layoutX="124.0" mnemonicParsing="false" onAction="#addNewPosition" prefHeight="25.0" prefWidth="25.0" text="+" visible="false">
                            <font>

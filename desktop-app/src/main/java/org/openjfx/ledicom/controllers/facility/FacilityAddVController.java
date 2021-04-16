@@ -37,5 +37,6 @@ public class FacilityAddVController extends FacilityDataForm {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Global.getFooterPane().getChildren().clear();
         super.initialize(url, resourceBundle);
+        nameTF.requestFocus();
     }
 }

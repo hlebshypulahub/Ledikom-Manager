@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane hbarPolicy="NEVER" layoutX="2.0" prefHeight="943.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.employee.EmployeeDetailsDController">
+<ScrollPane hbarPolicy="NEVER" layoutX="2.0" prefHeight="908.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.employee.EmployeeDetailsDController">
    <content>
       <AnchorPane layoutX="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1140.0" prefWidth="750.0">
          <children>
@@ -180,9 +180,9 @@
                         <Insets top="3.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox prefHeight="50.0" prefWidth="726.0">
+                  <HBox prefHeight="45.0" prefWidth="726.0">
                      <children>
-                        <ListView fx:id="contractList" prefHeight="54.0" prefWidth="726.0" />
+                        <ListView fx:id="contractList" prefHeight="34.0" prefWidth="726.0" />
                      </children>
                   </HBox>
                   <HBox>
@@ -422,7 +422,7 @@
                         </Text>
                      </children>
                   </HBox>
-                  <TableView fx:id="courseTable" prefHeight="151.0" prefWidth="726.0">
+                  <TableView fx:id="courseTable" prefHeight="107.0" prefWidth="726.0">
                     <columns>
                        <TableColumn fx:id="courseNameCol" prefWidth="249.0" text="Название" />
                        <TableColumn fx:id="courseDescriptionCol" prefWidth="207.0" text="Описание" />

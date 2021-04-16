@@ -28,7 +28,9 @@ hs_err_pid*
 exe/
 sql/
 *.docx
-todo.txt
+*.txt
+*.rdp
+*.png
 desktop-app/.idea/
 desktop-app/out/
 desktop-app/target/

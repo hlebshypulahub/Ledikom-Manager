@@ -48,5 +48,6 @@ public class EmployeeAddVController extends EmployeeDataForm {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Global.getFooterPane().getChildren().clear();
         super.initialize(url, resourceBundle);
+        lastNameTF.requestFocus();
     }
 }

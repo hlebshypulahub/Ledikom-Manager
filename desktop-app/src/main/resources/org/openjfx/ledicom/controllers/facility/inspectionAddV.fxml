@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane hbarPolicy="NEVER" prefHeight="943.0" prefWidth="1170.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.facility.InspectionAddVController">
+<ScrollPane hbarPolicy="NEVER" prefHeight="908.0" prefWidth="1170.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.facility.InspectionAddVController">
    <content>
-      <AnchorPane fx:id="viewPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="943.0" prefWidth="1170.0">
+      <AnchorPane fx:id="viewPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="908.0" prefWidth="1170.0">
          <children>
             <Label fx:id="inspectionLabel" layoutX="14.0" layoutY="14.0" prefHeight="37.0" prefWidth="1129.0" text="Проведение самоинспекции на ">
                <font>
@@ -69,7 +69,7 @@
                   </HBox>
                </children>
             </VBox>
-            <Button fx:id="addButton" defaultButton="true" layoutX="14.0" layoutY="894.0" maxHeight="35.0" maxWidth="200.0" minHeight="35.0" minWidth="200.0" mnemonicParsing="false" onAction="#addInspection" prefHeight="35.0" prefWidth="200.0" stylesheets="@../../css/style.css" text="Подтвердить">
+            <Button fx:id="addButton" defaultButton="true" layoutX="14.0" layoutY="864.0" maxHeight="35.0" maxWidth="200.0" minHeight="35.0" minWidth="200.0" mnemonicParsing="false" onAction="#addInspection" prefHeight="35.0" prefWidth="200.0" stylesheets="@../../css/style.css" text="Подтвердить">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

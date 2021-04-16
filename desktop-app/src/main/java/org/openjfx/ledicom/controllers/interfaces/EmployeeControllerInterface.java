@@ -23,6 +23,7 @@ public interface EmployeeControllerInterface {
         if(table.getSelectionModel().getSelectedIndex() >= 0) {
             Global.setEmployee(DatabaseEmployeeController.getEmployee(table.getSelectionModel().getSelectedItem().getEmployeeId()));
             EmployeePanel.showEmployeeDetails();
+            EmployeePanel.showEmployeeManagement();
         }
     }
 

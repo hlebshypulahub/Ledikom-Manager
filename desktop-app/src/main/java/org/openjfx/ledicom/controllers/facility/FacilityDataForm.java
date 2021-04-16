@@ -7,8 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
-import javafx.scene.input.MouseEvent;
-import org.kordamp.ikonli.javafx.FontIcon;
 import org.openjfx.utilities.Validator;
 import org.openjfx.utilities.database.DatabaseEnumsController;
 
@@ -29,7 +27,7 @@ public class FacilityDataForm implements Initializable {
     @FXML
     protected TextField newStatusAddTF;
     @FXML
-    protected FontIcon newStatusAddFI;
+    protected Button newStatusShowButton;
     @FXML
     protected TextField scheduleTF;
     @FXML
@@ -42,9 +40,9 @@ public class FacilityDataForm implements Initializable {
     protected TextField emailTF;
 
     @FXML
-    void addNewStatus(MouseEvent event) {
+    void addNewStatus(ActionEvent event) {
         newStatusAddButton.setVisible(true);
-        newStatusAddFI.setVisible(false);
+        newStatusShowButton.setVisible(false);
         newStatusAddTF.setVisible(false);
         statusCB.getItems().clear();
         statusCB.getItems().addAll(Objects.requireNonNull(DatabaseEnumsController.addNewFacilityStatus(newStatusAddTF.getText())));
@@ -54,7 +52,7 @@ public class FacilityDataForm implements Initializable {
     @FXML
     void showNewStatusAdd(ActionEvent event) {
         newStatusAddButton.setVisible(false);
-        newStatusAddFI.setVisible(true);
+        newStatusShowButton.setVisible(true);
         newStatusAddTF.setVisible(true);
     }
 
