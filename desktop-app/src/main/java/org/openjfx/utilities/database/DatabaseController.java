@@ -9,17 +9,17 @@ import static javax.swing.JOptionPane.showMessageDialog;
 
 public class DatabaseController {
     //---------- external
-//    private static final String dbURL = "jdbc:postgresql://82.209.251.148:60555/inventory";
-//    private static final String dbUser = "inventory_user";
-//    private static final String dbPassword = "o5EOEPnCEvqN";
+    private static final String dbURL = "jdbc:postgresql://82.209.251.148:60555/inventory";
+    private static final String dbUser = "inventory_user";
+    private static final String dbPassword = "o5EOEPnCEvqN";
     //---------- internal
 //    private static final String dbURL = "jdbc:postgresql://localhost:60555/inventory";
 //    private static final String dbUser = "inventory_user";
 //    private static final String dbPassword = "o5EOEPnCEvqN";
     //---------- my
-    private static final String dbURL = "jdbc:postgresql://localhost:5432/postgres";
-    private static final String dbUser = "postgres";
-    private static final String dbPassword = "postgres";
+//    private static final String dbURL = "jdbc:postgresql://localhost:5432/postgres";
+//    private static final String dbUser = "postgres";
+//    private static final String dbPassword = "postgres";
     protected static Connection conn = connect();
 
     public static Connection connect() {

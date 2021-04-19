@@ -160,6 +160,7 @@ public class DatabaseFacilityController extends DatabaseController {
         facility.setEmail(rs.getString("email"));
         facility.setSchedule(rs.getString("schedule"));
         facility.setStatus(rs.getString("status"));
+        facility.setNumber();
         facility.setFullAddress();
     }
 }

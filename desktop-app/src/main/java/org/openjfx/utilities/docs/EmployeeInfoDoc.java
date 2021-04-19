@@ -21,7 +21,7 @@ public class EmployeeInfoDoc {
 
         String body = "<p><strong>ЧТПУП «Ледиком»&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;" +
                 "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;" +
-                "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><strong>" + DateFormatter.format(LocalDate.now()) + "&nbsp; г.</strong></p>\n";
+                "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><strong>" + DateFormatter.format(LocalDate.now()) + " г.</strong></p>\n";
 
         body += fillForm();
 
@@ -90,13 +90,20 @@ public class EmployeeInfoDoc {
 
         ObservableList<String> employeeContractList = DatabaseEmployeeController.employeeContractList();
 
-        if (employeeContractList != null) {
+        assert employeeContractList != null;
+        if (!employeeContractList.isEmpty()) {
             for (int i = 0; i < employeeContractList.size(); i++) {
                 body += "<tr>\n" +
                         "<td style=\"width: 32.2443%;\">" + (i == 0 ? "2.1. Контракт" : "") + "</td>\n" +
                         "<td style=\"width: 67.7557%;\">&nbsp; &nbsp; &nbsp; &nbsp;" + employeeContractList.get(i) + "</td>\n" +
                         "</tr>";
             }
+        } else {
+            System.out.println("!!!");
+            body += "<tr>\n" +
+                    "<td style=\"width: 32.2443%;\">2.1. Контракт</td>\n" +
+                    "<td style=\"width: 67.7557%;\"></td>\n" +
+                    "</tr>";
         }
 
         body += "<tr>\n" +
@@ -105,8 +112,8 @@ public class EmployeeInfoDoc {
                 "</tr>\n" +
                 "<tr>\n" +
                 "<td style=\"width: 32.2443%;\">2.3. Категория</td>\n" +
-                "<td style=\"width: 67.7557%;\">&nbsp; &nbsp; &nbsp; &nbsp;" + (Global.getEmployee().getCategory() == null ? "" : Global.getEmployee().getCategory() + " ( номер "
-                + Validator.validateString(Global.getEmployee().getCategoryNum()) + ", дата получения " + Validator.validateString(Global.getEmployee().getCategoryAssignmentDate()) + " )") + "</td>\n" +
+                "<td style=\"width: 67.7557%;\">&nbsp; &nbsp; &nbsp; &nbsp;" + (Global.getEmployee().getCategory() == null ? "" : Global.getEmployee().getCategory() + " (" + (Global.getEmployee().getCategoryNum().equals("") ? "" : " номер "
+                + Global.getEmployee().getCategoryNum() + ",") + " дата получения " + Global.getEmployee().getCategoryAssignmentDate() + " )") + "</td>\n" +
                 "</tr>\n" +
                 "<tr>\n" +
                 "<td style=\"width: 32.2443%;\">2.4. Оклад</td>\n" +

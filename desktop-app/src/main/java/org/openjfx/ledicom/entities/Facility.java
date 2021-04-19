@@ -12,6 +12,7 @@ public class Facility {
     String email;
     String code;
     int id;
+    int number;
 
     public Facility() {
     }
@@ -26,6 +27,7 @@ public class Facility {
         this.phone = phone;
         this.email = email;
         this.fullAddress = city + ", " + address;
+        setNumber();
     }
 
     public Facility(int id, String name, String status, String category, String schedule, String city, String address, String phone, String email) {
@@ -39,6 +41,7 @@ public class Facility {
         this.phone = phone;
         this.email = email;
         this.fullAddress = city + ", " + address;
+        setNumber();
     }
 
     public Facility(String name, String status, String category, String schedule, String city, String address, String phone, String email, String code) {
@@ -52,6 +55,7 @@ public class Facility {
         this.email = email;
         this.code = code;
         this.fullAddress = city + ", " + address;
+        setNumber();
     }
 
     public Facility(int id, String name, String status, String category, String schedule, String city, String address, String phone, String email, String code) {
@@ -66,11 +70,21 @@ public class Facility {
         this.email = email;
         this.code = code;
         this.fullAddress = city + ", " + address;
+        setNumber();
     }
 
     @Override
     public String toString() {
         return getName();
+    }
+
+    public void setNumber() {
+        String temp = name;
+        number = temp.replaceAll("\\D+","").isEmpty() ? 0 : Integer.parseInt(temp.replaceAll("\\D+",""));
+    }
+
+    public int getNumber() {
+        return number;
     }
 
     public String getFullAddress() {

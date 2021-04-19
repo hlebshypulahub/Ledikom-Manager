@@ -15,6 +15,7 @@ import org.openjfx.utilities.panels.FacilityPanel;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Comparator;
 import java.util.ResourceBundle;
 
 public class FacilityAllVController implements Initializable, FacilityControllerInterface {
@@ -45,6 +46,15 @@ public class FacilityAllVController implements Initializable, FacilityController
         addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
         scheduleCol.setCellValueFactory(new PropertyValueFactory<>("schedule"));
         table.setItems(DatabaseFacilityController.allFacilityList());
+
+        nameCol.setComparator(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                Integer r1 = o1.replaceAll("\\D+", "").isEmpty() ? 0 : Integer.parseInt(o1.replaceAll("\\D+", ""));
+                Integer r2 = o2.replaceAll("\\D+", "").isEmpty() ? 0 : Integer.parseInt(o2.replaceAll("\\D+", ""));
+                return r1.compareTo(r2);
+            }
+        });
 
         table.setRowFactory(event -> {
             TableRow<Facility> row = new TableRow<>();

@@ -133,8 +133,8 @@ public class EmployeeDetailsDController implements Initializable {
         eduNameText.setText(edu.getName());
         eduGraduationDateText.setText(edu.getGraduationDate());
 
-        categoryText.setText(Global.getEmployee().getCategory() == null ? "" : Global.getEmployee().getCategory() + " ( номер "
-                + Global.getEmployee().getCategoryNum() + ", дата получения " + Global.getEmployee().getCategoryAssignmentDate() + " )");
+        categoryText.setText(Global.getEmployee().getCategory() == null ? "" : Global.getEmployee().getCategory() + " (" + (Global.getEmployee().getCategoryNum().equals("") ? "" : " номер "
+                + Global.getEmployee().getCategoryNum() + ",") + " дата получения " + Global.getEmployee().getCategoryAssignmentDate() + " )");
 
         courseNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         courseDescriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
