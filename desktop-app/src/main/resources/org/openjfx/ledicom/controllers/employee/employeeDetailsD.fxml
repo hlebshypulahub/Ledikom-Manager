@@ -145,12 +145,12 @@
                   </HBox>
                   <HBox prefHeight="15.0" prefWidth="573.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Кол-во детей:" wrappingWidth="120.0">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Дети:" wrappingWidth="120.0">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Text>
-                        <Text fx:id="childrenNumberText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="451.9771728515625">
+                        <Text fx:id="childrenDataText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="451.9771728515625">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -425,7 +425,7 @@
                   <TableView fx:id="courseTable" prefHeight="107.0" prefWidth="726.0">
                     <columns>
                        <TableColumn fx:id="courseNameCol" prefWidth="249.0" text="Название" />
-                       <TableColumn fx:id="courseDescriptionCol" prefWidth="207.0" text="Описание" />
+                       <TableColumn fx:id="courseDescriptionCol" prefWidth="207.0" text="Примечание" />
                        <TableColumn fx:id="courseHoursCol" prefWidth="66.0" text="Часы" />
                        <TableColumn fx:id="courseStartCol" prefWidth="94.0" text="Начало" />
                        <TableColumn fx:id="courseEndCol" prefWidth="95.0" text="Конец" />

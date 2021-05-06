@@ -1,6 +1,6 @@
 package org.openjfx.ledicom.entities;
 
-import org.openjfx.utilities.EmployeeValue;
+import org.openjfx.utilities.EmployeeTableValue;
 import org.openjfx.utilities.formatters.DateTimeFormatter;
 
 import java.time.LocalDate;
@@ -29,7 +29,7 @@ public class Employee {
     private String maternityStartDate;
     private String maternityEndDate;
     private int dobAge;
-    private int childrenNumber;
+    private String childrenData;
     private String note;
 
     public Employee() {
@@ -40,7 +40,7 @@ public class Employee {
                     String PPE, String hiringDate,
                     String position, String category, String categoryNum, String categoryAssignmentDate,
                     String maternityStartDate, String maternityEndDate, String fiveYearStart, String fiveYearEnd,
-                    Integer childrenNumber, String note) {
+                    String childrenData, String note) {
         this.id = id;
         this.firstName = firstName;
         this.patronymic = patronymic;
@@ -59,7 +59,7 @@ public class Employee {
         this.maternityEndDate = maternityEndDate;
         this.fiveYearStart = fiveYearStart;
         this.fiveYearEnd = fiveYearEnd;
-        this.childrenNumber = childrenNumber;
+        this.childrenData = childrenData;
         this.note = note;
         setDobAge();
     }
@@ -69,7 +69,7 @@ public class Employee {
                     String PPE, String hiringDate,
                     String position, String category, String categoryNum, String categoryAssignmentDate,
                     String maternityStartDate, String maternityEndDate, String fiveYearStart, String fiveYearEnd,
-                    Integer childrenNumber, String note) {
+                    String childrenData, String note) {
         this.firstName = firstName;
         this.patronymic = patronymic;
         this.lastName = lastName;
@@ -87,13 +87,13 @@ public class Employee {
         this.maternityEndDate = maternityEndDate;
         this.fiveYearStart = fiveYearStart;
         this.fiveYearEnd = fiveYearEnd;
-        this.childrenNumber = childrenNumber;
+        this.childrenData = childrenData;
         this.note = note;
         setDobAge();
     }
 
-    public String get(EmployeeValue employeeValue) {
-        switch (employeeValue) {
+    public String get(EmployeeTableValue employeeTableValue) {
+        switch (employeeTableValue) {
             case HIRING_DATE:
                 return getHiringDate();
             case PPE:
@@ -102,8 +102,8 @@ public class Employee {
                 return getDOB();
             case SALARY:
                 return String.valueOf(getSalary());
-            case CHILDREN_NUMBER:
-                return String.valueOf(getChildrenNumber());
+            case CHILDREN_DATA:
+                return String.valueOf(getChildrenData());
             case NOTE:
                 return getNote();
             case PHONE:
@@ -118,12 +118,12 @@ public class Employee {
         return getFullName();
     }
 
-    public int getChildrenNumber() {
-        return childrenNumber;
+    public String getChildrenData() {
+        return childrenData;
     }
 
-    public void setChildrenNumber(Integer childrenNumber) {
-        this.childrenNumber = childrenNumber;
+    public void setChildrenData(String childrenData) {
+        this.childrenData = childrenData;
     }
 
     public String getNote() {

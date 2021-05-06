@@ -4,7 +4,7 @@ import javafx.collections.ObservableList;
 import org.apache.commons.io.FileUtils;
 import org.openjfx.ledicom.entities.Employee;
 import org.openjfx.ledicom.entities.Facility;
-import org.openjfx.utilities.EmployeeValue;
+import org.openjfx.utilities.EmployeeTableValue;
 import org.openjfx.utilities.Validator;
 import org.openjfx.utilities.formatters.DateFormatter;
 
@@ -15,9 +15,9 @@ import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 
 public class EmployeeTableDoc {
-    public static void createTable(ObservableList<Employee> employeeList, EmployeeValue employeeValue, Facility facility) throws IOException {
+    public static void createTable(ObservableList<Employee> employeeList, EmployeeTableValue employeeTableValue, Facility facility) throws IOException {
 
-        String title = "Список сотрудников" + (facility == null ? "" : " «" + facility.getName() + "»") + " (" + Validator.validateString(employeeValue.getName()) + ") ";
+        String title = "Список сотрудников" + (facility == null ? "" : " «" + facility.getName() + "»") + " (" + Validator.validateString(employeeTableValue.getName()) + ") ";
 
         String body = "<p><strong>ЧТПУП \"Ледиком\"&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;" +
                 "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;" +
@@ -34,7 +34,7 @@ public class EmployeeTableDoc {
                 "<td style=\"width: 21.0227%; text-align: center;\"><strong>Фамилия</strong></td>\n" +
                 "<td style=\"width: 20.8807%; text-align: center;\"><strong>Имя</strong></td>\n" +
                 "<td style=\"width: 23.1534%; text-align: center;\"><strong>Отчество</strong></td>\n" +
-                "<td style=\"width: 26.8466%; text-align: center;\"><strong>" + Validator.validateString(employeeValue.getName()) + "</strong></td>\n" +
+                "<td style=\"width: 26.8466%; text-align: center;\"><strong>" + Validator.validateString(employeeTableValue.getName()) + "</strong></td>\n" +
                 "</tr>";
 
         for (int i = 0; i < employeeList.size(); i++) {
@@ -43,7 +43,7 @@ public class EmployeeTableDoc {
                     "<td style=\"width: 21.0227%;\">&nbsp;" + Validator.validateString(employeeList.get(i).getLastName()) + "</td>\n" +
                     "<td style=\"width: 20.8807%;\">&nbsp;" + Validator.validateString(employeeList.get(i).getFirstName()) + "</td>\n" +
                     "<td style=\"width: 23.1534%;\">&nbsp;" + Validator.validateString(employeeList.get(i).getPatronymic()) + "</td>\n" +
-                    "<td style=\"width: 26.8466%;\">&nbsp;" + Validator.validateString(employeeList.get(i).get(employeeValue)) + "</td>\n" +
+                    "<td style=\"width: 26.8466%;\">&nbsp;" + Validator.validateString(employeeList.get(i).get(employeeTableValue)) + "</td>\n" +
                     "</tr>";
         }
 

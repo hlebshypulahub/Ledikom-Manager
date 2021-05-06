@@ -110,12 +110,13 @@
             </HBox>
             <HBox prefHeight="19.0" prefWidth="553.0">
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Количество детей:">
+                  <Label prefHeight="25.0" prefWidth="250.0" text="Дети:">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="childrenNumberTF" prefHeight="25.0" prefWidth="300.0" promptText="Количество детей" />
+                  <TextField fx:id="childrenNumberTF" prefHeight="25.0" prefWidth="83.0" promptText="Количество" />
+                  <TextField fx:id="childrenDobTF" prefHeight="25.0" prefWidth="217.0" promptText="Дата(ы) рождения" />
                </children>
                <VBox.margin>
                   <Insets top="3.0" />
@@ -324,12 +325,12 @@
             </HBox>
             <HBox>
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Описание:">
+                  <Label prefHeight="25.0" prefWidth="250.0" text="Примечание:">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="courseDescriptionTF" prefHeight="25.0" prefWidth="350.0" promptText="Описание" />
+                  <TextField fx:id="courseDescriptionTF" prefHeight="25.0" prefWidth="350.0" promptText="Примечание" />
                </children>
                <VBox.margin>
                   <Insets top="3.0" />

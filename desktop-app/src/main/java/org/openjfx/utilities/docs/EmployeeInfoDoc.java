@@ -75,8 +75,8 @@ public class EmployeeInfoDoc {
                 "<td style=\"width: 67.7557%;\">&nbsp; &nbsp; &nbsp; &nbsp;" + Validator.validateString(Global.getEmployee().getAddress()) + "</td>\n" +
                 "</tr>\n" +
                 "<tr>\n" +
-                "<td style=\"width: 32.2443%;\">1.7. Количество детей</td>\n" +
-                "<td style=\"width: 67.7557%;\">&nbsp; &nbsp; &nbsp; &nbsp;" + Global.getEmployee().getChildrenNumber() + "</td>\n" +
+                "<td style=\"width: 32.2443%;\">1.7. Дети</td>\n" +
+                "<td style=\"width: 67.7557%;\">&nbsp; &nbsp; &nbsp; &nbsp;" + Global.getEmployee().getChildrenData() + "</td>\n" +
                 "</tr>\n" +
                 "</tbody>\n" +
                 "</table>";

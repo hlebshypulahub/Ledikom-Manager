@@ -57,7 +57,7 @@ public class EmployeeDetailsDController implements Initializable {
     @FXML
     private Text maternityText;
     @FXML
-    private Text childrenNumberText;
+    private Text childrenDataText;
     @FXML
     private Text noteText;
     @FXML
@@ -125,7 +125,7 @@ public class EmployeeDetailsDController implements Initializable {
         maternityText.setText(Global.getEmployee().getMaternityStartDate() == null
                 || Global.getEmployee().getMaternityEndDate() == null ? ""
                 : Global.getEmployee().getMaternityStartDate() + " - " + Global.getEmployee().getMaternityEndDate());
-        childrenNumberText.setText(String.valueOf(Global.getEmployee().getChildrenNumber()));
+        childrenDataText.setText(Global.getEmployee().getChildrenData());
         noteText.setText(Global.getEmployee().getNote());
 
         Edu edu = DatabaseEmployeeController.getEmployeeEdu();

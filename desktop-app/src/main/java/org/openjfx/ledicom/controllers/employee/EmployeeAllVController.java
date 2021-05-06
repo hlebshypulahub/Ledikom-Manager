@@ -13,8 +13,10 @@ import javafx.scene.input.MouseEvent;
 import org.openjfx.ledicom.controllers.interfaces.EmployeeControllerInterface;
 import org.openjfx.ledicom.entities.Employee;
 import org.openjfx.ledicom.entities.Facility;
-import org.openjfx.utilities.EmployeeValue;
+import org.openjfx.utilities.EmployeeTableValue;
 import org.openjfx.utilities.Global;
+import org.openjfx.utilities.TableDoubleClickSetter;
+import org.openjfx.utilities.comparators.ChildrenDataComparator;
 import org.openjfx.utilities.comparators.DateComparator;
 import org.openjfx.utilities.comparators.IntComparator;
 import org.openjfx.utilities.database.DatabaseEmployeeController;
@@ -47,7 +49,7 @@ public class EmployeeAllVController implements Initializable, EmployeeController
     @FXML
     private ComboBox<Facility> facilityCB;
     @FXML
-    private ComboBox<EmployeeValue> valueCB;
+    private ComboBox<EmployeeTableValue> valueCB;
 
     @FXML
     private TableView<Employee> filteredTable;
@@ -104,7 +106,6 @@ public class EmployeeAllVController implements Initializable, EmployeeController
             table.setVisible(false);
             printButton.setDisable(false);
             switch (valueCB.getValue()) {
-                case CHILDREN_NUMBER:
                 case SALARY:
                     valueColFInt.setCellValueFactory(new PropertyValueFactory<>(valueCB.getValue().getValue()));
                     valueColFInt.setText(valueCB.getValue().getName());
@@ -131,6 +132,20 @@ public class EmployeeAllVController implements Initializable, EmployeeController
                     filteredTableInt.setVisible(false);
 
                     valueColF.setComparator(new DateComparator());
+
+                    findTF.setText("");
+                    setEmployeeTable(filteredTable);
+                    break;
+                case CHILDREN_DATA:
+                    valueColF.setCellValueFactory(new PropertyValueFactory<>(valueCB.getValue().getValue()));
+                    valueColF.setText(valueCB.getValue().getName());
+
+                    filteredTable.setItems(employeeList);
+                    filteredTable.setVisible(true);
+
+                    filteredTableInt.setVisible(false);
+
+                    valueColF.setComparator(new ChildrenDataComparator());
 
                     findTF.setText("");
                     setEmployeeTable(filteredTable);
@@ -213,25 +228,12 @@ public class EmployeeAllVController implements Initializable, EmployeeController
         filteredTableInt.setPlaceholder(new Label("Данные не найдены"));
 
         facilityCB.setItems(DatabaseFacilityController.allFacilityList());
-        valueCB.setItems(Arrays.stream(EmployeeValue.values()).collect(Collectors.toCollection(FXCollections::observableArrayList)));
+        valueCB.setItems(Arrays.stream(EmployeeTableValue.values()).collect(Collectors.toCollection(FXCollections::observableArrayList)));
 
-        table.setRowFactory(event -> {
-            TableRow<Employee> row = new TableRow<>();
-            row.setOnMouseClicked(e -> {
-                if (e.getClickCount() == 2 && (!row.isEmpty())) {
-                    try {
-                        Global.setEmployee(table.getSelectionModel().getSelectedItem());
-                        EmployeePanel.showEmployeeEdit();
-                    } catch (IOException ioException) {
-                        ioException.printStackTrace();
-                    }
-                }
-            });
-            return row;
-        });
+        TableDoubleClickSetter.setEmployeeTable(table);
+        TableDoubleClickSetter.setEmployeeTable(filteredTableInt);
+        TableDoubleClickSetter.setEmployeeTable(filteredTable);
 
         setEmployeeTable(table);
-        setEmployeeTable(filteredTable);
-        setEmployeeTable(filteredTableInt);
     }
 }

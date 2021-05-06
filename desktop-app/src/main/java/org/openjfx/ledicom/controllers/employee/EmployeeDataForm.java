@@ -85,6 +85,8 @@ public class EmployeeDataForm implements Initializable {
     @FXML
     protected TextField childrenNumberTF;
     @FXML
+    protected TextField childrenDobTF;
+    @FXML
     protected TextField noteTF;
 
     @FXML
@@ -106,7 +108,7 @@ public class EmployeeDataForm implements Initializable {
 
     @FXML
     public void addCourse(ActionEvent event) throws IOException {
-        if (courseStartDate == null || courseEndDate == null) {
+        if (courseStartDate.getEditor().getText().equals("") || courseEndDate.getEditor().getText().equals("")) {
             MyAlert.showAndWait("ERROR", "Ошибка", "Впишите даты курсов", "");
         } else {
             try {
@@ -129,7 +131,7 @@ public class EmployeeDataForm implements Initializable {
 
     @FXML
     public void addEdu(ActionEvent event) throws IOException, SQLException {
-        if (eduGraduationDate.getValue() == null) {
+        if (eduGraduationDate.getEditor().getText().equals("")) {
             MyAlert.showAndWait("ERROR", "Ошибка", "Впишите дату окончания учреждения", "");
         } else {
             DatabaseEmployeeController.addEdu(new Edu(eduNameTF.getText(), Validator.validateDate(eduGraduationDate)));

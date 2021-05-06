@@ -53,7 +53,7 @@ public class DatabaseEmployeeController extends DatabaseController {
             rs.close();
 
             sql = "insert into employee_info (id_employee, dob, phone, address, salary, ppe, hiring_date, " +
-                    "position, category, category_num, category_assignment_date, maternity_start_date, maternity_end_date, five_year_start, five_year_end, children_number, note) " +
+                    "position, category, category_num, category_assignment_date, maternity_start_date, maternity_end_date, five_year_start, five_year_end, children_data, note) " +
                     "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
             try (PreparedStatement ps2 = conn.prepareStatement(sql)) {
                 ps2.setInt(1, employeeId);
@@ -71,7 +71,7 @@ public class DatabaseEmployeeController extends DatabaseController {
                 ps2.setDate(13, SqlDateStringConverter.stringToSqlDate(employee.getMaternityEndDate()));
                 ps2.setDate(14, SqlDateStringConverter.stringToSqlDate(employee.getFiveYearStart()));
                 ps2.setDate(15, SqlDateStringConverter.stringToSqlDate(employee.getFiveYearEnd()));
-                ps2.setInt(16, employee.getChildrenNumber());
+                ps2.setString(16, employee.getChildrenData());
                 ps2.setString(17, employee.getNote());
                 ps2.execute();
             }
@@ -110,7 +110,7 @@ public class DatabaseEmployeeController extends DatabaseController {
                     "    maternity_end_date = ?, " +
                     "    five_year_start = ?, " +
                     "    five_year_end = ?, " +
-                    "    children_number = ?, " +
+                    "    children_data = ?, " +
                     "    note = ? " +
                     "where id_employee = ?;";
 
@@ -129,7 +129,7 @@ public class DatabaseEmployeeController extends DatabaseController {
                 ps2.setDate(12, SqlDateStringConverter.stringToSqlDate(Global.getEmployee().getMaternityEndDate()));
                 ps2.setDate(13, SqlDateStringConverter.stringToSqlDate(Global.getEmployee().getFiveYearStart()));
                 ps2.setDate(14, SqlDateStringConverter.stringToSqlDate(Global.getEmployee().getFiveYearEnd()));
-                ps2.setInt(15, Global.getEmployee().getChildrenNumber());
+                ps2.setString(15, Global.getEmployee().getChildrenData());
                 ps2.setString(16, Global.getEmployee().getNote());
                 ps2.setInt(17, Global.getEmployee().getId());
 
@@ -217,7 +217,7 @@ public class DatabaseEmployeeController extends DatabaseController {
         employee.setCategoryAssignmentDate(SqlDateStringConverter.sqlDateToString(rs.getDate("category_assignment_date")));
         employee.setMaternityStartDate(SqlDateStringConverter.sqlDateToString(rs.getDate("maternity_start_date")));
         employee.setMaternityEndDate(SqlDateStringConverter.sqlDateToString(rs.getDate("maternity_end_date")));
-        employee.setChildrenNumber(rs.getInt("children_number"));
+        employee.setChildrenData(rs.getString("children_data"));
         employee.setNote(rs.getString("note"));
         employee.setDobAge();
     }

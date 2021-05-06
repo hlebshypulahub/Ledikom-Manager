@@ -16,7 +16,7 @@
 
 <AnchorPane id="Content" fx:id="viewPane" minHeight="-1.0" minWidth="-1.0" prefHeight="689.0" prefWidth="564.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.employee.EmployeeAddVController">
    <children>
-      <VBox fx:id="infoVBox" layoutX="14.0" layoutY="14.0" prefHeight="586.0" prefWidth="550.0">
+      <VBox fx:id="infoVBox" layoutX="41.0" layoutY="14.0" prefHeight="586.0" prefWidth="550.0">
          <children>
             <Label alignment="CENTER" prefHeight="21.0" prefWidth="550.0" text="Введите данные:">
                <font>
@@ -114,12 +114,13 @@
             </HBox>
             <HBox prefHeight="19.0" prefWidth="553.0">
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Количество детей:">
+                  <Label prefHeight="25.0" prefWidth="250.0" text="Дети:">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="childrenNumberTF" prefHeight="25.0" prefWidth="300.0" promptText="Количество детей" />
+                  <TextField fx:id="childrenNumberTF" prefHeight="25.0" prefWidth="83.0" promptText="Количество" />
+                  <TextField fx:id="childrenDobTF" prefHeight="25.0" prefWidth="217.0" promptText="Дата(ы) рождения" />
                </children>
                <VBox.margin>
                   <Insets top="3.0" />
