@@ -35,7 +35,7 @@ public class EmployeeAddVController extends EmployeeDataForm {
                     StringToIntegerConverter.convert(childrenNumberTF.getText()), noteTF.getText()));
 
             if (DatabaseEmployeeController.addEmployee(Global.getEmployee())) {
-                Global.setEmployeeList(DatabaseEmployeeController.allEmployeeList());
+                //Global.setEmployeeList(DatabaseEmployeeController.allEmployeeList());
                 MyAlert.showAndWait("INFORMATION", "", "Сотрудник " + Global.getEmployee().getFullName() + " добавлен!", "");
                 EmployeePanel.showEmployeeAdd();
             }

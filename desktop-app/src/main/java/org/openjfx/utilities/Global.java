@@ -1,6 +1,5 @@
 package org.openjfx.utilities;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -15,7 +14,7 @@ public final class Global {
     private static AnchorPane detailsPane;
     @FXML
     private static Pane footerPane;
-    private static ObservableList<Employee> employeeList;
+
     private static Employee employee;
     private static Facility facility;
 
@@ -50,16 +49,6 @@ public final class Global {
     public static void setEmployee(Employee employee) {
         Global.employee = employee;
     }
-
-    public static ObservableList<Employee> getEmployeeList() {
-        return employeeList;
-    }
-
-    public static void setEmployeeList(ObservableList<Employee> employeeList) {
-        Global.employeeList = employeeList;
-    }
-
-//    private Global() {}
 
     public static AnchorPane getViewPane() {
         return viewPane;

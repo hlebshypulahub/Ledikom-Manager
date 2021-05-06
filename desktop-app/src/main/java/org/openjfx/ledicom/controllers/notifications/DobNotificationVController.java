@@ -9,14 +9,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-import org.openjfx.utilities.exceptions.DayOfYearException;
 import org.openjfx.ledicom.controllers.interfaces.EmployeeControllerInterface;
 import org.openjfx.ledicom.entities.Employee;
-import org.openjfx.utilities.Global;
 import org.openjfx.utilities.Validator;
 import org.openjfx.utilities.comparators.DodNotificationsComparator;
 import org.openjfx.utilities.database.DatabaseEmployeeController;
 import org.openjfx.utilities.database.DatabaseNotificationController;
+import org.openjfx.utilities.exceptions.DayOfYearException;
 
 import java.io.IOException;
 import java.net.URL;
@@ -66,7 +65,7 @@ public class DobNotificationVController implements Initializable, EmployeeContro
             dobNotificationsEditPane.setVisible(false);
             dobNotificationsEditButton.setVisible(true);
             dobNotificationsPeriodText.setText(String.valueOf(Validator.validateDayOfYear(dobNotificationsEditTF.getText())));
-            Global.setEmployeeList(DatabaseEmployeeController.dobNotificationsEmployeeList());
+            //Global.setEmployeeList(DatabaseEmployeeController.dobNotificationsEmployeeList());
             table.setItems(DatabaseEmployeeController.dobNotificationsEmployeeList());
         } catch (DayOfYearException | SQLException exception) {
             System.out.println(exception.getMessage());
@@ -92,8 +91,8 @@ public class DobNotificationVController implements Initializable, EmployeeContro
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<Employee> list = DatabaseEmployeeController.dobNotificationsEmployeeList();
-        Global.setEmployeeList(DatabaseEmployeeController.dobNotificationsEmployeeList());
-        Global.getEmployeeList().sort(Comparator.comparing(e -> LocalDate.parse(e.getDOB(), DateTimeFormatter.ofPattern("dd.MM.yyyy")).getDayOfYear()));
+        //Global.setEmployeeList(DatabaseEmployeeController.dobNotificationsEmployeeList());
+        list.sort(Comparator.comparing(e -> LocalDate.parse(e.getDOB(), DateTimeFormatter.ofPattern("dd.MM.yyyy")).getDayOfYear()));
         dobNotificationsPeriodText.setText(String.valueOf(DatabaseNotificationController.getDobNotificationsPeriod()));
 
         firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
@@ -103,7 +102,7 @@ public class DobNotificationVController implements Initializable, EmployeeContro
         ageCol.setCellValueFactory(new PropertyValueFactory<>("dobAge"));
         dobCol.setComparator(new DodNotificationsComparator());
 
-        table.setItems(Global.getEmployeeList());
+        table.setItems(list);
         table.setPlaceholder(new Label("Данные не найдены"));
 
         dobNotificationsEditTF.setTextFormatter(new TextFormatter<>(Validator.intValidationFormatter));

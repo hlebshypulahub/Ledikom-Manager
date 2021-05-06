@@ -48,7 +48,6 @@ public class InspectionDoc {
 
         ObservableList<CheckupType> checkupTypeList = DatabaseInspectionController.CheckupTypes();
 
-        int type = 0;
         for (int i = 0; i < Objects.requireNonNull(checkupTypeList).size(); i++) {
             int finalI = i;
             ObservableList<Checkup> checkupTempList = inspection.getCheckupList().stream().filter(checkup -> checkup.getQuestion().getCheckupType().getId() == checkupTypeList.get(finalI).getId())

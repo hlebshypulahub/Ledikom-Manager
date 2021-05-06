@@ -21,59 +21,9 @@
             <version>16-ea+1</version>
         </dependency>
         <dependency>
-            <groupId>org.kordamp.ikonli</groupId>
-            <artifactId>ikonli-javafx</artifactId>
-            <version>12.2.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.kordamp.ikonli</groupId>
-            <artifactId>ikonli-remixicon-pack</artifactId>
-            <version>12.2.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.kordamp.ikonli</groupId>
-            <artifactId>ikonli-fontawesome-pack</artifactId>
-            <version>12.2.0</version>
-        </dependency>
-        <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.2.18</version>
-        </dependency>
-        <dependency>
-            <groupId>org.docx4j</groupId>
-            <artifactId>docx4j-JAXB-MOXy</artifactId>
-            <version>8.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.5</version>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.xml.bind</groupId>
-            <artifactId>jakarta.xml.bind-api</artifactId>
-            <version>2.3.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jaxb</groupId>
-            <artifactId>jaxb-runtime</artifactId>
-            <version>2.3.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.persistence</groupId>
-            <artifactId>org.eclipse.persistence.moxy</artifactId>
-            <version>2.7.3</version>
-        </dependency>
-        <dependency>
-            <groupId>org.docx4j</groupId>
-            <artifactId>docx4j-JAXB-ReferenceImpl</artifactId>
-            <version>8.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>1.7.5</version>
         </dependency>
         <dependency>
             <groupId>org.docx4j</groupId>
@@ -104,7 +54,6 @@
                 <version>0.0.4</version>
                 <configuration>
                     <mainClass>org.openjfx.Launcher</mainClass>
-<!--                    ЭТО ДЛЯ АВТОЗАПОЛНЕНИЯ В ИНСПЕКЦИИ. ЕСЛИ НЕ БУДЕТ РАБОТАТЬ ТО ДОБАВИТЬ В ДРУГИЕ ПЛАГИНЫ-->
                     <options>
                         <option>--add-exports</option>
                         <option>javafx.base/com.sun.javafx.event=org.controlsfx.controls</option>
@@ -149,7 +98,6 @@
                                 <filter>
                                     <artifact>*:*</artifact>
                                     <excludes>
-<!--                                        <exclude>module-info.class</exclude>-->
                                         <exclude>META-INF/*.SF</exclude>
                                         <exclude>META-INF/*.DSA</exclude>
                                         <exclude>META-INF/*.RSA</exclude>
@@ -181,10 +129,6 @@
                         </goals>
                         <configuration>
                             <excludeScope>system</excludeScope>
-<!--                            <excludes>META-INF/*.SF</excludes>-->
-<!--                            <excludes>META-INF/*.DSA</excludes>-->
-<!--                            <excludes>META-INF/*.RSA</excludes>-->
-<!--                            <excludeGroupIds>junit,org.mockito,org.hamcrest</excludeGroupIds>-->
                             <outputDirectory>
                                 ${project.build.directory}/libs
                             </outputDirectory>

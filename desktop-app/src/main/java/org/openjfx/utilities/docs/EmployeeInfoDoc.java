@@ -6,13 +6,11 @@ import org.openjfx.ledicom.entities.Edu;
 import org.openjfx.utilities.Global;
 import org.openjfx.utilities.Validator;
 import org.openjfx.utilities.database.DatabaseEmployeeController;
-import org.openjfx.utilities.formatters.DateFormatter;
 
 import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.time.LocalDate;
 
 public class EmployeeInfoDoc {
     public static void createPersonalCard() throws IOException {
@@ -21,7 +19,7 @@ public class EmployeeInfoDoc {
 
         String body = "<p><strong>ЧТПУП «Ледиком»&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;" +
                 "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;" +
-                "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><strong>" + DateFormatter.format(LocalDate.now()) + " г.</strong></p>\n";
+                "&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong></p>\n";
 
         body += fillForm();
 
