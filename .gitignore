@@ -38,3 +38,6 @@ desktop-app/target/
 desktop-app/*.iml
 desktop-app/dependency-reduced-pom.xml
 jre/
+
+# config.properties
+desktop-app/src/main/resources/config.properties
