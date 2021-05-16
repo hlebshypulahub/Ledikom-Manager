@@ -31,18 +31,14 @@ public class EmployeeTableDoc {
 
         body += "<tr>\n" +
                 "<td style=\"width: 8.09659%; text-align: center;\"><strong>№ п/п</strong></td>\n" +
-                "<td style=\"width: 21.0227%; text-align: center;\"><strong>Фамилия</strong></td>\n" +
-                "<td style=\"width: 20.8807%; text-align: center;\"><strong>Имя</strong></td>\n" +
-                "<td style=\"width: 23.1534%; text-align: center;\"><strong>Отчество</strong></td>\n" +
+                "<td style=\"width: 21.0227%; text-align: center;\"><strong>ФИО</strong></td>\n" +
                 "<td style=\"width: 26.8466%; text-align: center;\"><strong>" + Validator.validateString(employeeTableValue.getName()) + "</strong></td>\n" +
                 "</tr>";
 
         for (int i = 0; i < employeeList.size(); i++) {
             body += "<tr>\n" +
                     "<td style=\"width: 8.09659%; text-align: center;\">" + (i + 1) + "</td>\n" +
-                    "<td style=\"width: 21.0227%;\">&nbsp;" + Validator.validateString(employeeList.get(i).getLastName()) + "</td>\n" +
-                    "<td style=\"width: 20.8807%;\">&nbsp;" + Validator.validateString(employeeList.get(i).getFirstName()) + "</td>\n" +
-                    "<td style=\"width: 23.1534%;\">&nbsp;" + Validator.validateString(employeeList.get(i).getPatronymic()) + "</td>\n" +
+                    "<td style=\"width: 21.0227%;\">&nbsp;" + Validator.validateString(employeeList.get(i).getFullName()) + "</td>\n" +
                     "<td style=\"width: 26.8466%;\">&nbsp;" + Validator.validateString(employeeList.get(i).get(employeeTableValue)) + "</td>\n" +
                     "</tr>";
         }

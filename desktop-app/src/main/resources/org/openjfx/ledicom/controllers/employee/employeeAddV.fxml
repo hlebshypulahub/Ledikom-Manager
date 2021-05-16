@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="Content" fx:id="viewPane" minHeight="-1.0" minWidth="-1.0" prefHeight="689.0" prefWidth="564.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.employee.EmployeeAddVController">
+<AnchorPane id="Content" fx:id="viewPane" minHeight="-1.0" minWidth="-1.0" prefHeight="766.0" prefWidth="591.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.employee.EmployeeAddVController">
    <children>
       <VBox fx:id="infoVBox" layoutX="41.0" layoutY="14.0" prefHeight="586.0" prefWidth="550.0">
          <children>
@@ -265,32 +265,6 @@
                </children>
                <VBox.margin>
                   <Insets top="10.0" />
-               </VBox.margin>
-            </HBox>
-            <Label text="Курсы:">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin>
-            </Label>
-            <HBox>
-               <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Пятилетка:">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <DatePicker fx:id="fiveYearStartDate" prefHeight="25.0" prefWidth="147.0" promptText="Дата начала" />
-                  <DatePicker fx:id="fiveYearEndDate" prefHeight="25.0" prefWidth="147.0" promptText="Дата конца">
-                     <HBox.margin>
-                        <Insets left="6.0" />
-                     </HBox.margin>
-                  </DatePicker>
-               </children>
-               <VBox.margin>
-                  <Insets top="3.0" />
                </VBox.margin>
             </HBox>
             <Button defaultButton="true" maxHeight="35.0" maxWidth="200.0" minHeight="35.0" minWidth="200.0" mnemonicParsing="false" onAction="#addEmployee" prefHeight="35.0" prefWidth="200.0" stylesheets="@../../css/style.css" text="Добавить">

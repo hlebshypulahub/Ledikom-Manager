@@ -51,31 +51,23 @@ public class EmployeeInfoDoc {
         body += "<table style=\"border-collapse: collapse; width: 100%;\" border=\"1\">\n" +
                 "<tbody>\n" +
                 "<tr>\n" +
-                "<td style=\"width: 32.2443%;\">1.1. Фамилия</td>\n" +
-                "<td style=\"width: 67.7557%;\">&nbsp; &nbsp; &nbsp; &nbsp;" + Validator.validateString(Global.getEmployee().getLastName()) + "</td>\n" +
+                "<td style=\"width: 32.2443%;\">1.1. ФИО</td>\n" +
+                "<td style=\"width: 67.7557%;\">&nbsp; &nbsp; &nbsp; &nbsp;" + Validator.validateString(Global.getEmployee().getFullName()) + "</td>\n" +
                 "</tr>\n" +
                 "<tr>\n" +
-                "<td style=\"width: 32.2443%;\">1.2. Имя</td>\n" +
-                "<td style=\"width: 67.7557%;\">&nbsp; &nbsp; &nbsp; &nbsp;" + Validator.validateString(Global.getEmployee().getFirstName()) + "</td>\n" +
-                "</tr>\n" +
-                "<tr>\n" +
-                "<td style=\"width: 32.2443%;\">1.3. Отчество</td>\n" +
-                "<td style=\"width: 67.7557%;\">&nbsp; &nbsp; &nbsp; &nbsp;" + Validator.validateString(Global.getEmployee().getPatronymic()) + "</td>\n" +
-                "</tr>\n" +
-                "<tr>\n" +
-                "<td style=\"width: 32.2443%;\">1.4. Дата рождения</td>\n" +
+                "<td style=\"width: 32.2443%;\">1.2. Дата рождения</td>\n" +
                 "<td style=\"width: 67.7557%;\">&nbsp; &nbsp; &nbsp; &nbsp;" + Validator.validateString(Global.getEmployee().getDOB()) + "</td>\n" +
                 "</tr>\n" +
                 "<tr>\n" +
-                "<td style=\"width: 32.2443%;\">1.5. Телефон</td>\n" +
+                "<td style=\"width: 32.2443%;\">1.3. Телефон</td>\n" +
                 "<td style=\"width: 67.7557%;\">&nbsp; &nbsp; &nbsp; &nbsp;" + Validator.validateString(Global.getEmployee().getPhone()) + "</td>\n" +
                 "</tr>\n" +
                 "<tr>\n" +
-                "<td style=\"width: 32.2443%;\">1.6. Адрес</td>\n" +
+                "<td style=\"width: 32.2443%;\">1.4. Адрес</td>\n" +
                 "<td style=\"width: 67.7557%;\">&nbsp; &nbsp; &nbsp; &nbsp;" + Validator.validateString(Global.getEmployee().getAddress()) + "</td>\n" +
                 "</tr>\n" +
                 "<tr>\n" +
-                "<td style=\"width: 32.2443%;\">1.7. Дети</td>\n" +
+                "<td style=\"width: 32.2443%;\">1.5. Дети</td>\n" +
                 "<td style=\"width: 67.7557%;\">&nbsp; &nbsp; &nbsp; &nbsp;" + Global.getEmployee().getChildrenData() + "</td>\n" +
                 "</tr>\n" +
                 "</tbody>\n" +

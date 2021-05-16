@@ -46,46 +46,12 @@
                         <Insets top="3.0" />
                      </VBox.margin>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Фамилия:" wrappingWidth="120.0">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ФИО:" wrappingWidth="120.0">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Text>
-                        <Text fx:id="lastNameText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="451.9771728515625">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </HBox>
-                  <HBox>
-                     <VBox.margin>
-                        <Insets top="3.0" />
-                     </VBox.margin>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Имя:" wrappingWidth="120.0">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="firstNameText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="451.9771728515625">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="19.0" prefWidth="390.0">
-                     <VBox.margin>
-                        <Insets top="3.0" />
-                     </VBox.margin>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Отчество:" wrappingWidth="120.0">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="patronymicText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="451.9771728515625">
+                        <Text fx:id="fullNameText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="451.9771728515625">
                            <font>
                               <Font size="16.0" />
                            </font>

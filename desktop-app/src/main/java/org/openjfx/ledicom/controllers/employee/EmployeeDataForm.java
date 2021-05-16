@@ -83,6 +83,8 @@ public class EmployeeDataForm implements Initializable {
     @FXML
     protected DatePicker fiveYearEndDate;
     @FXML
+    protected TextField courseHoursSumTF;
+    @FXML
     protected TextField childrenNumberTF;
     @FXML
     protected TextField childrenDobTF;
@@ -123,6 +125,7 @@ public class EmployeeDataForm implements Initializable {
 
                 Global.setEmployee(DatabaseEmployeeController.getEmployee(Global.getEmployee().getId()));
                 EmployeePanel.showEmployeeDetails();
+                EmployeePanel.showEmployeeEdit();
             } catch (SQLException e) {
                 MyAlert.showAndWait("ERROR", "", "Ошибка базы данных", e.getMessage().split("Где:")[0]);
             }

@@ -35,11 +35,7 @@ public class EmployeeAllVController implements Initializable, EmployeeController
     @FXML
     private TableView<Employee> table;
     @FXML
-    private TableColumn<Employee, String> lastNameCol;
-    @FXML
-    private TableColumn<Employee, String> firstNameCol;
-    @FXML
-    private TableColumn<Employee, String> patronymicCol;
+    private TableColumn<Employee, String> fullNameCol;
     @FXML
     private TableColumn<Employee, String> dobCol;
     @FXML
@@ -54,22 +50,14 @@ public class EmployeeAllVController implements Initializable, EmployeeController
     @FXML
     private TableView<Employee> filteredTable;
     @FXML
-    private TableColumn<Employee, String> lastNameColF;
-    @FXML
-    private TableColumn<Employee, String> firstNameColF;
-    @FXML
-    private TableColumn<Employee, String> patronymicColF;
+    private TableColumn<Employee, String> fullNameColF;
     @FXML
     private TableColumn<Employee, String> valueColF;
 
     @FXML
     private TableView<Employee> filteredTableInt;
     @FXML
-    private TableColumn<Employee, String> lastNameColFInt;
-    @FXML
-    private TableColumn<Employee, String> firstNameColFInt;
-    @FXML
-    private TableColumn<Employee, String> patronymicColFInt;
+    private TableColumn<Employee, String> fullNameColFInt;
     @FXML
     private TableColumn<Employee, Integer> valueColFInt;
 
@@ -77,7 +65,6 @@ public class EmployeeAllVController implements Initializable, EmployeeController
     private TextField findTF;
     @FXML
     private Button printButton;
-
 
     ObservableList<Employee> employeeList;
 
@@ -208,15 +195,9 @@ public class EmployeeAllVController implements Initializable, EmployeeController
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Global.getFooterPane().getChildren().clear();
 
-        firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-        lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-        patronymicCol.setCellValueFactory(new PropertyValueFactory<>("patronymic"));
-        firstNameColF.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-        lastNameColF.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-        patronymicColF.setCellValueFactory(new PropertyValueFactory<>("patronymic"));
-        firstNameColFInt.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-        lastNameColFInt.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-        patronymicColFInt.setCellValueFactory(new PropertyValueFactory<>("patronymic"));
+        fullNameCol.setCellValueFactory(new PropertyValueFactory<>("fullName"));
+        fullNameColF.setCellValueFactory(new PropertyValueFactory<>("fullName"));
+        fullNameColFInt.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         dobCol.setCellValueFactory(new PropertyValueFactory<>("DOB"));
         salaryCol.setCellValueFactory(new PropertyValueFactory<>("salary"));
         positionCol.setCellValueFactory(new PropertyValueFactory<>("position"));

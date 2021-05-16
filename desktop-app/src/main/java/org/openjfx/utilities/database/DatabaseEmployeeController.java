@@ -53,8 +53,8 @@ public class DatabaseEmployeeController extends DatabaseController {
             rs.close();
 
             sql = "insert into employee_info (id_employee, dob, phone, address, salary, ppe, hiring_date, " +
-                    "position, category, category_num, category_assignment_date, maternity_start_date, maternity_end_date, five_year_start, five_year_end, children_data, note) " +
-                    "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                    "position, category, category_num, category_assignment_date, maternity_start_date, maternity_end_date, five_year_start, five_year_end, course_deadline_date, children_data, note) " +
+                    "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
             try (PreparedStatement ps2 = conn.prepareStatement(sql)) {
                 ps2.setInt(1, employeeId);
                 ps2.setDate(2, SqlDateStringConverter.stringToSqlDate(employee.getDOB()));
@@ -71,8 +71,9 @@ public class DatabaseEmployeeController extends DatabaseController {
                 ps2.setDate(13, SqlDateStringConverter.stringToSqlDate(employee.getMaternityEndDate()));
                 ps2.setDate(14, SqlDateStringConverter.stringToSqlDate(employee.getFiveYearStart()));
                 ps2.setDate(15, SqlDateStringConverter.stringToSqlDate(employee.getFiveYearEnd()));
-                ps2.setString(16, employee.getChildrenData());
-                ps2.setString(17, employee.getNote());
+                ps2.setDate(16, SqlDateStringConverter.stringToSqlDate(employee.getCourseDeadlineDate()));
+                ps2.setString(17, employee.getChildrenData());
+                ps2.setString(18, employee.getNote());
                 ps2.execute();
             }
         } catch (SQLException e) {
@@ -90,7 +91,6 @@ public class DatabaseEmployeeController extends DatabaseController {
                 + "last_name = '" + Global.getEmployee().getLastName() + "', "
                 + "patronymic = '" + Global.getEmployee().getPatronymic()
                 + "' where id_employee = " + Global.getEmployee().getId() + ";";
-
 
         try (PreparedStatement ps1 = conn.prepareStatement(sql)) {
             ps1.execute();
@@ -110,6 +110,8 @@ public class DatabaseEmployeeController extends DatabaseController {
                     "    maternity_end_date = ?, " +
                     "    five_year_start = ?, " +
                     "    five_year_end = ?, " +
+                    "    course_deadline_date = ?, " +
+                    "    course_hours_sum = ?, " +
                     "    children_data = ?, " +
                     "    note = ? " +
                     "where id_employee = ?;";
@@ -129,9 +131,11 @@ public class DatabaseEmployeeController extends DatabaseController {
                 ps2.setDate(12, SqlDateStringConverter.stringToSqlDate(Global.getEmployee().getMaternityEndDate()));
                 ps2.setDate(13, SqlDateStringConverter.stringToSqlDate(Global.getEmployee().getFiveYearStart()));
                 ps2.setDate(14, SqlDateStringConverter.stringToSqlDate(Global.getEmployee().getFiveYearEnd()));
-                ps2.setString(15, Global.getEmployee().getChildrenData());
-                ps2.setString(16, Global.getEmployee().getNote());
-                ps2.setInt(17, Global.getEmployee().getId());
+                ps2.setDate(15, SqlDateStringConverter.stringToSqlDate(Global.getEmployee().getCourseDeadlineDate()));
+                ps2.setInt(16, Global.getEmployee().getCourseHoursSum());
+                ps2.setString(17, Global.getEmployee().getChildrenData());
+                ps2.setString(18, Global.getEmployee().getNote());
+                ps2.setInt(19, Global.getEmployee().getId());
 
                 ps2.execute();
             }
@@ -150,11 +154,7 @@ public class DatabaseEmployeeController extends DatabaseController {
     }
 
     public static ObservableList<Employee> dobNotificationsEmployeeList() {
-        String sql = "select *\n" +
-                "from employee_data_view\n" +
-                "where (date_part('doy', dob) - date_part('doy', current_date) between 0 and dob_notifications_period()) or\n" +
-                "      (365 + date_part('doy', dob) - date_part('doy', current_date) between 0 and dob_notifications_period())\n" +
-                "  and is_active is not false;";
+        String sql = "select * from eployee_dob_with_period_view;";
         return employeeList(sql);
     }
 
@@ -219,7 +219,8 @@ public class DatabaseEmployeeController extends DatabaseController {
         employee.setMaternityEndDate(SqlDateStringConverter.sqlDateToString(rs.getDate("maternity_end_date")));
         employee.setChildrenData(rs.getString("children_data"));
         employee.setNote(rs.getString("note"));
-        employee.setDobAge();
+        employee.setDobAge(rs.getInt("dob_age"));
+        employee.setFullName();
     }
 
     public static void addEdu(Edu edu) throws SQLException {

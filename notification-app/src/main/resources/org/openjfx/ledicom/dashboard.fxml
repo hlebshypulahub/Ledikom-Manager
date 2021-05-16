@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane" prefHeight="178.0" prefWidth="420.0" style="-fx-background-color: #ffcccc;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.DashboardController">
+   <children>
+      <TableView fx:id="table" layoutX="9.0" layoutY="35.0" prefHeight="134.0" prefWidth="402.0" stylesheets="@style.css">
+         <columns>
+            <TableColumn fx:id="nameCol" prefWidth="179.0" text="ФИО" />
+            <TableColumn fx:id="dobCol" prefWidth="110.0" styleClass="center-table-column" text="Дата рождения" />
+            <TableColumn fx:id="ageCol" prefWidth="92.0" styleClass="center-table-column" text="Исп. лет" />
+         </columns>
+      </TableView>
+      <Label layoutX="129.0" layoutY="2.0" text="Дни рождения" textFill="#0f009c">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

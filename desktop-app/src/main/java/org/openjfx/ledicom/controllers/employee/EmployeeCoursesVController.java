@@ -9,10 +9,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import org.openjfx.ledicom.controllers.interfaces.EmployeeControllerInterface;
 import org.openjfx.ledicom.entities.EmployeeCourseData;
-import org.openjfx.utilities.panels.EmployeePanel;
 import org.openjfx.utilities.Global;
 import org.openjfx.utilities.database.DatabaseCourseController;
-import org.openjfx.utilities.database.DatabaseEmployeeController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -41,6 +39,33 @@ public class EmployeeCoursesVController implements Initializable, EmployeeContro
         showEmployeesCoursesDetails(table);
     }
 
+    public void setTableCss() {
+        table.setRowFactory(tv -> new TableRow<>() {
+            @Override
+            protected void updateItem(EmployeeCourseData item, boolean empty) {
+                super.updateItem(item, empty);
+                System.out.println("1");
+                if (item == null) {
+                    System.out.println("2");
+                    setStyle("");
+                } else if (!item.getEmployeeName().equals("")) {
+                    System.out.println("3");
+                    setStyle("-fx-background-color: #ebffdb; -fx-border-width: 2 0 0 0; -fx-border-color: black");
+                } else {
+                    System.out.println("4");
+                    setStyle("");
+                }
+                if (item == null) {
+                    System.out.println("5");
+                    setStyle("");
+                } else if (tv.getSelectionModel().getSelectedItem() == item) {
+                    System.out.println("6");
+                    setStyle("-fx-background-color: #0096c9;  -fx-border-width: 2 0 0 0; -fx-border-color: black");
+                }
+            }
+        });
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Global.getFooterPane().getChildren().clear();
@@ -62,38 +87,6 @@ public class EmployeeCoursesVController implements Initializable, EmployeeContro
         courseNameCol.setSortable(false);
         nextCourseCol.setSortable(false);
 
-        table.setRowFactory(tv -> new TableRow<>() {
-            @Override
-            protected void updateItem(EmployeeCourseData item, boolean empty) {
-                super.updateItem(item, empty);
-                if (item == null)
-                    setStyle("");
-                else if (!item.getEmployeeName().equals("")) {
-                    setStyle("-fx-background-color: #b3ffac;");
-                } else {
-                    setStyle("");
-                }
-                if (item == null)
-                    setStyle("");
-                else if (tv.getSelectionModel().getSelectedItem() == item) {
-                    setStyle("-fx-background-color: #0096c9;");
-                }
-            }
-        });
-
-        table.setRowFactory(event -> {
-            TableRow<EmployeeCourseData> row = new TableRow<>();
-            row.setOnMouseClicked(e -> {
-                if (e.getClickCount() == 2 && (!row.isEmpty())) {
-                    try {
-                        Global.setEmployee(DatabaseEmployeeController.getEmployee(table.getSelectionModel().getSelectedItem().getEmployeeId()));
-                        EmployeePanel.showEmployeeEdit();
-                    } catch (IOException ioException) {
-                        ioException.printStackTrace();
-                    }
-                }
-            });
-            return row;
-        });
+        setTableCss();
     }
 }

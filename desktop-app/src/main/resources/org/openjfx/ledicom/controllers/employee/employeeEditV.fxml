@@ -15,7 +15,7 @@
 
 <AnchorPane id="Content" fx:id="viewPane" minHeight="-1.0" minWidth="-1.0" prefHeight="820.0" prefWidth="1166.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.employee.EmployeeEditVController">
    <children>
-      <VBox layoutX="41.0" layoutY="14.0" prefHeight="663.0" prefWidth="550.0">
+      <VBox layoutX="41.0" layoutY="14.0" prefHeight="706.0" prefWidth="550.0">
          <children>
             <Label alignment="CENTER" prefHeight="21.0" prefWidth="550.0" text="Отредактируйте данные:">
                <font>
@@ -279,6 +279,32 @@
                         <Insets left="6.0" />
                      </HBox.margin>
                   </DatePicker>
+               </children>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label prefHeight="25.0" prefWidth="250.0" text="Конечный срок прохождения:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="courseDeadlineDate" prefHeight="25.0" prefWidth="147.0" promptText="Дата" />
+               </children>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="19.0" prefWidth="553.0">
+               <children>
+                  <Label prefHeight="25.0" prefWidth="250.0" text="Необходимый объем часов:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="courseHoursSumTF" prefHeight="25.0" prefWidth="300.0" promptText="Часы" />
                </children>
                <VBox.margin>
                   <Insets top="3.0" />

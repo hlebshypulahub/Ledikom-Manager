@@ -14,12 +14,10 @@
    <children>
       <TableView fx:id="table" layoutX="15.0" layoutY="63.0" onMouseClicked="#showFullInfo" prefHeight="496.0" prefWidth="1140.0">
          <columns>
-            <TableColumn fx:id="lastNameCol" prefWidth="194.0" text="Фамилия" />
-            <TableColumn fx:id="firstNameCol" minWidth="0.0" prefWidth="155.0" text="Имя" />
-            <TableColumn fx:id="patronymicCol" prefWidth="169.0" text="Отчество" />
-            <TableColumn fx:id="dobCol" prefWidth="173.0" text="Дата рождения" />
-            <TableColumn fx:id="positionCol" prefWidth="286.0" text="Должность" />
-            <TableColumn fx:id="salaryCol" prefWidth="162.0" text="Оклад" />
+            <TableColumn fx:id="fullNameCol" prefWidth="430.0" text="ФИО" />
+            <TableColumn fx:id="dobCol" prefWidth="221.0" text="Дата рождения" />
+            <TableColumn fx:id="positionCol" prefWidth="292.0" text="Должность" />
+            <TableColumn fx:id="salaryCol" prefWidth="196.0" text="Оклад" />
          </columns>
       </TableView>
       <ComboBox fx:id="facilityCB" layoutX="15.0" layoutY="14.0" onAction="#filterTable" prefHeight="35.0" prefWidth="178.0" promptText="Объект" visibleRowCount="20" />
@@ -27,18 +25,14 @@
       <Button cancelButton="true" layoutX="1055.0" layoutY="14.0" mnemonicParsing="false" onAction="#reset" prefHeight="35.0" prefWidth="100.0" text="Сброс" />
       <TableView fx:id="filteredTable" layoutX="15.0" layoutY="63.0" onMouseClicked="#showFullInfoFiltered" prefHeight="496.0" prefWidth="1140.0" visible="false">
          <columns>
-            <TableColumn fx:id="lastNameColF" prefWidth="185.0" text="Фамилия" />
-            <TableColumn fx:id="firstNameColF" minWidth="0.0" prefWidth="201.0" text="Имя" />
-            <TableColumn fx:id="patronymicColF" prefWidth="212.0" text="Отчество" />
-            <TableColumn fx:id="valueColF" prefWidth="541.0" text="Текст" />
+            <TableColumn fx:id="fullNameColF" prefWidth="430.0" text="ФИО" />
+            <TableColumn fx:id="valueColF" prefWidth="718.0" text="Текст" />
          </columns>
       </TableView>
       <TableView fx:id="filteredTableInt" layoutX="15.0" layoutY="63.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#showFullInfoFiltered" prefHeight="496.0" prefWidth="1140.0" visible="false">
          <columns>
-            <TableColumn fx:id="lastNameColFInt" prefWidth="185.0" text="Фамилия" />
-            <TableColumn fx:id="firstNameColFInt" minWidth="0.0" prefWidth="201.0" text="Имя" />
-            <TableColumn fx:id="patronymicColFInt" prefWidth="212.0" text="Отчество" />
-            <TableColumn fx:id="valueColFInt" prefWidth="541.0" text="Текст" />
+            <TableColumn fx:id="fullNameColFInt" prefWidth="430.0" text="ФИО" />
+            <TableColumn fx:id="valueColFInt" prefWidth="709.0" text="Текст" />
          </columns>
       </TableView>
       <TextField fx:id="findTF" layoutX="453.0" layoutY="14.0" prefHeight="35.0" prefWidth="224.0" promptText="Поиск">

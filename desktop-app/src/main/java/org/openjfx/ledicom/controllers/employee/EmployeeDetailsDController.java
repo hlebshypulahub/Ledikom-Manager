@@ -21,11 +21,7 @@ import java.util.ResourceBundle;
 public class EmployeeDetailsDController implements Initializable {
 
     @FXML
-    private Text lastNameText;
-    @FXML
-    private Text firstNameText;
-    @FXML
-    private Text patronymicText;
+    private Text fullNameText;
     @FXML
     private Text dobText;
     @FXML
@@ -107,9 +103,7 @@ public class EmployeeDetailsDController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        lastNameText.setText(Global.getEmployee().getLastName());
-        firstNameText.setText(Global.getEmployee().getFirstName());
-        patronymicText.setText(Global.getEmployee().getPatronymic());
+        fullNameText.setText(Global.getEmployee().getFullName());
         dobText.setText(Global.getEmployee().getDOB());
         phoneText.setText(Global.getEmployee().getPhone());
         addressText.setText(Global.getEmployee().getAddress());

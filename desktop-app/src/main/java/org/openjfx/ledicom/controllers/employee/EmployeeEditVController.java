@@ -11,6 +11,7 @@ import org.openjfx.utilities.MyAlert;
 import org.openjfx.utilities.Validator;
 import org.openjfx.utilities.converters.StringToIntegerConverter;
 import org.openjfx.utilities.converters.StringToLocalDateConverter;
+import org.openjfx.utilities.database.DatabaseCourseController;
 import org.openjfx.utilities.database.DatabaseEmployeeController;
 import org.openjfx.utilities.panels.EmployeePanel;
 
@@ -23,7 +24,7 @@ public class EmployeeEditVController extends EmployeeDataForm {
 
     @FXML
     public void updateEmployee(ActionEvent event) throws IOException, SQLException {
-        if (!(categoryCB.getSelectionModel().getSelectedItem() == null || categoryCB.getValue().equals("")) && categoryAssignmentDate.getValue() == null) {
+        if (!(categoryCB.getSelectionModel().getSelectedItem() == null || categoryCB.getValue().equals("")) && categoryAssignmentDate.getEditor().getText().isEmpty()) {
             MyAlert.showAndWait("ERROR", "Ошибка", "Введите дату получения категории.", "");
             return;
         }
@@ -32,7 +33,9 @@ public class EmployeeEditVController extends EmployeeDataForm {
                 Validator.validateName(patronymicTF.getText(), patronymicTF), Validator.validateDate(dobDate), phoneTF.getText(), addressTF.getText(),
                 StringToIntegerConverter.convert(salaryTF.getText()), Validator.validateDate(ppeDate), Validator.validateDate(hiringDate), positionCB.getValue(),
                 categoryCB.getValue(), categoryNumTF.getText(), Validator.validateDate(categoryAssignmentDate), Validator.validateDate(maternityStartDate), Validator.validateDate(maternityEndDate),
-                Validator.validateDate(fiveYearStartDate), Validator.validateDate(fiveYearEndDate), childrenNumberTF.getText() + " " + childrenDobTF.getText(), noteTF.getText()));
+                Validator.validateDate(fiveYearStartDate), Validator.validateDate(fiveYearEndDate), Validator.validateDate(courseDeadlineDate),
+                DatabaseCourseController.getRequiredCourseHours(Global.getEmployee().getPosition()) - StringToIntegerConverter.convert(courseHoursSumTF.getText()),
+                childrenNumberTF.getText() + " " + childrenDobTF.getText(), noteTF.getText()));
         if (DatabaseEmployeeController.updateEmployee()) {
             MyAlert.showAndWait("INFORMATION", "", "Сотрудник отредактирован.", "");
 
@@ -67,6 +70,9 @@ public class EmployeeEditVController extends EmployeeDataForm {
         maternityEndDate.setValue(StringToLocalDateConverter.convert(Global.getEmployee().getMaternityEndDate()));
         fiveYearStartDate.setValue(StringToLocalDateConverter.convert(Global.getEmployee().getFiveYearStart()));
         fiveYearEndDate.setValue(StringToLocalDateConverter.convert(Global.getEmployee().getFiveYearEnd()));
+        courseDeadlineDate.setValue(StringToLocalDateConverter.convert(Global.getEmployee().getCourseDeadlineDate()));
+        courseHoursSumTF.setText(String.valueOf(DatabaseCourseController.getRequiredCourseHours(Global.getEmployee().getPosition())
+                - Global.getEmployee().getCourseHoursSum()));
         childrenNumberTF.setText(Global.getEmployee().getChildrenData() != null && Global.getEmployee().getChildrenData().length() > 1
                 ? Global.getEmployee().getChildrenData().substring(0, 1) : "");
         childrenDobTF.setText(Global.getEmployee().getChildrenData() != null && Global.getEmployee().getChildrenData().length() > 1

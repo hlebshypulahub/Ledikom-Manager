@@ -1,17 +1,13 @@
 package org.openjfx.ledicom.entities;
 
 import org.openjfx.utilities.EmployeeTableValue;
-import org.openjfx.utilities.formatters.DateTimeFormatter;
-
-import java.time.LocalDate;
-
-import static java.time.temporal.ChronoUnit.YEARS;
 
 public class Employee {
     private int id;
     private String firstName;
     private String patronymic;
     private String lastName;
+    private String fullName;
     private String DOB;
     private String phone;
     private String address;
@@ -40,7 +36,7 @@ public class Employee {
                     String PPE, String hiringDate,
                     String position, String category, String categoryNum, String categoryAssignmentDate,
                     String maternityStartDate, String maternityEndDate, String fiveYearStart, String fiveYearEnd,
-                    String childrenData, String note) {
+                    String courseDeadlineDate, int courseHoursSum, String childrenData, String note) {
         this.id = id;
         this.firstName = firstName;
         this.patronymic = patronymic;
@@ -59,9 +55,12 @@ public class Employee {
         this.maternityEndDate = maternityEndDate;
         this.fiveYearStart = fiveYearStart;
         this.fiveYearEnd = fiveYearEnd;
+        this.courseDeadlineDate = courseDeadlineDate;
+        this.courseHoursSum = courseHoursSum;
         this.childrenData = childrenData;
         this.note = note;
-        setDobAge();
+        setFullName();
+//        setDobAge();
     }
 
     public Employee(String lastName, String firstName, String patronymic, String DOB,
@@ -69,7 +68,7 @@ public class Employee {
                     String PPE, String hiringDate,
                     String position, String category, String categoryNum, String categoryAssignmentDate,
                     String maternityStartDate, String maternityEndDate, String fiveYearStart, String fiveYearEnd,
-                    String childrenData, String note) {
+                    String courseDeadlineDate, String childrenData, String note) {
         this.firstName = firstName;
         this.patronymic = patronymic;
         this.lastName = lastName;
@@ -87,9 +86,37 @@ public class Employee {
         this.maternityEndDate = maternityEndDate;
         this.fiveYearStart = fiveYearStart;
         this.fiveYearEnd = fiveYearEnd;
+        this.courseDeadlineDate = courseDeadlineDate;
         this.childrenData = childrenData;
         this.note = note;
-        setDobAge();
+        setFullName();
+//        setDobAge();
+    }
+
+    public Employee(String lastName, String firstName, String patronymic, String DOB,
+                    String phone, String address, int salary,
+                    String PPE, String hiringDate,
+                    String position, String category, String categoryNum, String categoryAssignmentDate,
+                    String maternityStartDate, String maternityEndDate, String childrenData, String note) {
+        this.firstName = firstName;
+        this.patronymic = patronymic;
+        this.lastName = lastName;
+        this.DOB = DOB;
+        this.phone = phone;
+        this.address = address;
+        this.salary = salary;
+        this.PPE = PPE;
+        this.hiringDate = hiringDate;
+        this.position = position;
+        this.category = category;
+        this.categoryNum = categoryNum;
+        this.categoryAssignmentDate = categoryAssignmentDate;
+        this.maternityStartDate = maternityStartDate;
+        this.maternityEndDate = maternityEndDate;
+        this.childrenData = childrenData;
+        this.note = note;
+        setFullName();
+//        setDobAge();
     }
 
     public String get(EmployeeTableValue employeeTableValue) {
@@ -113,6 +140,12 @@ public class Employee {
         }
     }
 
+    public void setFullName() {
+        fullName = lastName + " " + firstName + " " + patronymic;
+    }
+
+
+
     @Override
     public String toString() {
         return getFullName();
@@ -135,19 +168,19 @@ public class Employee {
     }
 
     public String getFullName() {
-        return lastName + " " + firstName + " " + patronymic;
+        return fullName;
     }
 
     public String getShortName() {
         return lastName + " " + firstName.charAt(0) + ". " + patronymic.charAt(0) + ".";
     }
 
-    public void setDobAge() {
-        dobAge = getDOB() == null ? 0
-                : LocalDate.parse(getDOB(), DateTimeFormatter.getDateTimeFormatter()).getDayOfYear() == LocalDate.now().getDayOfYear()
-                ? (int) YEARS.between(LocalDate.parse(getDOB(), DateTimeFormatter.getDateTimeFormatter()), LocalDate.now())
-                : (int) YEARS.between(LocalDate.parse(getDOB(), DateTimeFormatter.getDateTimeFormatter()), LocalDate.now()) + 1;
-    }
+//    public void setDobAge() {
+//        dobAge = getDOB() == null ? 0
+//                : LocalDate.parse(getDOB(), DateTimeFormatter.getDateTimeFormatter()).getDayOfYear() == LocalDate.now().getDayOfYear()
+//                ? (int) YEARS.between(LocalDate.parse(getDOB(), DateTimeFormatter.getDateTimeFormatter()), LocalDate.now())
+//                : (int) YEARS.between(LocalDate.parse(getDOB(), DateTimeFormatter.getDateTimeFormatter()), LocalDate.now()) + 1;
+//    }
 
     public int getDobAge() {
         return dobAge;
