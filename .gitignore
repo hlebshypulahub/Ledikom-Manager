@@ -24,8 +24,6 @@ desktop-app/target/*.jar
 hs_err_pid*
 *.exe
 
-
-exe/
 sql/
 *.docx
 *.txt
