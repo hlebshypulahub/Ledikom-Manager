@@ -4,7 +4,11 @@ import javafx.fxml.FXMLLoader;
 
 import java.io.IOException;
 
-public class EmployeePanel implements ShowPane {
+public final class EmployeePanel implements ShowPane {
+    private EmployeePanel() {
+
+    }
+
     public static void showEmployeeDetails() throws IOException {
         ShowPane.showDetailsPane(new FXMLLoader(EmployeePanel.class.getResource("/org/openjfx/ledicom/controllers/employee/employeeDetailsD.fxml")));
     }

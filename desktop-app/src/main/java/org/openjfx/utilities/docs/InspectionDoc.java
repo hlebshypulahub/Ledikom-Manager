@@ -16,7 +16,12 @@ import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class InspectionDoc {
+public final class InspectionDoc {
+    
+    private InspectionDoc() {
+
+    }
+
     public static void createDocument(Inspection inspection) throws IOException {
         String title = "Самоинспекция " + Global.getFacility().getName() + " " + inspection.getDate();
 

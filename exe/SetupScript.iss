@@ -26,9 +26,9 @@ ChangesAssociations=yes
 DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
-OutputDir=C:\Users\hlebs\Desktop\Ledikom-App\exe\v1.0
+OutputDir=C:\Users\hlebs\Desktop\Ledikom\Ledikom-App\exe\v1.0
 OutputBaseFilename=Ledikom-Manager-setup
-SetupIconFile=C:\Users\hlebs\Desktop\Ledikom-App\icon.ico
+SetupIconFile=C:\Users\hlebs\Desktop\Ledikom\icon.ico
 Compression=lzma
 SolidCompression=yes
 DisableDirPage=auto
@@ -41,8 +41,8 @@ Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\Users\hlebs\Desktop\Ledikom-App\exe\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\hlebs\Desktop\Ledikom-App\jre\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Users\hlebs\Desktop\Ledikom\Ledikom-App\exe\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\hlebs\Desktop\Ledikom\jre\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]

@@ -16,6 +16,10 @@ import static javax.swing.JOptionPane.showMessageDialog;
 
 public class DatabaseEmployeeController extends DatabaseController {
 
+    private DatabaseEmployeeController() {
+
+    }
+
     public static boolean addEmployee(Employee employee) throws SQLException {
         String sql = "SELECT EXISTS(SELECT last_name, first_name, patronymic FROM employee WHERE last_name = ? AND first_name = ? AND patronymic = ?);";
 

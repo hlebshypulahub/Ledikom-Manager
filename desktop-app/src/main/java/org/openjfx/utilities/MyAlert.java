@@ -6,7 +6,11 @@ import javafx.scene.control.ButtonType;
 
 import java.util.Optional;
 
-public class MyAlert {
+public final class MyAlert {
+    private MyAlert() {
+
+    }
+
     public static void showAndWait(String type, String title, String header, String content) {
         Alert alert = new Alert(Alert.AlertType.valueOf(type));
         alert.setTitle(title);

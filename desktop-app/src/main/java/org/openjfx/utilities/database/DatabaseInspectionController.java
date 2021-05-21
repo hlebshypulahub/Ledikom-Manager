@@ -14,6 +14,11 @@ import java.sql.SQLException;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class DatabaseInspectionController extends DatabaseController {
+
+    private DatabaseInspectionController() {
+
+    }
+
     public static ObservableList<CheckupType> CheckupTypes() {
         String sql = "select * from checkup_type;";
 

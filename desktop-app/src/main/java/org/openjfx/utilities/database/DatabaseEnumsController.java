@@ -11,6 +11,10 @@ import static javax.swing.JOptionPane.showMessageDialog;
 
 public class DatabaseEnumsController extends DatabaseController {
 
+    private DatabaseEnumsController() {
+
+    }
+
     public static ObservableList<String> getEnums(String sql) {
         ObservableList<String> observableList = FXCollections.observableArrayList();
 
@@ -29,23 +33,6 @@ public class DatabaseEnumsController extends DatabaseController {
             return null;
         }
     }
-
-//    public static ObservableList<String> getEnums(Connection conn, String sql) {
-//        ObservableList<String> observableList = FXCollections.observableArrayList();
-//
-//        try (PreparedStatement ps = conn.prepareStatement(sql)) {
-//            ResultSet rs = ps.executeQuery();
-//            while (rs.next()) {
-//                observableList.add(rs.getString("enumlabel"));
-//            }
-//            rs.close();
-//            return observableList;
-//        } catch (SQLException e) {
-//            System.out.println(e.getMessage());
-//            showMessageDialog(null, e.getMessage());
-//            return null;
-//        }
-//    }
 
     public static ObservableList<String> getEmployeePositions() {
         String sql = "select t.typname, e.enumlabel from pg_type t, pg_enum e where t.oid = e.enumtypid and typname = 'employee_position';";

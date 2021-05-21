@@ -4,7 +4,11 @@ import javafx.fxml.FXMLLoader;
 
 import java.io.IOException;
 
-public class FacilityPanel implements ShowPane{
+public final class FacilityPanel implements ShowPane{
+    private FacilityPanel() {
+
+    }
+
     public static void showFacilityAdd() throws IOException {
         ShowPane.showViewPane(new FXMLLoader(FacilityPanel.class.getResource("/org/openjfx/ledicom/controllers/facility/facilityAddV.fxml")));
     }

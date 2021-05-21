@@ -18,6 +18,10 @@ public final class Global {
     private static Employee employee;
     private static Facility facility;
 
+    private Global() {
+
+    }
+
     public static Facility getFacility() {
         return facility;
     }

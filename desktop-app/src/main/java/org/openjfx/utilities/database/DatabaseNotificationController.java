@@ -6,6 +6,10 @@ import java.sql.SQLException;
 
 public class DatabaseNotificationController extends DatabaseController {
 
+    private DatabaseNotificationController() {
+
+    }
+
     public static void dobNotificationsPeriodEdit(int value) throws SQLException {
         String sql = "create or replace function dob_notifications_period()\n" +
                 "    returns integer as\n" +

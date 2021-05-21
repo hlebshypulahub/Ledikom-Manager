@@ -1,7 +1,7 @@
 package org.openjfx.utilities.docs;
 
-public class htmlTemplate {
-    public static final String htmlTop = "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n" +
+interface htmlTemplate {
+    String htmlTop = "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n" +
             "<html>\n" +
             "\n" +
             "<head>\n" +
@@ -10,7 +10,7 @@ public class htmlTemplate {
             "</head>\n" +
             "\n" +
             "<body>\n";
-    public static final String htmlBottom = "</body>\n" +
+    String htmlBottom = "</body>\n" +
             "\n" +
             "</html>\n";
 }

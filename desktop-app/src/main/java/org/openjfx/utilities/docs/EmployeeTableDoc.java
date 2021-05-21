@@ -14,7 +14,12 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 
-public class EmployeeTableDoc {
+public final class EmployeeTableDoc {
+
+    private EmployeeTableDoc() {
+
+    }
+
     public static void createTable(ObservableList<Employee> employeeList, EmployeeTableValue employeeTableValue, Facility facility) throws IOException {
 
         String title = "Список сотрудников" + (facility == null ? "" : " «" + facility.getName() + "»") + " (" + Validator.validateString(employeeTableValue.getName()) + ") ";

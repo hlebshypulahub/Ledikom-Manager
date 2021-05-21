@@ -2,7 +2,11 @@ package org.openjfx.utilities.converters;
 
 import java.sql.Date;
 
-public class SqlDateStringConverter {
+public final class SqlDateStringConverter {
+    private SqlDateStringConverter() {
+
+    }
+
     public static String sqlDateToString(Date date) {
         if(date == null) {
             return null;

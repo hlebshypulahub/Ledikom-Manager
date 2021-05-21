@@ -14,7 +14,11 @@ import java.sql.SQLException;
 
 import static javax.swing.JOptionPane.showMessageDialog;
 
-public class DatabaseCourseController extends DatabaseController {
+public final class DatabaseCourseController extends DatabaseController {
+
+    private DatabaseCourseController() {
+
+    }
 
     public static int getRequiredCourseHours(String position) {
         String sql = "select * from employee_course_hours('" + position + "') as hours;";

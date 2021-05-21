@@ -1,6 +1,10 @@
 package org.openjfx.utilities.converters;
 
-public class StringToIntegerConverter {
+public final class StringToIntegerConverter {
+    private StringToIntegerConverter() {
+
+    }
+
     public static int convert(String value) {
         try {
             return Integer.parseInt(value);

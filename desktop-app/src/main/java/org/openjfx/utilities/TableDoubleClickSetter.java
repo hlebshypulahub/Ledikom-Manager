@@ -7,7 +7,11 @@ import org.openjfx.utilities.panels.EmployeePanel;
 
 import java.io.IOException;
 
-public class TableDoubleClickSetter {
+public final class TableDoubleClickSetter {
+    private TableDoubleClickSetter() {
+
+    }
+
     public static void setEmployeeTable(TableView<Employee> table) {
         table.setRowFactory(event -> {
             TableRow<Employee> row = new TableRow<>();

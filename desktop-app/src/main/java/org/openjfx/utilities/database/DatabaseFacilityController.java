@@ -13,6 +13,10 @@ import static javax.swing.JOptionPane.showMessageDialog;
 
 public class DatabaseFacilityController extends DatabaseController {
 
+    private DatabaseFacilityController() {
+
+    }
+
     public static boolean addFacility(Facility facility) throws SQLException {
         String sql = "SELECT EXISTS(SELECT name FROM facility WHERE name = ?);";
 

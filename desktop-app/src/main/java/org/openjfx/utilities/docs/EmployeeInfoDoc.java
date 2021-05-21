@@ -12,7 +12,12 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-public class EmployeeInfoDoc {
+public final class EmployeeInfoDoc {
+
+    private EmployeeInfoDoc() {
+
+    }
+
     public static void createPersonalCard() throws IOException {
 
         String title = "Личная карточка " + Global.getEmployee().getShortName();

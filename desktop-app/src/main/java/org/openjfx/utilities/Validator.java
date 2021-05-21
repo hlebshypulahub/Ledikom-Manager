@@ -11,7 +11,11 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.function.UnaryOperator;
 
-public class Validator {
+public final class Validator {
+
+    private Validator() {
+
+    }
 
     public static String validateName(String name, TextField textField) {
         if (name == null || name.length() == 0) {

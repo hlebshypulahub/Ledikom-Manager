@@ -4,7 +4,12 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-public class FileOpener {
+public final class FileOpener {
+
+    private FileOpener() {
+
+    }
+
     public static void openFile(File file) {
         try {
             if (Desktop.isDesktopSupported()) {

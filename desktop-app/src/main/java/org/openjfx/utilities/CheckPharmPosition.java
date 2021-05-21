@@ -1,6 +1,10 @@
 package org.openjfx.utilities;
 
-public class CheckPharmPosition {
+public final class CheckPharmPosition {
+    private CheckPharmPosition() {
+
+    }
+
     public static boolean isPharm() {
         return !(Global.getEmployee().getPosition() == null || !(Global.getEmployee().getPosition().contains("Провизор")
                 || (Global.getEmployee().getPosition().contains("провизор") || (Global.getEmployee().getPosition().contains("Фармацевт")
