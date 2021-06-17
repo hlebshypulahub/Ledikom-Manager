@@ -183,28 +183,46 @@
             </Text>
             <TableView fx:id="employeeTable" prefHeight="181.0" prefWidth="571.0">
                <columns>
-                  <TableColumn fx:id="lastNameCol" prefWidth="173.67273712158203" text="Фамилия" />
-                  <TableColumn fx:id="firstNameCol" prefWidth="146.6181640625" text="Имя" />
-                  <TableColumn fx:id="patronymicCol" prefWidth="171.0546875" text="Отчество" />
-                  <TableColumn fx:id="positionCol" prefWidth="224.290771484375" text="Должность" />
+                  <TableColumn fx:id="FullNameCol" prefWidth="411.0" text="ФИО" />
+                  <TableColumn fx:id="positionCol" prefWidth="294.0" text="Должность" />
                </columns>
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
             </TableView>
-            <Button fx:id="employeeDeleteButton" disable="true" minHeight="35.0" mnemonicParsing="false" onAction="#deleteEmployeeFromFacility" prefHeight="35.0" prefWidth="200.0" stylesheets="@../../css/style.css" text="Удалить с объекта">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-               <styleClass>
-                  <String fx:value="button-default" />
-                  <String fx:value="red" />
-                  <String fx:value="font-big" />
-               </styleClass>
+            <HBox>
+               <children>
+                  <Button fx:id="employeeDataButton" disable="true" minHeight="35.0" mnemonicParsing="false" onAction="#showEmployeeData" prefHeight="35.0" prefWidth="200.0" stylesheets="@../../css/style.css" text="Информация">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="button-default" />
+                        <String fx:value="blue" />
+                        <String fx:value="font-big" />
+                     </styleClass>
+                  </Button>
+                  <Button fx:id="employeeDeleteButton" disable="true" minHeight="35.0" mnemonicParsing="false" onAction="#deleteEmployeeFromFacility" prefHeight="35.0" prefWidth="200.0" stylesheets="@../../css/style.css" text="Удалить с объекта">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="button-default" />
+                        <String fx:value="red" />
+                        <String fx:value="font-big" />
+                     </styleClass>
+                     <HBox.margin>
+                        <Insets left="326.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
-            </Button>
+            </HBox>
          </children>
       </VBox>
    </children>

@@ -13,21 +13,27 @@ import org.openjfx.utilities.database.DatabaseNotificationController;
 import org.openjfx.utilities.panels.EmployeePanel;
 import org.openjfx.utilities.panels.NotificationPanel;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class App extends Application {
 
     private static Scene scene;
 
     @Override
-    public void start(Stage stage) throws IOException, SQLException {
+    public void start(Stage stage) throws IOException, SQLException, URISyntaxException {
+
+        System.out.println(new File(App.class.getProtectionDomain().getCodeSource().getLocation().toURI()));
+
         scene = new Scene(loadFXML("/org/openjfx/ledicom/controllers/dashboard"));
         stage.setScene(scene);
         stage.setTitle("Ледиком Менеджер");
         stage.show();
         stage.setMaximized(true);
-        stage.getIcons().add(new Image(App.class.getResourceAsStream("/org/openjfx/ledicom/icon.png")));
+        stage.getIcons().add(new Image(Objects.requireNonNull(App.class.getResourceAsStream("/org/openjfx/ledicom/icon.png"))));
         stage.setOnCloseRequest(event -> {
             try {
                 DatabaseController.close();

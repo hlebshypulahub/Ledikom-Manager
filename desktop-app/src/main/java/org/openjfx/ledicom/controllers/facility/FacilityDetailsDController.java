@@ -12,6 +12,7 @@ import org.openjfx.ledicom.entities.Employee;
 import org.openjfx.utilities.Global;
 import org.openjfx.utilities.MyAlert;
 import org.openjfx.utilities.database.DatabaseEmployeeController;
+import org.openjfx.utilities.panels.EmployeePanel;
 import org.openjfx.utilities.panels.FacilityPanel;
 
 import java.io.IOException;
@@ -38,15 +39,13 @@ public class FacilityDetailsDController implements Initializable {
     private Text codeText;
     @FXML
     private Button employeeDeleteButton;
+    @FXML
+    private Button employeeDataButton;
 
     @FXML
     private TableView<Employee> employeeTable;
     @FXML
-    private TableColumn<Employee, String> lastNameCol;
-    @FXML
-    private TableColumn<Employee, String> firstNameCol;
-    @FXML
-    private TableColumn<Employee, String> patronymicCol;
+    private TableColumn<Employee, String> FullNameCol;
     @FXML
     private TableColumn<Employee, String> positionCol;
 
@@ -66,6 +65,12 @@ public class FacilityDetailsDController implements Initializable {
         }
     }
 
+    @FXML
+    public void showEmployeeData(ActionEvent event) throws Exception {
+        Global.setEmployee(employeeTable.getSelectionModel().getSelectedItem());
+        EmployeePanel.showEmployeeDetails();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         nameText.setText(Global.getFacility().getName());
@@ -77,9 +82,7 @@ public class FacilityDetailsDController implements Initializable {
         scheduleText.setText(Global.getFacility().getSchedule());
         codeText.setText(Global.getFacility().getCode());
 
-        lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-        firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-        patronymicCol.setCellValueFactory(new PropertyValueFactory<>("patronymic"));
+        FullNameCol.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         positionCol.setCellValueFactory(new PropertyValueFactory<>("position"));
         employeeTable.setItems(DatabaseEmployeeController.getEmployeesForFacility());
 
@@ -87,8 +90,10 @@ public class FacilityDetailsDController implements Initializable {
             if (employeeTable.getSelectionModel().getSelectedIndex() >= 0) {
                 Global.setEmployee(employeeTable.getSelectionModel().getSelectedItem());
                 employeeDeleteButton.setDisable(false);
+                employeeDataButton.setDisable(false);
             } else {
                 employeeDeleteButton.setDisable(true);
+                employeeDataButton.setDisable(true);
             }
         });
     }
