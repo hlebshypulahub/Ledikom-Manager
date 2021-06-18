@@ -175,10 +175,8 @@
             </HBox>
             <TableView fx:id="employeeTable" onMouseClicked="#showContractBox" prefHeight="164.0" prefWidth="503.0">
               <columns>
-                <TableColumn fx:id="lastNameCol" prefWidth="135.272705078125" text="Фамилия" />
-                <TableColumn fx:id="firstNameCol" prefWidth="106.4727783203125" text="Имя" />
-                  <TableColumn fx:id="patronymicCol" prefWidth="122.181884765625" text="Отчество" />
-                  <TableColumn fx:id="positionCol" prefWidth="123.0545654296875" text="Должность" />
+                <TableColumn fx:id="fullNameCol" prefWidth="328.0" text="ФИО" />
+                  <TableColumn fx:id="positionCol" prefWidth="156.0" text="Должность" />
               </columns>
                <VBox.margin>
                   <Insets top="3.0" />

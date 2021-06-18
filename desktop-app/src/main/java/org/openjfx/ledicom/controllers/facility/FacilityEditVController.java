@@ -31,11 +31,7 @@ public class FacilityEditVController extends FacilityDataForm {
     @FXML
     private TableView<Employee> employeeTable;
     @FXML
-    private TableColumn<Employee, String> lastNameCol;
-    @FXML
-    private TableColumn<Employee, String> firstNameCol;
-    @FXML
-    private TableColumn<Employee, String> patronymicCol;
+    private TableColumn<Employee, String> fullNameCol;
     @FXML
     private TableColumn<Employee, String> positionCol;
 
@@ -120,9 +116,7 @@ public class FacilityEditVController extends FacilityDataForm {
         cityTF.setText(Global.getFacility().getCity());
         scheduleTF.setText(Global.getFacility().getSchedule());
 
-        lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-        firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-        patronymicCol.setCellValueFactory(new PropertyValueFactory<>("patronymic"));
+        fullNameCol.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         positionCol.setCellValueFactory(new PropertyValueFactory<>("position"));
 
         contractTypeCB.setItems(DatabaseEnumsController.getContractTypes());
