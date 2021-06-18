@@ -17,11 +17,9 @@
    <children>
       <TableView fx:id="table" layoutX="123.0" layoutY="113.0" onMouseClicked="#showFullInfo" prefHeight="310.0" prefWidth="919.0">
         <columns>
-          <TableColumn fx:id="lastNameCol" prefWidth="190.0" text="Фамилия" />
-          <TableColumn fx:id="firstNameCol" prefWidth="173.0" text="Имя" />
-            <TableColumn fx:id="patronymicCol" minWidth="0.0" prefWidth="205.0" text="Отчество" />
-            <TableColumn fx:id="dobCol" prefWidth="204.0" text="Дата рождения" />
-            <TableColumn fx:id="ageCol" prefWidth="146.0" text="Исполняется лет" />
+          <TableColumn fx:id="fullNameCol" prefWidth="467.0" text="ФИО" />
+            <TableColumn fx:id="dobCol" prefWidth="270.0" text="Дата рождения" />
+            <TableColumn fx:id="ageCol" prefWidth="161.0" text="Исполняется лет" />
         </columns>
       </TableView>
       <HBox layoutX="98.0" layoutY="14.0">

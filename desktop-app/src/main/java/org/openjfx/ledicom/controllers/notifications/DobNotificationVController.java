@@ -11,11 +11,13 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import org.openjfx.ledicom.controllers.interfaces.EmployeeControllerInterface;
 import org.openjfx.ledicom.entities.Employee;
+import org.openjfx.utilities.Global;
 import org.openjfx.utilities.Validator;
 import org.openjfx.utilities.comparators.DodNotificationsComparator;
 import org.openjfx.utilities.database.DatabaseEmployeeController;
 import org.openjfx.utilities.database.DatabaseNotificationController;
 import org.openjfx.utilities.exceptions.DayOfYearException;
+import org.openjfx.utilities.panels.EmployeePanel;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,11 +32,7 @@ public class DobNotificationVController implements Initializable, EmployeeContro
     @FXML
     private TableView<Employee> table;
     @FXML
-    private TableColumn<Employee, String> lastNameCol;
-    @FXML
-    private TableColumn<Employee, String> firstNameCol;
-    @FXML
-    private TableColumn<Employee, String> patronymicCol;
+    private TableColumn<Employee, String> fullNameCol;
     @FXML
     private TableColumn<Employee, String> dobCol;
     @FXML
@@ -51,6 +49,8 @@ public class DobNotificationVController implements Initializable, EmployeeContro
     private Button showOnAppStartButton;
     @FXML
     private Button dontShowOnAppStartButton;
+    @FXML
+    private Button showEmployeeDataButton;
 
     @FXML
     public void showDobNotificationsEditPane(ActionEvent event) {
@@ -65,7 +65,6 @@ public class DobNotificationVController implements Initializable, EmployeeContro
             dobNotificationsEditPane.setVisible(false);
             dobNotificationsEditButton.setVisible(true);
             dobNotificationsPeriodText.setText(String.valueOf(Validator.validateDayOfYear(dobNotificationsEditTF.getText())));
-            //Global.setEmployeeList(DatabaseEmployeeController.dobNotificationsEmployeeList());
             table.setItems(DatabaseEmployeeController.dobNotificationsEmployeeList());
         } catch (DayOfYearException | SQLException exception) {
             System.out.println(exception.getMessage());
@@ -88,16 +87,19 @@ public class DobNotificationVController implements Initializable, EmployeeContro
         }
     }
 
+    @FXML
+    public void showEmployeeData(ActionEvent event) throws IOException {
+        Global.setEmployee(table.getSelectionModel().getSelectedItem());
+        EmployeePanel.showEmployeeDetails();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<Employee> list = DatabaseEmployeeController.dobNotificationsEmployeeList();
-        //Global.setEmployeeList(DatabaseEmployeeController.dobNotificationsEmployeeList());
         list.sort(Comparator.comparing(e -> LocalDate.parse(e.getDOB(), DateTimeFormatter.ofPattern("dd.MM.yyyy")).getDayOfYear()));
         dobNotificationsPeriodText.setText(String.valueOf(DatabaseNotificationController.getDobNotificationsPeriod()));
 
-        firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-        lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-        patronymicCol.setCellValueFactory(new PropertyValueFactory<>("patronymic"));
+        fullNameCol.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         dobCol.setCellValueFactory(new PropertyValueFactory<>("DOB"));
         ageCol.setCellValueFactory(new PropertyValueFactory<>("dobAge"));
         dobCol.setComparator(new DodNotificationsComparator());
@@ -125,6 +127,17 @@ public class DobNotificationVController implements Initializable, EmployeeContro
                 e.printStackTrace();
             }
             setButtons();
+        });
+
+        table.setOnMouseClicked(event -> {
+            if (table.getSelectionModel().getSelectedIndex() >= 0) {
+                Global.setEmployee(table.getSelectionModel().getSelectedItem());
+                try {
+                    EmployeePanel.showEmployeeDetails();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         });
     }
 }
