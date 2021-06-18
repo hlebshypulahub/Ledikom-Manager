@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Ледиком Менеджер"
-#define MyAppVersion "1.0"
+#define MyAppVersion "1.0.0.0"
 #define MyAppPublisher "Ledikom"
 #define MyAppURL "glebszypula1997@gmail.com"
 #define MyAppExeName "Ledikom-Manager.exe"
