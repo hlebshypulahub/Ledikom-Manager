@@ -15,7 +15,7 @@
 
 <ScrollPane hbarPolicy="NEVER" layoutX="2.0" prefHeight="908.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.employee.EmployeeDetailsDController">
    <content>
-      <AnchorPane layoutX="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1140.0" prefWidth="750.0">
+      <AnchorPane layoutX="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1140.0" prefWidth="736.0">
          <children>
             <VBox layoutX="6.0" layoutY="10.0" prefHeight="1140.0" prefWidth="726.0">
                <children>
@@ -51,7 +51,7 @@
                               <Font size="16.0" />
                            </font>
                         </Text>
-                        <Text fx:id="fullNameText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="451.9771728515625">
+                        <Text fx:id="fullNameText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="606.826171875">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -68,7 +68,7 @@
                               <Font size="16.0" />
                            </font>
                         </Text>
-                        <Text fx:id="dobText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="451.9771728515625">
+                        <Text fx:id="dobText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="606.826171875">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -85,7 +85,7 @@
                               <Font size="16.0" />
                            </font>
                         </Text>
-                        <Text fx:id="phoneText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="451.9771728515625">
+                        <Text fx:id="phoneText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="606.826171875">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -102,21 +102,21 @@
                               <Font size="16.0" />
                            </font>
                         </Text>
-                        <Text fx:id="addressText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="451.9771728515625">
+                        <Text fx:id="addressText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="606.826171875">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Text>
                      </children>
                   </HBox>
-                  <HBox prefHeight="15.0" prefWidth="573.0">
+                  <HBox prefHeight="22.0" prefWidth="711.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Дети:" wrappingWidth="120.0">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Text>
-                        <Text fx:id="childrenDataText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="451.9771728515625">
+                        <Text fx:id="childrenDataText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="606.826171875">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -161,7 +161,7 @@
                               <Font size="16.0" />
                            </font>
                         </Text>
-                        <Text fx:id="positionText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="370.826171875">
+                        <Text fx:id="positionText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="525.826171875">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -175,7 +175,7 @@
                               <Font size="16.0" />
                            </font>
                         </Text>
-                        <Text fx:id="categoryText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="370.826171875">
+                        <Text fx:id="categoryText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="525.826171875">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -195,7 +195,7 @@
                               <Font size="16.0" />
                            </font>
                         </Text>
-                        <Text fx:id="salaryText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="370.826171875">
+                        <Text fx:id="salaryText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="525.826171875">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -209,7 +209,7 @@
                               <Font size="16.0" />
                            </font>
                         </Text>
-                        <Text fx:id="hiringDateText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="370.826171875">
+                        <Text fx:id="hiringDateText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="525.826171875">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -229,7 +229,7 @@
                               <Font size="16.0" />
                            </font>
                         </Text>
-                        <Text fx:id="ppeText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="370.826171875">
+                        <Text fx:id="ppeText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="525.826171875">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -243,7 +243,7 @@
                               <Font size="16.0" />
                            </font>
                         </Text>
-                        <Text fx:id="maternityText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="370.826171875">
+                        <Text fx:id="maternityText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="525.826171875">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -260,7 +260,7 @@
                               <Font size="16.0" />
                            </font>
                         </Text>
-                        <Text fx:id="noteText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="370.826171875">
+                        <Text fx:id="noteText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="525.826171875">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -278,14 +278,14 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Text>
-                  <HBox prefHeight="19.0" prefWidth="404.0">
+                  <HBox prefHeight="22.0" prefWidth="718.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Учреждение образования:" wrappingWidth="210.0">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Text>
-                        <Text fx:id="eduNameText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="362.6375732421875">
+                        <Text fx:id="eduNameText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="516.826171875">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -302,7 +302,7 @@
                               <Font size="16.0" />
                            </font>
                         </Text>
-                        <Text fx:id="eduGraduationDateText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="362.637451171875">
+                        <Text fx:id="eduGraduationDateText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="516.826171875">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -330,7 +330,7 @@
                               <Font size="16.0" />
                            </font>
                         </Text>
-                        <Text fx:id="start5Text" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="280.826171875">
+                        <Text fx:id="start5Text" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="435.826171875">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -347,7 +347,7 @@
                               <Font size="16.0" />
                            </font>
                         </Text>
-                        <Text fx:id="end5Text" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="280.826171875">
+                        <Text fx:id="end5Text" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="435.826171875">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -364,7 +364,7 @@
                               <Font size="16.0" />
                            </font>
                         </Text>
-                        <Text fx:id="courseDeadlineText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="280.826171875">
+                        <Text fx:id="courseDeadlineText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="435.826171875">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -381,7 +381,7 @@
                               <Font size="16.0" />
                            </font>
                         </Text>
-                        <Text fx:id="courseHoursSumText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="280.826171875">
+                        <Text fx:id="courseHoursSumText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="435.826171875">
                            <font>
                               <Font size="16.0" />
                            </font>
