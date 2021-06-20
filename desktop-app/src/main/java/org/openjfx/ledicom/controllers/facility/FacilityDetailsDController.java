@@ -11,6 +11,7 @@ import javafx.scene.text.Text;
 import org.openjfx.ledicom.entities.Employee;
 import org.openjfx.utilities.Global;
 import org.openjfx.utilities.MyAlert;
+import org.openjfx.utilities.TableDoubleClickSetter;
 import org.openjfx.utilities.database.DatabaseEmployeeController;
 import org.openjfx.utilities.panels.EmployeePanel;
 import org.openjfx.utilities.panels.FacilityPanel;
@@ -96,5 +97,7 @@ public class FacilityDetailsDController implements Initializable {
                 employeeDataButton.setDisable(true);
             }
         });
+
+        TableDoubleClickSetter.setEmployeeTableFull(employeeTable);
     }
 }

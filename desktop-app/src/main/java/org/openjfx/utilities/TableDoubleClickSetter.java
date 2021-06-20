@@ -28,4 +28,22 @@ public final class TableDoubleClickSetter {
             return row;
         });
     }
+
+    public static void setEmployeeTableFull(TableView<Employee> table) {
+        table.setRowFactory(event -> {
+            TableRow<Employee> row = new TableRow<>();
+            row.setOnMouseClicked(e -> {
+                if (e.getClickCount() == 2 && (!row.isEmpty())) {
+                    try {
+                        Global.setEmployee(table.getSelectionModel().getSelectedItem());
+                        EmployeePanel.showEmployeeEdit();
+                        EmployeePanel.showEmployeeDetails();
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                }
+            });
+            return row;
+        });
+    }
 }
