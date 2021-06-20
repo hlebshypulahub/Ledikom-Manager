@@ -11,6 +11,8 @@ import org.openjfx.ledicom.controllers.interfaces.EmployeeControllerInterface;
 import org.openjfx.ledicom.entities.EmployeeCourseData;
 import org.openjfx.utilities.Global;
 import org.openjfx.utilities.database.DatabaseCourseController;
+import org.openjfx.utilities.database.DatabaseEmployeeController;
+import org.openjfx.utilities.panels.EmployeePanel;
 
 import java.io.IOException;
 import java.net.URL;
@@ -88,5 +90,21 @@ public class EmployeeCoursesVController implements Initializable, EmployeeContro
         nextCourseCol.setSortable(false);
 
         setTableCss();
+
+        table.setRowFactory(event -> {
+            TableRow<EmployeeCourseData> row = new TableRow<>();
+            row.setOnMouseClicked(e -> {
+                if (e.getClickCount() == 2 && (!row.isEmpty())) {
+                    try {
+                        Global.setEmployee(DatabaseEmployeeController.getEmployee(table.getSelectionModel().getSelectedItem().getEmployeeId()));
+                        EmployeePanel.showEmployeeEdit();
+                        EmployeePanel.showEmployeeDetails();
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                }
+            });
+            return row;
+        });
     }
 }
