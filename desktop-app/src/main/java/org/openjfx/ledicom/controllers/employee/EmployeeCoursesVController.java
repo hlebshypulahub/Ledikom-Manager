@@ -11,8 +11,6 @@ import org.openjfx.ledicom.controllers.interfaces.EmployeeControllerInterface;
 import org.openjfx.ledicom.entities.EmployeeCourseData;
 import org.openjfx.utilities.Global;
 import org.openjfx.utilities.database.DatabaseCourseController;
-import org.openjfx.utilities.database.DatabaseEmployeeController;
-import org.openjfx.utilities.panels.EmployeePanel;
 
 import java.io.IOException;
 import java.net.URL;
@@ -46,22 +44,16 @@ public class EmployeeCoursesVController implements Initializable, EmployeeContro
             @Override
             protected void updateItem(EmployeeCourseData item, boolean empty) {
                 super.updateItem(item, empty);
-                System.out.println("1");
                 if (item == null) {
-                    System.out.println("2");
                     setStyle("");
                 } else if (!item.getEmployeeName().equals("")) {
-                    System.out.println("3");
                     setStyle("-fx-background-color: #ebffdb; -fx-border-width: 2 0 0 0; -fx-border-color: black");
                 } else {
-                    System.out.println("4");
                     setStyle("");
                 }
                 if (item == null) {
-                    System.out.println("5");
                     setStyle("");
                 } else if (tv.getSelectionModel().getSelectedItem() == item) {
-                    System.out.println("6");
                     setStyle("-fx-background-color: #0096c9;  -fx-border-width: 2 0 0 0; -fx-border-color: black");
                 }
             }
@@ -90,21 +82,5 @@ public class EmployeeCoursesVController implements Initializable, EmployeeContro
         nextCourseCol.setSortable(false);
 
         setTableCss();
-
-        table.setRowFactory(event -> {
-            TableRow<EmployeeCourseData> row = new TableRow<>();
-            row.setOnMouseClicked(e -> {
-                if (e.getClickCount() == 2 && (!row.isEmpty())) {
-                    try {
-                        Global.setEmployee(DatabaseEmployeeController.getEmployee(table.getSelectionModel().getSelectedItem().getEmployeeId()));
-                        EmployeePanel.showEmployeeEdit();
-                        EmployeePanel.showEmployeeDetails();
-                    } catch (IOException ioException) {
-                        ioException.printStackTrace();
-                    }
-                }
-            });
-            return row;
-        });
     }
 }
