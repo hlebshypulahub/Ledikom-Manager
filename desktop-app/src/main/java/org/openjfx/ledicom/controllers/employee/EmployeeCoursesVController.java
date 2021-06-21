@@ -11,6 +11,8 @@ import org.openjfx.ledicom.controllers.interfaces.EmployeeControllerInterface;
 import org.openjfx.ledicom.entities.EmployeeCourseData;
 import org.openjfx.utilities.Global;
 import org.openjfx.utilities.database.DatabaseCourseController;
+import org.openjfx.utilities.database.DatabaseEmployeeController;
+import org.openjfx.utilities.panels.EmployeePanel;
 
 import java.io.IOException;
 import java.net.URL;
@@ -40,23 +42,39 @@ public class EmployeeCoursesVController implements Initializable, EmployeeContro
     }
 
     public void setTableCss() {
-        table.setRowFactory(tv -> new TableRow<>() {
-            @Override
-            protected void updateItem(EmployeeCourseData item, boolean empty) {
-                super.updateItem(item, empty);
-                if (item == null) {
-                    setStyle("");
-                } else if (!item.getEmployeeName().equals("")) {
-                    setStyle("-fx-background-color: #ebffdb; -fx-border-width: 2 0 0 0; -fx-border-color: black");
-                } else {
-                    setStyle("");
+        table.setRowFactory(tv -> {
+            TableRow<EmployeeCourseData> row = new TableRow<>() {
+                @Override
+                protected void updateItem(EmployeeCourseData item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (item == null) {
+                        setStyle("");
+                    } else if (!item.getEmployeeName().equals("")) {
+                        setStyle("-fx-background-color: #ebffdb; -fx-border-width: 2 0 0 0; -fx-border-color: black");
+                    } else {
+                        setStyle("");
+                    }
+                    if (item == null) {
+                        setStyle("");
+                    } else if (tv.getSelectionModel().getSelectedItem() == item && item.getEmployeeName().equals("")) {
+                        setStyle("-fx-background-color: #0096c9;");
+                    } else if (tv.getSelectionModel().getSelectedItem() == item) {
+                        setStyle("-fx-background-color: #0096c9;  -fx-border-width: 2 0 0 0; -fx-border-color: black");
+                    }
                 }
-                if (item == null) {
-                    setStyle("");
-                } else if (tv.getSelectionModel().getSelectedItem() == item) {
-                    setStyle("-fx-background-color: #0096c9;  -fx-border-width: 2 0 0 0; -fx-border-color: black");
+            };
+
+            row.setOnMouseClicked(e -> {
+                if (e.getClickCount() == 2 && (!row.isEmpty())) {
+                    try {
+                        Global.setEmployee(DatabaseEmployeeController.getEmployee(tv.getSelectionModel().getSelectedItem().getEmployeeId()));
+                        EmployeePanel.showEmployeeEdit();
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
                 }
-            }
+            });
+            return row;
         });
     }
 
