@@ -8,6 +8,8 @@ import org.openjfx.ledicom.entities.Facility;
 
 public final class Global {
 
+    private static final String APP_VERSION = "1.0.0.0";
+
     @FXML
     private static AnchorPane viewPane;
     @FXML
@@ -60,5 +62,9 @@ public final class Global {
 
     public static void setViewPane(AnchorPane viewPane) {
         Global.viewPane = viewPane;
+    }
+
+    public static String getAppVersion() {
+        return APP_VERSION;
     }
 }
