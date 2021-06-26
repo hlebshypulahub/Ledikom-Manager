@@ -27,12 +27,12 @@ public interface EmployeeControllerInterface {
         }
     }
 
-    @FXML
-    default void showEmployeeManagement(TableView<Employee> table) throws IOException {
-        if (setGlobalEmployee(table)) {
-            EmployeePanel.showEmployeeManagement();
-        }
-    }
+//    @FXML
+//    default void showEmployeeManagement(TableView<Employee> table) throws IOException {
+//        if (setGlobalEmployee(table)) {
+//            EmployeePanel.showEmployeeManagement();
+//        }
+//    }
 
     @FXML
     default boolean setGlobalEmployee(TableView<Employee> table) throws IOException {

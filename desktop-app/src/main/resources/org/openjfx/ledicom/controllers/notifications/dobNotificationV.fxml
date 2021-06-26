@@ -19,7 +19,7 @@
         <columns>
           <TableColumn fx:id="fullNameCol" prefWidth="467.0" text="ФИО" />
             <TableColumn fx:id="dobCol" prefWidth="270.0" text="Дата рождения" />
-            <TableColumn fx:id="ageCol" prefWidth="161.0" text="Исполняется лет" />
+            <TableColumn fx:id="ageCol" prefWidth="166.0" text="Исполняется лет" />
         </columns>
       </TableView>
       <HBox layoutX="98.0" layoutY="14.0">

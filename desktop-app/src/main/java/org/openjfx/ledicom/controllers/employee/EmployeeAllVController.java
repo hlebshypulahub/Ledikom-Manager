@@ -71,13 +71,17 @@ public class EmployeeAllVController implements Initializable, EmployeeController
     @FXML
     public void showFullInfo(MouseEvent event) throws IOException {
         showEmployeeDetails(table);
-        showEmployeeManagement(table);
+        //showEmployeeManagement(table);
     }
 
     @FXML
     public void showFullInfoFiltered(MouseEvent event) throws IOException {
-        showEmployeeDetails(filteredTable);
-        showEmployeeManagement(filteredTable);
+        if (filteredTable.isVisible()) {
+            showEmployeeDetails(filteredTable);
+        } else if (filteredTableInt.isVisible()) {
+            showEmployeeDetails(filteredTableInt);
+        }
+        //showEmployeeManagement(filteredTable);
     }
 
     @FXML

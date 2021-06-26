@@ -49,8 +49,6 @@ public class DobNotificationVController implements Initializable, EmployeeContro
     private Button showOnAppStartButton;
     @FXML
     private Button dontShowOnAppStartButton;
-    @FXML
-    private Button showEmployeeDataButton;
 
     @FXML
     public void showDobNotificationsEditPane(ActionEvent event) {
@@ -74,7 +72,7 @@ public class DobNotificationVController implements Initializable, EmployeeContro
     @FXML
     public void showFullInfo(MouseEvent event) throws IOException {
         showEmployeeDetails(table);
-        showEmployeeManagement(table);
+        //showEmployeeManagement(table);
     }
 
     public void setButtons() {
@@ -87,14 +85,10 @@ public class DobNotificationVController implements Initializable, EmployeeContro
         }
     }
 
-    @FXML
-    public void showEmployeeData(ActionEvent event) throws IOException {
-        Global.setEmployee(table.getSelectionModel().getSelectedItem());
-        EmployeePanel.showEmployeeDetails();
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Global.getFooterPane().getChildren().clear();
+
         ObservableList<Employee> list = DatabaseEmployeeController.dobNotificationsEmployeeList();
         list.sort(Comparator.comparing(e -> LocalDate.parse(e.getDOB(), DateTimeFormatter.ofPattern("dd.MM.yyyy")).getDayOfYear()));
         dobNotificationsPeriodText.setText(String.valueOf(DatabaseNotificationController.getDobNotificationsPeriod()));
