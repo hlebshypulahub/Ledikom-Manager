@@ -71,7 +71,7 @@
 
 .menu-item .label {
     -fx-text-fill: black;
-    -fx-font: 16 times;
+    -fx-font: 20 times;
 }
 
 .menu-item:focused {
@@ -91,3 +91,19 @@
     -fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em;
 }
 
+.table-default .table-cell{
+    -fx-font-size:20px;
+}
+
+.center-table-column{
+    -fx-alignment:center;
+}
+
+.table-header .column-header .label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.combo-box-popup .list-view {
+    -fx-font-size : 15pt;
+}

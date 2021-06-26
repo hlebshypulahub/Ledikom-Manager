@@ -32,17 +32,17 @@ public class DatabaseController {
             }
 
 //            /// EXTERNAL
-            dbURL = prop.getProperty("externalURL");
-            dbUser = prop.getProperty("externalUser");
-            dbPassword = prop.getProperty("externalPassword");
+//            dbURL = prop.getProperty("externalURL");
+//            dbUser = prop.getProperty("externalUser");
+//            dbPassword = prop.getProperty("externalPassword");
 //            /// INTERNAL
 //            dbURL = prop.getProperty("internalURL");
 //            dbUser = prop.getProperty("internalUser");
 //            dbPassword = prop.getProperty("internalPassword");
             /// LOCAL
-//            dbURL = prop.getProperty("localURL");
-//            dbUser = prop.getProperty("localUser");
-//            dbPassword = prop.getProperty("localPassword");
+            dbURL = prop.getProperty("localURL");
+            dbUser = prop.getProperty("localUser");
+            dbPassword = prop.getProperty("localPassword");
 
             try {
                 conn = DriverManager.getConnection(dbURL, dbUser, dbPassword);

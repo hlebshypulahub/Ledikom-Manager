@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -12,32 +13,52 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="908.0" prefWidth="1168.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.employee.EmployeeAllVController">
    <children>
-      <TableView fx:id="table" layoutX="15.0" layoutY="63.0" onMouseClicked="#showFullInfo" prefHeight="496.0" prefWidth="1140.0">
+      <TableView fx:id="table" layoutX="15.0" layoutY="63.0" onMouseClicked="#showFullInfo" prefHeight="830.0" prefWidth="1140.0" stylesheets="@../../css/style.css">
          <columns>
             <TableColumn fx:id="fullNameCol" prefWidth="430.0" text="ФИО" />
             <TableColumn fx:id="dobCol" prefWidth="221.0" text="Дата рождения" />
             <TableColumn fx:id="positionCol" prefWidth="292.0" text="Должность" />
-            <TableColumn fx:id="salaryCol" prefWidth="196.0" text="Оклад" />
+            <TableColumn fx:id="salaryCol" prefWidth="181.0" text="Оклад" />
          </columns>
+         <styleClass>
+            <String fx:value="table-default" />
+            <String fx:value="table-header" />
+         </styleClass>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
       </TableView>
-      <ComboBox fx:id="facilityCB" layoutX="15.0" layoutY="14.0" onAction="#filterTable" prefHeight="35.0" prefWidth="178.0" promptText="Объект" visibleRowCount="20" />
-      <ComboBox fx:id="valueCB" layoutX="207.0" layoutY="14.0" onAction="#filterTable" prefHeight="35.0" prefWidth="178.0" promptText="Значение" />
-      <Button cancelButton="true" layoutX="1055.0" layoutY="14.0" mnemonicParsing="false" onAction="#reset" prefHeight="35.0" prefWidth="100.0" text="Сброс" />
-      <TableView fx:id="filteredTable" layoutX="15.0" layoutY="63.0" onMouseClicked="#showFullInfoFiltered" prefHeight="496.0" prefWidth="1140.0" visible="false">
+      <ComboBox fx:id="facilityCB" layoutX="15.0" layoutY="14.0" onAction="#filterTable" prefHeight="35.0" prefWidth="178.0" promptText="Объект" styleClass="combo-box-popup" stylesheets="@../../css/style.css" visibleRowCount="20" />
+      <ComboBox fx:id="valueCB" layoutX="207.0" layoutY="14.0" onAction="#filterTable" prefHeight="35.0" prefWidth="178.0" promptText="Значение" styleClass="combo-box-popup" stylesheets="@../../css/style.css" />
+      <Button cancelButton="true" layoutX="1055.0" layoutY="14.0" mnemonicParsing="false" onAction="#reset" prefHeight="35.0" prefWidth="100.0" stylesheets="@../../css/style.css" text="Сброс">
+         <styleClass>
+            <String fx:value="button-default" />
+            <String fx:value="blue" />
+            <String fx:value="font-big" />
+         </styleClass></Button>
+      <TableView fx:id="filteredTable" layoutX="15.0" layoutY="63.0" onMouseClicked="#showFullInfoFiltered" prefHeight="830.0" prefWidth="1140.0" stylesheets="@../../css/style.css" visible="false">
          <columns>
             <TableColumn fx:id="fullNameColF" prefWidth="430.0" text="ФИО" />
-            <TableColumn fx:id="valueColF" prefWidth="718.0" text="Текст" />
+            <TableColumn fx:id="valueColF" prefWidth="694.0" text="Текст" />
          </columns>
+         <styleClass>
+            <String fx:value="table-default" />
+            <String fx:value="table-header" />
+         </styleClass>
       </TableView>
-      <TableView fx:id="filteredTableInt" layoutX="15.0" layoutY="63.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#showFullInfoFiltered" prefHeight="496.0" prefWidth="1140.0" visible="false">
+      <TableView fx:id="filteredTableInt" layoutX="15.0" layoutY="63.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#showFullInfoFiltered" prefHeight="830.0" prefWidth="1140.0" stylesheets="@../../css/style.css" visible="false">
          <columns>
             <TableColumn fx:id="fullNameColFInt" prefWidth="430.0" text="ФИО" />
-            <TableColumn fx:id="valueColFInt" prefWidth="709.0" text="Текст" />
+            <TableColumn fx:id="valueColFInt" prefWidth="694.0" text="Текст" />
          </columns>
+         <styleClass>
+            <String fx:value="table-default" />
+            <String fx:value="table-header" />
+         </styleClass>
       </TableView>
       <TextField fx:id="findTF" layoutX="453.0" layoutY="14.0" prefHeight="35.0" prefWidth="224.0" promptText="Поиск">
          <font>
-            <Font size="14.0" />
+            <Font size="15.0" />
          </font>
       </TextField>
       <Button fx:id="printButton" defaultButton="true" disable="true" layoutX="744.0" layoutY="14.0" maxHeight="35.0" maxWidth="200.0" minHeight="35.0" minWidth="200.0" mnemonicParsing="false" onAction="#printTable" prefHeight="35.0" prefWidth="200.0" stylesheets="@../../css/style.css" text="Печать">

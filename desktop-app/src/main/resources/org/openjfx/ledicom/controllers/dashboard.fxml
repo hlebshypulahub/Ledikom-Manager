@@ -9,10 +9,10 @@
 
 <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="982.0" prefWidth="1918.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.DashboardController">
    <center>
-            <AnchorPane id="Content" fx:id="viewPane" minHeight="-1.0" minWidth="-1.0" prefWidth="1168.0" />
+            <AnchorPane id="Content" fx:id="viewPane" minHeight="-1.0" minWidth="-1.0" prefHeight="908.0" prefWidth="1168.0" />
    </center>
    <top>
-        <MenuBar prefHeight="6.0" prefWidth="1920.0" stylesheets="@../css/style.css" BorderPane.alignment="CENTER">
+        <MenuBar prefHeight="37.0" prefWidth="1920.0" stylesheets="@../css/style.css" BorderPane.alignment="CENTER">
             <menus>
             <Menu fx:id="managementMenu2" mnemonicParsing="false" text="Сотрудники">
                <items>
@@ -40,6 +40,6 @@
       <Pane fx:id="footerPane" prefHeight="37.0" prefWidth="1918.0" style="-fx-border-width: 2 0 0 0; -fx-border-color: #a8a8a8;" BorderPane.alignment="CENTER" />
    </bottom>
    <right>
-          <AnchorPane fx:id="detailsPane" prefHeight="956.0" prefWidth="750.0" style="-fx-border-width: 0 0 0 2; -fx-border-color: #a8a8a8;" BorderPane.alignment="CENTER" />
+          <AnchorPane fx:id="detailsPane" prefHeight="908.0" prefWidth="750.0" style="-fx-border-width: 0 0 0 2; -fx-border-color: #a8a8a8;" BorderPane.alignment="CENTER" />
    </right>
 </BorderPane>
