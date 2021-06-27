@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="908.0" prefWidth="1168.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.facility.FacilityAllVController">
    <children>
-      <TableView fx:id="table" layoutX="14.0" layoutY="14.0" onMouseClicked="#showFullInfo" prefHeight="496.0" prefWidth="1140.0">
+      <TableView fx:id="table" layoutX="14.0" layoutY="15.0" onMouseClicked="#showFullInfo" prefHeight="878.0" prefWidth="1140.0" stylesheets="@../../css/style.css">
          <columns>
-            <TableColumn fx:id="cityCol" prefWidth="182.0" text="Город" />
-            <TableColumn fx:id="nameCol" minWidth="0.0" prefWidth="197.0" text="Наименование" />
-            <TableColumn fx:id="addressCol" prefWidth="304.0" text="Адрес" />
-            <TableColumn fx:id="scheduleCol" minWidth="7.0" prefWidth="456.0" text="Режим работы" />
+            <TableColumn fx:id="cityCol" prefWidth="190.0" text="Город" />
+            <TableColumn fx:id="nameCol" minWidth="0.0" prefWidth="203.0" text="Наименование" />
+            <TableColumn fx:id="addressCol" prefWidth="309.0" text="Адрес" />
+            <TableColumn fx:id="scheduleCol" minWidth="7.0" prefWidth="421.0" text="Режим работы" />
          </columns>
+         <styleClass>
+            <String fx:value="table-default" />
+            <String fx:value="table-header" />
+         </styleClass>
       </TableView>
    </children>
 </AnchorPane>
