@@ -15,7 +15,7 @@
 
 <AnchorPane prefHeight="588.0" prefWidth="1165.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.notifications.DobNotificationVController">
    <children>
-      <TableView fx:id="table" layoutX="123.0" layoutY="113.0" onMouseClicked="#showFullInfo" prefHeight="310.0" prefWidth="919.0">
+      <TableView fx:id="table" layoutX="123.0" layoutY="113.0" prefHeight="310.0" prefWidth="919.0">
         <columns>
           <TableColumn fx:id="fullNameCol" prefWidth="467.0" text="ФИО" />
             <TableColumn fx:id="dobCol" prefWidth="270.0" text="Дата рождения" />

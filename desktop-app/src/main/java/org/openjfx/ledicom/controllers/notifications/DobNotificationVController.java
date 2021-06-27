@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import org.openjfx.ledicom.controllers.interfaces.EmployeeControllerInterface;
@@ -69,12 +68,6 @@ public class DobNotificationVController implements Initializable, EmployeeContro
         }
     }
 
-    @FXML
-    public void showFullInfo(MouseEvent event) throws IOException {
-        showEmployeeDetails(table);
-        //showEmployeeManagement(table);
-    }
-
     public void setButtons() {
         if (DatabaseNotificationController.getOnAppStart()) {
             showOnAppStartButton.setVisible(false);
@@ -128,6 +121,7 @@ public class DobNotificationVController implements Initializable, EmployeeContro
                 Global.setEmployee(table.getSelectionModel().getSelectedItem());
                 try {
                     EmployeePanel.showEmployeeDetails();
+                    showEmployeeManagement(table);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

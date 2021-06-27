@@ -11,7 +11,7 @@ public final class EmployeePanel implements ShowPane {
 
     public static void showEmployeeDetails() throws IOException {
         ShowPane.showDetailsPane(new FXMLLoader(EmployeePanel.class.getResource("/org/openjfx/ledicom/controllers/employee/employeeDetailsD.fxml")));
-        showEmployeeManagement();
+        //showEmployeeManagement();
     }
 
     public static void showEmployeeEdit() throws IOException {
@@ -23,6 +23,7 @@ public final class EmployeePanel implements ShowPane {
     }
 
     public static void showEmployeeManagement() throws IOException {
+        System.out.println(1);
         ShowPane.showFooterPane(new FXMLLoader(EmployeePanel.class.getResource("/org/openjfx/ledicom/controllers/employee/employeeManagementM.fxml")));
     }
 
