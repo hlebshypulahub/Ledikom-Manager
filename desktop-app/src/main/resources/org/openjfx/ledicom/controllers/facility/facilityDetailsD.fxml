@@ -44,7 +44,7 @@
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <Text fx:id="nameText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="444.1846923828125">
+                  <Text fx:id="nameText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="595.1846923828125">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -64,7 +64,7 @@
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <Text fx:id="statusText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="444.1846923828125">
+                  <Text fx:id="statusText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="595.1846923828125">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -81,7 +81,7 @@
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <Text fx:id="categoryText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="444.1846923828125">
+                  <Text fx:id="categoryText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="595.1846923828125">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -95,7 +95,7 @@
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <Text fx:id="codeText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="444.1846923828125">
+                  <Text fx:id="codeText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="595.1846923828125">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -115,7 +115,7 @@
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <Text fx:id="phoneText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="444.1846923828125">
+                  <Text fx:id="phoneText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="595.1846923828125">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -132,7 +132,7 @@
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <Text fx:id="emailText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="444.1846923828125">
+                  <Text fx:id="emailText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="595.1846923828125">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -149,7 +149,7 @@
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <Text fx:id="addressText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="444.1846923828125">
+                  <Text fx:id="addressText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="595.1846923828125">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -163,7 +163,7 @@
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <Text fx:id="scheduleText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="444.1846923828125">
+                  <Text fx:id="scheduleText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="595.1846923828125">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -181,14 +181,18 @@
                   <Insets top="20.0" />
                </VBox.margin>
             </Text>
-            <TableView fx:id="employeeTable" prefHeight="181.0" prefWidth="571.0">
+            <TableView fx:id="employeeTable" prefHeight="181.0" prefWidth="571.0" stylesheets="@../../css/style.css">
                <columns>
                   <TableColumn fx:id="FullNameCol" prefWidth="411.0" text="ФИО" />
-                  <TableColumn fx:id="positionCol" prefWidth="294.0" text="Должность" />
+                  <TableColumn fx:id="positionCol" prefWidth="299.0" text="Должность" />
                </columns>
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
+               <styleClass>
+                  <String fx:value="table-header" />
+                  <String fx:value="table-default" />
+               </styleClass>
             </TableView>
             <HBox>
                <children>
