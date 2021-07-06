@@ -13,14 +13,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="588.0" prefWidth="1165.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.notifications.DobNotificationVController">
+<AnchorPane prefHeight="908.0" prefWidth="1165.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.notifications.DobNotificationVController">
    <children>
-      <TableView fx:id="table" layoutX="123.0" layoutY="113.0" prefHeight="310.0" prefWidth="919.0">
+      <TableView fx:id="table" layoutX="123.0" layoutY="113.0" prefHeight="782.0" prefWidth="919.0" stylesheets="@../../css/style.css">
         <columns>
-          <TableColumn fx:id="fullNameCol" prefWidth="467.0" text="ФИО" />
-            <TableColumn fx:id="dobCol" prefWidth="270.0" text="Дата рождения" />
-            <TableColumn fx:id="ageCol" prefWidth="166.0" text="Исполняется лет" />
+          <TableColumn fx:id="fullNameCol" prefWidth="388.0" text="ФИО" />
+            <TableColumn fx:id="dobCol" prefWidth="295.0" text="Дата рождения" />
+            <TableColumn fx:id="ageCol" prefWidth="220.0" text="Исполняется лет" />
         </columns>
+         <styleClass>
+            <String fx:value="table-default" />
+            <String fx:value="table-header" />
+         </styleClass>
       </TableView>
       <HBox layoutX="98.0" layoutY="14.0">
          <children>
