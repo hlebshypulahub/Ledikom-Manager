@@ -18,11 +18,11 @@
 
 <AnchorPane id="Content" fx:id="viewPane" minHeight="-1.0" minWidth="-1.0" prefHeight="908.0" prefWidth="1166.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.facility.FacilityEditVController">
    <children>
-      <VBox fx:id="infoVBox" layoutX="14.0" layoutY="14.0" prefHeight="305.0" prefWidth="551.0">
+      <VBox fx:id="infoVBox" layoutX="15.0" layoutY="14.0" prefHeight="455.0" prefWidth="551.0">
          <children>
             <Label alignment="CENTER" prefHeight="21.0" prefWidth="550.0" text="Отредактируйте данные:">
                <font>
-                  <Font name="System Bold" size="15.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
             </Label>
             <HBox>
@@ -30,33 +30,39 @@
                   <Insets top="10.0" />
                </VBox.margin>
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Наименование:">
+                  <Label prefHeight="37.0" prefWidth="250.0" text="Наименование:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="nameTF" prefHeight="25.0" prefWidth="300.0" promptText="Наименование" />
+                  <TextField fx:id="nameTF" prefHeight="25.0" prefWidth="300.0" promptText="Наименование">
+                     <font>
+                        <Font size="16.0" />
+                     </font></TextField>
                </children>
             </HBox>
-            <HBox prefHeight="25.0" prefWidth="396.0">
+            <HBox prefHeight="37.0" prefWidth="396.0">
                <VBox.margin>
                   <Insets top="3.0" />
                </VBox.margin>
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Статус:">
+                  <Label prefHeight="37.0" prefWidth="250.0" text="Статус:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="statusCB" prefHeight="25.0" prefWidth="147.0" promptText="Статус" />
+                  <ComboBox fx:id="statusCB" prefHeight="37.0" prefWidth="147.0" promptText="Статус" />
                   <Pane>
                      <HBox.margin>
                         <Insets left="6.0" />
                      </HBox.margin>
                      <children>
-                        <Button fx:id="newStatusAddButton" mnemonicParsing="false" onAction="#showNewStatusAdd" prefHeight="25.0" prefWidth="147.0" text="Добавить новый" />
-                        <TextField fx:id="newStatusAddTF" accessibleRoleDescription="x" layoutX="-1.0" prefHeight="25.0" prefWidth="116.0" visible="false" />
-                        <Button fx:id="newStatusShowButton" layoutX="122.0" mnemonicParsing="false" onAction="#addNewStatus" prefHeight="25.0" prefWidth="25.0" text="+" visible="false">
+                        <Button fx:id="newStatusAddButton" mnemonicParsing="false" onAction="#showNewStatusAdd" prefHeight="37.0" prefWidth="147.0" text="Добавить новый" />
+                        <TextField fx:id="newStatusAddTF" accessibleRoleDescription="x" layoutX="-1.0" prefHeight="37.0" prefWidth="116.0" visible="false">
+                           <font>
+                              <Font size="16.0" />
+                           </font></TextField>
+                        <Button fx:id="newStatusShowButton" layoutX="122.0" mnemonicParsing="false" onAction="#addNewStatus" prefHeight="37.0" prefWidth="25.0" text="+" visible="false">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -65,14 +71,14 @@
                   </Pane>
                </children>
             </HBox>
-            <HBox prefHeight="25.0" prefWidth="396.0">
+            <HBox prefHeight="37.0" prefWidth="396.0">
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Категория:">
+                  <Label prefHeight="37.0" prefWidth="250.0" text="Категория:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="categoryCB" prefHeight="25.0" prefWidth="147.0" promptText="Категория" />
+                  <ComboBox fx:id="categoryCB" prefHeight="37.0" prefWidth="147.0" promptText="Категория" />
                </children>
                <VBox.margin>
                   <Insets top="3.0" />
@@ -83,12 +89,15 @@
                   <Insets top="10.0" />
                </VBox.margin>
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Режим работы:">
+                  <Label prefHeight="37.0" prefWidth="250.0" text="Режим работы:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="scheduleTF" prefHeight="27.0" prefWidth="301.0" promptText="Режим работы" />
+                  <TextField fx:id="scheduleTF" prefHeight="27.0" prefWidth="301.0" promptText="Режим работы">
+                     <font>
+                        <Font size="16.0" />
+                     </font></TextField>
                </children>
             </HBox>
             <HBox>
@@ -96,16 +105,22 @@
                   <Insets top="3.0" />
                </VBox.margin>
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Адрес:">
+                  <Label prefHeight="37.0" prefWidth="250.0" text="Адрес:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="cityTF" prefHeight="25.0" prefWidth="111.0" promptText="Город" />
+                  <TextField fx:id="cityTF" prefHeight="25.0" prefWidth="111.0" promptText="Город">
+                     <font>
+                        <Font size="16.0" />
+                     </font></TextField>
                   <TextField fx:id="addressTF" prefHeight="27.0" prefWidth="186.0" promptText="Адрес">
                      <HBox.margin>
                         <Insets left="3.0" />
                      </HBox.margin>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
                   </TextField>
                </children>
             </HBox>
@@ -114,12 +129,15 @@
                   <Insets top="3.0" />
                </VBox.margin>
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Телефон:">
+                  <Label prefHeight="37.0" prefWidth="250.0" text="Телефон:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="phoneTF" prefHeight="25.0" prefWidth="300.0" promptText="Телефон" />
+                  <TextField fx:id="phoneTF" prefHeight="25.0" prefWidth="300.0" promptText="Телефон">
+                     <font>
+                        <Font size="16.0" />
+                     </font></TextField>
                </children>
             </HBox>
             <HBox>
@@ -127,12 +145,15 @@
                   <Insets top="3.0" />
                </VBox.margin>
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="И-мейл:">
+                  <Label prefHeight="37.0" prefWidth="250.0" text="И-мейл:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="emailTF" prefHeight="25.0" prefWidth="300.0" promptText="И-мейл" />
+                  <TextField fx:id="emailTF" prefHeight="25.0" prefWidth="300.0" promptText="И-мейл">
+                     <font>
+                        <Font size="16.0" />
+                     </font></TextField>
                </children>
             </HBox>
             <HBox>
@@ -154,30 +175,28 @@
             </HBox>
          </children>
       </VBox>
-      <VBox layoutX="647.0" layoutY="13.0" prefHeight="413.0" prefWidth="504.0">
+      <VBox layoutX="600.0" layoutY="14.0" prefHeight="413.0" prefWidth="551.0">
          <children>
-            <Label alignment="CENTER" prefHeight="22.0" prefWidth="501.0" text="Добавить сотрудника:">
+            <Label alignment="CENTER" prefHeight="22.0" prefWidth="552.0" text="Добавить сотрудника:">
                <font>
-                  <Font name="System Bold" size="15.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
             </Label>
             <HBox prefHeight="22.0" prefWidth="503.0">
                <children>
-                  <Label prefHeight="27.0" prefWidth="58.0" text="Поиск:">
+                  <TextField fx:id="searchEmployeeTF" prefHeight="37.0" prefWidth="329.0" promptText="Поиск                                                        🔎">
                      <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="searchEmployeeTF" />
+                        <Font size="16.0" />
+                     </font></TextField>
                </children>
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
             </HBox>
-            <TableView fx:id="employeeTable" onMouseClicked="#showContractBox" prefHeight="164.0" prefWidth="503.0" stylesheets="@../../css/style.css">
+            <TableView fx:id="employeeTable" onMouseClicked="#showContractBox" prefHeight="164.0" prefWidth="551.0" stylesheets="@../../css/style.css">
               <columns>
                 <TableColumn fx:id="fullNameCol" prefWidth="328.0" text="ФИО" />
-                  <TableColumn fx:id="positionCol" prefWidth="159.0" text="Должность" />
+                  <TableColumn fx:id="positionCol" prefWidth="207.0" text="Должность" />
               </columns>
                <VBox.margin>
                   <Insets top="3.0" />
