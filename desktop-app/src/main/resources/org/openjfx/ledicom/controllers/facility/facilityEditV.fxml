@@ -16,9 +16,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="Content" fx:id="viewPane" minHeight="-1.0" minWidth="-1.0" prefHeight="908.0" prefWidth="1166.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.facility.FacilityEditVController">
+<AnchorPane id="Content" fx:id="viewPane" minHeight="-1.0" minWidth="-1.0" prefHeight="908.0" prefWidth="1168.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.facility.FacilityEditVController">
    <children>
-      <VBox fx:id="infoVBox" layoutX="15.0" layoutY="14.0" prefHeight="455.0" prefWidth="551.0">
+      <VBox fx:id="infoVBox" layoutX="16.0" layoutY="14.0" prefHeight="455.0" prefWidth="551.0">
          <children>
             <Label alignment="CENTER" prefHeight="21.0" prefWidth="550.0" text="Отредактируйте данные:">
                <font>
@@ -175,7 +175,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox layoutX="600.0" layoutY="14.0" prefHeight="413.0" prefWidth="551.0">
+      <VBox layoutX="601.0" layoutY="14.0" prefHeight="413.0" prefWidth="551.0">
          <children>
             <Label alignment="CENTER" prefHeight="22.0" prefWidth="552.0" text="Добавить сотрудника:">
                <font>
@@ -280,6 +280,6 @@
             </VBox>
          </children>
       </VBox>
-      <Line endX="8.0" endY="-403.0" fill="#070090" layoutX="575.0" layoutY="403.0" startX="8.0" startY="538.0" stroke="#070090" strokeWidth="4.0" />
+      <Line endX="8.0" endY="-403.0" fill="#070090" layoutX="576.0" layoutY="404.0" startX="8.0" startY="538.0" stroke="#070090" strokeWidth="4.0" />
    </children>
 </AnchorPane>
