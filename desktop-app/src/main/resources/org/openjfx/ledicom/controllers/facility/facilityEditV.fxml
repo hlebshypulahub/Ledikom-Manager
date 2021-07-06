@@ -13,9 +13,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="Content" fx:id="viewPane" minHeight="-1.0" minWidth="-1.0" prefHeight="820.0" prefWidth="1166.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.facility.FacilityEditVController">
+<AnchorPane id="Content" fx:id="viewPane" minHeight="-1.0" minWidth="-1.0" prefHeight="908.0" prefWidth="1166.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.facility.FacilityEditVController">
    <children>
       <VBox fx:id="infoVBox" layoutX="14.0" layoutY="14.0" prefHeight="305.0" prefWidth="551.0">
          <children>
@@ -173,14 +174,18 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </HBox>
-            <TableView fx:id="employeeTable" onMouseClicked="#showContractBox" prefHeight="164.0" prefWidth="503.0">
+            <TableView fx:id="employeeTable" onMouseClicked="#showContractBox" prefHeight="164.0" prefWidth="503.0" stylesheets="@../../css/style.css">
               <columns>
                 <TableColumn fx:id="fullNameCol" prefWidth="328.0" text="ФИО" />
-                  <TableColumn fx:id="positionCol" prefWidth="156.0" text="Должность" />
+                  <TableColumn fx:id="positionCol" prefWidth="159.0" text="Должность" />
               </columns>
                <VBox.margin>
                   <Insets top="3.0" />
                </VBox.margin>
+               <styleClass>
+                  <String fx:value="table-default" />
+                  <String fx:value="table-header" />
+               </styleClass>
             </TableView>
             <VBox fx:id="contractVBox" prefHeight="151.0" prefWidth="504.0" visible="false">
                <VBox.margin>
@@ -256,5 +261,6 @@
             </VBox>
          </children>
       </VBox>
+      <Line endX="8.0" endY="-403.0" fill="#070090" layoutX="575.0" layoutY="403.0" startX="8.0" startY="538.0" stroke="#070090" strokeWidth="4.0" />
    </children>
 </AnchorPane>
