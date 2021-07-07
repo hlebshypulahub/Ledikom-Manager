@@ -206,7 +206,7 @@
                   <String fx:value="table-header" />
                </styleClass>
             </TableView>
-            <VBox fx:id="contractVBox" prefHeight="196.0" prefWidth="551.0" visible="false">
+            <VBox fx:id="contractVBox" prefHeight="196.0" prefWidth="551.0">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
@@ -223,7 +223,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="contractTypeCB" prefHeight="37.0" prefWidth="303.0" promptText="Тип" />
+                        <ComboBox fx:id="contractTypeCB" prefHeight="37.0" prefWidth="350.0" promptText="Тип" />
                      </children>
                      <VBox.margin>
                         <Insets top="5.0" />
@@ -236,7 +236,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <DatePicker fx:id="contractStartDate" prefHeight="37.0" prefWidth="303.0" promptText="Дата заключения">
+                        <DatePicker fx:id="contractStartDate" prefHeight="37.0" prefWidth="350.0" promptText="Дата заключения">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -253,7 +253,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <DatePicker fx:id="contractEndDate" prefHeight="37.0" prefWidth="303.0" promptText="Дата истечения">
+                        <DatePicker fx:id="contractEndDate" prefHeight="37.0" prefWidth="350.0" promptText="Дата истечения">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
