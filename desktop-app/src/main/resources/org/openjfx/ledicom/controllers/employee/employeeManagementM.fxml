@@ -4,7 +4,7 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 
-<MenuBar prefHeight="6.0" prefWidth="1920.0" style="-fx-border-width: 2 0 0 0; -fx-border-color: #070090;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.employee.EmployeeManagementMController">
+<MenuBar prefHeight="6.0" prefWidth="1920.0" style="-fx-border-width: 2 0 0 0; -fx-border-color: #006600;" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.employee.EmployeeManagementMController">
    <menus>
       <Menu fx:id="managementMenu21" mnemonicParsing="false" text="Печать">
          <items>

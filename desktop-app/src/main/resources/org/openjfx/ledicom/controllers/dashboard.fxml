@@ -37,9 +37,9 @@
         </MenuBar>
    </top>
    <bottom>
-      <Pane fx:id="footerPane" prefHeight="37.0" prefWidth="1918.0" style="-fx-border-width: 2 0 0 0; -fx-border-color: #070090;" BorderPane.alignment="CENTER" />
+      <Pane fx:id="footerPane" prefHeight="37.0" prefWidth="1918.0" style="-fx-border-width: 2 0 0 0; -fx-border-color: #006600;" BorderPane.alignment="CENTER" />
    </bottom>
    <right>
-          <AnchorPane fx:id="detailsPane" prefHeight="908.0" prefWidth="750.0" style="-fx-border-width: 0 0 0 2; -fx-border-color: #070090;" BorderPane.alignment="CENTER" />
+          <AnchorPane fx:id="detailsPane" prefHeight="908.0" prefWidth="750.0" style="-fx-border-width: 0 0 0 2; -fx-border-color: #006600;" BorderPane.alignment="CENTER" />
    </right>
 </BorderPane>

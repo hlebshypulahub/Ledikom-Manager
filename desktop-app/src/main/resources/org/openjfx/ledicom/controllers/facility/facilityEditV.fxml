@@ -18,9 +18,9 @@
 
 <AnchorPane id="Content" fx:id="viewPane" minHeight="-1.0" minWidth="-1.0" prefHeight="908.0" prefWidth="1168.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.facility.FacilityEditVController">
    <children>
-      <VBox fx:id="infoVBox" layoutX="16.0" layoutY="14.0" prefHeight="455.0" prefWidth="551.0">
+      <VBox fx:id="infoVBox" layoutX="18.0" layoutY="14.0" prefHeight="386.0" prefWidth="551.0">
          <children>
-            <Label alignment="CENTER" prefHeight="21.0" prefWidth="550.0" text="Отредактируйте данные:">
+            <Label alignment="CENTER" prefHeight="21.0" prefWidth="550.0" text="Отредактируйте данные:" textFill="#006600">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -175,9 +175,9 @@
             </HBox>
          </children>
       </VBox>
-      <VBox layoutX="601.0" layoutY="14.0" prefHeight="413.0" prefWidth="551.0">
+      <VBox layoutX="601.0" layoutY="14.0" prefHeight="455.0" prefWidth="551.0">
          <children>
-            <Label alignment="CENTER" prefHeight="22.0" prefWidth="552.0" text="Добавить сотрудника:">
+            <Label alignment="CENTER" prefHeight="22.0" prefWidth="552.0" text="Добавить сотрудника:" textFill="#006600">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -206,37 +206,37 @@
                   <String fx:value="table-header" />
                </styleClass>
             </TableView>
-            <VBox fx:id="contractVBox" prefHeight="151.0" prefWidth="504.0" visible="false">
+            <VBox fx:id="contractVBox" prefHeight="196.0" prefWidth="551.0" visible="false">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
                <children>
-                  <Label prefHeight="22.0" prefWidth="501.0" text="Контракт:">
+                  <Label prefHeight="22.0" prefWidth="501.0" text="Контракт:" textFill="#006600">
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <HBox>
+                  <HBox prefHeight="37.0">
                      <children>
-                        <Label prefHeight="25.0" prefWidth="201.0" text="Тип:">
+                        <Label prefHeight="37.0" prefWidth="201.0" text="Тип:">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="18.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="contractTypeCB" prefHeight="27.0" prefWidth="303.0" promptText="Тип" />
+                        <ComboBox fx:id="contractTypeCB" prefHeight="37.0" prefWidth="303.0" promptText="Тип" />
                      </children>
                      <VBox.margin>
-                        <Insets />
+                        <Insets top="5.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox>
+                  <HBox prefHeight="37.0">
                      <children>
-                        <Label prefHeight="25.0" prefWidth="201.0" text="Дата заключения:">
+                        <Label prefHeight="37.0" prefWidth="201.0" text="Дата заключения:">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="18.0" />
                            </font>
                         </Label>
-                        <DatePicker fx:id="contractStartDate" prefHeight="27.0" prefWidth="303.0" promptText="Дата заключения">
+                        <DatePicker fx:id="contractStartDate" prefHeight="37.0" prefWidth="303.0" promptText="Дата заключения">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -246,14 +246,14 @@
                         <Insets top="3.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox>
+                  <HBox prefHeight="37.0">
                      <children>
-                        <Label prefHeight="25.0" prefWidth="201.0" text="Дата истечения:">
+                        <Label prefHeight="37.0" prefWidth="201.0" text="Дата истечения:">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="18.0" />
                            </font>
                         </Label>
-                        <DatePicker fx:id="contractEndDate" prefHeight="27.0" prefWidth="303.0" promptText="Дата истечения">
+                        <DatePicker fx:id="contractEndDate" prefHeight="37.0" prefWidth="303.0" promptText="Дата истечения">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -273,13 +273,13 @@
                         <String fx:value="font-big" />
                      </styleClass>
                      <VBox.margin>
-                        <Insets top="5.0" />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
                </children>
             </VBox>
          </children>
       </VBox>
-      <Line endX="8.0" endY="-403.0" fill="#070090" layoutX="576.0" layoutY="404.0" startX="8.0" startY="538.0" stroke="#070090" strokeWidth="4.0" />
+      <Line endX="8.0" endY="-403.0" fill="#006600" layoutX="576.0" layoutY="404.0" opacity="0.5" startX="8.0" startY="538.0" stroke="#006600" strokeWidth="4.0" />
    </children>
 </AnchorPane>
