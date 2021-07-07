@@ -206,7 +206,7 @@
                   <String fx:value="table-header" />
                </styleClass>
             </TableView>
-            <VBox fx:id="contractVBox" prefHeight="196.0" prefWidth="551.0">
+            <VBox fx:id="contractVBox" prefHeight="196.0" prefWidth="551.0" visible="false">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
