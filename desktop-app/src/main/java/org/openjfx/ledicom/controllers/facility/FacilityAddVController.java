@@ -18,7 +18,6 @@ import java.util.ResourceBundle;
 
 public class FacilityAddVController extends FacilityDataForm {
 
-
     @FXML
     void addFacility(ActionEvent event) {
         try {

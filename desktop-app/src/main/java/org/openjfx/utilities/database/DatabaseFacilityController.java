@@ -8,6 +8,7 @@ import org.openjfx.utilities.MyAlert;
 import org.openjfx.utilities.exceptions.FacilityException;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 import static javax.swing.JOptionPane.showMessageDialog;
 
@@ -77,7 +78,7 @@ public class DatabaseFacilityController extends DatabaseController {
                 "set name = '" + Global.getFacility().getName() + "'" +
                 "where id_facility = " + Global.getFacility().getId() + ";";
 
-        try(PreparedStatement ps1 = conn.prepareStatement(sql)) {
+        try (PreparedStatement ps1 = conn.prepareStatement(sql)) {
             ps1.execute();
 
             sql = "update facility_info " +
@@ -119,7 +120,7 @@ public class DatabaseFacilityController extends DatabaseController {
         ObservableList<Facility> facilityList = FXCollections.observableArrayList();
 
         try (
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Facility facility = new Facility();
@@ -140,9 +141,9 @@ public class DatabaseFacilityController extends DatabaseController {
         Facility facility = new Facility();
 
         try (
-        PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
-            while(rs.next()) {
+            while (rs.next()) {
                 setFacility(facility, rs);
             }
             return facility;
@@ -166,6 +167,25 @@ public class DatabaseFacilityController extends DatabaseController {
         facility.setStatus(rs.getString("status"));
         facility.setNumber();
         facility.setFullAddress();
+    }
+
+    public static ArrayList<String> getFacilityCities() throws SQLException {
+        String sql = "SELECT city FROM facility_info;";
+
+        ArrayList<String> data = new ArrayList<>();
+
+        try (
+                PreparedStatement ps = conn.prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                data.add(rs.getString("city"));
+            }
+            return data;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            showMessageDialog(null, e.getMessage());
+            throw e;
+        }
     }
 }
 
