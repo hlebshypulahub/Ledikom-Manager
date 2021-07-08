@@ -25,6 +25,8 @@ public class FacilityChartsDController implements Initializable {
         ArrayList<String> citiesStr = DatabaseFacilityController.getFacilityCities();
         Set<String> data = new HashSet<>(citiesStr);
 
+        citiesStr.forEach(System.out::println);
+
         XYChart.Series<String, Number> seria = new XYChart.Series<>();
         seria.setName("Количество");
 

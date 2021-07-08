@@ -17,11 +17,11 @@
    <content>
       <AnchorPane layoutX="3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1140.0" prefWidth="735.0">
          <children>
-            <VBox layoutX="6.0" layoutY="10.0" prefHeight="1140.0" prefWidth="725.0">
+            <VBox layoutX="6.0" layoutY="10.0" prefHeight="1140.0" prefWidth="723.0">
                <children>
                   <HBox>
                      <children>
-                        <Button minHeight="35.0" mnemonicParsing="false" onAction="#employeeEdit" prefHeight="35.0" prefWidth="200.0" stylesheets="@../../css/style.css" text="Изменить сотрудника">
+                        <Button minHeight="35.0" mnemonicParsing="false" onAction="#employeeEdit" prefHeight="35.0" prefWidth="200.0" stylesheets="@../../css/style.css" text="Изменить">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -116,7 +116,12 @@
                               <Font size="16.0" />
                            </font>
                         </Text>
-                        <Text fx:id="childrenDataText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="606.826171875">
+                        <Text fx:id="childrenNumberText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="26.826171875">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="childrenDOBText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="579.826171875">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -388,7 +393,7 @@
                         </Text>
                      </children>
                   </HBox>
-                  <TableView fx:id="courseTable" prefHeight="107.0" prefWidth="725.0">
+                  <TableView fx:id="courseTable" prefHeight="105.0" prefWidth="713.0">
                     <columns>
                        <TableColumn fx:id="courseNameCol" prefWidth="249.0" text="Название" />
                        <TableColumn fx:id="courseDescriptionCol" prefWidth="207.0" text="Примечание" />
