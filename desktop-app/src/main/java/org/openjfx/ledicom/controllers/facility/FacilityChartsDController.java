@@ -7,6 +7,7 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import org.openjfx.utilities.database.DatabaseFacilityController;
+import org.openjfx.utilities.formatters.AxisIntegerFormatter;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -33,6 +34,8 @@ public class FacilityChartsDController implements Initializable {
         data.forEach(city -> seria.getData().add(new XYChart.Data<>(city, Collections.frequency(citiesStr, city))));
 
         bc.getData().add(seria);
+
+        AxisIntegerFormatter.setFormatter(quantity);
     }
 
     @Override

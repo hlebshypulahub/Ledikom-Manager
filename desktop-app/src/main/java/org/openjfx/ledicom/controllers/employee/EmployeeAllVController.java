@@ -85,7 +85,7 @@ public class EmployeeAllVController implements Initializable, EmployeeController
     }
 
     @FXML
-    public void filterTable(ActionEvent event) {
+    public void filterTable(ActionEvent event) throws IOException {
         Facility facility = facilityCB.getSelectionModel().getSelectedItem();
 
         employeeList = facility == null ? DatabaseEmployeeController.allEmployeeList()
@@ -98,6 +98,10 @@ public class EmployeeAllVController implements Initializable, EmployeeController
             printButton.setDisable(false);
             switch (valueCB.getValue()) {
                 case SALARY:
+                    Global.getDetailsPane().getChildren().clear();
+                    Global.getFooterPane().getChildren().clear();
+                    EmployeePanel.showEmployeeCharts();
+
                     valueColFInt.setCellValueFactory(new PropertyValueFactory<>(valueCB.getValue().getValue()));
                     valueColFInt.setText(valueCB.getValue().getName());
 
@@ -114,6 +118,10 @@ public class EmployeeAllVController implements Initializable, EmployeeController
                 case DOB:
                 case PPE:
                 case HIRING_DATE:
+                    Global.getDetailsPane().getChildren().clear();
+                    Global.getFooterPane().getChildren().clear();
+                    EmployeePanel.showEmployeeCharts();
+
                     valueColF.setCellValueFactory(new PropertyValueFactory<>(valueCB.getValue().getValue()));
                     valueColF.setText(valueCB.getValue().getName());
 
@@ -128,6 +136,10 @@ public class EmployeeAllVController implements Initializable, EmployeeController
                     setEmployeeTable(filteredTable);
                     break;
                 case CHILDREN_DATA:
+                    Global.getDetailsPane().getChildren().clear();
+                    Global.getFooterPane().getChildren().clear();
+                    EmployeePanel.showEmployeeChildrenNumber();
+
                     valueColF.setCellValueFactory(new PropertyValueFactory<>(valueCB.getValue().getValue()));
                     valueColF.setText(valueCB.getValue().getName());
 
@@ -142,6 +154,10 @@ public class EmployeeAllVController implements Initializable, EmployeeController
                     setEmployeeTable(filteredTable);
                     break;
                 default:
+                    Global.getDetailsPane().getChildren().clear();
+                    Global.getFooterPane().getChildren().clear();
+                    EmployeePanel.showEmployeeCharts();
+
                     valueColF.setCellValueFactory(new PropertyValueFactory<>(valueCB.getValue().getValue()));
                     valueColF.setText(valueCB.getValue().getName());
 
@@ -197,7 +213,13 @@ public class EmployeeAllVController implements Initializable, EmployeeController
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Global.getDetailsPane().getChildren().clear();
         Global.getFooterPane().getChildren().clear();
+        try {
+            EmployeePanel.showEmployeeCharts();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         fullNameCol.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         fullNameColF.setCellValueFactory(new PropertyValueFactory<>("fullName"));

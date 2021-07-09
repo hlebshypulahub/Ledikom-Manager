@@ -24,7 +24,7 @@
             </CategoryAxis>
          </xAxis>
          <yAxis>
-            <NumberAxis fx:id="quantity" side="TOP" upperBound="8.0">
+            <NumberAxis fx:id="quantity" minorTickVisible="false" side="TOP" upperBound="50.0">
                <tickLabelFont>
                   <Font size="14.0" />
                </tickLabelFont>
