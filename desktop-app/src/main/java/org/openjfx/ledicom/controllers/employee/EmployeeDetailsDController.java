@@ -123,8 +123,7 @@ public class EmployeeDetailsDController implements Initializable {
         maternityText.setText(Global.getEmployee().getMaternityStartDate() == null
                 || Global.getEmployee().getMaternityEndDate() == null ? ""
                 : Global.getEmployee().getMaternityStartDate() + " - " + Global.getEmployee().getMaternityEndDate());
-//        childrenDataText.setText(Global.getEmployee().getChildrenData());
-        childrenNumberText.setText(Global.getEmployee().getChildrenData() != null && Global.getEmployee().getChildrenData().length() > 1
+        childrenNumberText.setText(Global.getEmployee().getChildrenData() != null && Global.getEmployee().getChildrenData().length() > 0
                 ? Global.getEmployee().getChildrenData().substring(0, 1) : "");
         childrenDOBText.setText(Global.getEmployee().getChildrenData() != null && Global.getEmployee().getChildrenData().length() > 1
                 ? Global.getEmployee().getChildrenData().substring(2) : "");

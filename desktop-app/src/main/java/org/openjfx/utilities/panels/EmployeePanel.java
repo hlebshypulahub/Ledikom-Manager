@@ -11,7 +11,14 @@ public final class EmployeePanel implements ShowPane {
 
     public static void showEmployeeDetails() throws IOException {
         ShowPane.showDetailsPane(new FXMLLoader(EmployeePanel.class.getResource("/org/openjfx/ledicom/controllers/employee/employeeDetailsD.fxml")));
-        //showEmployeeManagement();
+    }
+
+    public static void showEmployeeCharts() throws IOException {
+        ShowPane.showDetailsPane(new FXMLLoader(EmployeePanel.class.getResource("/org/openjfx/ledicom/controllers/employee/employeeChartsD.fxml")));
+    }
+
+    public static void showEmployeeChildrenNumber() throws IOException {
+        ShowPane.showDetailsPane(new FXMLLoader(EmployeePanel.class.getResource("/org/openjfx/ledicom/controllers/employee/employeeChildrenNumberD.fxml")));
     }
 
     public static void showEmployeeEdit() throws IOException {

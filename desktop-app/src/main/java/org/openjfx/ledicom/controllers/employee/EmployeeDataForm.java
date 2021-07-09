@@ -85,7 +85,7 @@ public class EmployeeDataForm implements Initializable {
     @FXML
     protected TextField courseHoursSumTF;
     @FXML
-    protected TextField childrenNumberTF;
+    protected ComboBox<Integer> childrenNumberCB;
     @FXML
     protected TextField childrenDobTF;
     @FXML
@@ -159,9 +159,10 @@ public class EmployeeDataForm implements Initializable {
         firstNameTF.setTextFormatter(new TextFormatter<>(Validator.nameValidationFormatter));
         patronymicTF.setTextFormatter(new TextFormatter<>(Validator.nameValidationFormatter));
         salaryTF.setTextFormatter(new TextFormatter<>(Validator.intValidationFormatter));
-        childrenNumberTF.setTextFormatter(new TextFormatter<>(Validator.intValidationFormatter));
         phoneTF.setTextFormatter(new TextFormatter<>(Validator.phoneValidationFormatter));
         positionCB.getItems().addAll(DatabaseEnumsController.getEmployeePositions());
         categoryCB.getItems().addAll(DatabaseEnumsController.getEmployeeCategories());
+        childrenNumberCB.getItems().addAll(0,1,2,3,4,5,6,7,8,9);
+        childrenNumberCB.setValue(0);
     }
 }

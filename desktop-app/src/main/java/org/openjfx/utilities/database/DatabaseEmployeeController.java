@@ -2,15 +2,19 @@ package org.openjfx.utilities.database;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.openjfx.ledicom.entities.EmployeeContract;
-import org.openjfx.utilities.exceptions.EmployeeException;
 import org.openjfx.ledicom.entities.Edu;
 import org.openjfx.ledicom.entities.Employee;
+import org.openjfx.ledicom.entities.EmployeeContract;
 import org.openjfx.utilities.Global;
 import org.openjfx.utilities.MyAlert;
 import org.openjfx.utilities.converters.SqlDateStringConverter;
+import org.openjfx.utilities.exceptions.EmployeeException;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Types;
+import java.util.ArrayList;
 
 import static javax.swing.JOptionPane.showMessageDialog;
 
@@ -380,5 +384,46 @@ public class DatabaseEmployeeController extends DatabaseController {
             return false;
         }
         return true;
+    }
+
+    public static ArrayList<String> getAllChildrenData() throws SQLException {
+        String sql = "SELECT children_data FROM employee_data_view where is_active is not false;";
+
+        ArrayList<String> data = new ArrayList<>();
+
+        try (
+                PreparedStatement ps = conn.prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                data.add(rs.getString("children_data"));
+            }
+            return data;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            showMessageDialog(null, e.getMessage());
+            throw e;
+        }
+    }
+
+    public static ArrayList<Employee> getEmployeePositions() throws SQLException {
+        String sql = "select position, COALESCE(category, '') as category from employee_data_view where is_active is not false and position::varchar LIKE ANY (is_pharm());";
+
+        ArrayList<Employee> data = new ArrayList<>();
+
+        try (
+                PreparedStatement ps = conn.prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Employee employee = new Employee();
+                employee.setPosition(rs.getString("position"));
+                employee.setCategory(rs.getString("category"));
+                data.add(employee);
+            }
+            return data;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            showMessageDialog(null, e.getMessage());
+            throw e;
+        }
     }
 }

@@ -35,7 +35,7 @@ public class EmployeeEditVController extends EmployeeDataForm {
                 categoryCB.getValue(), categoryNumTF.getText(), Validator.validateDate(categoryAssignmentDate), Validator.validateDate(maternityStartDate), Validator.validateDate(maternityEndDate),
                 Validator.validateDate(fiveYearStartDate), Validator.validateDate(fiveYearEndDate), Validator.validateDate(courseDeadlineDate),
                 DatabaseCourseController.getRequiredCourseHours(Global.getEmployee().getPosition()) - StringToIntegerConverter.convert(courseHoursSumTF.getText()),
-                childrenNumberTF.getText() + " " + childrenDobTF.getText(), noteTF.getText()));
+                childrenNumberCB.getValue() + (childrenDobTF.getText().length() > 0 ? " " + childrenDobTF.getText() : ""), noteTF.getText()));
         if (DatabaseEmployeeController.updateEmployee()) {
             MyAlert.showAndWait("INFORMATION", "", "Сотрудник отредактирован.", "");
 
@@ -73,8 +73,7 @@ public class EmployeeEditVController extends EmployeeDataForm {
         courseDeadlineDate.setValue(StringToLocalDateConverter.convert(Global.getEmployee().getCourseDeadlineDate()));
         courseHoursSumTF.setText(String.valueOf(DatabaseCourseController.getRequiredCourseHours(Global.getEmployee().getPosition())
                 - Global.getEmployee().getCourseHoursSum()));
-        childrenNumberTF.setText(Global.getEmployee().getChildrenData() != null && Global.getEmployee().getChildrenData().length() > 1
-                ? Global.getEmployee().getChildrenData().substring(0, 1) : "");
+        childrenNumberCB.setValue(Global.getEmployee().getChildrenData() != null ? Integer.parseInt(Global.getEmployee().getChildrenData().substring(0, 1)) : 0);
         childrenDobTF.setText(Global.getEmployee().getChildrenData() != null && Global.getEmployee().getChildrenData().length() > 1
                 ? Global.getEmployee().getChildrenData().substring(2) : "");
         noteTF.setText(Global.getEmployee().getNote());

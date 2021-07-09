@@ -32,10 +32,9 @@ public class EmployeeAddVController extends EmployeeDataForm {
                     StringToIntegerConverter.convert(salaryTF.getText()), Validator.validateDate(ppeDate), Validator.validateDate(hiringDate), positionCB.getValue(),
                     categoryCB.getValue(), categoryNumTF.getText(), Validator.validateDate(categoryAssignmentDate), Validator.validateDate(maternityStartDate),
                     Validator.validateDate(maternityEndDate),
-                    childrenNumberTF.getText() + " " + childrenDobTF.getText(), noteTF.getText()));
+                    childrenNumberCB.getValue() + (childrenDobTF.getText().length() > 0 ? " " + childrenDobTF.getText() : ""), noteTF.getText()));
 
             if (DatabaseEmployeeController.addEmployee(Global.getEmployee())) {
-                //Global.setEmployeeList(DatabaseEmployeeController.allEmployeeList());
                 MyAlert.showAndWait("INFORMATION", "", "Сотрудник " + Global.getEmployee().getFullName() + " добавлен!", "");
                 EmployeePanel.showEmployeeAdd();
             }

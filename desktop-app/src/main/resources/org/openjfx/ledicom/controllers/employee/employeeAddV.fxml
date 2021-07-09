@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="Content" fx:id="viewPane" minHeight="-1.0" minWidth="-1.0" prefHeight="766.0" prefWidth="591.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.employee.EmployeeAddVController">
+<AnchorPane id="Content" fx:id="viewPane" minHeight="-1.0" minWidth="-1.0" prefHeight="908.0" prefWidth="1168.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.employee.EmployeeAddVController">
    <children>
       <VBox fx:id="infoVBox" layoutX="41.0" layoutY="14.0" prefHeight="586.0" prefWidth="550.0">
          <children>
@@ -119,8 +119,11 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="childrenNumberTF" prefHeight="25.0" prefWidth="83.0" promptText="Количество" />
-                  <TextField fx:id="childrenDobTF" prefHeight="25.0" prefWidth="217.0" promptText="Дата(ы) рождения" />
+                  <ComboBox fx:id="childrenNumberCB" prefHeight="25.0" prefWidth="83.0" />
+                  <TextField fx:id="childrenDobTF" prefHeight="25.0" prefWidth="211.0" promptText="Дата(ы) рождения">
+                     <HBox.margin>
+                        <Insets left="6.0" />
+                     </HBox.margin></TextField>
                </children>
                <VBox.margin>
                   <Insets top="3.0" />

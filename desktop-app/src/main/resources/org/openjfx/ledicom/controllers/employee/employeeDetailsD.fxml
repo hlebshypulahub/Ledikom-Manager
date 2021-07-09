@@ -7,6 +7,8 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -17,7 +19,7 @@
    <content>
       <AnchorPane layoutX="3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1140.0" prefWidth="735.0">
          <children>
-            <VBox layoutX="6.0" layoutY="10.0" prefHeight="1140.0" prefWidth="723.0">
+            <VBox layoutX="6.0" layoutY="10.0" prefHeight="1140.0" prefWidth="721.0">
                <children>
                   <HBox>
                      <children>
@@ -33,27 +35,27 @@
                         </Button>
                      </children>
                   </HBox>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Личная информация:" wrappingWidth="176.0">
+                  <Text fill="#006600" strokeType="OUTSIDE" strokeWidth="0.0" text="Личная информация:" wrappingWidth="261.0">
                      <font>
-                        <Font name="System Bold" size="16.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Text>
-                  <HBox>
+                  <HBox prefHeight="24.0" prefWidth="756.0">
                      <VBox.margin>
                         <Insets top="3.0" />
                      </VBox.margin>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ФИО:" wrappingWidth="120.0">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ФИО:" wrappingWidth="150.0">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text fx:id="fullNameText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="606.826171875">
+                        <Text fx:id="fullNameText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="567.826171875">
                            <font>
-                              <Font size="16.0" />
+                              <Font name="System Bold" size="18.0" />
                            </font>
                         </Text>
                      </children>
@@ -63,67 +65,67 @@
                         <Insets top="3.0" />
                      </VBox.margin>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Дата рождения:" wrappingWidth="120.0">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Дата рождения:" wrappingWidth="150.0">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text fx:id="dobText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="606.826171875">
+                        <Text fx:id="dobText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="567.826171875">
                            <font>
-                              <Font size="16.0" />
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="24.0" prefWidth="748.0">
+                     <VBox.margin>
+                        <Insets top="3.0" />
+                     </VBox.margin>
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Телефон:" wrappingWidth="150.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="phoneText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="567.826171875">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="24.0" prefWidth="750.0">
+                     <VBox.margin>
+                        <Insets top="3.0" />
+                     </VBox.margin>
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Адрес:" wrappingWidth="150.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="addressText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="567.826171875">
+                           <font>
+                              <Font size="18.0" />
                            </font>
                         </Text>
                      </children>
                   </HBox>
                   <HBox>
-                     <VBox.margin>
-                        <Insets top="3.0" />
-                     </VBox.margin>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Телефон:" wrappingWidth="120.0">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Дети:" wrappingWidth="150.0">
                            <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="phoneText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="606.826171875">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </HBox>
-                  <HBox>
-                     <VBox.margin>
-                        <Insets top="3.0" />
-                     </VBox.margin>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Адрес:" wrappingWidth="120.0">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="addressText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="606.826171875">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="22.0" prefWidth="711.0">
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Дети:" wrappingWidth="120.0">
-                           <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Text>
                         <Text fx:id="childrenNumberText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="26.826171875">
                            <font>
-                              <Font name="System Bold" size="16.0" />
+                              <Font name="System Bold" size="18.0" />
                            </font>
                         </Text>
-                        <Text fx:id="childrenDOBText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="579.826171875">
+                        <Text fx:id="childrenDOBText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="540.826171875">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Text>
                      </children>
@@ -131,9 +133,9 @@
                         <Insets top="3.0" />
                      </VBox.margin>
                   </HBox>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Трудоустройство:" wrappingWidth="150.0">
+                  <Text fill="#006600" strokeType="OUTSIDE" strokeWidth="0.0" text="Трудоустройство:" wrappingWidth="214.0">
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                      <VBox.margin>
                         <Insets top="20.0" />
@@ -141,9 +143,9 @@
                   </Text>
                   <HBox maxHeight="22.0" prefHeight="22.0" prefWidth="561.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Контракт:" wrappingWidth="200.0">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Контракт:" wrappingWidth="215.0">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Text>
                      </children>
@@ -151,7 +153,7 @@
                         <Insets top="3.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox prefHeight="45.0" prefWidth="726.0">
+                  <HBox prefHeight="45.0" prefWidth="715.0">
                      <children>
                         <ListView fx:id="contractList" prefHeight="45.0" prefWidth="725.0" />
                      </children>
@@ -161,28 +163,28 @@
                         <Insets top="3.0" />
                      </VBox.margin>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Должность:" wrappingWidth="200.0">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Должность:" wrappingWidth="215.0">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text fx:id="positionText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="525.826171875">
+                        <Text fx:id="positionText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="500.826171875">
                            <font>
-                              <Font size="16.0" />
+                              <Font name="System Bold" size="18.0" />
                            </font>
                         </Text>
                      </children>
                   </HBox>
                   <HBox>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Категория:" wrappingWidth="200.0">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Категория:" wrappingWidth="215.0">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text fx:id="categoryText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="525.826171875">
+                        <Text fx:id="categoryText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="500.826171875">
                            <font>
-                              <Font size="16.0" />
+                              <Font name="System Bold" size="18.0" />
                            </font>
                         </Text>
                      </children>
@@ -195,28 +197,28 @@
                         <Insets top="3.0" />
                      </VBox.margin>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Оклад:" wrappingWidth="200.0">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Оклад:" wrappingWidth="215.0">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text fx:id="salaryText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="525.826171875">
+                        <Text fx:id="salaryText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="500.826171875">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Text>
                      </children>
                   </HBox>
                   <HBox>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Дата приёма на работу:" wrappingWidth="200.0">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Дата приёма на работу:" wrappingWidth="215.0">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text fx:id="hiringDateText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="525.826171875">
+                        <Text fx:id="hiringDateText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="500.826171875">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Text>
                      </children>
@@ -229,28 +231,28 @@
                         <Insets top="3.0" />
                      </VBox.margin>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Дата выдачи СИЗ:" wrappingWidth="200.0">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Дата выдачи СИЗ:" wrappingWidth="215.0">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text fx:id="ppeText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="525.826171875">
+                        <Text fx:id="ppeText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="500.826171875">
                            <font>
-                              <Font size="16.0" />
+                              <Font name="System Bold" size="18.0" />
                            </font>
                         </Text>
                      </children>
                   </HBox>
                   <HBox prefHeight="22.0" prefWidth="561.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Декретный отпуск:" wrappingWidth="200.0">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Декретный отпуск:" wrappingWidth="215.0">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text fx:id="maternityText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="525.826171875">
+                        <Text fx:id="maternityText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="500.826171875">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Text>
                      </children>
@@ -260,14 +262,14 @@
                   </HBox>
                   <HBox prefHeight="22.0" prefWidth="561.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Примечание:" wrappingWidth="200.0">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Примечание:" wrappingWidth="215.0">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text fx:id="noteText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="525.826171875">
+                        <Text fx:id="noteText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="500.826171875">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Text>
                      </children>
@@ -275,9 +277,9 @@
                         <Insets top="3.0" />
                      </VBox.margin>
                   </HBox>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Образование:" wrappingWidth="150.0">
+                  <Text fill="#006600" strokeType="OUTSIDE" strokeWidth="0.0" text="Образование:" wrappingWidth="172.0">
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                      <VBox.margin>
                         <Insets top="20.0" />
@@ -285,14 +287,14 @@
                   </Text>
                   <HBox prefHeight="22.0" prefWidth="718.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Учреждение образования:" wrappingWidth="210.0">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Учреждение образования:" wrappingWidth="240.0">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text fx:id="eduNameText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="516.826171875">
+                        <Text fx:id="eduNameText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="475.826171875">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Text>
                      </children>
@@ -302,14 +304,14 @@
                   </HBox>
                   <HBox>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Дата выпуска:" wrappingWidth="210.0">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Дата выпуска:" wrappingWidth="240.0">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text fx:id="eduGraduationDateText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="516.826171875">
+                        <Text fx:id="eduGraduationDateText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="475.826171875">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Text>
                      </children>
@@ -317,9 +319,9 @@
                         <Insets top="3.0" />
                      </VBox.margin>
                   </HBox>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Курсы:" wrappingWidth="150.0">
+                  <Text fill="#006600" strokeType="OUTSIDE" strokeWidth="0.0" text="Курсы:" wrappingWidth="150.0">
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                      <VBox.margin>
                         <Insets top="20.0" />
@@ -330,31 +332,14 @@
                         <Insets top="3.0" />
                      </VBox.margin>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Дата начала пятилетки:" wrappingWidth="290.0">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Дата начала пятилетки:" wrappingWidth="330.0">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text fx:id="start5Text" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="435.826171875">
+                        <Text fx:id="start5Text" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="385.826171875">
                            <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </HBox>
-                  <HBox>
-                     <VBox.margin>
-                        <Insets top="3.0" />
-                     </VBox.margin>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Дата конца пятилетки:" wrappingWidth="290.0">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="end5Text" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="435.826171875">
-                           <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Text>
                      </children>
@@ -364,14 +349,14 @@
                         <Insets top="3.0" />
                      </VBox.margin>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Конечный срок прохождения курсов:" wrappingWidth="290.0">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Дата конца пятилетки:" wrappingWidth="330.0">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text fx:id="courseDeadlineText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="435.826171875">
+                        <Text fx:id="end5Text" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="385.826171875">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Text>
                      </children>
@@ -381,25 +366,42 @@
                         <Insets top="3.0" />
                      </VBox.margin>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Необходимый объём (часы):" wrappingWidth="290.0">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Конечный срок прохождения курсов:" wrappingWidth="330.0">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Text>
-                        <Text fx:id="courseHoursSumText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="435.826171875">
+                        <Text fx:id="courseDeadlineText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="385.826171875">
                            <font>
-                              <Font size="16.0" />
+                              <Font name="System Bold" size="18.0" />
                            </font>
                         </Text>
                      </children>
                   </HBox>
-                  <TableView fx:id="courseTable" prefHeight="105.0" prefWidth="713.0">
+                  <HBox prefHeight="24.0" prefWidth="713.0">
+                     <VBox.margin>
+                        <Insets top="3.0" />
+                     </VBox.margin>
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Необходимый объём (часы):" wrappingWidth="330.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="courseHoursSumText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="385.826171875">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <TableView fx:id="courseTable" prefHeight="105.0" prefWidth="721.0" tableMenuButtonVisible="true">
                     <columns>
                        <TableColumn fx:id="courseNameCol" prefWidth="249.0" text="Название" />
                        <TableColumn fx:id="courseDescriptionCol" prefWidth="207.0" text="Примечание" />
                        <TableColumn fx:id="courseHoursCol" prefWidth="66.0" text="Часы" />
                        <TableColumn fx:id="courseStartCol" prefWidth="94.0" text="Начало" />
-                       <TableColumn fx:id="courseEndCol" prefWidth="95.0" text="Конец" />
+                       <TableColumn fx:id="courseEndCol" prefWidth="89.0" text="Конец" />
                     </columns>
                      <VBox.margin>
                         <Insets top="10.0" />
@@ -407,6 +409,11 @@
                   </TableView>
                </children>
             </VBox>
+            <ImageView fitHeight="61.0" fitWidth="300.0" layoutX="427.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../logo.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </content>
