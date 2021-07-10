@@ -243,4 +243,18 @@ public class EmployeeAllVController implements Initializable, EmployeeController
 
         setEmployeeTable(table);
     }
+
+    public void selectEmployee() throws IOException {
+        table.requestFocus();
+        for (int i = 0; i < table.getItems().toArray().length; i++) {
+            if (table.getItems().get(i).getId() == Global.getEmployee().getId()) {
+                table.getSelectionModel().select(i);
+                table.getFocusModel().focus(i);
+                table.scrollTo(i);
+                EmployeePanel.showEmployeeDetails();
+                EmployeePanel.showEmployeeManagement();
+                break;
+            }
+        }
+    }
 }

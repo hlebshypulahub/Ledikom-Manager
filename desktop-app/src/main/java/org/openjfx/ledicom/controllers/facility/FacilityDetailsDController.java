@@ -2,16 +2,18 @@ package org.openjfx.ledicom.controllers.facility;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
+import org.openjfx.ledicom.controllers.employee.EmployeeAllVController;
 import org.openjfx.ledicom.entities.Employee;
 import org.openjfx.utilities.Global;
 import org.openjfx.utilities.MyAlert;
-import org.openjfx.utilities.TableDoubleClickSetter;
 import org.openjfx.utilities.database.DatabaseEmployeeController;
 import org.openjfx.utilities.panels.EmployeePanel;
 import org.openjfx.utilities.panels.FacilityPanel;
@@ -69,7 +71,15 @@ public class FacilityDetailsDController implements Initializable {
     @FXML
     public void showEmployeeData(ActionEvent event) throws Exception {
         Global.setEmployee(employeeTable.getSelectionModel().getSelectedItem());
-        EmployeePanel.showEmployeeDetails();
+
+        FXMLLoader loader = new FXMLLoader(EmployeePanel.class.getResource("/org/openjfx/ledicom/controllers/employee/employeeAllV.fxml"));
+        Parent root = loader.load();
+
+        EmployeeAllVController controller = loader.getController();
+        controller.selectEmployee();
+
+        Global.getViewPane().getChildren().clear();
+        Global.getViewPane().getChildren().addAll(root);
     }
 
     @Override
@@ -97,7 +107,5 @@ public class FacilityDetailsDController implements Initializable {
                 employeeDataButton.setDisable(true);
             }
         });
-
-        TableDoubleClickSetter.setEmployeeTableFull(employeeTable);
     }
 }
