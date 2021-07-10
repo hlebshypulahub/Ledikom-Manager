@@ -73,7 +73,7 @@ public class EmployeeEditVController extends EmployeeDataForm {
         courseDeadlineDate.setValue(StringToLocalDateConverter.convert(Global.getEmployee().getCourseDeadlineDate()));
         courseHoursSumTF.setText(String.valueOf(DatabaseCourseController.getRequiredCourseHours(Global.getEmployee().getPosition())
                 - Global.getEmployee().getCourseHoursSum()));
-        childrenNumberCB.setValue(Global.getEmployee().getChildrenData() != null ? Integer.parseInt(Global.getEmployee().getChildrenData().substring(0, 1)) : 0);
+        childrenNumberCB.setValue(Global.getEmployee().getChildrenData() != null && !Global.getEmployee().getChildrenData().equals("") ? Integer.parseInt(Global.getEmployee().getChildrenData().substring(0, 1)) : 0);
         childrenDobTF.setText(Global.getEmployee().getChildrenData() != null && Global.getEmployee().getChildrenData().length() > 1
                 ? Global.getEmployee().getChildrenData().substring(2) : "");
         noteTF.setText(Global.getEmployee().getNote());
