@@ -4,6 +4,8 @@ public class EmployeeContract {
     private String type;
     private String startDate;
     private String endDate;
+    private int facilityId;
+    private String facilityName;
 
     public EmployeeContract(String type, String startDate, String endDate) {
         this.type = type;
@@ -13,11 +15,27 @@ public class EmployeeContract {
 
     @Override
     public String toString() {
-        return type + " (" + startDate + " - " + endDate + ")";
+        return facilityName + " - " + type + " (" + startDate + " - " + endDate + ")";
     }
 
     public EmployeeContract() {
 
+    }
+
+    public int getFacilityId() {
+        return facilityId;
+    }
+
+    public void setFacilityId(int facilityId) {
+        this.facilityId = facilityId;
+    }
+
+    public String getFacilityName() {
+        return facilityName;
+    }
+
+    public void setFacilityName(String facilityName) {
+        this.facilityName = facilityName;
     }
 
     public String getType() {

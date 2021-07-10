@@ -8,6 +8,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import org.openjfx.ledicom.entities.Course;
 import org.openjfx.ledicom.entities.Edu;
+import org.openjfx.ledicom.entities.EmployeeContract;
 import org.openjfx.utilities.Global;
 import org.openjfx.utilities.converters.StringToLocalDateConverter;
 import org.openjfx.utilities.database.DatabaseCourseController;
@@ -52,16 +53,14 @@ public class EmployeeDetailsDController implements Initializable {
     private Text categoryText;
     @FXML
     private Text maternityText;
-//    @FXML
-//    private Text childrenDataText;
-        @FXML
+    @FXML
     private Text childrenDOBText;
     @FXML
     private Text childrenNumberText;
     @FXML
     private Text noteText;
     @FXML
-    private ListView<String> contractList;
+    private ListView<EmployeeContract> contractList;
 
     @FXML
     private TableView<Course> courseTable;

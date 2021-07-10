@@ -337,11 +337,11 @@ public class DatabaseEmployeeController extends DatabaseController {
         return true;
     }
 
-    public static ObservableList<String> employeeContractList() {
-        String sql = "select type, start_date, expiration_date, f.name from contract " +
+    public static ObservableList<EmployeeContract> employeeContractList() {
+        String sql = "select type, start_date, expiration_date, f.name, f.id_facility from contract " +
                 "join facility f on contract.id_facility = f.id_facility where id_employee = " + Global.getEmployee().getId();
 
-        ObservableList<String> contractList = FXCollections.observableArrayList();
+        ObservableList<EmployeeContract> contractList = FXCollections.observableArrayList();
 
         try (
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -353,8 +353,9 @@ public class DatabaseEmployeeController extends DatabaseController {
                         : SqlDateStringConverter.sqlDateToString(rs.getDate("start_date")));
                 employeeContract.setEndDate(SqlDateStringConverter.sqlDateToString(rs.getDate("expiration_date")) == null ? "Не задано"
                         : SqlDateStringConverter.sqlDateToString(rs.getDate("expiration_date")));
-                String facilityName = rs.getString("name");
-                contractList.add(facilityName + " - " + employeeContract);
+                employeeContract.setFacilityName(rs.getString("name"));
+                employeeContract.setFacilityId(rs.getInt("id_facility"));
+                contractList.add(employeeContract);
             }
             return contractList;
         } catch (SQLException e) {
@@ -427,5 +428,15 @@ public class DatabaseEmployeeController extends DatabaseController {
             showMessageDialog(null, e.getMessage());
             throw e;
         }
+    }
+
+    public static void updateContract(EmployeeContract contract) throws SQLException {
+
+        String sql = "update contract set type = '" + contract.getType() + "', "
+                + "start_date = '" + SqlDateStringConverter.stringToSqlDate(contract.getStartDate()) + "', "
+                + "expiration_date = '" + SqlDateStringConverter.stringToSqlDate(contract.getEndDate()) + "' "
+                + " where id_employee = " + Global.getEmployee().getId() + " and id_facility = " + contract.getFacilityId() + ";";
+
+        psExecute(sql);
     }
 }

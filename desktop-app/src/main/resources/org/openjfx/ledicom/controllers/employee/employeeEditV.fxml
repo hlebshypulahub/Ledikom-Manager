@@ -6,28 +6,31 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="Content" fx:id="viewPane" minHeight="-1.0" minWidth="-1.0" prefHeight="908.0" prefWidth="1168.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.employee.EmployeeEditVController">
    <children>
-      <VBox layoutX="41.0" layoutY="14.0" prefHeight="706.0" prefWidth="550.0">
+      <VBox layoutX="18.0" layoutY="14.0" prefHeight="887.0" prefWidth="550.0">
          <children>
-            <Label alignment="CENTER" prefHeight="21.0" prefWidth="550.0" text="Отредактируйте данные:">
+            <Label alignment="CENTER" prefHeight="21.0" prefWidth="550.0" text="Отредактируйте данные:" textFill="#006600">
                <font>
-                  <Font name="System Bold" size="15.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label text="Личная информация:">
+            <Label text="Личная информация:" textFill="#006600">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
             <HBox>
@@ -35,12 +38,12 @@
                   <Insets top="3.0" />
                </VBox.margin>
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Фамилия:">
+                  <Label prefHeight="27.0" prefWidth="250.0" text="Фамилия:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="lastNameTF" prefHeight="25.0" prefWidth="300.0" promptText="Фамилия" />
+                  <TextField fx:id="lastNameTF" prefHeight="27.0" prefWidth="300.0" promptText="Фамилия" />
                </children>
             </HBox>
             <HBox>
@@ -48,12 +51,12 @@
                   <Insets top="3.0" />
                </VBox.margin>
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Имя:">
+                  <Label prefHeight="27.0" prefWidth="250.0" text="Имя:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="firstNameTF" prefHeight="25.0" prefWidth="300.0" promptText="Имя" />
+                  <TextField fx:id="firstNameTF" prefHeight="27.0" prefWidth="300.0" promptText="Имя" />
                </children>
             </HBox>
             <HBox>
@@ -61,12 +64,12 @@
                   <Insets top="3.0" />
                </VBox.margin>
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Отчество:">
+                  <Label prefHeight="27.0" prefWidth="250.0" text="Отчество:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="patronymicTF" prefHeight="25.0" prefWidth="300.0" promptText="Отчество" />
+                  <TextField fx:id="patronymicTF" prefHeight="27.0" prefWidth="300.0" promptText="Отчество" />
                </children>
             </HBox>
             <HBox>
@@ -74,12 +77,12 @@
                   <Insets top="3.0" />
                </VBox.margin>
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Дата рождения:">
+                  <Label prefHeight="27.0" prefWidth="250.0" text="Дата рождения:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="dobDate" prefHeight="25.0" prefWidth="300.0" promptText="Дата рождения" />
+                  <DatePicker fx:id="dobDate" prefHeight="27.0" prefWidth="300.0" promptText="Дата рождения" />
                </children>
             </HBox>
             <HBox>
@@ -87,12 +90,12 @@
                   <Insets top="3.0" />
                </VBox.margin>
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Телефон:">
+                  <Label prefHeight="27.0" prefWidth="250.0" text="Телефон:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="phoneTF" prefHeight="25.0" prefWidth="300.0" promptText="Телефон" />
+                  <TextField fx:id="phoneTF" prefHeight="27.0" prefWidth="300.0" promptText="Телефон" />
                </children>
             </HBox>
             <HBox>
@@ -100,23 +103,23 @@
                   <Insets top="3.0" />
                </VBox.margin>
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Адрес:">
+                  <Label prefHeight="27.0" prefWidth="250.0" text="Адрес:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="addressTF" prefHeight="25.0" prefWidth="300.0" promptText="Адрес" />
+                  <TextField fx:id="addressTF" prefHeight="27.0" prefWidth="300.0" promptText="Адрес" />
                </children>
             </HBox>
             <HBox prefHeight="19.0" prefWidth="553.0">
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Дети:">
+                  <Label prefHeight="27.0" prefWidth="250.0" text="Дети:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="childrenNumberCB" prefHeight="25.0" prefWidth="83.0" />
-                  <TextField fx:id="childrenDobTF" prefHeight="25.0" prefWidth="211.0" promptText="Дата(ы) рождения">
+                  <ComboBox fx:id="childrenNumberCB" prefHeight="27.0" prefWidth="83.0" />
+                  <TextField fx:id="childrenDobTF" prefHeight="27.0" prefWidth="211.0" promptText="Дата(ы) рождения">
                      <HBox.margin>
                         <Insets left="6.0" />
                      </HBox.margin></TextField>
@@ -125,9 +128,9 @@
                   <Insets top="3.0" />
                </VBox.margin>
             </HBox>
-            <Label text="Трудоустройство:">
+            <Label text="Трудоустройство:" textFill="#006600">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
                <VBox.margin>
                   <Insets top="20.0" />
@@ -138,20 +141,20 @@
                   <Insets top="3.0" />
                </VBox.margin>
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Должность:">
+                  <Label prefHeight="27.0" prefWidth="250.0" text="Должность:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="positionCB" prefHeight="25.0" prefWidth="147.0" promptText="Должность" />
+                  <ComboBox fx:id="positionCB" prefHeight="27.0" prefWidth="147.0" promptText="Должность" />
                   <Pane>
                      <HBox.margin>
                         <Insets left="6.0" />
                      </HBox.margin>
                      <children>
-                        <Button fx:id="newPositionAddButton" mnemonicParsing="false" onAction="#showNewPositionAdd" prefHeight="25.0" prefWidth="147.0" text="Добавить новую" />
-                        <TextField fx:id="newPositionAddTF" accessibleRoleDescription="x" prefHeight="25.0" prefWidth="116.0" visible="false" />
-                        <Button fx:id="addNewPositionButton" layoutX="122.0" mnemonicParsing="false" onAction="#addNewPosition" prefHeight="25.0" prefWidth="25.0" text="+" visible="false">
+                        <Button fx:id="newPositionAddButton" mnemonicParsing="false" onAction="#showNewPositionAdd" prefHeight="27.0" prefWidth="147.0" text="Добавить новую" />
+                        <TextField fx:id="newPositionAddTF" accessibleRoleDescription="x" prefHeight="27.0" prefWidth="116.0" visible="false" />
+                        <Button fx:id="addNewPositionButton" layoutX="122.0" mnemonicParsing="false" onAction="#addNewPosition" prefHeight="27.0" prefWidth="25.0" text="+" visible="false">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -165,22 +168,22 @@
                   <Insets top="3.0" />
                </VBox.margin>
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Оклад:">
+                  <Label prefHeight="27.0" prefWidth="250.0" text="Оклад:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="salaryTF" prefHeight="25.0" prefWidth="300.0" promptText="Оклад" />
+                  <TextField fx:id="salaryTF" prefHeight="27.0" prefWidth="300.0" promptText="Оклад" />
                </children>
             </HBox>
             <HBox prefHeight="19.0" prefWidth="553.0">
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Дата принятия на работу:">
+                  <Label prefHeight="27.0" prefWidth="250.0" text="Дата принятия на работу:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="hiringDate" prefWidth="300.0" promptText="Дата принятия на работу" />
+                  <DatePicker fx:id="hiringDate" prefHeight="27.0" prefWidth="300.0" promptText="Дата принятия на работу" />
                </children>
                <VBox.margin>
                   <Insets top="3.0" />
@@ -188,13 +191,13 @@
             </HBox>
             <HBox fx:id="categoryBox1" prefHeight="25.0" prefWidth="396.0">
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Категория:">
+                  <Label prefHeight="27.0" prefWidth="250.0" text="Категория:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="categoryCB" prefHeight="25.0" prefWidth="147.0" promptText="Категория" />
-                  <TextField fx:id="categoryNumTF" accessibleRoleDescription="x" prefHeight="25.0" prefWidth="147.0" promptText="Номер">
+                  <ComboBox fx:id="categoryCB" prefHeight="27.0" prefWidth="147.0" promptText="Категория" />
+                  <TextField fx:id="categoryNumTF" accessibleRoleDescription="x" prefHeight="27.0" prefWidth="147.0" promptText="Номер">
                      <HBox.margin>
                         <Insets left="6.0" />
                      </HBox.margin>
@@ -206,12 +209,12 @@
             </HBox>
             <HBox fx:id="categoryBox2" prefHeight="19.0" prefWidth="553.0">
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Дата получения категории:">
+                  <Label prefHeight="27.0" prefWidth="250.0" text="Дата получения категории:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="categoryAssignmentDate" prefWidth="300.0" promptText="Дата получения категории" />
+                  <DatePicker fx:id="categoryAssignmentDate" prefHeight="27.0" prefWidth="300.0" promptText="Дата получения категории" />
                </children>
                <VBox.margin>
                   <Insets top="3.0" />
@@ -222,23 +225,23 @@
                   <Insets top="10.0" />
                </VBox.margin>
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Дата выдачи СИЗ:">
+                  <Label prefHeight="27.0" prefWidth="250.0" text="Дата выдачи СИЗ:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="ppeDate" prefWidth="300.0" promptText="Дата выдачи СИЗ" />
+                  <DatePicker fx:id="ppeDate" prefHeight="27.0" prefWidth="300.0" promptText="Дата выдачи СИЗ" />
                </children>
             </HBox>
             <HBox>
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Декретный отпуск:">
+                  <Label prefHeight="27.0" prefWidth="250.0" text="Декретный отпуск:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="maternityStartDate" prefHeight="25.0" prefWidth="147.0" promptText="Дата начала" />
-                  <DatePicker fx:id="maternityEndDate" prefHeight="25.0" prefWidth="147.0" promptText="Дата конца">
+                  <DatePicker fx:id="maternityStartDate" prefHeight="27.0" prefWidth="147.0" promptText="Дата начала" />
+                  <DatePicker fx:id="maternityEndDate" prefHeight="27.0" prefWidth="147.0" promptText="Дата конца">
                      <HBox.margin>
                         <Insets left="6.0" />
                      </HBox.margin>
@@ -250,20 +253,20 @@
             </HBox>
             <HBox prefHeight="19.0" prefWidth="553.0">
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Примечание:">
+                  <Label prefHeight="27.0" prefWidth="250.0" text="Примечание:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="noteTF" prefHeight="25.0" prefWidth="300.0" promptText="Примечание" />
+                  <TextField fx:id="noteTF" prefHeight="27.0" prefWidth="300.0" promptText="Примечание" />
                </children>
                <VBox.margin>
                   <Insets top="3.0" />
                </VBox.margin>
             </HBox>
-            <Label text="Курсы:">
+            <Label text="Курсы:" textFill="#006600">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
                <VBox.margin>
                   <Insets top="20.0" />
@@ -271,13 +274,13 @@
             </Label>
             <HBox>
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Пятилетка:">
+                  <Label prefHeight="27.0" prefWidth="250.0" text="Пятилетка:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="fiveYearStartDate" prefHeight="25.0" prefWidth="147.0" promptText="Дата начала" />
-                  <DatePicker fx:id="fiveYearEndDate" prefHeight="25.0" prefWidth="147.0" promptText="Дата конца">
+                  <DatePicker fx:id="fiveYearStartDate" prefHeight="27.0" prefWidth="147.0" promptText="Дата начала" />
+                  <DatePicker fx:id="fiveYearEndDate" prefHeight="27.0" prefWidth="147.0" promptText="Дата конца">
                      <HBox.margin>
                         <Insets left="6.0" />
                      </HBox.margin>
@@ -289,12 +292,12 @@
             </HBox>
             <HBox>
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Конечный срок прохождения:">
+                  <Label prefHeight="27.0" prefWidth="250.0" text="Конечный срок прох-ния:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="courseDeadlineDate" prefHeight="25.0" prefWidth="147.0" promptText="Дата" />
+                  <DatePicker fx:id="courseDeadlineDate" prefHeight="27.0" prefWidth="147.0" promptText="Дата" />
                </children>
                <VBox.margin>
                   <Insets top="3.0" />
@@ -302,12 +305,12 @@
             </HBox>
             <HBox prefHeight="19.0" prefWidth="553.0">
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Необходимый объем часов:">
+                  <Label prefHeight="27.0" prefWidth="250.0" text="Необходимый объем часов:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="courseHoursSumTF" prefHeight="25.0" prefWidth="300.0" promptText="Часы" />
+                  <TextField fx:id="courseHoursSumTF" prefHeight="27.0" prefWidth="300.0" promptText="Часы" />
                </children>
                <VBox.margin>
                   <Insets top="3.0" />
@@ -332,21 +335,21 @@
             </HBox>
          </children>
       </VBox>
-      <VBox fx:id="courseVBox" layoutX="635.0" layoutY="184.0" prefHeight="226.0" prefWidth="432.0">
+      <VBox fx:id="courseVBox" layoutX="601.0" layoutY="14.0" prefHeight="256.0" prefWidth="550.0">
          <children>
-            <Label alignment="CENTER" prefHeight="21.0" prefWidth="550.0" text="Добавить курс:">
+            <Label alignment="CENTER" prefHeight="21.0" prefWidth="550.0" text="Добавить курс:" textFill="#006600">
                <font>
-                  <Font name="System Bold" size="15.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
             </Label>
             <HBox>
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Название:">
+                  <Label prefHeight="37.0" prefWidth="250.0" text="Название:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="courseNameTF" prefHeight="25.0" prefWidth="350.0" promptText="Название" />
+                  <TextField fx:id="courseNameTF" prefHeight="37.0" prefWidth="380.0" promptText="Название" />
                </children>
                <VBox.margin>
                   <Insets top="10.0" />
@@ -354,12 +357,12 @@
             </HBox>
             <HBox>
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Примечание:">
+                  <Label prefHeight="37.0" prefWidth="250.0" text="Примечание:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="courseDescriptionTF" prefHeight="25.0" prefWidth="350.0" promptText="Примечание" />
+                  <TextField fx:id="courseDescriptionTF" prefHeight="37.0" prefWidth="380.0" promptText="Примечание" />
                </children>
                <VBox.margin>
                   <Insets top="3.0" />
@@ -367,12 +370,12 @@
             </HBox>
             <HBox>
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Количество часов:">
+                  <Label prefHeight="37.0" prefWidth="250.0" text="Количество часов:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="courseHoursTF" prefHeight="25.0" prefWidth="350.0" promptText="Количество часов" />
+                  <TextField fx:id="courseHoursTF" prefHeight="37.0" prefWidth="380.0" promptText="Количество часов" />
                </children>
                <VBox.margin>
                   <Insets top="3.0" />
@@ -380,13 +383,13 @@
             </HBox>
             <HBox>
                <children>
-                  <Label prefHeight="25.0" prefWidth="166.0" text="Даты:">
+                  <Label prefHeight="37.0" prefWidth="210.0" text="Даты:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="courseStartDate" prefHeight="25.0" prefWidth="130.0" promptText="Дата начала" />
-                  <DatePicker fx:id="courseEndDate" prefHeight="25.0" prefWidth="130.0" promptText="Дата конца">
+                  <DatePicker fx:id="courseStartDate" prefHeight="37.0" prefWidth="167.0" promptText="Дата начала" />
+                  <DatePicker fx:id="courseEndDate" prefHeight="37.0" prefWidth="167.0" promptText="Дата конца">
                      <HBox.margin>
                         <Insets left="6.0" />
                      </HBox.margin>
@@ -411,21 +414,21 @@
             </Button>
          </children>
       </VBox>
-      <VBox layoutX="635.0" layoutY="14.0" prefHeight="142.0" prefWidth="432.0">
+      <VBox layoutX="601.0" layoutY="307.0" prefHeight="176.0" prefWidth="550.0">
          <children>
-            <Label alignment="CENTER" prefHeight="21.0" prefWidth="550.0" text="Добавить образование:">
+            <Label alignment="CENTER" prefHeight="21.0" prefWidth="550.0" text="Добавить образование:" textFill="#006600">
                <font>
-                  <Font name="System Bold" size="15.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
             </Label>
             <HBox>
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Название учреждения:">
+                  <Label prefHeight="37.0" prefWidth="250.0" text="Название учреждения:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="eduNameTF" prefHeight="25.0" prefWidth="300.0" promptText="Название учреждения" />
+                  <TextField fx:id="eduNameTF" prefHeight="37.0" prefWidth="380.0" promptText="Название учреждения" />
                </children>
                <VBox.margin>
                   <Insets top="10.0" />
@@ -433,12 +436,12 @@
             </HBox>
             <HBox>
                <children>
-                  <Label prefHeight="25.0" prefWidth="250.0" text="Дата окончания:">
+                  <Label prefHeight="37.0" prefWidth="250.0" text="Дата окончания:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="eduGraduationDate" prefWidth="300.0" promptText="Дата окончания" />
+                  <DatePicker fx:id="eduGraduationDate" prefHeight="37.0" prefWidth="380.0" promptText="Дата окончания" />
                </children>
                <VBox.margin>
                   <Insets top="3.0" />
@@ -459,5 +462,81 @@
             </Button>
          </children>
       </VBox>
+      <Line endX="8.0" endY="-403.0" fill="#006600" layoutX="576.0" layoutY="450.0" opacity="0.5" startX="8.0" startY="462.0" stroke="#006600" strokeWidth="4.0" />
+      <Circle fill="#05008f" layoutX="584.0" layoutY="38.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
+      <Circle fill="#05008f" layoutX="584.0" layoutY="911.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
+      <Line endX="566.0" layoutX="568.0" layoutY="293.0" opacity="0.5" startX="20.0" stroke="#006600" strokeWidth="4.0" />
+      <Circle fill="#05008f" layoutX="1143.0" layoutY="293.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
+      <VBox fx:id="contractVBox" layoutX="601.0" layoutY="521.0" prefHeight="300.0" prefWidth="550.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="22.0" prefWidth="550.0" text="Контракт:" textFill="#006600">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <ListView fx:id="contractLV" onMouseClicked="#fillContractForm" prefHeight="85.0" prefWidth="519.0" styleClass="list-cell" stylesheets="@../../css/style.css" />
+            <Pane fx:id="contractFormPane" disable="true" prefHeight="175.0" prefWidth="550.0">
+               <children>
+                  <HBox maxWidth="550.0" prefHeight="37.0">
+                     <children>
+                        <Label prefHeight="37.0" prefWidth="210.0" text="Тип:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="contractTypeCB" prefHeight="37.0" prefWidth="340.0" promptText="Тип" />
+                     </children>
+                  </HBox>
+                  <HBox layoutY="40.0" maxWidth="550.0" prefHeight="37.0">
+                     <children>
+                        <Label prefHeight="37.0" prefWidth="210.0" text="Дата заключения:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <DatePicker fx:id="contractStartDate" prefHeight="37.0" prefWidth="340.0" promptText="Дата заключения">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </DatePicker>
+                     </children>
+                  </HBox>
+                  <HBox layoutY="80.0" maxWidth="550.0" prefHeight="37.0">
+                     <children>
+                        <Label prefHeight="37.0" prefWidth="210.0" text="Дата истечения:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <DatePicker fx:id="contractEndDate" prefHeight="37.0" prefWidth="340.0" promptText="Дата истечения">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </DatePicker>
+                     </children>
+                  </HBox>
+                  <HBox layoutY="141.0">
+                     <children>
+                        <Button defaultButton="true" maxHeight="35.0" maxWidth="200.0" minHeight="35.0" minWidth="200.0" mnemonicParsing="false" onAction="#updateContract" prefHeight="35.0" prefWidth="200.0" stylesheets="@../../css/style.css" text="Изменить">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="button-default" />
+                              <String fx:value="green" />
+                              <String fx:value="font-big" />
+                           </styleClass>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Pane>
+         </children>
+      </VBox>
+      <Line endX="566.0" layoutX="568.0" layoutY="507.0" opacity="0.5" startX="20.0" stroke="#006600" strokeWidth="4.0" />
+      <Circle fill="#05008f" layoutX="1143.0" layoutY="507.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
    </children>
 </AnchorPane>

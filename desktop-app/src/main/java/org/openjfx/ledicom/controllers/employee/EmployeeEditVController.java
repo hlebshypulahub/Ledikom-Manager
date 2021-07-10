@@ -2,9 +2,15 @@ package org.openjfx.ledicom.controllers.employee;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextFormatter;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import org.openjfx.ledicom.entities.Edu;
 import org.openjfx.ledicom.entities.Employee;
+import org.openjfx.ledicom.entities.EmployeeContract;
 import org.openjfx.utilities.CheckPharmPosition;
 import org.openjfx.utilities.Global;
 import org.openjfx.utilities.MyAlert;
@@ -13,6 +19,7 @@ import org.openjfx.utilities.converters.StringToIntegerConverter;
 import org.openjfx.utilities.converters.StringToLocalDateConverter;
 import org.openjfx.utilities.database.DatabaseCourseController;
 import org.openjfx.utilities.database.DatabaseEmployeeController;
+import org.openjfx.utilities.database.DatabaseEnumsController;
 import org.openjfx.utilities.panels.EmployeePanel;
 
 import java.io.IOException;
@@ -21,6 +28,17 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class EmployeeEditVController extends EmployeeDataForm {
+
+    @FXML
+    private ListView<EmployeeContract> contractLV;
+    @FXML
+    private Pane contractFormPane;
+    @FXML
+    private ComboBox<String> contractTypeCB;
+    @FXML
+    private DatePicker contractStartDate;
+    @FXML
+    private DatePicker contractEndDate;
 
     @FXML
     public void updateEmployee(ActionEvent event) throws IOException, SQLException {
@@ -44,6 +62,32 @@ public class EmployeeEditVController extends EmployeeDataForm {
             EmployeePanel.showEmployeeDetails();
             EmployeePanel.showEmployeeEdit();
         }
+    }
+
+    @FXML
+    public void fillContractForm(MouseEvent event) {
+        if (contractLV.getSelectionModel().getSelectedIndex() >= 0) {
+            contractFormPane.setDisable(false);
+            contractTypeCB.setValue(contractLV.getSelectionModel().getSelectedItem().getType());
+            contractStartDate.setValue(StringToLocalDateConverter.convert(contractLV.getSelectionModel().getSelectedItem().getStartDate().equals("Не задано") ? null
+                    : contractLV.getSelectionModel().getSelectedItem().getStartDate()));
+            contractEndDate.setValue(StringToLocalDateConverter.convert(contractLV.getSelectionModel().getSelectedItem().getEndDate().equals("Не задано") ? null
+                    : contractLV.getSelectionModel().getSelectedItem().getEndDate()));
+        }
+    }
+
+    @FXML
+    public void updateContract(ActionEvent event) throws IOException, SQLException {
+        EmployeeContract contract = contractLV.getSelectionModel().getSelectedItem();
+
+        contract.setType(contractTypeCB.getValue());
+        contract.setStartDate(Validator.validateDate(contractStartDate));
+        contract.setEndDate(Validator.validateDate(contractEndDate));
+
+        DatabaseEmployeeController.updateContract(contract);
+
+        EmployeePanel.showEmployeeDetails();
+        EmployeePanel.showEmployeeEdit();
     }
 
     @Override
@@ -82,5 +126,8 @@ public class EmployeeEditVController extends EmployeeDataForm {
         assert edu != null;
         eduNameTF.setText(edu.getName());
         eduGraduationDate.setValue(StringToLocalDateConverter.convert(edu.getGraduationDate()));
+
+        contractTypeCB.setItems(DatabaseEnumsController.getContractTypes());
+        contractLV.setItems(DatabaseEmployeeController.employeeContractList());
     }
 }

@@ -75,7 +75,7 @@ public class FacilityEditVController extends FacilityDataForm {
             FacilityPanel.showFacilityDetails();
             setEmployeeTable();
             searchEmployeeTF.requestFocus();
-            contractVBox.setVisible(false);
+            contractVBox.setDisable(true);
             contractTypeCB.setValue(null);
             contractEndDate.setValue(null);
             contractStartDate.setValue(null);

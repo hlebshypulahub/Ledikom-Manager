@@ -36,7 +36,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="nameTF" prefHeight="25.0" prefWidth="300.0" promptText="Наименование">
+                  <TextField fx:id="nameTF" prefHeight="25.0" prefWidth="500.0" promptText="Наименование">
                      <font>
                         <Font size="16.0" />
                      </font></TextField>
@@ -47,23 +47,23 @@
                   <Insets top="3.0" />
                </VBox.margin>
                <children>
-                  <Label prefHeight="37.0" prefWidth="250.0" text="Статус:">
+                  <Label prefHeight="37.0" prefWidth="151.2" text="Статус:">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="statusCB" prefHeight="37.0" prefWidth="147.0" promptText="Статус" />
-                  <Pane>
+                  <ComboBox fx:id="statusCB" prefHeight="37.0" prefWidth="188.0" promptText="Статус" />
+                  <Pane prefHeight="37.0" prefWidth="205.0">
                      <HBox.margin>
                         <Insets left="6.0" />
                      </HBox.margin>
                      <children>
-                        <Button fx:id="newStatusAddButton" mnemonicParsing="false" onAction="#showNewStatusAdd" prefHeight="37.0" prefWidth="147.0" text="Добавить новый" />
-                        <TextField fx:id="newStatusAddTF" accessibleRoleDescription="x" layoutX="-1.0" prefHeight="37.0" prefWidth="116.0" visible="false">
+                        <Button fx:id="newStatusAddButton" mnemonicParsing="false" onAction="#showNewStatusAdd" prefHeight="37.0" prefWidth="206.0" text="Добавить новый" />
+                        <TextField fx:id="newStatusAddTF" accessibleRoleDescription="x" layoutX="-1.0" prefHeight="37.0" prefWidth="169.0" visible="false">
                            <font>
                               <Font size="16.0" />
                            </font></TextField>
-                        <Button fx:id="newStatusShowButton" layoutX="122.0" mnemonicParsing="false" onAction="#addNewStatus" prefHeight="37.0" prefWidth="25.0" text="+" visible="false">
+                        <Button fx:id="newStatusShowButton" layoutX="176.0" mnemonicParsing="false" onAction="#addNewStatus" prefHeight="37.0" prefWidth="29.0" text="+" visible="false">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -74,12 +74,12 @@
             </HBox>
             <HBox prefHeight="37.0" prefWidth="396.0">
                <children>
-                  <Label prefHeight="37.0" prefWidth="250.0" text="Категория:">
+                  <Label prefHeight="37.0" prefWidth="151.2" text="Категория:">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="categoryCB" prefHeight="37.0" prefWidth="147.0" promptText="Категория" />
+                  <ComboBox fx:id="categoryCB" prefHeight="37.0" prefWidth="188.0" promptText="Категория" />
                </children>
                <VBox.margin>
                   <Insets top="3.0" />
@@ -95,7 +95,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="scheduleTF" prefHeight="27.0" prefWidth="301.0" promptText="Режим работы">
+                  <TextField fx:id="scheduleTF" prefHeight="27.0" prefWidth="500.0" promptText="Режим работы">
                      <font>
                         <Font size="16.0" />
                      </font></TextField>
@@ -111,11 +111,11 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="cityTF" prefHeight="25.0" prefWidth="111.0" promptText="Город">
+                  <TextField fx:id="cityTF" prefHeight="38.0" prefWidth="222.0" promptText="Город">
                      <font>
                         <Font size="16.0" />
                      </font></TextField>
-                  <TextField fx:id="addressTF" prefHeight="27.0" prefWidth="186.0" promptText="Адрес">
+                  <TextField fx:id="addressTF" prefHeight="38.0" prefWidth="373.0" promptText="Адрес">
                      <HBox.margin>
                         <Insets left="3.0" />
                      </HBox.margin>
@@ -135,7 +135,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="phoneTF" prefHeight="25.0" prefWidth="300.0" promptText="Телефон">
+                  <TextField fx:id="phoneTF" prefHeight="25.0" prefWidth="500.0" promptText="Телефон">
                      <font>
                         <Font size="16.0" />
                      </font></TextField>
@@ -151,7 +151,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="emailTF" prefHeight="25.0" prefWidth="300.0" promptText="И-мейл">
+                  <TextField fx:id="emailTF" prefHeight="25.0" prefWidth="500.0" promptText="И-мейл">
                      <font>
                         <Font size="16.0" />
                      </font></TextField>

@@ -153,9 +153,9 @@
                         <Insets top="3.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox prefHeight="74.0" prefWidth="721.0">
+                  <HBox prefHeight="95.0" prefWidth="721.0">
                      <children>
-                        <ListView fx:id="contractList" prefHeight="89.0" prefWidth="721.0" styleClass="list-cell" stylesheets="@../../css/style.css" />
+                        <ListView fx:id="contractList" prefHeight="95.0" prefWidth="721.0" styleClass="list-cell" stylesheets="@../../css/style.css" />
                      </children>
                   </HBox>
                   <HBox>

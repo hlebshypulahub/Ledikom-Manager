@@ -3,6 +3,7 @@ package org.openjfx.utilities.docs;
 import javafx.collections.ObservableList;
 import org.apache.commons.io.FileUtils;
 import org.openjfx.ledicom.entities.Edu;
+import org.openjfx.ledicom.entities.EmployeeContract;
 import org.openjfx.utilities.Global;
 import org.openjfx.utilities.Validator;
 import org.openjfx.utilities.database.DatabaseEmployeeController;
@@ -83,7 +84,7 @@ public final class EmployeeInfoDoc {
         body += "<table style=\"border-collapse: collapse; width: 100%;\" border=\"1\">\n" +
                 "<tbody>";
 
-        ObservableList<String> employeeContractList = DatabaseEmployeeController.employeeContractList();
+        ObservableList<EmployeeContract> employeeContractList = DatabaseEmployeeController.employeeContractList();
 
         assert employeeContractList != null;
         if (!employeeContractList.isEmpty()) {
