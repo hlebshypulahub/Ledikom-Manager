@@ -349,8 +349,10 @@ public class DatabaseEmployeeController extends DatabaseController {
             while (rs.next()) {
                 EmployeeContract employeeContract = new EmployeeContract();
                 employeeContract.setType(rs.getString("type"));
-                employeeContract.setStartDate(SqlDateStringConverter.sqlDateToString(rs.getDate("start_date")));
-                employeeContract.setEndDate(SqlDateStringConverter.sqlDateToString(rs.getDate("expiration_date")));
+                employeeContract.setStartDate(SqlDateStringConverter.sqlDateToString(rs.getDate("start_date")) == null ? "Не задано"
+                        : SqlDateStringConverter.sqlDateToString(rs.getDate("start_date")));
+                employeeContract.setEndDate(SqlDateStringConverter.sqlDateToString(rs.getDate("expiration_date")) == null ? "Не задано"
+                        : SqlDateStringConverter.sqlDateToString(rs.getDate("expiration_date")));
                 String facilityName = rs.getString("name");
                 contractList.add(facilityName + " - " + employeeContract);
             }
