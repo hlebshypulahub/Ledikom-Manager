@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
@@ -206,7 +207,7 @@
                   <String fx:value="table-header" />
                </styleClass>
             </TableView>
-            <VBox fx:id="contractVBox" prefHeight="196.0" prefWidth="551.0" visible="false">
+            <VBox fx:id="contractVBox" disable="true" prefHeight="196.0" prefWidth="551.0">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
@@ -280,6 +281,8 @@
             </VBox>
          </children>
       </VBox>
-      <Line endX="8.0" endY="-403.0" fill="#006600" layoutX="576.0" layoutY="404.0" opacity="0.5" startX="8.0" startY="538.0" stroke="#006600" strokeWidth="4.0" />
+      <Line endX="8.0" endY="-403.0" fill="#006600" layoutX="576.0" layoutY="440.0" opacity="0.5" startX="8.0" startY="462.0" stroke="#006600" strokeWidth="4.0" />
+      <Circle fill="#05008f" layoutX="584.0" layoutY="28.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
+      <Circle fill="#05008f" layoutX="584.0" layoutY="911.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
    </children>
 </AnchorPane>

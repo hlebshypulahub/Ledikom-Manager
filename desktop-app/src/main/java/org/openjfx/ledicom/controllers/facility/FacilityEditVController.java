@@ -62,7 +62,7 @@ public class FacilityEditVController extends FacilityDataForm {
     @FXML
     public void showContractBox(MouseEvent event) {
         if (employeeTable.getSelectionModel().getSelectedIndex() != -1) {
-            contractVBox.setVisible(true);
+            contractVBox.setDisable(false);
         }
     }
 
