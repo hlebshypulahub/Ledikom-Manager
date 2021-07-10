@@ -153,9 +153,9 @@
                         <Insets top="3.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox prefHeight="45.0" prefWidth="715.0">
+                  <HBox prefHeight="74.0" prefWidth="721.0">
                      <children>
-                        <ListView fx:id="contractList" prefHeight="45.0" prefWidth="725.0" />
+                        <ListView fx:id="contractList" prefHeight="89.0" prefWidth="721.0" styleClass="list-cell" stylesheets="@../../css/style.css" />
                      </children>
                   </HBox>
                   <HBox>
@@ -395,7 +395,7 @@
                         </Text>
                      </children>
                   </HBox>
-                  <TableView fx:id="courseTable" prefHeight="105.0" prefWidth="721.0" tableMenuButtonVisible="true">
+                  <TableView fx:id="courseTable" prefHeight="300.0" prefWidth="721.0" tableMenuButtonVisible="true">
                     <columns>
                        <TableColumn fx:id="courseNameCol" prefWidth="249.0" text="Название" />
                        <TableColumn fx:id="courseDescriptionCol" prefWidth="207.0" text="Примечание" />

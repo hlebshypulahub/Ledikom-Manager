@@ -111,3 +111,9 @@
 .data.chart-bar {
     -fx-bar-fill: #070090;
 }
+
+.list-cell
+{
+    -fx-font-size:14px;
+    -fx-font-weight: bold;
+}
