@@ -15,18 +15,18 @@
             <Image url="@../../logo.png" />
          </image>
       </ImageView>
-      <Label layoutX="129.0" layoutY="118.0" prefHeight="35.0" prefWidth="460.0" text="Общее количество детей у сотрудников:">
+      <Label layoutX="129.0" layoutY="124.0" prefHeight="35.0" prefWidth="460.0" text="Общее количество детей у сотрудников:">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="childrenNumber" layoutX="590.0" layoutY="118.0" text="00">
+      <Label fx:id="childrenNumber" layoutX="590.0" layoutY="124.0" text="00">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Line endX="523.0" layoutX="162.0" layoutY="160.0" opacity="0.5" startX="-100.0" stroke="#006600" strokeWidth="4.0" />
-      <Circle fill="#05008f" layoutX="53.0" layoutY="160.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
-      <Circle fill="#05008f" layoutX="694.0" layoutY="160.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
+      <Line endX="523.0" layoutX="162.0" layoutY="119.0" opacity="0.5" startX="-100.0" stroke="#006600" strokeWidth="4.0" />
+      <Circle fill="#05008f" layoutX="53.0" layoutY="119.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
+      <Circle fill="#05008f" layoutX="694.0" layoutY="119.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
    </children>
 </AnchorPane>
