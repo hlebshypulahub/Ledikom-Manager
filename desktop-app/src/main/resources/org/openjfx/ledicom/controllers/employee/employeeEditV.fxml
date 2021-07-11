@@ -335,7 +335,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox fx:id="courseVBox" layoutX="601.0" layoutY="14.0" prefHeight="256.0" prefWidth="550.0">
+      <VBox fx:id="courseVBox" layoutX="601.0" layoutY="565.0" prefHeight="256.0" prefWidth="550.0">
          <children>
             <Label alignment="CENTER" prefHeight="21.0" prefWidth="550.0" text="Добавить курс:" textFill="#006600">
                <font>
@@ -414,7 +414,7 @@
             </Button>
          </children>
       </VBox>
-      <VBox layoutX="601.0" layoutY="307.0" prefHeight="176.0" prefWidth="550.0">
+      <VBox layoutX="601.0" layoutY="14.0" prefHeight="176.0" prefWidth="550.0">
          <children>
             <Label alignment="CENTER" prefHeight="21.0" prefWidth="550.0" text="Добавить образование:" textFill="#006600">
                <font>
@@ -465,9 +465,9 @@
       <Line endX="8.0" endY="-403.0" fill="#006600" layoutX="576.0" layoutY="450.0" opacity="0.5" startX="8.0" startY="462.0" stroke="#006600" strokeWidth="4.0" />
       <Circle fill="#05008f" layoutX="584.0" layoutY="38.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
       <Circle fill="#05008f" layoutX="584.0" layoutY="911.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
-      <Line endX="566.0" layoutX="568.0" layoutY="293.0" opacity="0.5" startX="20.0" stroke="#006600" strokeWidth="4.0" />
-      <Circle fill="#05008f" layoutX="1143.0" layoutY="293.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
-      <VBox fx:id="contractVBox" layoutX="601.0" layoutY="521.0" prefHeight="300.0" prefWidth="550.0">
+      <Line endX="566.0" layoutX="568.0" layoutY="551.0" opacity="0.5" startX="20.0" stroke="#006600" strokeWidth="4.0" />
+      <Circle fill="#05008f" layoutX="1143.0" layoutY="551.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
+      <VBox fx:id="contractVBox" layoutX="601.0" layoutY="228.0" prefHeight="300.0" prefWidth="550.0">
          <children>
             <Label alignment="CENTER" prefHeight="22.0" prefWidth="550.0" text="Контракт:" textFill="#006600">
                <font>
@@ -536,7 +536,7 @@
             </Pane>
          </children>
       </VBox>
-      <Line endX="566.0" layoutX="568.0" layoutY="507.0" opacity="0.5" startX="20.0" stroke="#006600" strokeWidth="4.0" />
-      <Circle fill="#05008f" layoutX="1143.0" layoutY="507.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
+      <Line endX="566.0" layoutX="568.0" layoutY="214.0" opacity="0.5" startX="20.0" stroke="#006600" strokeWidth="4.0" />
+      <Circle fill="#05008f" layoutX="1143.0" layoutY="214.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
    </children>
 </AnchorPane>
