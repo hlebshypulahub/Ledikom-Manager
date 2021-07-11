@@ -69,16 +69,20 @@ public class FacilityEditVController extends FacilityDataForm {
     @FXML
     public void addEmployeeToFacility(ActionEvent event) throws SQLException, IOException {
         Global.setEmployee(employeeTable.getSelectionModel().getSelectedItem());
-        if (DatabaseEmployeeController.addEmployeeToFacility(new EmployeeContract(contractTypeCB.getValue(), Validator.validateDate(contractStartDate), Validator.validateDate(contractEndDate)))) {
-            MyAlert.showAndWait("INFORMATION", "", "Сотрудник " + Global.getEmployee().getShortName()
-                    + " добавлен на объект " + Global.getFacility().getName(), "");
-            FacilityPanel.showFacilityDetails();
-            setEmployeeTable();
-            searchEmployeeTF.requestFocus();
-            contractVBox.setDisable(true);
-            contractTypeCB.setValue(null);
-            contractEndDate.setValue(null);
-            contractStartDate.setValue(null);
+        if (contractTypeCB.getValue() == null || contractStartDate.getValue() == null || contractEndDate.getValue() == null) {
+            MyAlert.showAndWait("ERROR", "Ошибка!", "Заполните все поля для контракта!", "");
+        } else {
+            if (DatabaseEmployeeController.addEmployeeToFacility(new EmployeeContract(contractTypeCB.getValue(), Validator.validateDate(contractStartDate), Validator.validateDate(contractEndDate)))) {
+                MyAlert.showAndWait("INFORMATION", "", "Сотрудник " + Global.getEmployee().getShortName()
+                        + " добавлен на объект " + Global.getFacility().getName(), "");
+                FacilityPanel.showFacilityDetails();
+                setEmployeeTable();
+                searchEmployeeTF.requestFocus();
+                contractVBox.setDisable(true);
+                contractTypeCB.setValue(null);
+                contractEndDate.setValue(null);
+                contractStartDate.setValue(null);
+            }
         }
     }
 
