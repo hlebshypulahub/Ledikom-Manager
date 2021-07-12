@@ -33,7 +33,7 @@ public class DashboardController implements Initializable {
     @FXML
     public void employeeAdd(Event e) throws IOException {
         EmployeePanel.showEmployeeAdd();
-        Global.getDetailsPane().getChildren().clear();
+        EmployeePanel.showEmployeeCharts();
     }
 
     @FXML
