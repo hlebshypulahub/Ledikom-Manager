@@ -51,7 +51,7 @@ public class DashboardController implements Initializable {
     @FXML
     public void facilityAdd(Event e) throws IOException {
         FacilityPanel.showFacilityAdd();
-        Global.getDetailsPane().getChildren().clear();
+        FacilityPanel.showFacilityCharts();
     }
 
     @FXML

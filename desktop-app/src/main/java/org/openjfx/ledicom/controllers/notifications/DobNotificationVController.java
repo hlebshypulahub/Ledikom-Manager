@@ -11,6 +11,7 @@ import javafx.scene.text.Text;
 import org.openjfx.ledicom.controllers.interfaces.EmployeeControllerInterface;
 import org.openjfx.ledicom.entities.Employee;
 import org.openjfx.utilities.Global;
+import org.openjfx.utilities.TableDoubleClickSetter;
 import org.openjfx.utilities.Validator;
 import org.openjfx.utilities.comparators.DodNotificationsComparator;
 import org.openjfx.utilities.database.DatabaseEmployeeController;
@@ -127,5 +128,7 @@ public class DobNotificationVController implements Initializable, EmployeeContro
                 }
             }
         });
+
+        TableDoubleClickSetter.setEmployeeTable(table);
     }
 }
