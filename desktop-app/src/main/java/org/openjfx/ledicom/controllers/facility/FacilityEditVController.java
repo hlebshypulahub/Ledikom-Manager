@@ -69,7 +69,7 @@ public class FacilityEditVController extends FacilityDataForm {
     @FXML
     public void addEmployeeToFacility(ActionEvent event) throws SQLException, IOException {
         Global.setEmployee(employeeTable.getSelectionModel().getSelectedItem());
-        if (contractTypeCB.getValue() == null || contractStartDate.getValue() == null || contractEndDate.getValue() == null) {
+        if (contractTypeCB.getValue() == null || contractStartDate.getEditor().getText().isEmpty() || contractEndDate.getEditor().getText().isEmpty()) {
             MyAlert.showAndWait("ERROR", "Ошибка!", "Заполните все поля для контракта!", "");
         } else {
             if (DatabaseEmployeeController.addEmployeeToFacility(new EmployeeContract(contractTypeCB.getValue(), Validator.validateDate(contractStartDate), Validator.validateDate(contractEndDate)))) {
