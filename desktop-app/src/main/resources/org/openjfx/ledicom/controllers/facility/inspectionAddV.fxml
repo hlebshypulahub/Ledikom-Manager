@@ -17,24 +17,24 @@
    <content>
       <AnchorPane fx:id="viewPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="908.0" prefWidth="1170.0">
          <children>
-            <Label fx:id="inspectionLabel" layoutX="14.0" layoutY="14.0" prefHeight="37.0" prefWidth="1129.0" text="Проведение самоинспекции на ">
+            <Label fx:id="inspectionLabel" layoutX="14.0" layoutY="14.0" prefHeight="37.0" prefWidth="1129.0" text="Проведение самоинспекции на " textFill="#006600">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
                <padding>
                   <Insets bottom="10.0" />
                </padding>
             </Label>
-            <VBox layoutX="14.0" layoutY="51.0" prefHeight="75.0" prefWidth="551.0">
+            <VBox layoutX="14.0" layoutY="58.0" prefHeight="119.0" prefWidth="551.0">
                <children>
                   <HBox>
                      <children>
-                        <Label prefHeight="25.0" prefWidth="250.0" text="Дата проведения:">
+                        <Label prefHeight="37.0" prefWidth="200.0" text="Дата проведения:">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="18.0" />
                            </font>
                         </Label>
-                        <DatePicker fx:id="inspectionDate" prefHeight="25.0" prefWidth="300.0" promptText="Дата проведения">
+                        <DatePicker fx:id="inspectionDate" prefHeight="37.0" prefWidth="350.0" promptText="Дата проведения">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -43,12 +43,12 @@
                   </HBox>
                   <HBox>
                      <children>
-                        <Label prefHeight="25.0" prefWidth="250.0" text="Заполнил:">
+                        <Label prefHeight="37.0" prefWidth="200.0" text="Заполнил:">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="inspectionEmployee" prefHeight="25.0" prefWidth="300.0" promptText="Сотрудник" />
+                        <TextField fx:id="inspectionEmployee" prefHeight="37.0" prefWidth="350.0" promptText="Сотрудник" />
                      </children>
                      <VBox.margin>
                         <Insets top="3.0" />
@@ -56,12 +56,12 @@
                   </HBox>
                   <HBox>
                      <children>
-                        <Label prefHeight="25.0" prefWidth="250.0" text="Примечание:">
+                        <Label prefHeight="37.0" prefWidth="200.0" text="Примечание:">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="inspectionNote" prefHeight="25.0" prefWidth="300.0" promptText="Примечание" />
+                        <TextField fx:id="inspectionNote" prefHeight="37.0" prefWidth="350.0" promptText="Примечание" />
                      </children>
                      <VBox.margin>
                         <Insets top="3.0" />

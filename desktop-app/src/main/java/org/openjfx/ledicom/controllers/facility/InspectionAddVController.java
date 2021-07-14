@@ -55,7 +55,7 @@ public class InspectionAddVController implements Initializable {
     int padding = 10;
 
     public void setInspection() throws IOException, SQLException {
-        layoutY = 160;
+        layoutY = 220;
 
         getDataFromDB();
         prepareCheckupList();

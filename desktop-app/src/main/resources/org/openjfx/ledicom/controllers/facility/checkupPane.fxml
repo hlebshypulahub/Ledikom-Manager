@@ -14,21 +14,21 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane fx:id="pane" prefHeight="265.0" prefWidth="1120.0" style="-fx-border-width: 2 0 0 0; -fx-border-color: gray;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.facility.CheckupPaneController">
+<Pane fx:id="pane" prefHeight="278.0" prefWidth="1120.0" style="-fx-border-width: 2 0 0 0; -fx-border-color: gray;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.facility.CheckupPaneController">
    <children>
-      <Text fx:id="questionText" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="500.0">
+      <Text fx:id="questionText" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="500.0">
          <font>
-            <Font size="14.0" />
+            <Font size="18.0" />
          </font>
       </Text>
-      <ComboBox fx:id="checkupAnswer" layoutX="516.0" layoutY="6.0" prefHeight="30.0" prefWidth="87.0" promptText="Ответ" />
-      <VBox fx:id="violationVBox" layoutX="516.0" layoutY="79.0" prefHeight="185.0" prefWidth="604.0" visible="false">
+      <ComboBox fx:id="checkupAnswer" layoutX="517.0" layoutY="9.0" prefHeight="37.0" prefWidth="87.0" promptText="Ответ" />
+      <VBox fx:id="violationVBox" layoutX="517.0" layoutY="95.0" prefHeight="185.0" prefWidth="604.0" visible="false">
          <children>
             <HBox>
                <children>
                   <Label prefHeight="25.0" prefWidth="250.0" text="Ответственный сотрудник:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
                   <TextField fx:id="violationEmployee" prefHeight="25.0" prefWidth="300.0" promptText="Ответственный сотрудник" />
@@ -41,7 +41,7 @@
                <children>
                   <Label prefHeight="25.0" prefWidth="250.0" text="Срок исполнения:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
                   <DatePicker fx:id="correctionTerm" prefHeight="25.0" prefWidth="300.0" promptText="Срок исполнения">
@@ -58,7 +58,7 @@
                <children>
                   <Label prefHeight="25.0" prefWidth="250.0" text="Выявленное нарушение:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
                   <TextField fx:id="violationDescription" prefHeight="25.0" prefWidth="300.0" promptText="Выявленное нарушение" />
@@ -71,7 +71,7 @@
                <children>
                   <Label prefHeight="25.0" prefWidth="250.0" text="План действий:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
                   <TextField fx:id="violationActionPlan" prefHeight="25.0" prefWidth="300.0" promptText="План действий" />
@@ -84,7 +84,7 @@
                <children>
                   <Label prefHeight="25.0" prefWidth="250.0" text="Дата исполнения:">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
                   <DatePicker fx:id="correctionDate" prefHeight="25.0" prefWidth="300.0" promptText="Дата исполнения">
@@ -115,8 +115,8 @@
             </Button>
          </children>
       </VBox>
-      <TextField fx:id="checkupNote" layoutX="617.0" layoutY="9.0" prefHeight="25.0" prefWidth="500.0" promptText="Примечание" />
-      <Button fx:id="violationButton" defaultButton="true" layoutX="517.0" layoutY="44.0" maxHeight="35.0" maxWidth="200.0" minHeight="35.0" minWidth="200.0" mnemonicParsing="false" onAction="#addViolation" prefHeight="35.0" prefWidth="200.0" stylesheets="@../../css/style.css" text="Добавить нарушение">
+      <TextField fx:id="checkupNote" layoutX="617.0" layoutY="9.0" prefHeight="37.0" prefWidth="500.0" promptText="Примечание" />
+      <Button fx:id="violationButton" defaultButton="true" layoutX="517.0" layoutY="60.0" maxHeight="35.0" maxWidth="205.0" minHeight="35.0" minWidth="200.0" mnemonicParsing="false" onAction="#addViolation" prefHeight="35.0" prefWidth="205.0" stylesheets="@../../css/style.css" text="Добавить нарушение">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
