@@ -395,7 +395,7 @@
                         </Text>
                      </children>
                   </HBox>
-                  <TableView fx:id="courseTable" prefHeight="300.0" prefWidth="721.0" tableMenuButtonVisible="true">
+                  <TableView fx:id="courseTable" prefHeight="250.0" prefWidth="721.0" tableMenuButtonVisible="true">
                     <columns>
                        <TableColumn fx:id="courseNameCol" prefWidth="249.0" text="Название" />
                        <TableColumn fx:id="courseDescriptionCol" prefWidth="207.0" text="Примечание" />
