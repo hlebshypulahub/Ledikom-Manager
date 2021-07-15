@@ -111,7 +111,7 @@ public class DobNotificationVController implements Initializable, EmployeeContro
         dontShowOnAppStartButton.setOnAction(event -> {
             try {
                 DatabaseNotificationController.setOnApStart(false);
-            } catch (SQLException e) {
+            } catch (SQLException e)  {
                 e.printStackTrace();
             }
             setButtons();
