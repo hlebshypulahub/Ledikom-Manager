@@ -3,9 +3,7 @@ package org.openjfx.ledicom.controllers;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
@@ -13,6 +11,7 @@ import javafx.scene.layout.Pane;
 import org.openjfx.utilities.Global;
 import org.openjfx.utilities.panels.EmployeePanel;
 import org.openjfx.utilities.panels.FacilityPanel;
+import org.openjfx.utilities.panels.NotificationPanel;
 
 import java.io.IOException;
 import java.net.URL;
@@ -62,12 +61,16 @@ public class DashboardController implements Initializable {
 
     @FXML
     public void showDOBNotifications(ActionEvent e) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("notifications/dobNotificationV.fxml"));
-        Parent root = loader.load();
-        viewPane.getChildren().clear();
-        viewPane.getChildren().addAll(root);
+        NotificationPanel.showDobNotifications();
         footerPane.getChildren().clear();
-        detailsPane.getChildren().clear();
+        EmployeePanel.showEmployeeCharts();
+    }
+
+    @FXML
+    public void showContractNotifications(ActionEvent e) throws IOException {
+        NotificationPanel.showContractNotifications();
+        footerPane.getChildren().clear();
+        EmployeePanel.showEmployeeCharts();
     }
 
     @Override

@@ -12,4 +12,8 @@ public final class NotificationPanel implements ShowPane {
     public static void showDobNotifications() throws IOException {
         ShowPane.showViewPane(new FXMLLoader(NotificationPanel.class.getResource("/org/openjfx/ledicom/controllers/notifications/dobNotificationV.fxml")));
     }
+
+    public static void showContractNotifications() throws IOException {
+        ShowPane.showViewPane(new FXMLLoader(NotificationPanel.class.getResource("/org/openjfx/ledicom/controllers/notifications/contractNotificationV.fxml")));
+    }
 }

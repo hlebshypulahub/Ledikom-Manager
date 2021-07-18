@@ -47,6 +47,12 @@ public class App extends Application {
                 NotificationPanel.showDobNotifications();
             }
         }
+
+        if (DatabaseNotificationController.getContractOnAppStart() && !DatabaseNotificationController.contractNotificationsList().isEmpty()) {
+            if (MyAlert.showAndWaitButtonType("INFORMATION", "Контракты", "У некоторых сотрудников скоро заканчивается контракт!", "")) {
+                NotificationPanel.showContractNotifications();
+            }
+        }
     }
 
     static void setRoot(String fxml) throws IOException {

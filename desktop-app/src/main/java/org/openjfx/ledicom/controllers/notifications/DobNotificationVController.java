@@ -93,7 +93,7 @@ public class DobNotificationVController implements Initializable, EmployeeContro
         dobCol.setComparator(new DodNotificationsComparator());
 
         table.setItems(list);
-        table.setPlaceholder(new Label("Данные не найдены"));
+        table.setPlaceholder(new Label("В течение выбранного периода дней рождения у сотрудников нет!"));
 
         dobNotificationsEditTF.setTextFormatter(new TextFormatter<>(Validator.intValidationFormatter));
 
@@ -111,7 +111,7 @@ public class DobNotificationVController implements Initializable, EmployeeContro
         dontShowOnAppStartButton.setOnAction(event -> {
             try {
                 DatabaseNotificationController.setOnApStart(false);
-            } catch (SQLException e)  {
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
             setButtons();

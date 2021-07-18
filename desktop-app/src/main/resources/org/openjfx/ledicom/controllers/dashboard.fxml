@@ -19,6 +19,7 @@
                   <MenuItem fx:id="managementMenuEmployee2" mnemonicParsing="false" onAction="#employeeAll" text="Все сотрудники" />
                   <MenuItem fx:id="managementMenuFacility1" mnemonicParsing="false" onAction="#employeeCourses" text="Курсы" />
                   <MenuItem fx:id="managementMenuFacility12" mnemonicParsing="false" onAction="#showDOBNotifications" text="Дни рождения" />
+                  <MenuItem fx:id="managementMenuFacility121" mnemonicParsing="false" onAction="#showContractNotifications" text="Контракты" />
                   <MenuItem fx:id="managementMenuFacility11" mnemonicParsing="false" onAction="#employeeAdd" text="Добавить сотрудника" />
                </items>
             </Menu>
@@ -31,6 +32,7 @@
             <Menu fx:id="managementMenu1" mnemonicParsing="false" text="Уведомления">
                <items>
                   <MenuItem fx:id="managementMenuEmployee1" mnemonicParsing="false" onAction="#showDOBNotifications" text="Дни рождения" />
+                  <MenuItem fx:id="managementMenuEmployee11" mnemonicParsing="false" onAction="#showContractNotifications" text="Контракты" />
                </items>
             </Menu>
             </menus>

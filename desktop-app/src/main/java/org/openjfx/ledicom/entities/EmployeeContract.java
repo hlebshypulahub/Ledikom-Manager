@@ -6,6 +6,7 @@ public class EmployeeContract {
     private String endDate;
     private int facilityId;
     private String facilityName;
+    private Employee employee;
 
     public EmployeeContract(String type, String startDate, String endDate) {
         this.type = type;
@@ -20,6 +21,22 @@ public class EmployeeContract {
 
     public EmployeeContract() {
 
+    }
+
+    public String getFullInfo() {
+        return facilityName + " - " + type + " (" + startDate + " - " + endDate + ")";
+    }
+
+    public String getEmployeeName() {
+        return employee.getShortName();
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
     public int getFacilityId() {
