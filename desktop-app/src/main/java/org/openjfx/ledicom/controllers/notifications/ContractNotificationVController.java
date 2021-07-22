@@ -59,7 +59,8 @@ public class ContractNotificationVController implements Initializable {
             contractNotificationsEditButton.setVisible(true);
             contractNotificationsPeriodText.setText(String.valueOf(Validator.validateDayOfYear(contractNotificationsEditTF.getText())));
             table.setItems(DatabaseNotificationController.contractNotificationsList());
-        } catch (DayOfYearException | SQLException exception) {
+            EmployeePanel.showEmployeeCharts();
+        } catch (DayOfYearException | SQLException | IOException exception) {
             System.out.println(exception.getMessage());
         }
     }

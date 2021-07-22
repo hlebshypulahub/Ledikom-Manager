@@ -37,7 +37,7 @@
                   <TextField fx:id="nameTF" prefHeight="37.0" prefWidth="300.0" promptText="Наименование" />
                </children>
             </HBox>
-            <HBox prefHeight="25.0" prefWidth="396.0">
+            <HBox prefHeight="37.0" prefWidth="396.0">
                <VBox.margin>
                   <Insets top="3.0" />
                </VBox.margin>
@@ -64,7 +64,7 @@
                   </Pane>
                </children>
             </HBox>
-            <HBox prefHeight="25.0" prefWidth="396.0">
+            <HBox prefHeight="37.0" prefWidth="396.0">
                <children>
                   <Label prefHeight="37.0" prefWidth="250.0" text="Категория:">
                      <font>
@@ -157,9 +157,9 @@
       <Line endX="8.0" endY="-403.0" fill="#006600" layoutX="153.0" layoutY="450.0" opacity="0.5" startX="8.0" startY="462.0" stroke="#006600" strokeWidth="4.0" />
       <Circle fill="#05008f" layoutX="161.0" layoutY="38.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
       <Circle fill="#05008f" layoutX="161.0" layoutY="911.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
-      <Line endX="377.0" layoutX="141.0" layoutY="422.0" opacity="0.5" startX="24.0" stroke="#006600" strokeWidth="4.0" />
-      <Circle fill="#05008f" layoutX="634.0" layoutY="422.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
-      <Line endX="377.0" layoutX="619.0" layoutY="422.0" opacity="0.5" startX="24.0" stroke="#006600" strokeWidth="4.0" />
-      <Circle fill="#05008f" layoutX="527.0" layoutY="422.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
+      <Line endX="377.0" layoutX="141.0" layoutY="433.0" opacity="0.5" startX="24.0" stroke="#006600" strokeWidth="4.0" />
+      <Circle fill="#05008f" layoutX="634.0" layoutY="433.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
+      <Line endX="377.0" layoutX="619.0" layoutY="433.0" opacity="0.5" startX="24.0" stroke="#006600" strokeWidth="4.0" />
+      <Circle fill="#05008f" layoutX="527.0" layoutY="433.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
    </children>
 </AnchorPane>

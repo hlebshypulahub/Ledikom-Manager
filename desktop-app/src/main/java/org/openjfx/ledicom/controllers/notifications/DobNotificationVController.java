@@ -64,7 +64,8 @@ public class DobNotificationVController implements Initializable, EmployeeContro
             dobNotificationsEditButton.setVisible(true);
             dobNotificationsPeriodText.setText(String.valueOf(Validator.validateDayOfYear(dobNotificationsEditTF.getText())));
             table.setItems(DatabaseEmployeeController.dobNotificationsEmployeeList());
-        } catch (DayOfYearException | SQLException exception) {
+            EmployeePanel.showEmployeeCharts();
+        } catch (DayOfYearException | SQLException | IOException exception) {
             System.out.println(exception.getMessage());
         }
     }

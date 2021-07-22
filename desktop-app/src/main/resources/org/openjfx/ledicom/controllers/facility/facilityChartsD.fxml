@@ -6,6 +6,8 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="908.0" prefWidth="748.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.facility.FacilityChartsDController">
@@ -15,7 +17,7 @@
             <Image url="@../../logo.png" />
          </image>
       </ImageView>
-      <BarChart fx:id="bc" layoutX="15.0" layoutY="60.0" prefHeight="376.0" prefWidth="718.0" title="Объекты по городам">
+      <BarChart fx:id="bc" layoutX="15.0" layoutY="108.0" prefHeight="376.0" prefWidth="718.0" title="Объекты по городам">
          <xAxis>
             <CategoryAxis fx:id="cities" side="BOTTOM" tickLabelRotation="40.0">
                <tickLabelFont>
@@ -31,5 +33,8 @@
             </NumberAxis>
          </yAxis>
       </BarChart>
+      <Line endX="523.0" layoutX="163.0" layoutY="94.0" opacity="0.5" startX="-100.0" stroke="#006600" strokeWidth="4.0" />
+      <Circle fill="#05008f" layoutX="54.0" layoutY="94.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
+      <Circle fill="#05008f" layoutX="695.0" layoutY="94.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
    </children>
 </AnchorPane>
