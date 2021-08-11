@@ -17,7 +17,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="908.0" prefWidth="1168.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.employee.EmployeeTasksVController">
    <children>
-      <TableView fx:id="table" layoutX="15.0" layoutY="63.0" prefHeight="426.0" prefWidth="1140.0" stylesheets="@../../css/style.css">
+      <TableView fx:id="table" layoutX="15.0" layoutY="63.0" onMouseClicked="#enableDeleteButton" prefHeight="426.0" prefWidth="1140.0" stylesheets="@../../css/style.css">
          <columns>
             <TableColumn fx:id="nameCol" prefWidth="258.0" text="ФИО" />
             <TableColumn fx:id="dateCol" prefWidth="208.0" text="Срок исполнения" />
@@ -36,7 +36,7 @@
             <Font size="15.0" />
          </font>
       </TextField>
-      <Button fx:id="addTaskButton" layoutX="15.0" layoutY="503.0" maxHeight="35.0" maxWidth="200.0" minHeight="35.0" minWidth="200.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" stylesheets="@../../css/style.css" text="Добавить">
+      <Button fx:id="addTaskButton" layoutX="15.0" layoutY="503.0" maxHeight="35.0" maxWidth="200.0" minHeight="35.0" minWidth="200.0" mnemonicParsing="false" onAction="#showAddTask" prefHeight="35.0" prefWidth="200.0" stylesheets="@../../css/style.css" text="Добавить">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -49,7 +49,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="deleteTaskButton" disable="true" layoutX="954.0" layoutY="503.0" maxHeight="35.0" maxWidth="200.0" minHeight="35.0" minWidth="200.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" stylesheets="@../../css/style.css" text="Удалить">
+      <Button fx:id="deleteTaskButton" disable="true" layoutX="954.0" layoutY="503.0" maxHeight="35.0" maxWidth="200.0" minHeight="35.0" minWidth="200.0" mnemonicParsing="false" onAction="#deleteTask" prefHeight="35.0" prefWidth="200.0" stylesheets="@../../css/style.css" text="Удалить">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -62,7 +62,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <VBox fx:id="addTaskVBox" layoutX="15.0" layoutY="503.0" prefHeight="349.0" prefWidth="551.0" visible="false">
+      <VBox fx:id="addTaskVBox" layoutX="15.0" layoutY="503.0" prefHeight="388.0" prefWidth="551.0" visible="false">
          <children>
             <Label alignment="CENTER" prefHeight="22.0" prefWidth="552.0" text="Добавить поручение:" textFill="#006600">
                <font>
@@ -81,9 +81,9 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </HBox>
-            <TableView fx:id="employeeTable" prefHeight="95.0" prefWidth="551.0" stylesheets="@../../css/style.css">
+            <TableView fx:id="employeeTable" prefHeight="135.0" prefWidth="551.0" stylesheets="@../../css/style.css">
                <columns>
-                  <TableColumn fx:id="fullNameCol" prefWidth="328.0" text="ФИО" />
+                  <TableColumn fx:id="shortNameCol" prefWidth="328.0" text="ФИО" />
                   <TableColumn fx:id="positionCol" prefWidth="207.0" text="Должность" />
                </columns>
                <VBox.margin>
@@ -118,12 +118,12 @@
                   </HBox>
                   <HBox prefHeight="68.0" prefWidth="551.0">
                      <children>
-                        <Label prefHeight="37.0" prefWidth="201.0" text="Дата истечения:">
+                        <Label prefHeight="37.0" prefWidth="201.0" text="Поручение:">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="addTaskTA" prefHeight="38.0" prefWidth="350.0">
+                        <TextArea fx:id="addTaskTA" prefHeight="38.0" prefWidth="350.0" promptText="Поручение">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -133,7 +133,7 @@
                         <Insets top="3.0" />
                      </VBox.margin>
                   </HBox>
-                  <Button defaultButton="true" maxHeight="35.0" maxWidth="200.0" minHeight="35.0" minWidth="200.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" stylesheets="@../../css/style.css" text="Добавить">
+                  <Button defaultButton="true" maxHeight="35.0" maxWidth="200.0" minHeight="35.0" minWidth="200.0" mnemonicParsing="false" onAction="#addTask" prefHeight="35.0" prefWidth="200.0" stylesheets="@../../css/style.css" text="Добавить">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>

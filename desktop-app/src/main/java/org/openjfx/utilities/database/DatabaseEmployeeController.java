@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import org.openjfx.ledicom.entities.Edu;
 import org.openjfx.ledicom.entities.Employee;
 import org.openjfx.ledicom.entities.EmployeeContract;
+import org.openjfx.ledicom.entities.Task;
 import org.openjfx.utilities.Global;
 import org.openjfx.utilities.MyAlert;
 import org.openjfx.utilities.converters.SqlDateStringConverter;
@@ -170,7 +171,7 @@ public class DatabaseEmployeeController extends DatabaseController {
         ObservableList<Employee> employeeList = FXCollections.observableArrayList();
 
         try (
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Employee employee = new Employee();
@@ -191,7 +192,7 @@ public class DatabaseEmployeeController extends DatabaseController {
         Employee employee = new Employee();
 
         try (
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 setEmployee(employee, rs);
@@ -344,7 +345,7 @@ public class DatabaseEmployeeController extends DatabaseController {
         ObservableList<EmployeeContract> contractList = FXCollections.observableArrayList();
 
         try (
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 EmployeeContract employeeContract = new EmployeeContract();
@@ -436,6 +437,43 @@ public class DatabaseEmployeeController extends DatabaseController {
                 + "start_date = '" + SqlDateStringConverter.stringToSqlDate(contract.getStartDate()) + "', "
                 + "expiration_date = '" + SqlDateStringConverter.stringToSqlDate(contract.getEndDate()) + "' "
                 + " where id_employee = " + Global.getEmployee().getId() + " and id_facility = " + contract.getFacilityId() + ";";
+
+        psExecute(sql);
+    }
+
+    public static ObservableList<Task> employeeTasks() throws SQLException {
+        String sql = "select * from task;";
+
+        ObservableList<Task> observableList = FXCollections.observableArrayList();
+
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Task task = new Task();
+                task.setId(rs.getInt("id_task"));
+                task.setEmployee(getEmployee(rs.getInt("id_employee")));
+                task.setDate(SqlDateStringConverter.sqlDateToString(rs.getDate("date")));
+                task.setTask(rs.getString("description"));
+                observableList.add(task);
+            }
+            return observableList;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            showMessageDialog(null, e.getMessage());
+            throw e;
+        }
+    }
+
+    public static void addTask(Task task) throws SQLException {
+        String sql = "insert into task (id_employee, date, description) values (" + task.getEmployee().getId() + "," +
+                (SqlDateStringConverter.stringToSqlDate(task.getDate()) == null ? "null,'" : "'" + (SqlDateStringConverter.stringToSqlDate(task.getDate()) + "','"))
+                + task.getTask() + "');";
+
+        psExecute(sql);
+    }
+
+    public static void deleteTask(int id) throws SQLException {
+        String sql = "delete from task where id_task = " + id;
 
         psExecute(sql);
     }

@@ -73,6 +73,13 @@ public class DashboardController implements Initializable {
         EmployeePanel.showEmployeeCharts();
     }
 
+    @FXML
+    public void showEmployeeTasks(ActionEvent e) throws IOException {
+        EmployeePanel.showEmployeeTasks();
+        footerPane.getChildren().clear();
+        EmployeePanel.showEmployeeCharts();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Global.setViewPane(viewPane);

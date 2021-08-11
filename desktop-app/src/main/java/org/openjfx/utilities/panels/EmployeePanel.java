@@ -41,4 +41,8 @@ public final class EmployeePanel implements ShowPane {
     public static void showEmployeeAdd() throws IOException {
         ShowPane.showViewPane(new FXMLLoader(EmployeePanel.class.getResource("/org/openjfx/ledicom/controllers/employee/employeeAddV.fxml")));
     }
+
+    public static void showEmployeeTasks() throws IOException {
+        ShowPane.showViewPane(new FXMLLoader(EmployeePanel.class.getResource("/org/openjfx/ledicom/controllers/employee/employeeTasksV.fxml")));
+    }
 }
