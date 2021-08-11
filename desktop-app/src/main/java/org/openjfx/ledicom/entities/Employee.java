@@ -175,13 +175,6 @@ public class Employee {
         return lastName + " " + firstName.charAt(0) + ". " + patronymic.charAt(0) + ".";
     }
 
-//    public void setDobAge() {
-//        dobAge = getDOB() == null ? 0
-//                : LocalDate.parse(getDOB(), DateTimeFormatter.getDateTimeFormatter()).getDayOfYear() == LocalDate.now().getDayOfYear()
-//                ? (int) YEARS.between(LocalDate.parse(getDOB(), DateTimeFormatter.getDateTimeFormatter()), LocalDate.now())
-//                : (int) YEARS.between(LocalDate.parse(getDOB(), DateTimeFormatter.getDateTimeFormatter()), LocalDate.now()) + 1;
-//    }
-
     public int getDobAge() {
         return dobAge;
     }
