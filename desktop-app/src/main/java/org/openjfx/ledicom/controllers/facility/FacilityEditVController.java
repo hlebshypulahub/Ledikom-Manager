@@ -120,7 +120,7 @@ public class FacilityEditVController extends FacilityDataForm {
         cityTF.setText(Global.getFacility().getCity());
         scheduleTF.setText(Global.getFacility().getSchedule());
 
-        fullNameCol.setCellValueFactory(new PropertyValueFactory<>("fullName"));
+        fullNameCol.setCellValueFactory(new PropertyValueFactory<>("shortName"));
         positionCol.setCellValueFactory(new PropertyValueFactory<>("position"));
 
         contractTypeCB.setItems(DatabaseEnumsController.getContractTypes());

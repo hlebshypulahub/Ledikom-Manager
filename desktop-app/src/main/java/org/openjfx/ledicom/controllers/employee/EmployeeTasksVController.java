@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import org.openjfx.ledicom.entities.Employee;
 import org.openjfx.ledicom.entities.Task;
 import org.openjfx.utilities.MyAlert;
@@ -143,6 +144,18 @@ public class EmployeeTasksVController implements Initializable {
         taskCol.setCellValueFactory(new PropertyValueFactory<>("task"));
         nameCol.setCellValueFactory(new PropertyValueFactory<>("employeeName"));
         dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+        addTaskTA.setWrapText(true);
+
+        taskCol.setCellFactory(tc -> {
+            TableCell<Task, String> cell = new TableCell<>();
+            Text text = new Text();
+            cell.setGraphic(text);
+            cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
+            text.wrappingWidthProperty().bind(taskCol.widthProperty());
+            text.textProperty().bind(cell.itemProperty());
+            return cell ;
+        });
 
         try {
             setTaskTable();

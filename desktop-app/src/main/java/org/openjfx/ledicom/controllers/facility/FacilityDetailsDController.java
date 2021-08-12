@@ -93,7 +93,7 @@ public class FacilityDetailsDController implements Initializable {
         scheduleText.setText(Global.getFacility().getSchedule());
         codeText.setText(Global.getFacility().getCode());
 
-        FullNameCol.setCellValueFactory(new PropertyValueFactory<>("fullName"));
+        FullNameCol.setCellValueFactory(new PropertyValueFactory<>("shortName"));
         positionCol.setCellValueFactory(new PropertyValueFactory<>("position"));
         employeeTable.setItems(DatabaseEmployeeController.getEmployeesForFacility());
 

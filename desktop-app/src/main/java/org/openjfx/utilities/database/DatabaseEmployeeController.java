@@ -442,7 +442,7 @@ public class DatabaseEmployeeController extends DatabaseController {
     }
 
     public static ObservableList<Task> employeeTasks() throws SQLException {
-        String sql = "select * from task;";
+        String sql = "select * from task order by date;";
 
         ObservableList<Task> observableList = FXCollections.observableArrayList();
 

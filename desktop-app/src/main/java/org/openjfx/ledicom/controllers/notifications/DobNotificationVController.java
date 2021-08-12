@@ -88,7 +88,7 @@ public class DobNotificationVController implements Initializable, EmployeeContro
         list.sort(Comparator.comparing(e -> LocalDate.parse(e.getDOB(), DateTimeFormatter.ofPattern("dd.MM.yyyy")).getDayOfYear()));
         dobNotificationsPeriodText.setText(String.valueOf(DatabaseNotificationController.getDobNotificationsPeriod()));
 
-        fullNameCol.setCellValueFactory(new PropertyValueFactory<>("fullName"));
+        fullNameCol.setCellValueFactory(new PropertyValueFactory<>("shortName"));
         dobCol.setCellValueFactory(new PropertyValueFactory<>("DOB"));
         ageCol.setCellValueFactory(new PropertyValueFactory<>("dobAge"));
         dobCol.setComparator(new DodNotificationsComparator());
