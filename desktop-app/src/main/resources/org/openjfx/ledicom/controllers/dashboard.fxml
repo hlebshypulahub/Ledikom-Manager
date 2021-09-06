@@ -30,6 +30,12 @@
                   <MenuItem fx:id="managementMenuFacility" mnemonicParsing="false" onAction="#facilityAdd" text="Добавить объект" />
                     </items>
                 </Menu>
+            <Menu mnemonicParsing="false" text="Инвентарь">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Весь инвентарь" />
+                  <MenuItem mnemonicParsing="false" text="Добавить инвентарь" />
+               </items>
+            </Menu>
             <Menu fx:id="managementMenu1" mnemonicParsing="false" text="Уведомления">
                <items>
                   <MenuItem fx:id="managementMenuEmployee1" mnemonicParsing="false" onAction="#showDOBNotifications" text="Дни рождения" />

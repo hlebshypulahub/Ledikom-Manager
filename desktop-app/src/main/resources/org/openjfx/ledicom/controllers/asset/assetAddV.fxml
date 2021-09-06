@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="Content" fx:id="viewPane" minHeight="-1.0" minWidth="-1.0" prefHeight="908.0" prefWidth="1168.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.asset.AssetAddVController">
+   <children>
+      <VBox layoutX="309.0" layoutY="14.0" prefHeight="246.0" prefWidth="550.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="21.0" prefWidth="550.0" text="Введите данные:" textFill="#006600">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <HBox>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+               <children>
+                  <Label prefHeight="37.0" prefWidth="250.0" text="Наименование:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="nameTF" prefHeight="37.0" prefWidth="420.0" promptText="Наименование" />
+               </children>
+            </HBox>
+            <HBox prefHeight="37.0" prefWidth="396.0">
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+               <children>
+                  <Label prefHeight="37.0" prefWidth="190.0" text="Тип инвентаря:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="typeCB" prefHeight="37.0" prefWidth="177.0" promptText="Тип" />
+                  <Pane prefHeight="37.0" prefWidth="177.0">
+                     <HBox.margin>
+                        <Insets left="6.0" />
+                     </HBox.margin>
+                     <children>
+                        <Button fx:id="newTypeAddButton" mnemonicParsing="false" onAction="#showNewTypeAdd" prefHeight="37.0" prefWidth="177.0" text="Добавить новый" />
+                        <TextField fx:id="newTypeAddTF" accessibleRoleDescription="x" layoutX="-1.0" prefHeight="37.0" prefWidth="148.0" visible="false" />
+                        <Button fx:id="addNewTypeButton" layoutX="152.0" mnemonicParsing="false" onAction="#addNewType" prefHeight="37.0" prefWidth="25.0" text="+" visible="false">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+            <HBox prefHeight="37.0" prefWidth="396.0">
+               <children>
+                  <Label prefHeight="37.0" prefWidth="190.0" text="Объект:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="facilityCB" prefHeight="37.0" prefWidth="360.0" promptText="Объект" />
+               </children>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+            </HBox>
+            <Button defaultButton="true" maxHeight="35.0" maxWidth="200.0" minHeight="35.0" minWidth="200.0" mnemonicParsing="false" onAction="#addAsset" prefHeight="35.0" prefWidth="200.0" stylesheets="@../../css/style.css" text="Добавить">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="175.0" top="20.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="button-default" />
+                  <String fx:value="green" />
+                  <String fx:value="font-big" />
+               </styleClass>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </VBox>
+      <Line endX="8.0" endY="-403.0" fill="#006600" layoutX="992.0" layoutY="450.0" opacity="0.5" startX="8.0" startY="462.0" stroke="#006600" strokeWidth="4.0" />
+      <Circle fill="#05008f" layoutX="1000.0" layoutY="38.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
+      <Circle fill="#05008f" layoutX="1000.0" layoutY="911.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
+      <Line endX="8.0" endY="-403.0" fill="#006600" layoutX="153.0" layoutY="450.0" opacity="0.5" startX="8.0" startY="462.0" stroke="#006600" strokeWidth="4.0" />
+      <Circle fill="#05008f" layoutX="161.0" layoutY="38.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
+      <Circle fill="#05008f" layoutX="161.0" layoutY="911.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
+      <Line endX="377.0" layoutX="141.0" layoutY="277.0" opacity="0.5" startX="24.0" stroke="#006600" strokeWidth="4.0" />
+      <Circle fill="#05008f" layoutX="634.0" layoutY="277.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
+      <Line endX="377.0" layoutX="619.0" layoutY="277.0" opacity="0.5" startX="24.0" stroke="#006600" strokeWidth="4.0" />
+      <Circle fill="#05008f" layoutX="527.0" layoutY="277.0" radius="7.0" stroke="#006600" strokeType="INSIDE" strokeWidth="2.0" />
+   </children>
+</AnchorPane>
