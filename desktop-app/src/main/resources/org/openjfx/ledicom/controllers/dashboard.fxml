@@ -33,7 +33,7 @@
             <Menu mnemonicParsing="false" text="Инвентарь">
                <items>
                   <MenuItem mnemonicParsing="false" text="Весь инвентарь" />
-                  <MenuItem mnemonicParsing="false" text="Добавить инвентарь" />
+                  <MenuItem mnemonicParsing="false" onAction="#showAssetAdd" text="Добавить инвентарный объект" />
                </items>
             </Menu>
             <Menu fx:id="managementMenu1" mnemonicParsing="false" text="Уведомления">

@@ -11,7 +11,7 @@ import org.openjfx.utilities.Validator;
 import org.openjfx.utilities.database.DatabaseEnumsController;
 
 import java.net.URL;
-import java.util.Objects;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class FacilityDataForm implements Initializable {
@@ -40,12 +40,12 @@ public class FacilityDataForm implements Initializable {
     protected TextField emailTF;
 
     @FXML
-    void addNewStatus(ActionEvent event) {
+    void addNewStatus(ActionEvent event) throws SQLException {
         newStatusAddButton.setVisible(true);
         newStatusShowButton.setVisible(false);
         newStatusAddTF.setVisible(false);
         statusCB.getItems().clear();
-        statusCB.getItems().addAll(Objects.requireNonNull(DatabaseEnumsController.addNewFacilityStatus(newStatusAddTF.getText())));
+        statusCB.getItems().addAll(DatabaseEnumsController.addNewFacilityStatus(newStatusAddTF.getText()));
         statusCB.setValue(newStatusAddTF.getText());
     }
 
@@ -58,8 +58,16 @@ public class FacilityDataForm implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        statusCB.getItems().addAll(DatabaseEnumsController.getFacilityStatuses());
-        categoryCB.getItems().addAll(DatabaseEnumsController.getFacilityCategories());
+        try {
+            statusCB.getItems().addAll(DatabaseEnumsController.getFacilityStatuses());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            categoryCB.getItems().addAll(DatabaseEnumsController.getFacilityCategories());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         phoneTF.setTextFormatter(new TextFormatter<>(Validator.phoneValidationFormatter));
     }
 }

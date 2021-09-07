@@ -127,7 +127,11 @@ public class EmployeeEditVController extends EmployeeDataForm {
         eduNameTF.setText(edu.getName());
         eduGraduationDate.setValue(StringToLocalDateConverter.convert(edu.getGraduationDate()));
 
-        contractTypeCB.setItems(DatabaseEnumsController.getContractTypes());
+        try {
+            contractTypeCB.setItems(DatabaseEnumsController.getContractTypes());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         contractLV.setItems(DatabaseEmployeeController.employeeContractList());
     }
 }

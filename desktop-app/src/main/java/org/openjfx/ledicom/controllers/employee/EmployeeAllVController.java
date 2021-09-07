@@ -26,6 +26,7 @@ import org.openjfx.utilities.panels.EmployeePanel;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
@@ -234,7 +235,11 @@ public class EmployeeAllVController implements Initializable, EmployeeController
         filteredTable.setPlaceholder(new Label("Данные не найдены"));
         filteredTableInt.setPlaceholder(new Label("Данные не найдены"));
 
-        facilityCB.setItems(DatabaseFacilityController.allFacilityList());
+        try {
+            facilityCB.setItems(DatabaseFacilityController.allFacilityList());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         valueCB.setItems(Arrays.stream(EmployeeTableValue.values()).collect(Collectors.toCollection(FXCollections::observableArrayList)));
 
         TableDoubleClickSetter.setEmployeeTable(table);

@@ -111,12 +111,12 @@ public class DatabaseFacilityController extends DatabaseController {
         return true;
     }
 
-    public static ObservableList<Facility> allFacilityList() {
+    public static ObservableList<Facility> allFacilityList() throws SQLException {
         String sql = "SELECT * FROM facility_data_view order by city, name;";
         return facilityList(sql);
     }
 
-    public static ObservableList<Facility> facilityList(String sql) {
+    public static ObservableList<Facility> facilityList(String sql) throws SQLException {
         ObservableList<Facility> facilityList = FXCollections.observableArrayList();
 
         try (
@@ -131,7 +131,7 @@ public class DatabaseFacilityController extends DatabaseController {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             showMessageDialog(null, e.getMessage());
-            return null;
+            throw e;
         }
     }
 

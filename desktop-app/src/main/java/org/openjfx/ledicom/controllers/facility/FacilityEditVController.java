@@ -123,7 +123,11 @@ public class FacilityEditVController extends FacilityDataForm {
         fullNameCol.setCellValueFactory(new PropertyValueFactory<>("shortName"));
         positionCol.setCellValueFactory(new PropertyValueFactory<>("position"));
 
-        contractTypeCB.setItems(DatabaseEnumsController.getContractTypes());
+        try {
+            contractTypeCB.setItems(DatabaseEnumsController.getContractTypes());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         contractTypeCB.getSelectionModel().selectFirst();
 
         setEmployeeTable();

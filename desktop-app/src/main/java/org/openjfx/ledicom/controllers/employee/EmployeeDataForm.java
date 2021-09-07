@@ -19,7 +19,6 @@ import org.openjfx.utilities.panels.EmployeePanel;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class EmployeeDataForm implements Initializable {
@@ -99,12 +98,12 @@ public class EmployeeDataForm implements Initializable {
     }
 
     @FXML
-    public void addNewPosition(ActionEvent event) {
+    public void addNewPosition(ActionEvent event) throws SQLException {
         newPositionAddButton.setVisible(true);
         addNewPositionButton.setVisible(false);
         newPositionAddTF.setVisible(false);
         positionCB.getItems().clear();
-        positionCB.getItems().addAll(Objects.requireNonNull(DatabaseEnumsController.addNewEmployeePosition(newPositionAddTF.getText())));
+        positionCB.getItems().addAll(DatabaseEnumsController.addNewEmployeePosition(newPositionAddTF.getText()));
         positionCB.setValue(newPositionAddTF.getText());
     }
 
@@ -160,8 +159,16 @@ public class EmployeeDataForm implements Initializable {
         patronymicTF.setTextFormatter(new TextFormatter<>(Validator.nameValidationFormatter));
         salaryTF.setTextFormatter(new TextFormatter<>(Validator.intValidationFormatter));
         phoneTF.setTextFormatter(new TextFormatter<>(Validator.phoneValidationFormatter));
-        positionCB.getItems().addAll(DatabaseEnumsController.getEmployeePositions());
-        categoryCB.getItems().addAll(DatabaseEnumsController.getEmployeeCategories());
+        try {
+            positionCB.getItems().addAll(DatabaseEnumsController.getEmployeePositions());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            categoryCB.getItems().addAll(DatabaseEnumsController.getEmployeeCategories());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         childrenNumberCB.getItems().addAll(0,1,2,3,4,5,6,7,8,9);
         childrenNumberCB.setValue(0);
     }

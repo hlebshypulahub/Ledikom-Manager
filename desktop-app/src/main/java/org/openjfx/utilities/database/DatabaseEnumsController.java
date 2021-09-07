@@ -15,11 +15,10 @@ public class DatabaseEnumsController extends DatabaseController {
 
     }
 
-    public static ObservableList<String> getEnums(String sql) {
+    public static ObservableList<String> getEnums(String sql) throws SQLException {
         ObservableList<String> observableList = FXCollections.observableArrayList();
 
         try (
-//                Connection conn = connect();
                 PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -30,61 +29,59 @@ public class DatabaseEnumsController extends DatabaseController {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             showMessageDialog(null, e.getMessage());
-            return null;
+            throw e;
         }
     }
 
-    public static ObservableList<String> getEmployeePositions() {
+    public static ObservableList<String> getEmployeePositions() throws SQLException {
         String sql = "select t.typname, e.enumlabel from pg_type t, pg_enum e where t.oid = e.enumtypid and typname = 'employee_position';";
         return getEnums(sql);
     }
 
-    public static ObservableList<String> getEmployeeCategories() {
+    public static ObservableList<String> getEmployeeCategories() throws SQLException {
         String sql = "select t.typname, e.enumlabel from pg_type t, pg_enum e where t.oid = e.enumtypid and typname = 'employee_category';";
         return getEnums(sql);
     }
 
-    public static ObservableList<String> addNewEmployeePosition(String position) {
+    public static ObservableList<String> addNewEmployeePosition(String position) throws SQLException {
         String sql = "alter type employee_position add value '" + position + "';";
 
         try (
-//                Connection conn = connect();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.execute();
             return getEmployeePositions();
         } catch (SQLException e) {
             showMessageDialog(null, e.getMessage());
             System.out.println(e.getMessage());
-            return null;
+            throw e;
         }
     }
 
-    public static ObservableList<String> addNewFacilityStatus(String status) {
+    public static ObservableList<String> addNewFacilityStatus(String status) throws SQLException {
         String sql = "alter type facility_status add value '" + status + "';";
 
         try (
-//                Connection conn = connect();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.execute();
             return getFacilityStatuses();
         } catch (SQLException e) {
             showMessageDialog(null, e.getMessage());
             System.out.println(e.getMessage());
-            return null;
+            throw e;
         }
     }
 
-    public static ObservableList<String> getFacilityStatuses() {
+    public static ObservableList<String> getFacilityStatuses() throws SQLException {
         String sql = "select t.typname, e.enumlabel from pg_type t, pg_enum e where t.oid = e.enumtypid and typname = 'facility_status';";
         return getEnums(sql);
     }
 
-    public static ObservableList<String> getFacilityCategories() {
+    public static ObservableList<String> getFacilityCategories() throws SQLException {
         String sql = "select t.typname, e.enumlabel from pg_type t, pg_enum e where t.oid = e.enumtypid and typname = 'facility_category';";
         return getEnums(sql);
     }
 
-    public static ObservableList<String> getContractTypes() {
+    public static ObservableList<String> getContractTypes() throws SQLException {
         String sql = "select t.typname, e.enumlabel from pg_type t, pg_enum e where t.oid = e.enumtypid and typname = 'contract_type';";
         return getEnums(sql);
     }

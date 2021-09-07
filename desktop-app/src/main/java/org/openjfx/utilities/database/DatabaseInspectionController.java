@@ -65,7 +65,7 @@ public class DatabaseInspectionController extends DatabaseController {
         }
     }
 
-    public static ObservableList<String> getCheckupAnswers() {
+    public static ObservableList<String> getCheckupAnswers() throws SQLException {
         String sql = "select t.typname, e.enumlabel from pg_type t, pg_enum e where t.oid = e.enumtypid and typname = 'checkup_answer';";
         return DatabaseEnumsController.getEnums(sql);
     }

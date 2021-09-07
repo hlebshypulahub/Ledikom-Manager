@@ -9,6 +9,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import org.openjfx.utilities.Global;
+import org.openjfx.utilities.panels.AssetPanel;
 import org.openjfx.utilities.panels.EmployeePanel;
 import org.openjfx.utilities.panels.FacilityPanel;
 import org.openjfx.utilities.panels.NotificationPanel;
@@ -78,6 +79,13 @@ public class DashboardController implements Initializable {
         EmployeePanel.showEmployeeTasks();
         footerPane.getChildren().clear();
         EmployeePanel.showEmployeeCharts();
+    }
+
+    @FXML
+    public void showAssetAdd(ActionEvent e) throws IOException {
+        AssetPanel.showAddAsset();
+        footerPane.getChildren().clear();
+        FacilityPanel.showFacilityCharts();
     }
 
     @Override

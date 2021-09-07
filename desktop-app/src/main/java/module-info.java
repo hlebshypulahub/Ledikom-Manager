@@ -13,6 +13,7 @@ module org.openjfx {
     opens org.openjfx.ledicom.controllers to javafx.fxml;
     opens org.openjfx.ledicom.entities to javafx.base;
     opens org.openjfx.ledicom.controllers.facility to javafx.fxml;
+    opens org.openjfx.ledicom.controllers.asset to javafx.fxml;
 
     exports org.openjfx;
     opens org.openjfx;

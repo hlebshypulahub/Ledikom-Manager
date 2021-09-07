@@ -15,6 +15,7 @@ import org.openjfx.utilities.panels.FacilityPanel;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Comparator;
 import java.util.ResourceBundle;
 
@@ -45,7 +46,11 @@ public class FacilityAllVController implements Initializable, FacilityController
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
         scheduleCol.setCellValueFactory(new PropertyValueFactory<>("schedule"));
-        table.setItems(DatabaseFacilityController.allFacilityList());
+        try {
+            table.setItems(DatabaseFacilityController.allFacilityList());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
 
         nameCol.setComparator(new Comparator<String>() {
             @Override
