@@ -12,4 +12,8 @@ public final class AssetPanel implements ShowPane {
     public static void showAddAsset() throws IOException {
         ShowPane.showViewPane(new FXMLLoader(NotificationPanel.class.getResource("/org/openjfx/ledicom/controllers/asset/assetAddV.fxml")));
     }
+
+    public static void showAllAssets() throws IOException {
+        ShowPane.showViewPane(new FXMLLoader(NotificationPanel.class.getResource("/org/openjfx/ledicom/controllers/asset/assetAllV.fxml")));
+    }
 }

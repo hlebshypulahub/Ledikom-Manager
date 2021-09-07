@@ -88,6 +88,14 @@ public class DashboardController implements Initializable {
         FacilityPanel.showFacilityCharts();
     }
 
+    @FXML
+    public void showAllAssets(ActionEvent e) throws IOException {
+        AssetPanel.showAllAssets();
+        footerPane.getChildren().clear();
+        detailsPane.getChildren().clear();
+        FacilityPanel.showFacilityCharts();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Global.setViewPane(viewPane);

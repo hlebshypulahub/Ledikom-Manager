@@ -32,7 +32,7 @@
                 </Menu>
             <Menu mnemonicParsing="false" text="Инвентарь">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Весь инвентарь" />
+                  <MenuItem mnemonicParsing="false" onAction="#showAllAssets" text="Весь инвентарь" />
                   <MenuItem mnemonicParsing="false" onAction="#showAssetAdd" text="Добавить инвентарный объект" />
                </items>
             </Menu>

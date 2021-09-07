@@ -16,6 +16,12 @@ public class Asset {
         this.name = name;
     }
 
+    public Asset(int id, String name, String number) {
+        Id = id;
+        this.name = name;
+        this.number = number;
+    }
+
     public int getId() {
         return Id;
     }

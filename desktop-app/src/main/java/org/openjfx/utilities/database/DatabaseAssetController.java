@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.openjfx.ledicom.entities.Asset;
 import org.openjfx.ledicom.entities.AssetType;
+import org.openjfx.ledicom.entities.Facility;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -65,5 +66,52 @@ public class DatabaseAssetController extends DatabaseController {
             throw e;
         }
 
+    }
+
+    public static ObservableList<Asset> getAllAssets() throws SQLException {
+        String sql = "select name, id_asset, number, split_part(number, '-', 2) as cnt from asset order by id_facility, id_asset_type, cnt";
+
+        ObservableList<Asset> observableList = FXCollections.observableArrayList();
+
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                observableList.add(new Asset(rs.getInt("id_asset"), rs.getString("name"), rs.getString("number")));
+            }
+            rs.close();
+            return observableList;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            showMessageDialog(null, e.getMessage());
+            throw e;
+        }
+    }
+
+    public static ObservableList<Asset> getAssets(Facility facility, AssetType assetType) throws SQLException {
+        String sql;
+
+        if (facility == null && assetType == null)
+            sql = "select name, id_asset, number, split_part(number, '-', 2) as cnt, id_facility, id_asset_type from asset order by id_facility, id_asset_type, cnt";
+        else if(assetType == null)
+            sql = "select name, id_asset, number, split_part(number, '-', 2) as cnt, id_facility, id_asset_type from asset where id_facility = " + facility.getId() + " order by id_facility, id_asset_type, cnt";
+        else if(facility == null)
+            sql = "select name, id_asset, number, split_part(number, '-', 2) as cnt, id_facility, id_asset_type from asset where id_asset_type = " + assetType.getId() + " order by id_facility, id_asset_type, cnt";
+        else
+            sql = "select name, id_asset, number, split_part(number, '-', 2) as cnt, id_facility, id_asset_type from asset where id_asset_type = " + assetType.getId() + " and id_facility = " + facility.getId() + " order by id_facility, id_asset_type, cnt";
+
+        ObservableList<Asset> observableList = FXCollections.observableArrayList();
+
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                observableList.add(new Asset(rs.getInt("id_asset"), rs.getString("name"), rs.getString("number")));
+            }
+            rs.close();
+            return observableList;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            showMessageDialog(null, e.getMessage());
+            throw e;
+        }
     }
 }
