@@ -114,4 +114,10 @@ public class DatabaseAssetController extends DatabaseController {
             throw e;
         }
     }
+
+    public static void deleteAsset(int id) throws SQLException {
+        String sql = "delete from asset where id_asset = " + id;
+
+        psExecute(sql);
+    }
 }

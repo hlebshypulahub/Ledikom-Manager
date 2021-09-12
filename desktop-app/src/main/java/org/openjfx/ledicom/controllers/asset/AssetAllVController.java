@@ -11,6 +11,7 @@ import org.openjfx.ledicom.entities.AssetType;
 import org.openjfx.ledicom.entities.Facility;
 import org.openjfx.utilities.database.DatabaseAssetController;
 import org.openjfx.utilities.database.DatabaseFacilityController;
+import org.openjfx.utilities.docs.AssetTableDoc;
 import org.openjfx.utilities.panels.AssetPanel;
 
 import java.io.IOException;
@@ -37,8 +38,10 @@ public class AssetAllVController implements Initializable {
     ObservableList<Asset> observableList;
 
     @FXML
-    void deleteAsset(ActionEvent event) {
-
+    void deleteAsset(ActionEvent event) throws SQLException, IOException {
+        DatabaseAssetController.deleteAsset(table.getSelectionModel().getSelectedItem().getId());
+        filterTable(event);
+        deleteButton.setDisable(true);
     }
 
     @FXML
@@ -48,8 +51,8 @@ public class AssetAllVController implements Initializable {
     }
 
     @FXML
-    void printTable(ActionEvent event) {
-
+    void printTable(ActionEvent event) throws IOException {
+        AssetTableDoc.createTable(table.getItems(), typeCB.getValue(), facilityCB.getValue());
     }
 
     @FXML
@@ -81,5 +84,9 @@ public class AssetAllVController implements Initializable {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
+        table.setOnMouseClicked(event -> {
+            deleteButton.setDisable(table.getSelectionModel().getSelectedIndex() < 0);
+        });
     }
 }
