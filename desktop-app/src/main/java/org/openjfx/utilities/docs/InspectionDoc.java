@@ -140,7 +140,7 @@ public final class InspectionDoc {
                         "<td style=\"width: 16.6667%; text-align: center;\">" + (i + 1) + "." + "</td>\n" +
                         "<td style=\"width: 16.6667%; text-align: center;\">" + violationList.get(i).getViolation().getDescription() + "</td>\n" +
                         "<td style=\"width: 16.6667%; text-align: center;\">" + violationList.get(i).getViolation().getActionPlan() + "</td>\n" +
-                        "<td style=\"width: 16.6667%; text-align: center;\">" + violationList.get(i).getViolation().getEmployeeName() + "</td>\n" +
+                        "<td style=\"width: 16.6667%; text-align: center;\">" + violationList.get(i).getViolation().getEmployee().getShortName() + "</td>\n" +
                         "<td style=\"width: 16.6667%; text-align: center;\">" + (violationList.get(i).getViolation().getCorrectionTerm() == null ?
                         "" : violationList.get(i).getViolation().getCorrectionTerm()) + "</td>\n" +
                         "<td style=\"width: 16.6667%; text-align: center;\"></td>\n" +

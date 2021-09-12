@@ -36,4 +36,8 @@ public final class FacilityPanel implements ShowPane{
     public static void showInspectionAdd() throws IOException {
         ShowPane.showViewPane(new FXMLLoader(FacilityPanel.class.getResource("/org/openjfx/ledicom/controllers/facility/inspectionAddV.fxml")));
     }
+
+    public static void showInspectionAll() throws IOException {
+        ShowPane.showViewPane(new FXMLLoader(FacilityPanel.class.getResource("/org/openjfx/ledicom/controllers/facility/inspectionAllV.fxml")));
+    }
 }

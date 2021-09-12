@@ -28,6 +28,7 @@
                     <items>
                         <MenuItem fx:id="managementMenuEmployee" mnemonicParsing="false" onAction="#facilityAll" text="Все объекты" />
                   <MenuItem fx:id="managementMenuFacility" mnemonicParsing="false" onAction="#facilityAdd" text="Добавить объект" />
+                  <MenuItem fx:id="managementMenuFacility2" mnemonicParsing="false" onAction="#showAllInspections" text="Самоинспекции" />
                     </items>
                 </Menu>
             <Menu mnemonicParsing="false" text="Инвентарь">

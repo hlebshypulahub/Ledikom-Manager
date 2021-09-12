@@ -5,6 +5,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import org.openjfx.ledicom.entities.Employee;
 import org.openjfx.ledicom.entities.Facility;
+import org.openjfx.ledicom.entities.inspection.Inspection;
 
 public final class Global {
 
@@ -19,6 +20,7 @@ public final class Global {
 
     private static Employee employee;
     private static Facility facility;
+    private static Inspection inspection;
 
     private Global() {
 
@@ -66,5 +68,13 @@ public final class Global {
 
     public static String getAppVersion() {
         return APP_VERSION;
+    }
+
+    public static Inspection getInspection() {
+        return inspection;
+    }
+
+    public static void setInspection(Inspection inspection) {
+        Global.inspection = inspection;
     }
 }

@@ -2,7 +2,6 @@ package org.openjfx.ledicom.entities.inspection;
 
 public class Question {
     private int id;
-    private int idType;
     private CheckupType checkupType;
     private String question;
 
@@ -24,14 +23,6 @@ public class Question {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getIdType() {
-        return idType;
-    }
-
-    public void setIdType(int idType) {
-        this.idType = idType;
     }
 
     public String getQuestion() {

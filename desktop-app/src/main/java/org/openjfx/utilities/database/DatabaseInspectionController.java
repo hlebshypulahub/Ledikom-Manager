@@ -2,6 +2,7 @@ package org.openjfx.utilities.database;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.openjfx.ledicom.entities.Facility;
 import org.openjfx.ledicom.entities.inspection.CheckupType;
 import org.openjfx.ledicom.entities.inspection.Inspection;
 import org.openjfx.ledicom.entities.inspection.Question;
@@ -72,7 +73,7 @@ public class DatabaseInspectionController extends DatabaseController {
 
     public static boolean addInspection(Inspection inspection) {
         String sql = "insert into inspection (id_employee, id_facility, date, note) " +
-                "values (" + inspection.getIdEmployee() + ", " + inspection.getIdFacility()
+                "values (" + inspection.getEmployee().getId() + ", " + inspection.getFacility().getId()
                 + ", ?, '" + inspection.getNote() + "') returning id_inspection;";
 
         int inspectionId = 0;
@@ -98,7 +99,7 @@ public class DatabaseInspectionController extends DatabaseController {
 
                     if (inspection.getCheckupList().get(i).getViolation() != null) {
                         sql = "insert into violation (id_employee, id_checkup, description, action_plan, correction_term, correction_date) " +
-                                "values (" + inspection.getCheckupList().get(i).getViolation().getIdEmployee() + ", "
+                                "values (" + inspection.getCheckupList().get(i).getViolation().getEmployee().getId() + ", "
                                 + checkupId + ", '" + inspection.getCheckupList().get(i).getViolation().getDescription() + "', '"
                                 + inspection.getCheckupList().get(i).getViolation().getActionPlan() + "', ?, ?);";
 
@@ -126,6 +127,31 @@ public class DatabaseInspectionController extends DatabaseController {
         }
 
         return true;
+    }
+
+    public static ObservableList<Inspection> getInspections() throws SQLException {
+        String sql = "select id_inspection, i.id_facility, name, date from inspection i join facility f on i.id_facility = f.id_facility";
+
+        ObservableList<Inspection> observableList = FXCollections.observableArrayList();
+
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Inspection inspection = new Inspection();
+                inspection.setFacility(new Facility());
+                inspection.getFacility().setId(rs.getInt("id_facility"));
+                inspection.getFacility().setName(rs.getString("name"));
+                inspection.setDate(SqlDateStringConverter.sqlDateToString(rs.getDate("date")));
+                inspection.setId(rs.getInt("id_inspection"));
+                observableList.add(inspection);
+            }
+            rs.close();
+            return observableList;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            showMessageDialog(null, e.getMessage());
+            throw e;
+        }
     }
 }
 

@@ -1,11 +1,13 @@
 package org.openjfx.ledicom.entities.inspection;
 
 import javafx.collections.ObservableList;
+import org.openjfx.ledicom.entities.Employee;
+import org.openjfx.ledicom.entities.Facility;
 
 public class Inspection {
     private int id;
-    private int idEmployee;
-    private int idFacility;
+    private Employee employee;
+    private Facility facility;
     private String date;
     private String note;
     private ObservableList<Checkup> checkupList;
@@ -14,10 +16,10 @@ public class Inspection {
         this.checkupList = checkupList;
     }
 
-    public Inspection(int id, int idEmployee, int idFacility, String date, String note, ObservableList<Checkup> checkupList) {
+    public Inspection(int id, Employee employee, Facility facility, String date, String note, ObservableList<Checkup> checkupList) {
         this.id = id;
-        this.idEmployee = idEmployee;
-        this.idFacility = idFacility;
+        this.employee = employee;
+        this.facility = facility;
         this.date = date;
         this.note = note;
         this.checkupList = checkupList;
@@ -35,20 +37,20 @@ public class Inspection {
         this.id = id;
     }
 
-    public int getIdEmployee() {
-        return idEmployee;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setIdEmployee(int idEmployee) {
-        this.idEmployee = idEmployee;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
-    public int getIdFacility() {
-        return idFacility;
+    public Facility getFacility() {
+        return facility;
     }
 
-    public void setIdFacility(int idFacility) {
-        this.idFacility = idFacility;
+    public void setFacility(Facility facility) {
+        this.facility = facility;
     }
 
     public String getDate() {

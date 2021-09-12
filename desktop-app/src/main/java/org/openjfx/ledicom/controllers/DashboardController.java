@@ -96,6 +96,14 @@ public class DashboardController implements Initializable {
         FacilityPanel.showFacilityCharts();
     }
 
+    @FXML
+    public void showAllInspections(ActionEvent e) throws IOException {
+        FacilityPanel.showInspectionAll();
+        footerPane.getChildren().clear();
+        detailsPane.getChildren().clear();
+        FacilityPanel.showFacilityCharts();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Global.setViewPane(viewPane);

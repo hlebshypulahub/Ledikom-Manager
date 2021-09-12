@@ -108,6 +108,59 @@ public class InspectionAddVController implements Initializable {
         inspection = new Inspection(checkupResultList);
     }
 
+    public void setInspection(Inspection inspection) throws SQLException, IOException {
+        layoutY = 220;
+
+        getDataFromDB();
+
+        for (int i = 0; i < checkupTypeList.size(); i++) {
+            int finalI = i;
+            ObservableList<Checkup> checkupTempList = inspection.getCheckupList().stream().filter(checkup -> checkup.getQuestion().getCheckupType().getId() == checkupTypeList.get(finalI).getId())
+                                                                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
+
+            FXMLLoader checkupTypeLabel = new FXMLLoader(getClass().getResource("/org/openjfx/ledicom/controllers/facility/checkupTypeLabel.fxml"));
+            Parent root2 = checkupTypeLabel.load();
+            CheckupTypeLabelController checkupTypeLabelController = checkupTypeLabel.getController();
+            viewPane.getChildren().add(root2);
+            viewPane.layout();
+            viewPane.applyCss();
+
+            checkupTypeLabelController.getLabel().setLayoutX(layoutX);
+            checkupTypeLabelController.getLabel().setLayoutY(layoutY);
+            layoutY += checkupTypeLabelController.getHeight() + padding;
+
+            checkupTypeLabelController.getLabel().setText((i + 1) + ". " + checkupTypeList.get(i).getTypeName());
+
+            for (int j = 0; j < checkupTempList.size(); j++) {
+                FXMLLoader checkupPane = new FXMLLoader(getClass().getResource("/org/openjfx/ledicom/controllers/facility/checkupPane.fxml"));
+                Parent root1 = checkupPane.load();
+                CheckupPaneController checkupPaneController = checkupPane.getController();
+
+                viewPane.getChildren().add(root1);
+                viewPane.layout();
+                viewPane.applyCss();
+
+                checkupPaneController.getQuestionText().setText((i + 1) + "." + (j + 1) + " " + checkupTempList.get(j).getQuestion().getQuestion());
+                checkupPaneController.getCheckupAnswer().setItems(checkupAnswers);
+                checkupPaneController.getCheckupAnswer().setValue(checkupTempList.get(j).getAnswer());
+                TextFields.bindAutoCompletion(checkupPaneController.getViolationEmployee(), employeeList);
+
+                checkupPaneController.getPane().setLayoutX(layoutX);
+                checkupPaneController.getPane().setLayoutY(layoutY);
+                layoutY += (int) (Math.max(checkupPaneController.getPane().getHeight(),
+                        checkupPaneController.getQuestionText().getBoundsInLocal().getHeight())) + padding;
+
+                checkupPaneControllerList.add(checkupPaneController);
+                checkupResultList.add(checkupTempList.get(j));
+            }
+        }
+        viewPane.setPrefHeight(layoutY + padding * 4);
+        addButton.setLayoutX(layoutX);
+        addButton.setLayoutY(layoutY);
+
+        inspection.setCheckupList(checkupResultList);
+    }
+
     public void getDataFromDB() throws SQLException {
         checkupAnswers = DatabaseInspectionController.getCheckupAnswers();
         checkupTypeList = DatabaseInspectionController.CheckupTypes();
@@ -129,7 +182,7 @@ public class InspectionAddVController implements Initializable {
         Optional<Employee> employee = employeeList.stream().filter(e
                 -> e.getFullName().equals(inspectionEmployee.getText())).findFirst();
         if (employee.isPresent()) {
-            inspection.setIdEmployee(employee.get().getId());
+            inspection.setEmployee(employee.get());
         } else {
             MyAlert.showAndWait("ERROR", "", "Необходимо указать, кто заполнил форму!", "");
             inspectionEmployee.requestFocus();
@@ -143,7 +196,7 @@ public class InspectionAddVController implements Initializable {
         }
 
         inspection.setNote(inspectionNote.getText());
-        inspection.setIdFacility(Global.getFacility().getId());
+        inspection.setFacility(Global.getFacility());
 
         for (int i = 0; i < inspection.getCheckupList().size(); i++) {
             if (checkupPaneControllerList.get(i).getCheckupAnswer().getValue() == null) {
@@ -157,7 +210,7 @@ public class InspectionAddVController implements Initializable {
                 Optional<Employee> violationEmployee = employeeList.stream().filter(e
                         -> e.getFullName().equals(checkupPaneControllerList.get(finalI).getViolationEmployee().getText())).findFirst();
                 if (violationEmployee.isPresent()) {
-                    inspection.getCheckupList().get(i).setViolation(new Violation(violationEmployee.get().getId(), violationEmployee.get().getFullName(),
+                    inspection.getCheckupList().get(i).setViolation(new Violation(violationEmployee.get().getId(), violationEmployee.get(),
                             checkupPaneControllerList.get(i).getViolationDescription().getText(), checkupPaneControllerList.get(i).getViolationActionPlan().getText(),
                             Validator.validateDate(checkupPaneControllerList.get(i).getCorrectionTerm()), Validator.validateDate(checkupPaneControllerList.get(i).getCorrectionDate())));
                 } else {
@@ -178,14 +231,23 @@ public class InspectionAddVController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        inspectionLabel.setText(inspectionLabel.getText() + "\"" + Global.getFacility().getName() + "\"");
+        if(Global.getInspection() == null) {
+            inspectionLabel.setText(inspectionLabel.getText() + "\"" + Global.getFacility().getName() + "\"");
+        } else {
+            inspectionLabel.setText(inspectionLabel.getText() + "\"" + Global.getInspection().getFacility() + "\"");
+        }
+
 
         employeeList = DatabaseEmployeeController.allEmployeeList();
 
         TextFields.bindAutoCompletion(inspectionEmployee, employeeList);
 
         try {
-            setInspection();
+            if(Global.getInspection() == null) {
+                setInspection();
+            } else {
+                setInspection(Global.getInspection());
+            }
         } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
