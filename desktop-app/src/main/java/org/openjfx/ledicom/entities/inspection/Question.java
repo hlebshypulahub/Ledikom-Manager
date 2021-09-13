@@ -5,6 +5,12 @@ public class Question {
     private CheckupType checkupType;
     private String question;
 
+    public Question(int id, CheckupType checkupType, String question) {
+        this.id = id;
+        this.checkupType = checkupType;
+        this.question = question;
+    }
+
     public CheckupType getCheckupType() {
         return checkupType;
     }

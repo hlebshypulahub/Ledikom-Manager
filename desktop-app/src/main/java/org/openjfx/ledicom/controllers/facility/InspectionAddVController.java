@@ -17,6 +17,7 @@ import org.openjfx.ledicom.entities.inspection.*;
 import org.openjfx.utilities.Global;
 import org.openjfx.utilities.MyAlert;
 import org.openjfx.utilities.Validator;
+import org.openjfx.utilities.converters.StringToLocalDateConverter;
 import org.openjfx.utilities.database.DatabaseEmployeeController;
 import org.openjfx.utilities.database.DatabaseInspectionController;
 import org.openjfx.utilities.docs.InspectionDoc;
@@ -108,10 +109,15 @@ public class InspectionAddVController implements Initializable {
         inspection = new Inspection(checkupResultList);
     }
 
-    public void setInspection(Inspection inspection) throws SQLException, IOException {
+    public void setInspection(Inspection insp) throws SQLException, IOException {
         layoutY = 220;
 
         getDataFromDB();
+
+        inspection = insp;
+
+        checkupPaneControllerList = FXCollections.observableArrayList();
+        checkupResultList = FXCollections.observableArrayList();
 
         for (int i = 0; i < checkupTypeList.size(); i++) {
             int finalI = i;
@@ -143,6 +149,18 @@ public class InspectionAddVController implements Initializable {
                 checkupPaneController.getQuestionText().setText((i + 1) + "." + (j + 1) + " " + checkupTempList.get(j).getQuestion().getQuestion());
                 checkupPaneController.getCheckupAnswer().setItems(checkupAnswers);
                 checkupPaneController.getCheckupAnswer().setValue(checkupTempList.get(j).getAnswer());
+                checkupPaneController.getCheckupNote().setText(checkupTempList.get(j).getNote());
+
+                if(checkupTempList.get(j).getViolation() != null) {
+                    checkupPaneController.getViolationButton().setDisable(true);
+                    checkupPaneController.getViolationVBox().setVisible(true);
+                    checkupPaneController.getViolationEmployee().setText(checkupTempList.get(j).getViolation().getEmployee().getFullName());
+                    checkupPaneController.getCorrectionTerm().setValue(StringToLocalDateConverter.convert(checkupTempList.get(j).getViolation().getCorrectionTerm()));
+                    checkupPaneController.getCorrectionDate().setValue(StringToLocalDateConverter.convert(checkupTempList.get(j).getViolation().getCorrectionDate()));
+                    checkupPaneController.getViolationDescription().setText(checkupTempList.get(j).getViolation().getDescription());
+                    checkupPaneController.getViolationActionPlan().setText(checkupTempList.get(j).getViolation().getActionPlan());
+                }
+
                 TextFields.bindAutoCompletion(checkupPaneController.getViolationEmployee(), employeeList);
 
                 checkupPaneController.getPane().setLayoutX(layoutX);
@@ -196,7 +214,7 @@ public class InspectionAddVController implements Initializable {
         }
 
         inspection.setNote(inspectionNote.getText());
-        inspection.setFacility(Global.getFacility());
+        inspection.setFacility(Global.getFacility() == null ? inspection.getFacility() : Global.getFacility());
 
         for (int i = 0; i < inspection.getCheckupList().size(); i++) {
             if (checkupPaneControllerList.get(i).getCheckupAnswer().getValue() == null) {
@@ -224,8 +242,9 @@ public class InspectionAddVController implements Initializable {
         }
 
         if (DatabaseInspectionController.addInspection(inspection)) {
-            MyAlert.showAndWait("INFORMATION", "", "Самоинспекция на \"" + Global.getFacility().getName() + "\" проведена!", "");
+            MyAlert.showAndWait("INFORMATION", "", "Самоинспекция на \"" + inspection.getFacility().getName() + "\" проведена!", "");
             InspectionDoc.createDocument(inspection);
+            Global.setInspection(null);
         }
     }
 
@@ -237,7 +256,6 @@ public class InspectionAddVController implements Initializable {
             inspectionLabel.setText(inspectionLabel.getText() + "\"" + Global.getInspection().getFacility() + "\"");
         }
 
-
         employeeList = DatabaseEmployeeController.allEmployeeList();
 
         TextFields.bindAutoCompletion(inspectionEmployee, employeeList);
@@ -246,6 +264,9 @@ public class InspectionAddVController implements Initializable {
             if(Global.getInspection() == null) {
                 setInspection();
             } else {
+                inspectionEmployee.setText(Global.getInspection().getEmployee().getFullName());
+                inspectionNote.setText(Global.getInspection().getNote());
+                inspectionDate.setValue(StringToLocalDateConverter.convert(Global.getInspection().getDate()));
                 setInspection(Global.getInspection());
             }
         } catch (IOException | SQLException e) {

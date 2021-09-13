@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="908.0" prefWidth="1168.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.facility.InspectionAllVController">
    <children>
-      <TableView fx:id="table" layoutX="15.0" layoutY="63.0" prefHeight="835.0" prefWidth="1140.0" stylesheets="@../../css/style.css">
+      <TableView fx:id="table" layoutX="15.0" layoutY="63.0" onMouseClicked="#enableButton" prefHeight="835.0" prefWidth="1140.0" stylesheets="@../../css/style.css">
          <columns>
             <TableColumn fx:id="facilityCol" prefWidth="300.0" text="Объект" />
             <TableColumn fx:id="dateCol" prefWidth="824.0" text="Дата проведения самоинспекции" />

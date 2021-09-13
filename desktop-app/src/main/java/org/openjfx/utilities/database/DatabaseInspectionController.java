@@ -3,9 +3,7 @@ package org.openjfx.utilities.database;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.openjfx.ledicom.entities.Facility;
-import org.openjfx.ledicom.entities.inspection.CheckupType;
-import org.openjfx.ledicom.entities.inspection.Inspection;
-import org.openjfx.ledicom.entities.inspection.Question;
+import org.openjfx.ledicom.entities.inspection.*;
 import org.openjfx.utilities.converters.SqlDateStringConverter;
 
 import java.sql.PreparedStatement;
@@ -26,7 +24,7 @@ public class DatabaseInspectionController extends DatabaseController {
         ObservableList<CheckupType> observableList = FXCollections.observableArrayList();
 
         try (
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+                PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 CheckupType checkupType = new CheckupType();
@@ -130,7 +128,7 @@ public class DatabaseInspectionController extends DatabaseController {
     }
 
     public static ObservableList<Inspection> getInspections() throws SQLException {
-        String sql = "select id_inspection, i.id_facility, name, date from inspection i join facility f on i.id_facility = f.id_facility";
+        String sql = "select id_inspection, i.id_facility, name, date from inspection i join facility f on i.id_facility = f.id_facility order by id_facility, id_inspection";
 
         ObservableList<Inspection> observableList = FXCollections.observableArrayList();
 
@@ -147,6 +145,33 @@ public class DatabaseInspectionController extends DatabaseController {
             }
             rs.close();
             return observableList;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            showMessageDialog(null, e.getMessage());
+            throw e;
+        }
+    }
+
+    public static Inspection getInspection(Inspection inspection) throws SQLException {
+        String sql = "select * from inspection_view where id_inspection = " + inspection.getId();
+
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+            inspection.setCheckupList(FXCollections.observableArrayList());
+
+            while (rs.next()) {
+                inspection.setEmployee(DatabaseEmployeeController.getEmployee(rs.getInt("i_employee")));
+                inspection.setNote(rs.getString("i_note"));
+
+                inspection.getCheckupList().add(new Checkup(rs.getInt("id_checkup"), rs.getString("answer"),
+                        rs.getString("c_note"), rs.getInt("id_violation") == 0 ? null : new Violation(rs.getInt("id_violation"),
+                                DatabaseEmployeeController.getEmployee(rs.getInt("v_employee")), rs.getString("description"),
+                                rs.getString("action_plan"), SqlDateStringConverter.sqlDateToString(rs.getDate("correction_term")),
+                                SqlDateStringConverter.sqlDateToString(rs.getDate("correction_date"))), new Question(rs.getInt("id_checkup_question"),
+                        new CheckupType(rs.getInt("id_checkup_type"), rs.getString("type_name")), rs.getString("question"))));
+            }
+            rs.close();
+            return inspection;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             showMessageDialog(null, e.getMessage());

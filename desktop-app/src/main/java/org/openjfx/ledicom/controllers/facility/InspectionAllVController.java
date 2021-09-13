@@ -8,10 +8,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import org.openjfx.ledicom.entities.Facility;
 import org.openjfx.ledicom.entities.inspection.Inspection;
+import org.openjfx.utilities.Global;
 import org.openjfx.utilities.database.DatabaseInspectionController;
+import org.openjfx.utilities.panels.FacilityPanel;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -27,8 +31,15 @@ public class InspectionAllVController implements Initializable {
     private Button editButton;
 
     @FXML
-    void edit(ActionEvent event) {
+    public void edit(ActionEvent event) throws SQLException, IOException {
+        Global.setInspection(DatabaseInspectionController.getInspection(table.getSelectionModel().getSelectedItem()));
+        FacilityPanel.showInspectionAdd();
+    }
 
+    @FXML
+    public void enableButton(MouseEvent event) {
+        if (table.getSelectionModel().getSelectedIndex() >= 0)
+            editButton.setDisable(false);
     }
 
     @Override
@@ -42,9 +53,5 @@ public class InspectionAllVController implements Initializable {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
-        table.setOnMouseClicked(event -> {
-            editButton.setDisable(table.getSelectionModel().getSelectedIndex() < 0);
-        });
     }
 }
