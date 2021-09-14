@@ -37,6 +37,12 @@
                   <MenuItem mnemonicParsing="false" onAction="#showAssetAdd" text="Добавить инвентарный объект" />
                </items>
             </Menu>
+            <Menu mnemonicParsing="false" text="Средства измерения">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#showAllDevices" text="Все средства измерения" />
+                  <MenuItem mnemonicParsing="false" onAction="#showAddDevice" text="Добавить средство измерения" />
+               </items>
+            </Menu>
             <Menu fx:id="managementMenu1" mnemonicParsing="false" text="Уведомления">
                <items>
                   <MenuItem fx:id="managementMenuEmployee1" mnemonicParsing="false" onAction="#showDOBNotifications" text="Дни рождения" />

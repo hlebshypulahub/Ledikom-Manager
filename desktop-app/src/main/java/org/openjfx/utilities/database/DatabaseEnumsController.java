@@ -81,8 +81,27 @@ public class DatabaseEnumsController extends DatabaseController {
         return getEnums(sql);
     }
 
+    public static ObservableList<String> getDeviceTypes() throws SQLException {
+        String sql = "select t.typname, e.enumlabel from pg_type t, pg_enum e where t.oid = e.enumtypid and typname = 'device_type';";
+        return getEnums(sql);
+    }
+
     public static ObservableList<String> getContractTypes() throws SQLException {
         String sql = "select t.typname, e.enumlabel from pg_type t, pg_enum e where t.oid = e.enumtypid and typname = 'contract_type';";
         return getEnums(sql);
+    }
+
+    public static ObservableList<String> addNewDeviceType(String text) throws SQLException {
+        String sql = "alter type device_type add value '" + text + "';";
+
+        try (
+                PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.execute();
+            return getDeviceTypes();
+        } catch (SQLException e) {
+            showMessageDialog(null, e.getMessage());
+            System.out.println(e.getMessage());
+            throw e;
+        }
     }
 }

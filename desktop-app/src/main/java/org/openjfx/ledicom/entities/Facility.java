@@ -73,6 +73,11 @@ public class Facility {
         setNumber();
     }
 
+    public Facility(String name, int id) {
+        this.name = name;
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return getName();

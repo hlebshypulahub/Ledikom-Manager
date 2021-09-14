@@ -65,7 +65,6 @@ public class DatabaseAssetController extends DatabaseController {
             showMessageDialog(null, e.getMessage());
             throw e;
         }
-
     }
 
     public static ObservableList<Asset> getAllAssets() throws SQLException {

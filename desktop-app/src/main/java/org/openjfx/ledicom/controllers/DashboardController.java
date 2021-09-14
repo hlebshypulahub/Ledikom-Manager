@@ -9,10 +9,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import org.openjfx.utilities.Global;
-import org.openjfx.utilities.panels.AssetPanel;
-import org.openjfx.utilities.panels.EmployeePanel;
-import org.openjfx.utilities.panels.FacilityPanel;
-import org.openjfx.utilities.panels.NotificationPanel;
+import org.openjfx.utilities.panels.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -92,7 +89,6 @@ public class DashboardController implements Initializable {
     public void showAllAssets(ActionEvent e) throws IOException {
         AssetPanel.showAllAssets();
         footerPane.getChildren().clear();
-        detailsPane.getChildren().clear();
         FacilityPanel.showFacilityCharts();
     }
 
@@ -100,8 +96,22 @@ public class DashboardController implements Initializable {
     public void showAllInspections(ActionEvent e) throws IOException {
         FacilityPanel.showInspectionAll();
         footerPane.getChildren().clear();
-        detailsPane.getChildren().clear();
         FacilityPanel.showFacilityCharts();
+    }
+
+    @FXML
+    public void showAddDevice(ActionEvent e) throws IOException {
+        FacilityPanel.showFacilityCharts();
+        footerPane.getChildren().clear();
+        DevicePanel.showAddDevice();
+    }
+
+    @FXML
+    public void showAllDevices(ActionEvent e) throws IOException {
+        FacilityPanel.showFacilityCharts();
+        footerPane.getChildren().clear();
+        detailsPane.getChildren().clear();
+        DevicePanel.showAllDevices();
     }
 
     @Override
