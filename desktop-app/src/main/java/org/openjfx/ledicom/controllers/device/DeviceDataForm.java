@@ -16,7 +16,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class DeviceAddInterface implements Initializable {
+public class DeviceDataForm implements Initializable {
     @FXML
     protected ComboBox<String> typeCB;
     @FXML

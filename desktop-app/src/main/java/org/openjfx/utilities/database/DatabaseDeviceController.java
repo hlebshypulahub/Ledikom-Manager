@@ -83,4 +83,19 @@ public class DatabaseDeviceController extends DatabaseController {
             throw e;
         }
     }
+
+    public static void deleteDevice(Device device) throws SQLException {
+        String sql = "delete from device where id_device = " + device.getId();
+
+        psExecute(sql);
+    }
+
+    public static void editDevice(Device device) throws SQLException {
+        String sql = "update device set id_facility = " + (device.getFacility().getId() == -1 ? "null" : device.getFacility().getId())
+                + ", type = '" + device.getType() + "', name = '" + device.getName() + "', verification_date = '" + device.getVerificationDate() + "', next_verification_date = '" + device.getNextVerificationDate()
+                + "', verification_interval = '" + device.getVerificationInterval() + "', location = '" + device.getLocation() + "', number = '" + device.getNumber() + "', temperature_range = '" + device.getTemperatureRange() + "' "
+                + "where id_device = " + device.getId() + ";";
+
+        psExecute(sql);
+    }
 }

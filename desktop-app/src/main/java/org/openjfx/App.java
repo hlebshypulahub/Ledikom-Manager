@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.openjfx.utilities.Global;
 import org.openjfx.utilities.MyAlert;
 import org.openjfx.utilities.database.DatabaseController;
 import org.openjfx.utilities.database.DatabaseEmployeeController;
@@ -41,6 +42,10 @@ public class App extends Application {
         DatabaseEmployeeController.updateEmployeeDatesOnAppStart();
 
         EmployeePanel.showAllEmployee();
+
+        if(Global.getAppVersion() != DatabaseController.getActualVersion()) {
+            MyAlert.showAndWaitAppUpdate("INFORMATION", "", "https://bit.ly/399N194");
+        }
 
         if (DatabaseNotificationController.getOnAppStart() && !DatabaseEmployeeController.dobNotificationsEmployeeList().isEmpty()) {
             if (MyAlert.showAndWaitButtonType("INFORMATION", "Дни рождения", "У некоторых сотрудников скоро день рождения!", "")) {

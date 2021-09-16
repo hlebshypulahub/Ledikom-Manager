@@ -7,6 +7,7 @@ module org.openjfx {
     requires org.controlsfx.controls;
     requires org.postgresql.jdbc;
     requires org.apache.commons.io;
+    requires javafx.web;
 
     opens org.openjfx.ledicom.controllers.employee to javafx.fxml;
     opens org.openjfx.ledicom.controllers.notifications to javafx.fxml;

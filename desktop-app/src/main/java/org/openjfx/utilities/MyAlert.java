@@ -1,8 +1,14 @@
 package org.openjfx.utilities;
 
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 
 import java.util.Optional;
 
@@ -55,5 +61,25 @@ public final class MyAlert {
         }
 
         return out;
+    }
+
+    public static void showAndWaitAppUpdate(String type, String header, String link) {
+        Stage stage = new Stage();
+        WebView webView = new WebView();
+        WebEngine engine;
+        engine = webView.getEngine();
+        engine.setOnAlert(event -> {
+            Dialog<Void> alert = new Dialog<>();
+            alert.getDialogPane().setContentText(header);
+            alert.getDialogPane().getButtonTypes().add(ButtonType.OK);
+            alert.showAndWait();
+        });
+        engine.loadContent("<html><body><p>&nbsp;</p>\n" +
+                "<p style=\"text-align: center;\"><strong>Версия программы устарела!</strong></p>\n" +
+                "<p style=\"text-align: center;\"><strong>Обновленную версию программы можно скачать тут:</br></a></strong></span></p><p style=\"text-align: center;\"><span style=\"color: #0000ff;\"><strong>" + link + "</strong></span></p></body></html>");
+
+        stage.setTitle("Внимание!");
+        stage.setScene(new Scene(new BorderPane(webView), 500, 250));
+        stage.show();
     }
 }

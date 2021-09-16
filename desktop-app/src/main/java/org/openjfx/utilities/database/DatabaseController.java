@@ -2,10 +2,7 @@ package org.openjfx.utilities.database;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Properties;
 
 import static javax.swing.JOptionPane.showMessageDialog;
@@ -79,5 +76,24 @@ public class DatabaseController {
 
     public static void setConn(Connection conn) {
         DatabaseController.conn = conn;
+    }
+
+    public static int getActualVersion() {
+        String sql = "select * from app_version();;";
+
+        int version = 0;
+
+        try (
+                PreparedStatement ps = conn.prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                version = rs.getInt("app_version");
+            }
+            return version;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            showMessageDialog(null, e.getMessage());
+            return version;
+        }
     }
 }

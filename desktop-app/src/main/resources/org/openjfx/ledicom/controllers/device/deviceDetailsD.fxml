@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="908.0" prefWidth="748.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ledicom.controllers.device.DeviceDetailsDController">
+   <children>
+      <VBox layoutX="12.0" layoutY="14.0" prefHeight="821.0" prefWidth="726.0">
+         <children>
+            <HBox>
+               <children>
+                  <Button minHeight="35.0" mnemonicParsing="false" onAction="#deviceEdit" prefHeight="35.0" prefWidth="200.0" stylesheets="@../../css/style.css" text="Изменить">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="button-default" />
+                        <String fx:value="green" />
+                        <String fx:value="font-big" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </HBox>
+            <Text fill="#006600" strokeType="OUTSIDE" strokeWidth="0.0" text="Информация:" wrappingWidth="176.0">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Text>
+            <HBox prefHeight="13.0" prefWidth="571.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Тип:" wrappingWidth="280.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="typeText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="433.1846923828125">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="12.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="13.0" prefWidth="571.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Наименование:" wrappingWidth="280.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="nameText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="433.1846923828125">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="12.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="27.0" prefWidth="766.0">
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ниж./верх. предел изм. темп-ры:" wrappingWidth="280.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="temperatureRangeText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="432.1846923828125">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="12.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox prefHeight="19.0" prefWidth="390.0">
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Индивидуальный номер:" wrappingWidth="280.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="numberText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="433.1846923828125">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="12.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox prefHeight="19.0" prefWidth="390.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Дата поверки:" wrappingWidth="280.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="dateText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="433.1846923828125">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="12.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Межповерочный интервал:" wrappingWidth="280.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="intervalText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="433.1846923828125">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="12.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Дата очередной поверки:" wrappingWidth="280.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="nextDateText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="433.1846923828125">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="12.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Место установки:" wrappingWidth="280.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="locationText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="433.1846923828125">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="12.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Местоположение:" wrappingWidth="280.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="facilityText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="433.1846923828125">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="12.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox>
+               <children>
+                  <Button minHeight="35.0" mnemonicParsing="false" onAction="#deviceDelete" prefHeight="35.0" prefWidth="200.0" stylesheets="@../../css/style.css" text="Удалить">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="button-default" />
+                        <String fx:value="red" />
+                        <String fx:value="font-big" />
+                     </styleClass>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+      <ImageView fitHeight="61.0" fitWidth="300.0" layoutX="441.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../logo.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

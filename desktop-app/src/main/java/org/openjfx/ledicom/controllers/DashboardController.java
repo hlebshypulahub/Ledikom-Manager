@@ -110,7 +110,6 @@ public class DashboardController implements Initializable {
     public void showAllDevices(ActionEvent e) throws IOException {
         FacilityPanel.showFacilityCharts();
         footerPane.getChildren().clear();
-        detailsPane.getChildren().clear();
         DevicePanel.showAllDevices();
     }
 

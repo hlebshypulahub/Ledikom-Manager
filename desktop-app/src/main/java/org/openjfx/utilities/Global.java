@@ -3,13 +3,14 @@ package org.openjfx.utilities;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import org.openjfx.ledicom.entities.Device;
 import org.openjfx.ledicom.entities.Employee;
 import org.openjfx.ledicom.entities.Facility;
 import org.openjfx.ledicom.entities.inspection.Inspection;
 
 public final class Global {
 
-    private static final String APP_VERSION = "1.0.0.0";
+    private static final int APP_VERSION = 1;
 
     @FXML
     private static AnchorPane viewPane;
@@ -21,9 +22,18 @@ public final class Global {
     private static Employee employee;
     private static Facility facility;
     private static Inspection inspection;
+    private static Device device;
 
     private Global() {
 
+    }
+
+    public static Device getDevice() {
+        return device;
+    }
+
+    public static void setDevice(Device device) {
+        Global.device = device;
     }
 
     public static Facility getFacility() {
@@ -66,7 +76,7 @@ public final class Global {
         Global.viewPane = viewPane;
     }
 
-    public static String getAppVersion() {
+    public static int getAppVersion() {
         return APP_VERSION;
     }
 

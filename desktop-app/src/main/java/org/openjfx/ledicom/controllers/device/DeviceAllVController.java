@@ -7,17 +7,21 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import org.openjfx.ledicom.entities.Device;
 import org.openjfx.ledicom.entities.Facility;
 import org.openjfx.utilities.Global;
 import org.openjfx.utilities.database.DatabaseDeviceController;
 import org.openjfx.utilities.database.DatabaseFacilityController;
+import org.openjfx.utilities.docs.DeviceFacilityDoc;
+import org.openjfx.utilities.docs.DeviceScheduleDoc;
 import org.openjfx.utilities.panels.DevicePanel;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class DeviceAllVController implements Initializable {
 
@@ -41,17 +45,26 @@ public class DeviceAllVController implements Initializable {
     private ComboBox<String> yearCB;
 
     @FXML
-    void printForFacility(ActionEvent event) {
-
+    public void printForFacility(ActionEvent event) throws IOException {
+        DeviceFacilityDoc.createTable(table.getItems(), facilityCB.getValue());
     }
 
     @FXML
-    void printSchedule(ActionEvent event) {
-
+    public void printSchedule(ActionEvent event) throws IOException, SQLException {
+        DeviceScheduleDoc.createDocument(DatabaseDeviceController.getDevices().stream().filter(d -> d.getNextVerificationDate().substring(d.getNextVerificationDate().indexOf('.') + 2).equals(yearCB.getValue()))
+                                                                                      .collect(Collectors.toCollection(FXCollections::observableArrayList)), yearCB.getValue());
     }
 
     @FXML
-    void reset(ActionEvent event) throws IOException {
+    public void showDetails(MouseEvent event) throws IOException {
+        if(table.getSelectionModel().getSelectedIndex() >= 0) {
+            Global.setDevice(table.getSelectionModel().getSelectedItem());
+            DevicePanel.showDeviceDetails();
+        }
+    }
+
+    @FXML
+    public void reset(ActionEvent event) throws IOException {
         DevicePanel.showAllDevices();
         Global.getDetailsPane().getChildren().clear();
     }
@@ -70,7 +83,7 @@ public class DeviceAllVController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        yearCB.setItems(FXCollections.observableArrayList("2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"));
+        yearCB.setItems(FXCollections.observableArrayList("2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"));
 
         dateCol.setCellValueFactory(new PropertyValueFactory<>("nextVerificationDate"));
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -89,5 +102,20 @@ public class DeviceAllVController implements Initializable {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
+        table.setRowFactory(event -> {
+            TableRow<Device> row = new TableRow<>();
+            row.setOnMouseClicked(e -> {
+                if (e.getClickCount() == 2 && (!row.isEmpty())) {
+                    try {
+                        Global.setDevice(table.getSelectionModel().getSelectedItem());
+                        DevicePanel.showDeviceEdit();
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                }
+            });
+            return row;
+        });
     }
 }
