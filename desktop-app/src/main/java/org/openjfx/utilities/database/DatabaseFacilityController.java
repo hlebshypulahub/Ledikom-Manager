@@ -112,7 +112,7 @@ public class DatabaseFacilityController extends DatabaseController {
     }
 
     public static ObservableList<Facility> allFacilityList() throws SQLException {
-        String sql = "SELECT * FROM facility_data_view order by city, name;";
+        String sql = "SELECT * FROM facility_data_view";
         return facilityList(sql);
     }
 

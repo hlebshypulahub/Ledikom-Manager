@@ -107,6 +107,7 @@ public class InspectionAddVController implements Initializable {
         addButton.setLayoutY(layoutY);
 
         inspection = new Inspection(checkupResultList);
+        inspection.setFacility(Global.getFacility());
     }
 
     public void setInspection(Inspection insp) throws SQLException, IOException {

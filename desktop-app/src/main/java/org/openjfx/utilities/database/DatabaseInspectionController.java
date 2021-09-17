@@ -127,8 +127,8 @@ public class DatabaseInspectionController extends DatabaseController {
         return true;
     }
 
-    public static ObservableList<Inspection> getInspections() throws SQLException {
-        String sql = "select id_inspection, i.id_facility, name, date from inspection i join facility f on i.id_facility = f.id_facility order by id_facility, id_inspection";
+    public static ObservableList<Inspection> getInspections(Facility facility) throws SQLException {
+        String sql = "select id_inspection, i.id_facility, name, date from inspection i join facility f on i.id_facility = f.id_facility " + (facility == null ? "" : "where i.id_facility = " + facility.getId()) + " order by id_facility, id_inspection desc;";
 
         ObservableList<Inspection> observableList = FXCollections.observableArrayList();
 

@@ -14,7 +14,6 @@ public final class FileOpener {
         try {
             if (Desktop.isDesktopSupported()) {
                 Desktop desktop = Desktop.getDesktop();
-                System.out.println(file.toURI());
                 desktop.browse(file.toURI());
             }
         } catch (IOException ioe) {

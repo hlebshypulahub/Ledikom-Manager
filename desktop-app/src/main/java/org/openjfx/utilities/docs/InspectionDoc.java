@@ -23,14 +23,14 @@ public final class InspectionDoc {
     }
 
     public static void createDocument(Inspection inspection) throws IOException {
-        String title = "Самоинспекция " + Global.getFacility().getName() + " " + inspection.getDate();
+        String title = "Самоинспекция " + inspection.getFacility().getName() + " " + inspection.getDate();
 
         String body = "";
 
         body += "<p style=\"text-align: center;\">ОТЧЕТ О САМОИНСПЕКЦИИ</p>\n" +
                 "<p>&nbsp;</p>\n" +
-                "<p>Результаты самоинспекции «" + Global.getFacility().getName() + "» </p>\n" +
-                "<p>по адресу: " + Global.getFacility().getFullAddress() + " </p>\n" +
+                "<p>Результаты самоинспекции «" + inspection.getFacility().getName() + "» </p>\n" +
+                "<p>по адресу: " + inspection.getFacility().getFullAddress() + " </p>\n" +
                 "<p>Дата проведения: " + inspection.getDate() + " </p>\n";
 
         body += "<p>&nbsp;</p>\n" +
@@ -117,10 +117,10 @@ public final class InspectionDoc {
 
         if (!violationList.isEmpty()) {
 
-            title = "Самоинспекция " + Global.getFacility().getName() + " " + inspection.getDate() + " Нарушения";
+            title = "Самоинспекция " + inspection.getFacility().getName() + " " + inspection.getDate() + " Нарушения";
 
             body = "<p style=\"text-align: center;\">План поэтапного устранения выявленных несоответствий по результатам самоинспекции \""
-                    + Global.getFacility().getName() + "\" , расположенной по адресу: " + Global.getFacility().getFullAddress()
+                    + inspection.getFacility().getName() + "\" , расположенной по адресу: " + inspection.getFacility().getFullAddress()
                     + ",<br>от " + inspection.getDate() + " г.</p>";
 
             body += "<table style=\"border-collapse: collapse; width: 100%;\" border=\"1\">\n" +
