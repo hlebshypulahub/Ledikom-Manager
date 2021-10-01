@@ -79,7 +79,7 @@ public class DatabaseController {
     }
 
     public static int getActualVersion() {
-        String sql = "select * from app_version();;";
+        String sql = "select * from app_version();";
 
         int version = 0;
 
