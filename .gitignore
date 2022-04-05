@@ -28,7 +28,6 @@ sql/
 *.docx
 *.txt
 *.rdp
-*.png
 *.jpg
 *.psd
 *.ico
