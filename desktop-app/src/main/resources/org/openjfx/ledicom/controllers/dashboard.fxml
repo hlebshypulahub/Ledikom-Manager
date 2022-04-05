@@ -16,7 +16,7 @@
             <menus>
             <Menu fx:id="managementMenu2" mnemonicParsing="false" text="Сотрудники">
                <items>
-                  <MenuItem fx:id="managementMenuEmployee2" mnemonicParsing="false" onAction="#employeeAll" text="Все сотрудники" />
+                  <MenuItem id="custom-context-menu" fx:id="managementMenuEmployee2" mnemonicParsing="false" onAction="#employeeAll" text="Все сотрудники" />
                   <MenuItem fx:id="managementMenuFacility1" mnemonicParsing="false" onAction="#employeeCourses" text="Курсы" />
                   <MenuItem fx:id="managementMenuFacility12" mnemonicParsing="false" onAction="#showDOBNotifications" text="Дни рождения" />
                   <MenuItem fx:id="managementMenuFacility121" mnemonicParsing="false" onAction="#showContractNotifications" text="Контракты" />

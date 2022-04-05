@@ -21,11 +21,9 @@ import java.util.Objects;
 
 public class App extends Application {
 
-    private static Scene scene;
-
     @Override
     public void start(Stage stage) throws IOException, SQLException, URISyntaxException {
-        scene = new Scene(loadFXML("/org/openjfx/ledicom/controllers/dashboard"));
+        Scene scene = new Scene(loadFXML());
         stage.setScene(scene);
         stage.setTitle("Ледиком Менеджер");
         stage.show();
@@ -60,12 +58,12 @@ public class App extends Application {
         }
     }
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
+//    static void setRoot(String fxml) throws IOException {
+//        scene.setRoot(loadFXML(fxml));
+//    }
 
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+    private static Parent loadFXML() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/org/openjfx/ledicom/controllers/dashboard" + ".fxml"));
         return fxmlLoader.load();
     }
 
