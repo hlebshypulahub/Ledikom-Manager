@@ -1,7 +1,7 @@
 # Ledikom Manager
 
 ### A CRUD application for managing company staff, facilities and inventory
-### Built with JavaFX and PostgreSQL
+### Built with JavaFX and JDBC (PostgreSQL)
 
 ## ER Diagram
 [![pdf](docs/erd.png)](docs/erd.png)
